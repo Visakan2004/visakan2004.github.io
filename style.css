@@ -1,0 +1,981 @@
+/* ================================================================
+   Visakan K – Portfolio Stylesheet
+   Author  : Visakan K
+   Email   : visakan9304@gmail.com
+   Font    : DM Sans (Google Fonts – loaded via <link> in HTML)
+   ================================================================
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  CSS Variables (Design Tokens)
+   2.  Reset & Base
+   3.  Shared Utilities
+       3a. Section Layout
+       3b. Buttons
+   4.  Navbar
+   5.  Hero Section
+       5a. Hero – Left Column
+       5b. Hero – Stats Cards
+       5c. Hero – Right Column (Portrait)
+       5d. Hero – Floating Badges
+   6.  About Section
+       6a. About – Education Cards
+   7.  Skills Section
+   8.  Projects Section
+   9.  Certifications & Research Section
+   10. Contact Section
+       10a. Contact – Form
+   11. Footer
+   12. Responsive – Tablet (≤ 900px)
+   13. Responsive – Mobile  (≤ 580px)
+   ================================================================ */
+
+
+/* ================================================================
+   1. CSS VARIABLES (Design Tokens)
+   ================================================================ */
+:root {
+  /* Colors */
+  --purple      : #7c3aed;
+  --purple-mid  : #9333ea;
+  --purple-light: #c084fc;
+  --purple-bg   : #f5f0ff;
+  --stat-bg     : #ede9fe;
+  --dark        : #132238;
+  --body-text   : #4b5563;
+  --muted       : #9ca3af;
+  --white       : #ffffff;
+  --bg          : #f8f9fc;
+  --bg-alt      : #f3f4f8;
+
+  /* Shadows */
+  --shadow-sm  : 0 4px  16px rgba(124, 58, 237, 0.10);
+  --shadow-md  : 0 8px  32px rgba(124, 58, 237, 0.18);
+  --shadow-card: 0 24px 60px rgba(60,  30, 100, 0.12);
+
+  /* Shape */
+  --radius-btn : 50px;
+  --radius-card: 24px;
+  --radius-pill: 100px;
+
+  /* Animation */
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --font: 'DM Sans', sans-serif;
+}
+
+
+/* ================================================================
+   2. RESET & BASE
+   ================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin    : 0;
+  padding   : 0;
+}
+
+html {
+  font-size     : 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color           : var(--dark);
+  font-family     : var(--font);
+  line-height     : 1.6;
+  min-height      : 100vh;
+  overflow-x      : hidden;
+}
+
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+ul  { list-style: none; }
+
+
+/* ================================================================
+   3a. SHARED – SECTION LAYOUT
+   ================================================================ */
+.section {
+  padding: 5.5rem 8%;
+}
+
+.section-title {
+  color        : var(--dark);
+  font-size    : clamp(1.8rem, 3vw, 2.4rem);
+  font-weight  : 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 3.5rem;
+  position     : relative;
+  text-align   : center;
+}
+
+.section-title::after {
+  background   : linear-gradient(90deg, var(--purple), var(--purple-light));
+  border-radius: 2px;
+  content      : '';
+  display      : block;
+  height       : 4px;
+  margin       : 0.6rem auto 0;
+  width        : 52px;
+}
+
+.subsection-title {
+  color        : var(--dark);
+  font-size    : 1.1rem;
+  font-weight  : 700;
+  margin-bottom: 1.2rem;
+}
+
+
+/* ================================================================
+   3b. SHARED – BUTTONS
+   ================================================================ */
+.btn {
+  align-items  : center;
+  border       : none;
+  border-radius: var(--radius-btn);
+  cursor       : pointer;
+  display      : inline-flex;
+  font-family  : var(--font);
+  font-size    : 0.95rem;
+  font-weight  : 600;
+  gap          : 0.5rem;
+  text-decoration: none;
+  transition   : all var(--transition);
+  white-space  : nowrap;
+}
+
+/* Primary (solid purple) */
+.btn-primary {
+  align-self  : flex-start;
+  background  : var(--purple);
+  box-shadow  : 0 6px 24px rgba(124, 58, 237, 0.38);
+  color       : var(--white);
+  padding     : 0.9rem 2rem;
+}
+
+.btn-primary:hover {
+  background : #6d28d9;
+  box-shadow : 0 10px 32px rgba(124, 58, 237, 0.50);
+  transform  : translateY(-2px);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+/* Arrow inside primary button */
+.btn-arrow { font-size: 1.1rem; transition: transform var(--transition); }
+.btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+/* Outline (transparent border) */
+.btn-outline {
+  background  : transparent;
+  border      : 2px solid var(--purple);
+  color       : var(--purple);
+  padding     : 0.88rem 1.8rem;
+}
+
+.btn-outline:hover {
+  background: var(--purple-bg);
+  transform : translateY(-2px);
+}
+
+/* Navbar contact button */
+.btn-contact {
+  background: var(--purple);
+  box-shadow: var(--shadow-sm);
+  color     : var(--white);
+  font-size : 0.9rem;
+  padding   : 0.65rem 1.6rem;
+}
+
+.btn-contact:hover {
+  background: #6d28d9;
+  box-shadow: var(--shadow-md);
+  transform : translateY(-1px);
+}
+
+/* Download Resume button (green accent) */
+.btn-download {
+  background  : linear-gradient(135deg, #059669 0%, #10b981 100%);
+  box-shadow  : 0 6px 24px rgba(5, 150, 105, 0.32);
+  color       : var(--white);
+  padding     : 0.9rem 2rem;
+}
+
+.btn-download:hover {
+  background  : linear-gradient(135deg, #047857 0%, #059669 100%);
+  box-shadow  : 0 10px 32px rgba(5, 150, 105, 0.46);
+  transform   : translateY(-2px);
+}
+
+.btn-download:active { transform: translateY(0); }
+
+.download-icon {
+  display    : inline-block;
+  font-size  : 1rem;
+  transition : transform var(--transition);
+}
+
+.btn-download:hover .download-icon { transform: translateY(3px); }
+
+/* Navbar Resume link highlight */
+.nav-link-resume {
+  background: rgba(5, 150, 105, 0.10);
+  color     : #065f46;
+  font-weight: 600;
+}
+
+.nav-link-resume:hover {
+  background: rgba(5, 150, 105, 0.18);
+  color     : #047857;
+}
+
+/* Hero button row */
+.hero-buttons {
+  display  : flex;
+  flex-wrap: wrap;
+  gap      : 1rem;
+}
+
+
+/* ================================================================
+   4. NAVBAR
+   ================================================================ */
+.navbar {
+  backdrop-filter  : blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background       : rgba(248, 249, 252, 0.9);
+  border-bottom    : 1px solid rgba(124, 58, 237, 0.08);
+  display          : flex;
+  align-items      : center;
+  justify-content  : space-between;
+  gap              : 1.5rem;
+  padding          : 1.1rem 5%;
+  position         : sticky;
+  top              : 0;
+  z-index          : 100;
+}
+
+/* Brand / Logo */
+.nav-brand {
+  align-items: center;
+  display    : flex;
+  flex-shrink: 0;
+  gap        : 0.7rem;
+}
+
+.brand-icon {
+  align-items  : center;
+  background   : var(--purple);
+  border-radius: 50%;
+  box-shadow   : 0 4px 14px rgba(124, 58, 237, 0.35);
+  color        : var(--white);
+  display      : flex;
+  font-size    : 1rem;
+  font-weight  : 800;
+  height       : 40px;
+  justify-content: center;
+  width        : 40px;
+}
+
+.brand-name {
+  color         : var(--dark);
+  font-size     : 1.25rem;
+  font-weight   : 700;
+  letter-spacing: -0.3px;
+}
+
+/* Nav links */
+.nav-menu       { display: flex; flex: 1; justify-content: center; }
+.nav-list       { align-items: center; display: flex; gap: 0.25rem; }
+
+.nav-link {
+  border-radius: var(--radius-pill);
+  color        : var(--body-text);
+  font-size    : 0.9rem;
+  font-weight  : 500;
+  padding      : 0.45rem 1rem;
+  transition   : all var(--transition);
+}
+
+.nav-link:hover  { background: var(--purple-bg); color: var(--purple); }
+
+.nav-link.active {
+  background : var(--purple);
+  color      : var(--white);
+  font-weight: 600;
+}
+
+.nav-link.active:hover { background: #6d28d9; }
+
+
+/* ================================================================
+   5. HERO SECTION
+   ================================================================ */
+.hero {
+  align-items: center;
+  display    : flex;
+  gap        : 4rem;
+  min-height : calc(100vh - 68px);
+  overflow   : hidden;
+  padding    : 4rem 8% 3rem;
+  position   : relative;
+}
+
+/* Pastel gradient blob (right side background) */
+.hero::before {
+  background: radial-gradient(
+    ellipse 70% 80% at 80% 40%,
+    #fce4ff 0%, #e8d5fb 22%, #d4e8fc 55%, #d8f6ef 80%, transparent 100%
+  );
+  border-radius: 40% 0 0 40%;
+  content      : '';
+  height       : 120%;
+  pointer-events: none;
+  position     : absolute;
+  right        : -8%;
+  top          : -10%;
+  width        : 60%;
+  z-index      : 0;
+}
+
+
+/* ----------------------------------------------------------------
+   5a. Hero – Left Column
+   ---------------------------------------------------------------- */
+.hero-left {
+  display       : flex;
+  flex-direction: column;
+  flex          : 1;
+  gap           : 1.6rem;
+  max-width     : 580px;
+  min-width     : 300px;
+  position      : relative;
+  z-index       : 1;
+}
+
+/* Role pill above heading */
+.hero-eyebrow {
+  background    : var(--purple-bg);
+  border-radius : var(--radius-pill);
+  color         : var(--purple);
+  display       : inline-block;
+  font-size     : 0.83rem;
+  font-weight   : 600;
+  letter-spacing: 1.2px;
+  padding       : 0.35rem 1rem;
+  text-transform: uppercase;
+  width         : fit-content;
+}
+
+/* Main heading */
+.hero-heading {
+  color         : var(--dark);
+  font-size     : clamp(2.4rem, 4.5vw, 3.6rem);
+  font-weight   : 800;
+  letter-spacing: -1px;
+  line-height   : 1.15;
+}
+
+.heading-name { color: var(--purple); display: inline; }
+
+/* Bio paragraph */
+.hero-bio {
+  color    : var(--body-text);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 490px;
+}
+
+/* Underline highlight effect */
+.highlight {
+  color      : var(--dark);
+  font-weight: 600;
+  position   : relative;
+}
+
+.highlight::after {
+  background   : linear-gradient(90deg, var(--purple), var(--purple-light));
+  border-radius: 2px;
+  bottom       : 1px;
+  content      : '';
+  height       : 2.5px;
+  left         : 0;
+  position     : absolute;
+  width        : 100%;
+}
+
+
+/* ----------------------------------------------------------------
+   5b. Hero – Stats Cards
+   ---------------------------------------------------------------- */
+.stats-row {
+  display  : flex;
+  flex-wrap: wrap;
+  gap      : 1rem;
+}
+
+.stat-card {
+  background   : var(--stat-bg);
+  border-radius: 18px;
+  display      : flex;
+  flex         : 1;
+  flex-direction: column;
+  gap          : 0.25rem;
+  min-width    : 110px;
+  padding      : 1.1rem 1.2rem;
+  transition   : box-shadow var(--transition), transform var(--transition);
+}
+
+.stat-card:hover {
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.18);
+  transform : translateY(-4px);
+}
+
+.stat-number {
+  color         : var(--dark);
+  font-size     : 1.7rem;
+  font-weight   : 800;
+  letter-spacing: -0.5px;
+  line-height   : 1;
+}
+
+.stat-label {
+  color      : var(--body-text);
+  font-size  : 0.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+
+/* ----------------------------------------------------------------
+   5c. Hero – Right Column (Portrait)
+   ---------------------------------------------------------------- */
+.hero-right {
+  align-items    : center;
+  display        : flex;
+  flex           : 0 0 auto;
+  justify-content: center;
+  position       : relative;
+  z-index        : 1;
+}
+
+.portrait-wrapper {
+  position: relative;
+  width   : clamp(280px, 32vw, 400px);
+}
+
+.portrait-card {
+  aspect-ratio : 3 / 4;
+  background   : var(--white);
+  border       : 3px solid rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-card);
+  box-shadow   : var(--shadow-card);
+  overflow     : hidden;
+}
+
+.portrait-img {
+  height        : 100%;
+  object-fit    : cover;
+  object-position: 15% 20%;
+  transition    : transform 0.5s ease;
+  width         : 100%;
+}
+
+.portrait-card:hover .portrait-img { transform: scale(1.03); }
+
+
+/* ----------------------------------------------------------------
+   5d. Hero – Floating Badges
+   ---------------------------------------------------------------- */
+.badge {
+  align-items  : center;
+  animation    : float 4s ease-in-out infinite;
+  background   : var(--white);
+  border       : 1.5px solid rgba(124, 58, 237, 0.12);
+  border-radius: var(--radius-pill);
+  box-shadow   : 0 8px 28px rgba(124, 58, 237, 0.18);
+  color        : var(--dark);
+  display      : flex;
+  font-size    : 0.82rem;
+  font-weight  : 600;
+  gap          : 0.45rem;
+  padding      : 0.55rem 1rem;
+  position     : absolute;
+  white-space  : nowrap;
+}
+
+.badge-top    { animation-delay: 0s;  left: -2rem; top: -1.2rem; }
+.badge-bottom { animation-delay: 2s;  bottom: 2rem; right: -2rem; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+
+/* ================================================================
+   6. ABOUT SECTION
+   ================================================================ */
+.about-section { background: var(--white); }
+
+.about-grid {
+  align-items           : start;
+  display               : grid;
+  gap                   : 4rem;
+  grid-template-columns : 1fr 1fr;
+  margin                : 0 auto;
+  max-width             : 1100px;
+}
+
+.about-text {
+  display       : flex;
+  flex-direction: column;
+  gap           : 1.2rem;
+}
+
+.about-text p        { color: var(--body-text); font-size: 1rem; line-height: 1.85; }
+.about-text strong   { color: var(--dark); }
+
+/* Quick contact info */
+.about-meta {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.65rem;
+  margin-top    : 0.5rem;
+}
+
+.meta-item {
+  align-items: center;
+  color      : var(--body-text);
+  display    : flex;
+  font-size  : 0.92rem;
+  gap        : 0.6rem;
+}
+
+.meta-item a:hover { color: var(--purple); }
+.meta-icon         { font-size: 1rem; }
+
+/* GitHub / LinkedIn buttons */
+.about-links {
+  display   : flex;
+  flex-wrap : wrap;
+  gap       : 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.social-btn {
+  align-items  : center;
+  background   : var(--purple-bg);
+  border       : 1.5px solid rgba(124, 58, 237, 0.25);
+  border-radius: var(--radius-pill);
+  color        : var(--purple);
+  display      : inline-flex;
+  font-size    : 0.85rem;
+  font-weight  : 600;
+  gap          : 0.5rem;
+  padding      : 0.5rem 1.1rem;
+  transition   : all var(--transition);
+}
+
+.social-btn:hover {
+  background  : var(--purple);
+  border-color: var(--purple);
+  box-shadow  : var(--shadow-sm);
+  color       : var(--white);
+  transform   : translateY(-2px);
+}
+
+
+/* ----------------------------------------------------------------
+   6a. About – Education Cards
+   ---------------------------------------------------------------- */
+.edu-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.edu-card {
+  background   : var(--bg);
+  border       : 1.5px solid rgba(124, 58, 237, 0.12);
+  border-radius: var(--radius-card);
+  padding      : 1.5rem 1.8rem;
+  transition   : all var(--transition);
+}
+
+.edu-card:hover {
+  border-color: var(--purple-light);
+  box-shadow  : var(--shadow-sm);
+  transform   : translateY(-3px);
+}
+
+.edu-year {
+  background    : var(--purple-bg);
+  border-radius : var(--radius-pill);
+  color         : var(--purple);
+  display       : inline-block;
+  font-size     : 0.78rem;
+  font-weight   : 700;
+  letter-spacing: 0.5px;
+  margin-bottom : 0.6rem;
+  padding       : 0.2rem 0.75rem;
+}
+
+.edu-degree  { color: var(--dark); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
+.edu-college { color: var(--body-text); font-size: 0.88rem; }
+
+
+/* ================================================================
+   7. SKILLS SECTION
+   ================================================================ */
+.skills-section { background: var(--bg-alt); }
+
+.skills-container {
+  display       : flex;
+  flex-direction: column;
+  gap           : 2.5rem;
+  margin        : 0 auto;
+  max-width     : 900px;
+}
+
+.skills-group-title {
+  color        : var(--dark);
+  font-size    : 1rem;
+  font-weight  : 700;
+  margin-bottom: 1rem;
+}
+
+.skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* Technical skill pill (white/purple) */
+.skill-pill {
+  background   : var(--white);
+  border       : 1.5px solid rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius-pill);
+  color        : var(--dark);
+  cursor       : default;
+  font-size    : 0.9rem;
+  font-weight  : 600;
+  padding      : 0.55rem 1.2rem;
+  transition   : all var(--transition);
+}
+
+.skill-pill:hover {
+  background  : var(--purple-bg);
+  border-color: var(--purple-light);
+  box-shadow  : 0 4px 16px rgba(124, 58, 237, 0.14);
+  color       : var(--purple);
+  transform   : translateY(-2px);
+}
+
+/* Soft skill pill (green) */
+.skill-pill.soft {
+  background  : #f0fdf4;
+  border-color: rgba(34, 197, 94, 0.2);
+  color       : #166534;
+}
+
+.skill-pill.soft:hover {
+  background  : #dcfce7;
+  border-color: #86efac;
+  color       : #15803d;
+}
+
+
+/* ================================================================
+   8. PROJECTS SECTION
+   ================================================================ */
+.projects-section { background: var(--white); }
+
+.projects-grid {
+  display              : grid;
+  gap                  : 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin               : 0 auto;
+  max-width            : 1000px;
+}
+
+.project-card {
+  background   : var(--bg);
+  border       : 1.5px solid rgba(124, 58, 237, 0.10);
+  border-radius: var(--radius-card);
+  display      : flex;
+  flex-direction: column;
+  gap          : 0.9rem;
+  overflow     : hidden;
+  padding      : 2rem;
+  position     : relative;
+  transition   : all var(--transition);
+}
+
+/* Top accent bar on hover */
+.project-card::before {
+  background: linear-gradient(90deg, var(--purple), var(--purple-light));
+  content   : '';
+  height    : 4px;
+  left      : 0;
+  opacity   : 0;
+  position  : absolute;
+  top       : 0;
+  transition: opacity var(--transition);
+  width     : 100%;
+}
+
+.project-card:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow  : 0 12px 40px rgba(124, 58, 237, 0.13);
+  transform   : translateY(-6px);
+}
+
+.project-card:hover::before { opacity: 1; }
+
+.project-number {
+  color         : rgba(124, 58, 237, 0.12);
+  font-size     : 2.5rem;
+  font-weight   : 900;
+  letter-spacing: -2px;
+  line-height   : 1;
+}
+
+.project-title {
+  color      : var(--dark);
+  font-size  : 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.project-desc {
+  color      : var(--body-text);
+  flex       : 1;
+  font-size  : 0.92rem;
+  line-height: 1.75;
+}
+
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+
+.tag {
+  background   : var(--purple-bg);
+  border-radius: var(--radius-pill);
+  color        : var(--purple);
+  font-size    : 0.76rem;
+  font-weight  : 600;
+  padding      : 0.25rem 0.75rem;
+}
+
+
+/* ================================================================
+   9. CERTIFICATIONS & RESEARCH SECTION
+   ================================================================ */
+.certs-section { background: var(--bg-alt); }
+
+.certs-research-grid {
+  display              : grid;
+  gap                  : 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin               : 0 auto;
+  max-width            : 1000px;
+}
+
+.cert-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.cert-card {
+  align-items  : flex-start;
+  background   : var(--white);
+  border       : 1.5px solid rgba(124, 58, 237, 0.10);
+  border-radius: 16px;
+  display      : flex;
+  gap          : 1rem;
+  padding      : 1.2rem 1.4rem;
+  transition   : all var(--transition);
+}
+
+.cert-card:hover {
+  border-color: var(--purple-light);
+  box-shadow  : var(--shadow-sm);
+  transform   : translateX(4px);
+}
+
+.cert-icon    { flex-shrink: 0; font-size: 1.6rem; }
+.cert-name    { color: var(--dark); font-size: 0.95rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.25rem; }
+.cert-provider{ color: var(--muted); font-size: 0.82rem; }
+
+
+/* ================================================================
+   10. CONTACT SECTION
+   ================================================================ */
+.contact-section { background: var(--white); }
+
+.contact-grid {
+  align-items          : start;
+  display              : grid;
+  gap                  : 4rem;
+  grid-template-columns: 1fr 1.4fr;
+  margin               : 0 auto;
+  max-width            : 1000px;
+}
+
+.contact-intro {
+  color      : var(--body-text);
+  font-size  : 1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contact-details { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.contact-item {
+  align-items: flex-start;
+  color      : var(--body-text);
+  display    : flex;
+  font-size  : 0.92rem;
+  gap        : 0.7rem;
+}
+
+.contact-item a { color: var(--purple); font-weight: 500; word-break: break-all; }
+.contact-item a:hover { text-decoration: underline; }
+.ci-icon { flex-shrink: 0; font-size: 1.1rem; margin-top: 0.05rem; }
+
+
+/* ----------------------------------------------------------------
+   10a. Contact – Form
+   ---------------------------------------------------------------- */
+.contact-form-wrap {
+  background   : var(--bg);
+  border       : 1.5px solid rgba(124, 58, 237, 0.08);
+  border-radius: var(--radius-card);
+  padding      : 2.2rem;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-group label {
+  color      : var(--dark);
+  font-size  : 0.85rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  background   : var(--white);
+  border       : 1.5px solid rgba(124, 58, 237, 0.15);
+  border-radius: 12px;
+  color        : var(--dark);
+  font-family  : var(--font);
+  font-size    : 0.95rem;
+  outline      : none;
+  padding      : 0.85rem 1rem;
+  resize       : vertical;
+  transition   : border-color var(--transition), box-shadow var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--purple);
+  box-shadow  : 0 0 0 3px rgba(124, 58, 237, 0.10);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); }
+
+.form-status {
+  font-size  : 0.9rem;
+  font-weight: 500;
+  min-height : 1.5rem;
+  text-align : center;
+}
+
+
+/* ================================================================
+   11. FOOTER
+   ================================================================ */
+.footer {
+  align-items    : center;
+  background     : var(--dark);
+  border-top     : 1px solid rgba(124, 58, 237, 0.10);
+  color          : #94a3b8;
+  display        : flex;
+  flex-direction : column;
+  font-size      : 0.88rem;
+  gap            : 0.8rem;
+  padding        : 2rem 5%;
+  text-align     : center;
+}
+
+.footer strong   { color: var(--white); }
+.footer-links    { display: flex; gap: 1.5rem; }
+.footer-links a  { color: #94a3b8; transition: color var(--transition); }
+.footer-links a:hover { color: var(--purple-light); }
+
+
+/* ================================================================
+   12. RESPONSIVE – TABLET (≤ 900px)
+   ================================================================ */
+@media (max-width: 900px) {
+
+  /* Hero – stack to single column */
+  .hero {
+    align-items   : center;
+    flex-direction: column;
+    gap           : 3rem;
+    padding       : 3rem 6%;
+    text-align    : center;
+  }
+
+  .hero::before {
+    border-radius: 0 0 50% 50%;
+    height       : 55%;
+    left         : -10%;
+    right        : -10%;
+    top          : 50%;
+    width        : 120%;
+  }
+
+  .hero-left         { align-items: center; max-width: 600px; }
+  .hero-bio          { text-align: center; }
+  .hero-buttons      { justify-content: center; }
+  .stats-row         { justify-content: center; }
+  .portrait-wrapper  { width: clamp(240px, 55vw, 360px); }
+  .badge-top         { left: -0.5rem; top: -1rem; }
+  .badge-bottom      { right: -0.5rem; }
+
+  /* About – single column */
+  .about-grid        { gap: 2.5rem; grid-template-columns: 1fr; }
+
+  /* Contact – single column */
+  .contact-grid      { gap: 2.5rem; grid-template-columns: 1fr; }
+}
+
+
+/* ================================================================
+   13. RESPONSIVE – MOBILE (≤ 580px)
+   ================================================================ */
+@media (max-width: 580px) {
+
+  /* Navbar wraps to two rows */
+  .navbar   { flex-wrap: wrap; gap: 0.75rem; padding: 0.85rem 4%; }
+  .nav-menu { order: 3; width: 100%; }
+  .nav-list { flex-wrap: wrap; gap: 0.15rem; justify-content: center; }
+  .nav-link { font-size: 0.8rem; padding: 0.38rem 0.75rem; }
+
+  /* Sections */
+  .section { padding: 4rem 5%; }
+
+  /* Hero */
+  .hero                   { gap: 2.5rem; padding: 2.5rem 5%; }
+  .hero-heading           { font-size: 2.1rem; letter-spacing: -0.5px; }
+  .stat-card              { min-width: 90px; padding: 0.9rem 1rem; }
+  .stat-number            { font-size: 1.4rem; }
+  .portrait-wrapper       { width: clamp(220px, 80vw, 340px); }
+  .badge                  { font-size: 0.75rem; padding: 0.45rem 0.75rem; }
+  .badge-top              { left: 0.5rem; top: -0.6rem; }
+  .badge-bottom           { bottom: 1rem; right: 0.5rem; }
+
+  /* Certifications grid */
+  .certs-research-grid    { grid-template-columns: 1fr; }
+
+  /* Contact form */
+  .contact-form-wrap      { padding: 1.5rem; }
+}
