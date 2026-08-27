@@ -23,8 +23,7 @@
    7.  Skills Section
    8.  ProtoSem Section
        8a. ProtoSem – Description Banner
-       8b. ProtoSem – Phase Filter Tabs
-       8c. ProtoSem – 20 Week Cards
+       8b. ProtoSem – 20 Week Cards (Week 0–19)
    9.  Projects Section
    10. Certifications & Research Section
    11. Contact Section
@@ -697,93 +696,26 @@ ul  { list-style: none; }
 .protosem-container {
   display       : flex;
   flex-direction: column;
-  gap           : 2.8rem;
+  gap           : 2.2rem;
   margin        : 0 auto;
-  max-width     : 1200px;
+  max-width     : 1100px;
 }
 
 /* ----------------------------------------------------------------
-   8a. ProtoSem Hero / Description Banner
+   8a. ProtoSem Description Banner
    ---------------------------------------------------------------- */
 .protosem-banner {
-  background   : linear-gradient(135deg, rgba(245, 240, 255, 0.8) 0%, rgba(255, 255, 255, 0.95) 100%);
+  background   : linear-gradient(135deg, rgba(245, 240, 255, 0.85) 0%, rgba(255, 255, 255, 0.95) 100%);
   border       : 1.5px solid rgba(124, 58, 237, 0.18);
   border-radius: var(--radius-card);
-  box-shadow   : 0 10px 30px rgba(124, 58, 237, 0.08);
-  display      : flex;
-  flex-direction: column;
-  gap          : 1.2rem;
-  padding      : 2.2rem 2.5rem;
-  position     : relative;
+  box-shadow   : 0 8px 28px rgba(124, 58, 237, 0.07);
+  padding      : 1.8rem 2.2rem;
   transition   : all var(--transition);
 }
 
 .protosem-banner:hover {
   border-color: rgba(124, 58, 237, 0.32);
-  box-shadow  : 0 16px 40px rgba(124, 58, 237, 0.12);
-}
-
-.protosem-banner-header {
-  align-items    : center;
-  display        : flex;
-  flex-wrap      : wrap;
-  gap            : 1rem;
-  justify-content: space-between;
-}
-
-.proto-badge-group {
-  align-items: center;
-  display    : flex;
-  flex-wrap  : wrap;
-  gap        : 0.6rem;
-}
-
-.proto-pill {
-  align-items  : center;
-  background   : var(--white);
-  border       : 1px solid rgba(124, 58, 237, 0.15);
-  border-radius: var(--radius-pill);
-  color        : var(--dark);
-  display      : inline-flex;
-  font-size    : 0.82rem;
-  font-weight  : 600;
-  gap          : 0.35rem;
-  padding      : 0.35rem 0.9rem;
-}
-
-.proto-pill-accent {
-  background  : linear-gradient(135deg, var(--purple) 0%, var(--purple-mid) 100%);
-  border-color: transparent;
-  box-shadow  : 0 4px 14px rgba(124, 58, 237, 0.30);
-  color       : var(--white);
-}
-
-.proto-status-dot {
-  align-items  : center;
-  background   : rgba(34, 197, 94, 0.12);
-  border       : 1px solid rgba(34, 197, 94, 0.25);
-  border-radius: var(--radius-pill);
-  color        : #15803d;
-  display      : inline-flex;
-  font-size    : 0.8rem;
-  font-weight  : 700;
-  gap          : 0.45rem;
-  padding      : 0.35rem 0.85rem;
-}
-
-.pulse-dot {
-  animation    : pulseGlow 2s infinite;
-  background   : #22c55e;
-  border-radius: 50%;
-  display      : inline-block;
-  height       : 8px;
-  width        : 8px;
-}
-
-@keyframes pulseGlow {
-  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
-  70%  { transform: scale(1);    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  box-shadow  : 0 12px 36px rgba(124, 58, 237, 0.11);
 }
 
 .protosem-desc-text {
@@ -799,73 +731,29 @@ ul  { list-style: none; }
 }
 
 /* ----------------------------------------------------------------
-   8b. ProtoSem Phase Filter Tabs
-   ---------------------------------------------------------------- */
-.proto-filter-wrapper {
-  display        : flex;
-  justify-content: center;
-}
-
-.proto-filter-bar {
-  align-items    : center;
-  background     : var(--bg-alt);
-  border         : 1.5px solid rgba(124, 58, 237, 0.10);
-  border-radius  : var(--radius-pill);
-  display        : flex;
-  flex-wrap      : wrap;
-  gap            : 0.4rem;
-  justify-content: center;
-  padding        : 0.4rem;
-}
-
-.proto-filter-btn {
-  background   : transparent;
-  border       : none;
-  border-radius: var(--radius-pill);
-  color        : var(--body-text);
-  cursor       : pointer;
-  font-family  : var(--font);
-  font-size    : 0.85rem;
-  font-weight  : 600;
-  padding      : 0.55rem 1.1rem;
-  transition   : all var(--transition);
-  white-space  : nowrap;
-}
-
-.proto-filter-btn:hover {
-  color      : var(--purple);
-  background : rgba(124, 58, 237, 0.08);
-}
-
-.proto-filter-btn.active {
-  background : var(--purple);
-  box-shadow : 0 4px 14px rgba(124, 58, 237, 0.35);
-  color      : var(--white);
-}
-
-/* ----------------------------------------------------------------
-   8c. 20 Week Cards Grid
+   8b. 20 Week Cards Grid (Week 0 to Week 19)
    ---------------------------------------------------------------- */
 .week-cards-grid {
   display              : grid;
-  gap                  : 1.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap                  : 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 
 .week-card {
-  background   : var(--bg);
-  border       : 1.5px solid rgba(124, 58, 237, 0.10);
-  border-radius: 20px;
-  display      : flex;
-  flex-direction: column;
+  align-items    : center;
+  background     : var(--bg);
+  border         : 1.5px solid rgba(124, 58, 237, 0.12);
+  border-radius  : 16px;
+  display        : flex;
   justify-content: space-between;
-  overflow     : hidden;
-  padding      : 1.6rem 1.4rem;
-  position     : relative;
-  transition   : transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                 box-shadow 0.3s ease,
-                 border-color 0.3s ease,
-                 background 0.3s ease;
+  overflow       : hidden;
+  padding        : 1.25rem 1.4rem;
+  position       : relative;
+  text-decoration: none;
+  transition     : transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                   box-shadow 0.25s ease,
+                   border-color 0.25s ease,
+                   background 0.25s ease;
 }
 
 .week-card::before {
@@ -882,116 +770,44 @@ ul  { list-style: none; }
 
 .week-card:hover {
   background  : var(--white);
-  border-color: rgba(124, 58, 237, 0.30);
-  box-shadow  : 0 14px 36px rgba(124, 58, 237, 0.12);
-  transform   : translateY(-6px);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow  : 0 10px 28px rgba(124, 58, 237, 0.13);
+  transform   : translateY(-4px);
 }
 
 .week-card:hover::before {
   opacity: 1;
 }
 
-.week-card.card-hidden {
-  display: none !important;
-}
-
-/* Week card header */
-.week-card-top {
-  align-items    : center;
-  display        : flex;
-  justify-content: space-between;
-  margin-bottom  : 0.9rem;
-}
-
-.week-num-badge {
-  background    : var(--purple-bg);
-  border        : 1px solid rgba(124, 58, 237, 0.20);
-  border-radius : var(--radius-pill);
-  color         : var(--purple);
-  font-size     : 0.78rem;
-  font-weight   : 800;
-  letter-spacing: 0.4px;
-  padding       : 0.25rem 0.7rem;
-  text-transform: uppercase;
-}
-
-.week-phase-tag {
-  border-radius : var(--radius-pill);
-  font-size     : 0.72rem;
-  font-weight   : 700;
-  letter-spacing: 0.4px;
-  padding       : 0.2rem 0.6rem;
-  text-transform: uppercase;
-}
-
-.phase-tag-1 { background: #eff6ff; color: #2563eb; }
-.phase-tag-2 { background: #fdf4ff; color: #c026d3; }
-.phase-tag-3 { background: #f0fdf4; color: #16a34a; }
-.phase-tag-4 { background: #fff7ed; color: #ea580c; }
-
-/* Week card body */
-.week-card-body {
-  display       : flex;
-  flex          : 1;
-  flex-direction: column;
-  gap           : 0.45rem;
-}
-
-.week-card-title {
+.week-card-num {
   color      : var(--dark);
-  font-size  : 1.02rem;
+  font-size  : 1.05rem;
   font-weight: 700;
-  line-height: 1.35;
-}
-
-.week-card-desc {
-  color      : var(--body-text);
-  flex       : 1;
-  font-size  : 0.84rem;
-  line-height: 1.6;
-}
-
-/* Week card footer */
-.week-card-footer {
-  align-items    : center;
-  border-top     : 1px solid rgba(124, 58, 237, 0.08);
-  display        : flex;
-  justify-content: space-between;
-  margin-top     : 1.2rem;
-  padding-top    : 0.9rem;
-}
-
-.week-card-btn {
-  align-items: center;
-  color      : var(--purple);
-  display    : inline-flex;
-  font-size  : 0.82rem;
-  font-weight: 700;
-  gap        : 0.35rem;
+  letter-spacing: -0.2px;
   transition : color var(--transition);
 }
 
-.week-card-btn:hover {
-  color: #6d28d9;
+.week-card:hover .week-card-num {
+  color: var(--purple);
 }
 
-.week-card-btn .arrow-icon {
-  display   : inline-block;
-  font-size : 0.95rem;
-  transition: transform var(--transition);
+.week-card-icon {
+  align-items    : center;
+  background     : var(--purple-bg);
+  border-radius  : 50%;
+  color          : var(--purple);
+  display        : flex;
+  font-size      : 0.95rem;
+  height         : 32px;
+  justify-content: center;
+  transition     : all var(--transition);
+  width          : 32px;
 }
 
-.week-card:hover .week-card-btn .arrow-icon {
-  transform: translateX(4px);
-}
-
-.week-tag-status {
-  background   : rgba(156, 163, 175, 0.12);
-  border-radius: 6px;
-  color        : var(--muted);
-  font-size    : 0.7rem;
-  font-weight  : 500;
-  padding      : 0.18rem 0.5rem;
+.week-card:hover .week-card-icon {
+  background: var(--purple);
+  color     : var(--white);
+  transform : translateX(3px);
 }
 
 
@@ -1257,8 +1073,8 @@ ul  { list-style: none; }
   .about-grid        { gap: 2.5rem; grid-template-columns: 1fr; }
 
   /* ProtoSem – tablet adjustments */
-  .protosem-banner   { padding: 1.8rem 1.8rem; }
-  .week-cards-grid   { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; }
+  .protosem-banner   { padding: 1.5rem 1.6rem; }
+  .week-cards-grid   { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
 
   /* Contact – single column */
   .contact-grid      { gap: 2.5rem; grid-template-columns: 1fr; }
@@ -1290,12 +1106,11 @@ ul  { list-style: none; }
   .badge-bottom           { bottom: 1rem; right: 0.5rem; }
 
   /* ProtoSem – mobile layout */
-  .protosem-banner        { padding: 1.5rem 1.2rem; gap: 1rem; }
+  .protosem-banner        { padding: 1.3rem 1.2rem; }
   .protosem-desc-text     { font-size: 0.95rem; line-height: 1.65; }
-  .proto-filter-wrapper   { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .proto-filter-bar       { justify-content: flex-start; width: max-content; padding: 0.35rem; }
-  .proto-filter-btn       { font-size: 0.78rem; padding: 0.45rem 0.85rem; }
-  .week-cards-grid        { grid-template-columns: 1fr; gap: 1rem; }
+  .week-cards-grid        { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .week-card              { padding: 1rem 1.1rem; }
+  .week-card-num          { font-size: 0.95rem; }
 
   /* Certifications grid */
   .certs-research-grid    { grid-template-columns: 1fr; }
