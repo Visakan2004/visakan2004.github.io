@@ -9,20 +9,36 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve assets (images, resume PDF, etc.)
+// Serve static assets and root directory
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(express.static(__dirname));
 
-// Serve style.css explicitly
+// Explicit Routes
 app.get('/style.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'style.css'));
 });
 
+app.get('/resume', (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'resume.html'));
+});
+
+app.get('/assets/resume.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'assets', 'resume.html'));
+});
+
 // POST /contact — save message to messages.txt
 app.post('/contact', (req, res) => {
-  const { name, email, message } = req.body;
+  const name = (req.body.name || '').trim();
+  const email = (req.body.email || '').trim();
+  const message = (req.body.message || '').trim();
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: 'All fields are required.' });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.status(400).json({ message: 'Please provide a valid email address.' });
   }
 
   const entry = [

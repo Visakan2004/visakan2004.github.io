@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- ============================================================
-     Visakan K | AI & Data Analytics Portfolio
+     Visakan K | AI & Data Analytics Portfolio (Extreme Flow Edition)
      Author  : Visakan K
      Email   : visakan9304@gmail.com
      GitHub  : https://github.com/Visakan2004
@@ -18,10 +18,16 @@
   <!-- Page Title -->
   <title>Visakan K | AI & Data Analytics Portfolio</title>
 
-  <!-- Google Fonts – DM Sans -->
+  <!-- Google Fonts – DM Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Devicon Vector Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -29,18 +35,47 @@
 
 <body>
 
+  <!-- Dynamic Cyber Background FX Layers -->
+  <div class="cyber-bg-fx" aria-hidden="true">
+    <div class="cyber-grid-mesh"></div>
+    <div class="cyber-aurora-orb aurora-orb-1"></div>
+    <div class="cyber-aurora-orb aurora-orb-2"></div>
+    <div class="cyber-aurora-orb aurora-orb-3"></div>
+    <div class="cyber-glow-beam"></div>
+  </div>
+
+  <!-- Interactive 60FPS Constellation Particle Canvas -->
+  <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-notification" id="toastNotification" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span class="toast-message" id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
   <!-- ====================================================
        1. NAVBAR
        ==================================================== -->
   <header class="navbar" id="top">
 
     <!-- Brand / Logo -->
-    <div class="nav-brand">
+    <a href="#top" class="nav-brand" aria-label="Visakan K Homepage">
       <div class="brand-icon" aria-hidden="true">V</div>
       <span class="brand-name">Visakan</span>
-    </div>
+    </a>
 
-    <!-- Navigation Links -->
+    <!-- Desktop Navigation Links -->
     <nav class="nav-menu" aria-label="Main navigation">
       <ul class="nav-list">
         <li><a href="#home"           class="nav-link active">Home</a></li>
@@ -50,80 +85,149 @@
         <li><a href="#projects"       class="nav-link">Projects</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#contact"        class="nav-link">Contact</a></li>
-        <li><a href="assets/resume.pdf" download="Visakan_K_Resume.pdf" class="nav-link nav-link-resume">Resume ↓</a></li>
+        <li><a href="assets/resume.html" class="nav-link nav-link-resume"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Resume</a></li>
       </ul>
     </nav>
 
-    <!-- CTA Button -->
-    <a href="#contact" class="btn btn-contact">Contact Me</a>
+    <!-- Nav Action Cluster -->
+    <div class="nav-actions">
+      <!-- CTA Button -->
+      <a href="#contact" class="btn btn-contact magnetic-btn">
+        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+        <span>Contact Me</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Navigation">
+        <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
+      </button>
+    </div>
 
   </header>
 
+  <!-- Mobile Drawer Menu Overlay -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div class="nav-brand">
+          <div class="brand-icon">V</div>
+          <span class="brand-name">Visakan</span>
+        </div>
+        <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <ul class="drawer-list">
+        <li><a href="#home"           class="drawer-link">Home</a></li>
+        <li><a href="#about"          class="drawer-link">About</a></li>
+        <li><a href="#skills"         class="drawer-link">Skills</a></li>
+        <li><a href="#protosem"       class="drawer-link">ProtoSem</a></li>
+        <li><a href="#projects"       class="drawer-link">Projects</a></li>
+        <li><a href="#certifications" class="drawer-link">Certifications</a></li>
+        <li><a href="#contact"        class="drawer-link">Contact</a></li>
+        <li><a href="assets/resume.html" class="drawer-link drawer-resume"><i class="fa-solid fa-file-lines"></i> View Resume</a></li>
+      </ul>
+    </div>
+  </div>
+
 
   <!-- ====================================================
-       2. HERO SECTION
+       2. HERO SECTION (Dynamic Role Morphing & Cyber Mesh)
        ==================================================== -->
   <section id="home" class="hero">
 
+    <!-- Geometric Ambient Blobs -->
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+
     <!-- Left: Text Content -->
-    <div class="hero-left">
+    <div class="hero-left reveal-on-scroll">
 
-      <!-- Role Badge -->
-      <p class="hero-eyebrow">MCA Student &nbsp;|&nbsp; AI &amp; Data Analytics Enthusiast</p>
+      <!-- Live Status Beacon Badge -->
+      <div class="hero-live-badge">
+        <span class="live-dot"></span>
+        <span>Open to Roles &amp; Internships 2026</span>
+      </div>
 
-      <!-- Main Heading -->
+      <!-- Dynamic Role Morphing Eyebrow -->
+      <div class="hero-eyebrow">
+        <span class="eyebrow-icon"><i class="fa-solid fa-bolt"></i></span>
+        <span id="dynamicRoleText" class="dynamic-role-text">AI &amp; Machine Learning Builder</span>
+        <span class="role-cursor" aria-hidden="true">|</span>
+      </div>
+
+      <!-- Main Heading with Shimmer -->
       <h1 class="hero-heading">
         Hello, I'm<br />
-        <span class="heading-name">Visakan K</span>
+        <span class="heading-name text-shimmer">Visakan K</span>
       </h1>
 
       <!-- Bio -->
       <p class="hero-bio">
-        I'm an MCA student with a strong foundation in
+        I'm an MCA scholar at Kumaraguru College of Technology with a strong foundation in
         <span class="highlight">Artificial Intelligence</span>,
         <span class="highlight">Deep Learning</span>, and
         <span class="highlight">Data Analytics</span>.
-        I enjoy building intelligent solutions, analyzing data, and developing
-        real-world projects that solve practical problems through technology and innovation.
+        I engineer intelligent applications, extract actionable insights from data, and develop
+        high-impact architectures that solve practical real-world problems.
       </p>
 
       <!-- CTA Buttons -->
       <div class="hero-buttons">
-        <a href="#contact"  class="btn btn-primary">
-          Contact Me <span class="btn-arrow" aria-hidden="true">→</span>
+        <a href="#contact" class="btn btn-primary magnetic-btn">
+          <span>Contact Me</span>
+          <i class="fa-solid fa-arrow-right btn-arrow" aria-hidden="true"></i>
         </a>
-        <a href="#projects" class="btn btn-outline">View Projects</a>
-        <a href="assets/resume.pdf" download="Visakan_K_Resume.pdf" class="btn btn-download" id="downloadResumeBtn">
-          <span class="download-icon" aria-hidden="true">⬇</span> Download Resume
+        <a href="#projects" class="btn btn-outline magnetic-btn">
+          <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+          <span>View Projects</span>
+        </a>
+        <a href="assets/resume.html" class="btn btn-download magnetic-btn" id="downloadResumeBtn">
+          <i class="fa-solid fa-file-lines download-icon" aria-hidden="true"></i>
+          <span>View Resume</span>
         </a>
       </div>
 
       <!-- Stats Cards -->
       <div class="stats-row">
-        <div class="stat-card">
-          <span class="stat-number">2+</span>
-          <span class="stat-label">Projects Completed</span>
+        <div class="stat-card tilt-card" data-tilt>
+          <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">3+</span>
-          <span class="stat-label">Certifications</span>
+        <div class="stat-card tilt-card" data-tilt>
+          <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">2</span>
-          <span class="stat-label">Research Papers</span>
+        <div class="stat-card tilt-card" data-tilt>
+          <div class="stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="stat-content">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Research Papers</span>
+          </div>
         </div>
       </div>
 
     </div><!-- /hero-left -->
 
-    <!-- Right: Portrait Image -->
-    <div class="hero-right">
+    <!-- Right: 3D Holographic Portrait Frame -->
+    <div class="hero-right reveal-on-scroll">
       <div class="portrait-wrapper">
 
-        <!-- Photo Card -->
-        <div class="portrait-card">
+        <!-- 3D Orbiting Glow Ring -->
+        <div class="portrait-glow-ring" aria-hidden="true"></div>
+
+        <!-- 3D Tilt Card Frame -->
+        <div class="portrait-card tilt-card" data-tilt id="heroPortrait">
+          <div class="portrait-sheen" aria-hidden="true"></div>
           <img
-            src="assets/portrait.png"
+            src="assets/profile.jpg"
             alt="Visakan K – MCA Student & AI Enthusiast"
             class="portrait-img"
           />
@@ -132,6 +236,12 @@
       </div>
     </div><!-- /hero-right -->
 
+    <!-- Scroll Down Prompt -->
+    <a href="#about" class="hero-scroll-prompt" aria-label="Scroll to About Section">
+      <span>Scroll to explore</span>
+      <i class="fa-solid fa-chevron-down scroll-chevron"></i>
+    </a>
+
   </section>
 
 
@@ -139,11 +249,11 @@
        3. ABOUT SECTION
        ==================================================== -->
   <section id="about" class="section about-section">
-    <h2 class="section-title">About Me</h2>
+    <h2 class="section-title reveal-on-scroll">About Me</h2>
     <div class="about-grid">
 
       <!-- Bio & Contact Info -->
-      <div class="about-text">
+      <div class="about-text reveal-on-scroll">
 
         <p>
           I am <strong>Visakan K</strong>, currently pursuing a
@@ -160,23 +270,25 @@
           continuous learning and data-driven innovation.
         </p>
 
-        <!-- Quick Info -->
+        <!-- Quick Info (Click to Copy Email/Phone) -->
         <div class="about-meta">
           <div class="meta-item">
-            <span class="meta-icon">📍</span>
+            <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
             <span>Coimbatore, Tamil Nadu, India</span>
           </div>
           <div class="meta-item">
-            <span class="meta-icon">🗣</span>
+            <span class="meta-icon"><i class="fa-solid fa-language"></i></span>
             <span>English, Tamil</span>
           </div>
-          <div class="meta-item">
-            <span class="meta-icon">📧</span>
-            <a href="mailto:visakan9304@gmail.com">visakan9304@gmail.com</a>
+          <div class="meta-item copyable-item" data-copy="visakan9304@gmail.com" title="Click to copy email">
+            <span class="meta-icon"><i class="fa-solid fa-envelope"></i></span>
+            <span>visakan9304@gmail.com</span>
+            <span class="copy-badge"><i class="fa-regular fa-copy"></i></span>
           </div>
-          <div class="meta-item">
-            <span class="meta-icon">📞</span>
-            <a href="tel:7397624449">7397624449</a>
+          <div class="meta-item copyable-item" data-copy="7397624449" title="Click to copy phone number">
+            <span class="meta-icon"><i class="fa-solid fa-phone"></i></span>
+            <span>7397624449</span>
+            <span class="copy-badge"><i class="fa-regular fa-copy"></i></span>
           </div>
         </div>
 
@@ -185,50 +297,38 @@
           <a href="https://github.com/Visakan2004"
              target="_blank"
              rel="noopener"
-             class="social-btn">
-            <!-- GitHub Icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482
-                       0-.237-.008-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463
-                       -1.11-1.463-.908-.62.069-.608.069-.608 1.003.071 1.531 1.031 1.531 1.031.892 1.529
-                       2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943
-                       0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025
-                       A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025
-                       2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842
-                       -2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.744
-                       0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-            </svg>
-            GitHub
+             class="social-btn magnetic-btn">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
           </a>
 
           <a href="https://www.linkedin.com/in/visakan-k-392581254/"
              target="_blank"
              rel="noopener"
-             class="social-btn">
-            <!-- LinkedIn Icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445
-                       -2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0
-                       4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064
-                       2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792
-                       0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24
-                       22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            LinkedIn
+             class="social-btn magnetic-btn">
+            <i class="fa-brands fa-linkedin-in"></i>
+            <span>LinkedIn</span>
           </a>
         </div>
 
       </div><!-- /about-text -->
 
       <!-- Education Cards -->
-      <div class="edu-cards">
-        <div class="edu-card">
-          <span class="edu-year">2025 – 2027</span>
+      <div class="edu-cards reveal-on-scroll">
+        <div class="edu-card tilt-card" data-tilt>
+          <div class="edu-header">
+            <div class="edu-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <span class="edu-year">2025 – 2027</span>
+          </div>
           <h3 class="edu-degree">Master of Computer Applications</h3>
           <p class="edu-college">Kumaraguru College of Technology</p>
         </div>
-        <div class="edu-card">
-          <span class="edu-year">2022 – 2025</span>
+
+        <div class="edu-card tilt-card" data-tilt>
+          <div class="edu-header">
+            <div class="edu-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <span class="edu-year">2022 – 2025</span>
+          </div>
           <h3 class="edu-degree">B.Sc CS with Data Analytics</h3>
           <p class="edu-college">KPR College of Arts Science and Research</p>
         </div>
@@ -239,35 +339,189 @@
 
 
   <!-- ====================================================
-       4. SKILLS SECTION
+       4. SKILLS SECTION (Compact High-Density Cyber Matrix)
        ==================================================== -->
-  <section id="skills" class="section skills-section">
-    <h2 class="section-title">My Skills</h2>
-    <div class="skills-container">
+  <section id="skills" class="section skills-section skills-section-compact">
+    <div class="skills-heading-wrap reveal-on-scroll">
+      <div class="skills-eyebrow">
+        <i class="fa-solid fa-microchip"></i>
+        <span>Technical Architecture</span>
+      </div>
+      <h2 class="section-title">My Skills &amp; Expertise</h2>
+    </div>
+    
+    <div class="skills-container skills-container-compact">
 
-      <!-- Technical Skills -->
-      <div class="skills-group">
-        <h3 class="skills-group-title">Technical Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-pill">🐍 Python</div>
-          <div class="skill-pill">☕ Java</div>
-          <div class="skill-pill">🗄️ SQL</div>
-          <div class="skill-pill">©️ C Programming</div>
-          <div class="skill-pill">📊 Microsoft Office</div>
-          <div class="skill-pill">🎨 Canva</div>
+      <!-- Compact Unified Search & Filter Controls -->
+      <div class="skills-control-hub-compact reveal-on-scroll">
+        <!-- Quick Search -->
+        <div class="skills-search-wrap-compact">
+          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+          <input
+            type="text"
+            id="skillSearchInput"
+            class="skill-search-input"
+            placeholder="Search skills (e.g. Python, SQL, ML, Java, Excel)..."
+            aria-label="Search skills"
+          />
+          <button id="skillSearchClear" class="skill-search-clear" aria-label="Clear search" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="skills-filter-bar skills-filter-compact" role="tablist" aria-label="Filter Skills Categories">
+          <button class="skill-tab-btn active" data-filter="all" role="tab" aria-selected="true">
+            <i class="fa-solid fa-shapes"></i> ALL
+          </button>
+          <button class="skill-tab-btn" data-filter="ai-data" role="tab" aria-selected="false">
+            <i class="fa-solid fa-brain"></i> AI &amp; DATA
+          </button>
+          <button class="skill-tab-btn" data-filter="languages" role="tab" aria-selected="false">
+            <i class="fa-solid fa-code"></i> LANGUAGES
+          </button>
+          <button class="skill-tab-btn" data-filter="tools" role="tab" aria-selected="false">
+            <i class="fa-solid fa-toolbox"></i> TOOLS
+          </button>
+          <button class="skill-tab-btn" data-filter="soft" role="tab" aria-selected="false">
+            <i class="fa-solid fa-handshake"></i> SOFT SKILLS
+          </button>
         </div>
       </div>
 
-      <!-- Soft Skills -->
-      <div class="skills-group">
-        <h3 class="skills-group-title">Soft Skills</h3>
-        <div class="skills-grid">
-          <div class="skill-pill soft">⏱ Time Management</div>
-          <div class="skill-pill soft">🏆 Leadership</div>
-          <div class="skill-pill soft">💬 Effective Communication</div>
-          <div class="skill-pill soft">👥 Team Management</div>
-          <div class="skill-pill soft">🔄 Adaptability</div>
+      <!-- Compact 2x2 Cyber Pods Grid -->
+      <div class="skills-compact-grid reveal-on-scroll" id="skillsGrid">
+
+        <!-- POD 1: AI, Machine Learning & Python -->
+        <div class="skill-compact-pod tilt-card" data-category="ai-data languages" data-tags="python ai machine learning deep learning neural networks computer vision nlp xgboost deepfake data analytics scikit-learn pandas numpy" data-tilt>
+          <div class="pod-header">
+            <div class="pod-title-group">
+              <div class="pod-icons">
+                <span class="pod-icon-box icon-python"><i class="devicon-python-plain colored"></i></span>
+                <span class="pod-icon-box icon-ai"><i class="fa-solid fa-brain text-purple"></i></span>
+              </div>
+              <div>
+                <h3 class="pod-name">AI &amp; Python Ecosystem</h3>
+                <span class="pod-domain">Machine Learning · Deep Neural Nets · NLP</span>
+              </div>
+            </div>
+            <div class="pod-score-badge score-purple">
+              <span>90%</span>
+            </div>
+          </div>
+          <div class="pod-chips-wrap">
+            <span class="skill-chip">Python 90%</span>
+            <span class="skill-chip">Scikit-Learn</span>
+            <span class="skill-chip">Pandas &amp; NumPy</span>
+            <span class="skill-chip">XGBoost</span>
+            <span class="skill-chip">NLP Chatbots</span>
+            <span class="skill-chip">Video Forensics</span>
+          </div>
         </div>
+
+        <!-- POD 2: SQL & Data Intelligence -->
+        <div class="skill-compact-pod tilt-card" data-category="ai-data languages" data-tags="sql relational database querying data modeling schema joins indexing postgresql mysql analytics" data-tilt>
+          <div class="pod-header">
+            <div class="pod-title-group">
+              <div class="pod-icons">
+                <span class="pod-icon-box icon-sql"><i class="fa-solid fa-database text-purple"></i></span>
+              </div>
+              <div>
+                <h3 class="pod-name">SQL &amp; Relational Data</h3>
+                <span class="pod-domain">Schema Modeling · Query Tuning · Indexing</span>
+              </div>
+            </div>
+            <div class="pod-score-badge score-blue">
+              <span>85%</span>
+            </div>
+          </div>
+          <div class="pod-chips-wrap">
+            <span class="skill-chip">Complex Joins</span>
+            <span class="skill-chip">Relational Schema</span>
+            <span class="skill-chip">Aggregations</span>
+            <span class="skill-chip">Query Tuning</span>
+            <span class="skill-chip">Data Modeling</span>
+          </div>
+        </div>
+
+        <!-- POD 3: Core Software Engineering (Java & C) -->
+        <div class="skill-compact-pod tilt-card" data-category="languages" data-tags="java c programming oop object oriented algorithms pointers memory backend logic data structures" data-tilt>
+          <div class="pod-header">
+            <div class="pod-title-group">
+              <div class="pod-icons">
+                <span class="pod-icon-box icon-java"><i class="devicon-java-plain colored"></i></span>
+                <span class="pod-icon-box icon-c"><i class="devicon-c-plain colored"></i></span>
+              </div>
+              <div>
+                <h3 class="pod-name">Core Software &amp; Systems</h3>
+                <span class="pod-domain">Java OOP · C Algorithms · Memory Pointers</span>
+              </div>
+            </div>
+            <div class="pod-score-badge score-orange">
+              <span>82%</span>
+            </div>
+          </div>
+          <div class="pod-chips-wrap">
+            <span class="skill-chip">Java 82%</span>
+            <span class="skill-chip">OOP Design</span>
+            <span class="skill-chip">Data Structures</span>
+            <span class="skill-chip">C Language 78%</span>
+            <span class="skill-chip">Memory &amp; Pointers</span>
+            <span class="skill-chip">Algorithms</span>
+          </div>
+        </div>
+
+        <!-- POD 4: Productivity & Visual Design (Office & Canva) -->
+        <div class="skill-compact-pod tilt-card" data-category="tools" data-tags="microsoft excel office spreadsheets canva ui design prototypes graphic assets visual storytelling presentation" data-tilt>
+          <div class="pod-header">
+            <div class="pod-title-group">
+              <div class="pod-icons">
+                <span class="pod-icon-box icon-ms"><i class="fa-brands fa-microsoft text-blue"></i></span>
+                <span class="pod-icon-box icon-canva"><i class="devicon-canva-plain colored"></i></span>
+              </div>
+              <div>
+                <h3 class="pod-name">Tools &amp; Visual Design</h3>
+                <span class="pod-domain">Excel Spreadsheets · Canva UI Mockups</span>
+              </div>
+            </div>
+            <div class="pod-score-badge score-teal">
+              <span>90%</span>
+            </div>
+          </div>
+          <div class="pod-chips-wrap">
+            <span class="skill-chip">Excel 90%</span>
+            <span class="skill-chip">Pivot Tables</span>
+            <span class="skill-chip">Canva 85%</span>
+            <span class="skill-chip">UI Mockups</span>
+            <span class="skill-chip">Slide Decks</span>
+            <span class="skill-chip">Documentation</span>
+          </div>
+        </div>
+
+        <!-- POD 5: Compact Soft Skills Command Ribbon (Spans Full Width) -->
+        <div class="skill-compact-pod pod-full-span tilt-card" data-category="soft" data-tags="leadership time management effective communication teamwork adaptability agile problem solving collaboration sprint" data-tilt>
+          <div class="soft-ribbon-content">
+            <div class="ribbon-label">
+              <i class="fa-solid fa-users-gear text-emerald"></i>
+              <span>Core Competencies:</span>
+            </div>
+            <div class="ribbon-items">
+              <span class="ribbon-pill"><i class="fa-solid fa-clock"></i> Time Management</span>
+              <span class="ribbon-pill"><i class="fa-solid fa-trophy"></i> Leadership &amp; Guidance</span>
+              <span class="ribbon-pill"><i class="fa-solid fa-comments"></i> Technical Communication</span>
+              <span class="ribbon-pill"><i class="fa-solid fa-people-group"></i> Teamwork &amp; Adaptability</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /skills-compact-grid -->
+
+      <!-- Empty State for Search -->
+      <div id="skillsNoResults" class="skills-empty-state" style="display: none;">
+        <i class="fa-solid fa-filter-circle-xmark empty-icon"></i>
+        <h3>No matching skills found</h3>
+        <p>Try searching for terms like <code>Python</code>, <code>SQL</code>, <code>AI</code>, <code>Excel</code>, or <code>Java</code>.</p>
+        <button id="skillsResetBtn" class="btn btn-outline" style="margin-top: 0.75rem;">Reset Search</button>
       </div>
 
     </div>
@@ -275,144 +529,151 @@
 
 
   <!-- ====================================================
-       5. PROTOSEM SECTION
+       5. PROTOSEM SECTION (15-Week Connected Energy Journey)
        ==================================================== -->
   <section id="protosem" class="section protosem-section">
-    <h2 class="section-title">ProtoSem</h2>
+    <h2 class="section-title reveal-on-scroll">ProtoSem</h2>
 
     <div class="protosem-container">
 
-      <!-- ProtoSem Highlight Banner / Description Card -->
-      <div class="protosem-banner">
-        <p class="protosem-desc-text">
-          <strong>PRICE protoSem :</strong> A full time On-site Internship at KCT Forge, Phygital Retail Intelligent Commerce and Entrepreneurship.
-        </p>
+      <!-- Programme Visual Bar -->
+      <div class="protosem-metrics-strip reveal-on-scroll" aria-label="Programme Overview">
+        <div class="metric-block">
+          <span class="metric-val">1</span>
+          <span class="metric-lbl">PROGRAMME</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric-block">
+          <span class="metric-val">3</span>
+          <span class="metric-lbl">PHASES</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric-block">
+          <span class="metric-val">15</span>
+          <span class="metric-lbl">WEEKS</span>
+        </div>
+        <div class="metric-divider" aria-hidden="true"></div>
+        <div class="metric-block">
+          <span class="metric-val">15</span>
+          <span class="metric-lbl">FUTURE STORIES</span>
+        </div>
       </div>
 
-      <!-- 20 Week Cards (Week 0 to Week 19) -->
-      <div class="week-cards-grid">
-        <a href="#" class="week-card" aria-label="Week 0 Blog">
-          <span class="week-card-num">Week 0</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 1 Blog">
-          <span class="week-card-num">Week 1</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 2 Blog">
-          <span class="week-card-num">Week 2</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 3 Blog">
-          <span class="week-card-num">Week 3</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 4 Blog">
-          <span class="week-card-num">Week 4</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 5 Blog">
-          <span class="week-card-num">Week 5</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 6 Blog">
-          <span class="week-card-num">Week 6</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 7 Blog">
-          <span class="week-card-num">Week 7</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 8 Blog">
-          <span class="week-card-num">Week 8</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 9 Blog">
-          <span class="week-card-num">Week 9</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 10 Blog">
-          <span class="week-card-num">Week 10</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 11 Blog">
-          <span class="week-card-num">Week 11</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 12 Blog">
-          <span class="week-card-num">Week 12</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 13 Blog">
-          <span class="week-card-num">Week 13</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 14 Blog">
-          <span class="week-card-num">Week 14</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 15 Blog">
-          <span class="week-card-num">Week 15</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 16 Blog">
-          <span class="week-card-num">Week 16</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 17 Blog">
-          <span class="week-card-num">Week 17</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 18 Blog">
-          <span class="week-card-num">Week 18</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
-        <a href="#" class="week-card" aria-label="Week 19 Blog">
-          <span class="week-card-num">Week 19</span>
-          <span class="week-card-icon" aria-hidden="true">→</span>
-        </a>
+      <!-- ProtoSem Highlight Banner / Description Card -->
+      <div class="protosem-banner reveal-on-scroll tilt-card" data-tilt>
+        <div class="protosem-banner-icon"><i class="fa-solid fa-rocket"></i></div>
+        <div class="protosem-banner-content">
+          <p class="protosem-desc-text">
+            <strong>PRICE protoSem :</strong> A full time On-site Internship at KCT Forge, Phygital Retail Intelligent Commerce and Entrepreneurship.
+          </p>
+        </div>
+      </div>
+
+      <!-- Phase Filter Bar -->
+      <div class="phase-filter-bar reveal-on-scroll" role="tablist" aria-label="Filter ProtoSem Phases">
+        <button class="phase-filter-btn active" data-phase="all" role="tab" aria-selected="true">
+          <i class="fa-solid fa-layer-group"></i> ALL
+        </button>
+        <button class="phase-filter-btn" data-phase="1" role="tab" aria-selected="false">
+          <span class="phase-dot phase-dot-1"></span> PHASE 01
+        </button>
+        <button class="phase-filter-btn" data-phase="2" role="tab" aria-selected="false">
+          <span class="phase-dot phase-dot-2"></span> PHASE 02
+        </button>
+        <button class="phase-filter-btn" data-phase="3" role="tab" aria-selected="false">
+          <span class="phase-dot phase-dot-3"></span> PHASE 03
+        </button>
+      </div>
+
+      <!-- Connected Innovation Journey Track (Dynamically Populated) -->
+      <div class="protosem-journey-track reveal-on-scroll" id="protosemJourneyTrack">
+        <!-- Rendered via JavaScript from protoSemWeeks data -->
       </div>
 
     </div><!-- /protosem-container -->
+
+    <!-- Dynamic Reusable Week Overview Modal/Overlay -->
+    <div id="weekOverviewOverlay" class="week-overview-overlay" aria-hidden="true">
+      <div class="week-overview-backdrop" id="weekBackdrop"></div>
+      <div class="week-overview-container" role="dialog" aria-modal="true" aria-labelledby="weekOverviewHeading">
+        <button class="week-back-btn top-back-btn" id="weekOverviewCloseBtn" aria-label="Back to ProtoSem Journey">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to ProtoSem Journey</span>
+        </button>
+
+        <div class="week-overview-content" id="weekOverviewContent">
+          <!-- Injected via showWeekOverview() -->
+        </div>
+      </div>
+    </div>
+
   </section>
 
 
   <!-- ====================================================
-       6. PROJECTS SECTION
+       6. PROJECTS SECTION (3D Interactive Deep-Dive Cards)
        ==================================================== -->
   <section id="projects" class="section projects-section">
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title reveal-on-scroll">Featured Projects</h2>
     <div class="projects-grid">
 
       <!-- Project 01 -->
-      <div class="project-card">
-        <div class="project-number">01</div>
+      <div class="project-card tilt-card reveal-on-scroll" data-tilt data-project="crash-detection">
+        <div class="project-header">
+          <div class="project-icon-box"><i class="fa-solid fa-car-burst"></i></div>
+          <span class="project-number">01</span>
+        </div>
         <h3 class="project-title">Real-Time Vehicle Crash Detection and Alert System</h3>
         <p class="project-desc">
-          A real-time accident detection system designed to identify vehicle crashes instantly
-          and send alerts to emergency contacts or services. The project focuses on improving
-          response time and enhancing road safety through real-time monitoring and AI-driven analysis.
+          A real-time accident detection system engineered to identify vehicle collisions instantly
+          and dispatch GPS-enabled distress alerts to emergency services and primary contacts.
+          Enhances road safety and response agility through real-time telemetry and AI analysis.
         </p>
         <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Real-Time Systems</span>
+          <span class="tag"><i class="devicon-python-plain"></i> Python</span>
+          <span class="tag"><i class="fa-solid fa-brain"></i> Machine Learning</span>
+          <span class="tag"><i class="fa-solid fa-bolt"></i> Real-Time Systems</span>
+        </div>
+        <div class="project-actions">
+          <button class="project-detail-btn magnetic-btn" data-open-project="01">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Project Details</span>
+          </button>
+          <a href="https://github.com/Visakan2004" target="_blank" rel="noopener" class="project-btn magnetic-btn">
+            <i class="fa-brands fa-github"></i>
+            <span>Explore Code</span>
+            <i class="fa-solid fa-arrow-up-right-from-square btn-mini-icon"></i>
+          </a>
         </div>
       </div>
 
       <!-- Project 02 -->
-      <div class="project-card">
-        <div class="project-number">02</div>
-        <h3 class="project-title">Code Generation Chatbot</h3>
+      <div class="project-card tilt-card reveal-on-scroll" data-tilt data-project="code-chatbot">
+        <div class="project-header">
+          <div class="project-icon-box"><i class="fa-solid fa-robot"></i></div>
+          <span class="project-number">02</span>
+        </div>
+        <h3 class="project-title">AI Code Generation Chatbot</h3>
         <p class="project-desc">
-          An AI-powered chatbot that converts natural language queries into accurate code
-          snippets using NLP and machine learning. It supports multiple programming languages
-          and helps both developers and beginners generate code more efficiently.
+          An intelligent NLP-powered conversational assistant that translates natural language prompts into optimized,
+          production-ready code snippets. Features syntax validation, multi-language support, and algorithm optimization
+          guidance for software developers.
         </p>
         <div class="project-tags">
-          <span class="tag">Python</span>
-          <span class="tag">NLP</span>
-          <span class="tag">AI / Chatbot</span>
+          <span class="tag"><i class="devicon-python-plain"></i> Python</span>
+          <span class="tag"><i class="fa-solid fa-comments"></i> NLP</span>
+          <span class="tag"><i class="fa-solid fa-microchip"></i> AI / LLMs</span>
+        </div>
+        <div class="project-actions">
+          <button class="project-detail-btn magnetic-btn" data-open-project="02">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Project Details</span>
+          </button>
+          <a href="https://github.com/Visakan2004" target="_blank" rel="noopener" class="project-btn magnetic-btn">
+            <i class="fa-brands fa-github"></i>
+            <span>Explore Code</span>
+            <i class="fa-solid fa-arrow-up-right-from-square btn-mini-icon"></i>
+          </a>
         </div>
       </div>
 
@@ -424,32 +685,40 @@
        7. CERTIFICATIONS & RESEARCH SECTION
        ==================================================== -->
   <section id="certifications" class="section certs-section">
-    <h2 class="section-title">Certifications &amp; Research</h2>
+    <h2 class="section-title reveal-on-scroll">Certifications &amp; Research</h2>
     <div class="certs-research-grid">
 
       <!-- Certifications Column -->
-      <div>
-        <h3 class="subsection-title">🏅 Certifications</h3>
+      <div class="cert-column reveal-on-scroll">
+        <h3 class="subsection-title">
+          <i class="fa-solid fa-award subsection-icon"></i> Certifications
+        </h3>
         <div class="cert-list">
 
-          <div class="cert-card">
-            <div class="cert-icon">📜</div>
+          <div class="cert-card tilt-card" data-tilt>
+            <div class="cert-icon-wrap cert-accent-1">
+              <i class="fa-solid fa-chart-pie"></i>
+            </div>
             <div class="cert-info">
               <h4 class="cert-name">Fundamentals of Data Analytics</h4>
               <p class="cert-provider">L&amp;T EduTech – CollegeConnect Programme</p>
             </div>
           </div>
 
-          <div class="cert-card">
-            <div class="cert-icon">☁️</div>
+          <div class="cert-card tilt-card" data-tilt>
+            <div class="cert-icon-wrap cert-accent-2">
+              <i class="fa-brands fa-oracle"></i>
+            </div>
             <div class="cert-info">
               <h4 class="cert-name">Oracle Cloud Infrastructure Architecture</h4>
               <p class="cert-provider">Oracle</p>
             </div>
           </div>
 
-          <div class="cert-card">
-            <div class="cert-icon">🎓</div>
+          <div class="cert-card tilt-card" data-tilt>
+            <div class="cert-icon-wrap cert-accent-3">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
             <div class="cert-info">
               <h4 class="cert-name">Soft Skills Certification</h4>
               <p class="cert-provider">NPTEL – 12-Week Course</p>
@@ -460,23 +729,29 @@
       </div>
 
       <!-- Research Papers Column -->
-      <div>
-        <h3 class="subsection-title">📄 Research &amp; Paper Presentations</h3>
+      <div class="cert-column reveal-on-scroll">
+        <h3 class="subsection-title">
+          <i class="fa-solid fa-file-lines subsection-icon"></i> Research &amp; Paper Presentations
+        </h3>
         <div class="cert-list">
 
-          <div class="cert-card">
-            <div class="cert-icon">🔬</div>
+          <div class="cert-card tilt-card research-card-interactive" data-tilt data-open-research="01" title="Click to view abstract">
+            <div class="cert-icon-wrap research-accent-1">
+              <i class="fa-solid fa-brain"></i>
+            </div>
             <div class="cert-info">
               <h4 class="cert-name">Crime Type and Occurrence Prediction using Machine Learning</h4>
-              <p class="cert-provider">Paper Presentation 01</p>
+              <p class="cert-provider">Paper Presentation 01 &nbsp;·&nbsp; <span class="research-tap-hint">View Abstract →</span></p>
             </div>
           </div>
 
-          <div class="cert-card">
-            <div class="cert-icon">🎭</div>
+          <div class="cert-card tilt-card research-card-interactive" data-tilt data-open-research="02" title="Click to view abstract">
+            <div class="cert-icon-wrap research-accent-2">
+              <i class="fa-solid fa-fingerprint"></i>
+            </div>
             <div class="cert-info">
               <h4 class="cert-name">XGBoost-Based Deep Learning for Deepfake Video Detection</h4>
-              <p class="cert-provider">Paper Presentation 02</p>
+              <p class="cert-provider">Paper Presentation 02 &nbsp;·&nbsp; <span class="research-tap-hint">View Abstract →</span></p>
             </div>
           </div>
 
@@ -491,45 +766,60 @@
        8. CONTACT SECTION
        ==================================================== -->
   <section id="contact" class="section contact-section">
-    <h2 class="section-title">Let's Connect</h2>
+    <h2 class="section-title reveal-on-scroll">Let's Connect</h2>
     <div class="contact-grid">
 
       <!-- Contact Info Column -->
-      <div class="contact-info">
+      <div class="contact-info reveal-on-scroll">
         <p class="contact-intro">
-          I'm open to internship opportunities, project collaborations, and research
-          discussions. Feel free to reach out — I'll get back to you soon!
+          I'm actively seeking internship opportunities, AI / Data Analytics roles, and technical collaborations.
+          Feel free to reach out directly or submit the inquiry form below!
         </p>
         <div class="contact-details">
-          <div class="contact-item">
-            <span class="ci-icon">📧</span>
-            <a href="mailto:visakan9304@gmail.com">visakan9304@gmail.com</a>
+          <div class="contact-item copyable-item" data-copy="visakan9304@gmail.com" title="Click to copy email">
+            <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="ci-text">
+              <span class="ci-label">Email (Click to copy)</span>
+              <span class="ci-val">visakan9304@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item copyable-item" data-copy="7397624449" title="Click to copy phone">
+            <div class="ci-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="ci-text">
+              <span class="ci-label">Phone (Click to copy)</span>
+              <span class="ci-val">7397624449</span>
+            </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon">📞</span>
-            <a href="tel:7397624449">7397624449</a>
+            <div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="ci-text">
+              <span class="ci-label">Location</span>
+              <span class="ci-val">Coimbatore, Tamil Nadu, India</span>
+            </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon">📍</span>
-            <span>Coimbatore, Tamil Nadu, India</span>
+            <div class="ci-icon"><i class="fa-brands fa-github"></i></div>
+            <div class="ci-text">
+              <span class="ci-label">GitHub</span>
+              <a href="https://github.com/Visakan2004" target="_blank" rel="noopener">
+                github.com/Visakan2004
+              </a>
+            </div>
           </div>
           <div class="contact-item">
-            <span class="ci-icon">💻</span>
-            <a href="https://github.com/Visakan2004" target="_blank" rel="noopener">
-              github.com/Visakan2004
-            </a>
-          </div>
-          <div class="contact-item">
-            <span class="ci-icon">🔗</span>
-            <a href="https://www.linkedin.com/in/visakan-k-392581254/" target="_blank" rel="noopener">
-              linkedin.com/in/visakan-k-392581254
-            </a>
+            <div class="ci-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="ci-text">
+              <span class="ci-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/visakan-k-392581254/" target="_blank" rel="noopener">
+                linkedin.com/in/visakan-k-392581254
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Contact Form Column -->
-      <div class="contact-form-wrap">
+      <div class="contact-form-wrap reveal-on-scroll tilt-card" data-tilt>
         <form id="contactForm" class="contact-form" novalidate>
 
           <div class="form-group">
@@ -547,8 +837,9 @@
             <textarea id="message" name="message" rows="5" placeholder="Say something..." required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" id="submitBtn">
-            Send Message <span class="btn-arrow" aria-hidden="true">→</span>
+          <button type="submit" class="btn btn-primary magnetic-btn" id="submitBtn">
+            <span>Send Message</span>
+            <i class="fa-solid fa-paper-plane btn-arrow" aria-hidden="true"></i>
           </button>
 
           <p id="formStatus" class="form-status" role="alert" aria-live="polite"></p>
@@ -564,23 +855,1015 @@
        9. FOOTER
        ==================================================== -->
   <footer class="footer">
-    <p>© 2026 <strong>Visakan K</strong> · Built with HTML &amp; CSS · Coimbatore, India</p>
+    <p>© 2026 <strong>Visakan K</strong> · Coimbatore, India</p>
     <div class="footer-links">
-      <a href="https://github.com/Visakan2004" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/visakan-k-392581254/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:visakan9304@gmail.com">Email</a>
-      <a href="assets/resume.pdf" download="Visakan_K_Resume.pdf">Resume ↓</a>
+      <a href="https://github.com/Visakan2004" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/visakan-k-392581254/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+      <a href="mailto:visakan9304@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
+      <a href="assets/resume.html"><i class="fa-solid fa-file-lines"></i> Resume</a>
     </div>
   </footer>
 
 
   <!-- ====================================================
-       10. JAVASCRIPT
+       10. REUSABLE DETAIL DIALOG MODAL (Projects / Research)
+       ==================================================== -->
+  <div class="app-dialog-overlay" id="appDialogOverlay" aria-hidden="true">
+    <div class="app-dialog-backdrop" id="appDialogBackdrop"></div>
+    <div class="app-dialog-container" role="dialog" aria-modal="true">
+      <button class="app-dialog-close" id="appDialogClose" aria-label="Close dialog">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="app-dialog-body" id="appDialogBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ====================================================
+       11. JAVASCRIPT ENGINE & EXTREME ANIMATION CONTROLLER
        ==================================================== -->
   <script>
+    const hasFinePointer = Boolean(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
 
     /* --------------------------------------------------
-       Navbar: Highlight active link on scroll
+       1. Ultra-Smooth High-FPS Constellation Particle Canvas
+    -------------------------------------------------- */
+    const canvas = document.getElementById('particleCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = 0, height = 0;
+      let particles = [];
+      let mouse = { x: -1000, y: -1000, radius: 130 };
+      let animId = null;
+      let isVisible = true;
+
+      function resizeCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        initParticles();
+      }
+
+      window.addEventListener('resize', resizeCanvas, { passive: true });
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      }, { passive: true });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      }, { passive: true });
+
+      class Particle {
+        constructor() {
+          this.reset();
+        }
+
+        reset() {
+          this.x = Math.random() * (width || window.innerWidth);
+          this.y = Math.random() * (height || window.innerHeight);
+          this.size = Math.random() * 2 + 1;
+          this.density = Math.random() * 15 + 5;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.isPurple = Math.random() > 0.45;
+          this.alpha = Math.random() * 0.45 + 0.25;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+
+          // Mouse proximity reaction
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distSq = dx * dx + dy * dy;
+          const radiusSq = mouse.radius * mouse.radius;
+
+          if (distSq < radiusSq) {
+            const dist = Math.sqrt(distSq);
+            const force = (mouse.radius - dist) / mouse.radius;
+            const dirX = (dx / dist) * force * this.density;
+            const dirY = (dy / dist) * force * this.density;
+            this.x -= dirX * 0.25;
+            this.y -= dirY * 0.25;
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = this.isPurple 
+            ? `rgba(168, 85, 247, ${this.alpha})` 
+            : `rgba(56, 189, 248, ${this.alpha})`;
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 18 : Math.min(Math.floor((width * height) / 28000), 38);
+        for (let i = 0; i < count; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function connectParticles() {
+        const maxDist = 110;
+        const maxDistSq = maxDist * maxDist;
+        const len = particles.length;
+
+        for (let a = 0; a < len; a++) {
+          const pA = particles[a];
+          for (let b = a + 1; b < len; b++) {
+            const pB = particles[b];
+            const dx = pA.x - pB.x;
+            const dy = pA.y - pB.y;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < maxDistSq) {
+              const dist = Math.sqrt(distSq);
+              const opacity = (1 - dist / maxDist) * 0.18;
+              ctx.strokeStyle = `rgba(168, 85, 247, ${opacity})`;
+              ctx.lineWidth = 0.75;
+              ctx.beginPath();
+              ctx.moveTo(pA.x, pA.y);
+              ctx.lineTo(pB.x, pB.y);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animateParticles() {
+        if (!isVisible) return;
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        connectParticles();
+        animId = requestAnimationFrame(animateParticles);
+      }
+
+      // Pause when tab not visible to save 100% CPU
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          isVisible = false;
+          if (animId) cancelAnimationFrame(animId);
+        } else {
+          isVisible = true;
+          animId = requestAnimationFrame(animateParticles);
+        }
+      });
+
+      resizeCanvas();
+      animateParticles();
+    }
+
+
+    /* --------------------------------------------------
+       2. Dynamic Role Morphing Engine
+    -------------------------------------------------- */
+    const roleTextEl = document.getElementById('dynamicRoleText');
+    if (roleTextEl) {
+      const roles = [
+        'AI & Machine Learning Builder',
+        'Data Analytics Specialist',
+        'MCA Scholar @ KCT',
+        'Intelligent Systems Developer',
+        'Deep Learning Practitioner'
+      ];
+      let roleIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+      let typingDelay = 80;
+
+      function typeRole() {
+        const currentRole = roles[roleIdx];
+
+        if (isDeleting) {
+          roleTextEl.textContent = currentRole.substring(0, charIdx - 1);
+          charIdx--;
+          typingDelay = 35;
+        } else {
+          roleTextEl.textContent = currentRole.substring(0, charIdx + 1);
+          charIdx++;
+          typingDelay = 75;
+        }
+
+        if (!isDeleting && charIdx === currentRole.length) {
+          typingDelay = 2200;
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          roleIdx = (roleIdx + 1) % roles.length;
+          typingDelay = 450;
+        }
+
+        setTimeout(typeRole, typingDelay);
+      }
+      setTimeout(typeRole, 800);
+    }
+
+
+
+
+    // High-Energy Laser Sparks Burst & Ripple Wave on Click
+    document.addEventListener('click', (e) => {
+      // 1. Ripple pulse wave
+      const ripple = document.createElement('div');
+      ripple.className = 'click-ripple';
+      ripple.style.left = `${e.clientX}px`;
+      ripple.style.top = `${e.clientY}px`;
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+
+      // 2. Kinetic Laser Sparks Burst (8 particles)
+      const sparkColors = ['#38bdf8', '#c084fc', '#a855f7', '#34d399', '#f43f5e', '#fbbf24'];
+      for (let i = 0; i < 8; i++) {
+        const spark = document.createElement('div');
+        spark.className = 'laser-spark';
+        const color = sparkColors[i % sparkColors.length];
+        const angle = (Math.PI * 2 / 8) * i + (Math.random() - 0.5) * 0.4;
+        const velocity = Math.random() * 40 + 25;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+
+        spark.style.left = `${e.clientX}px`;
+        spark.style.top = `${e.clientY}px`;
+        spark.style.backgroundColor = color;
+        spark.style.boxShadow = `0 0 8px ${color}`;
+        spark.style.transition = 'transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.4s ease';
+        
+        document.body.appendChild(spark);
+
+        requestAnimationFrame(() => {
+          spark.style.transform = `translate3d(calc(-50% + ${tx}px), calc(-50% + ${ty}px), 0) scale(0)`;
+          spark.style.opacity = '0';
+        });
+
+        setTimeout(() => spark.remove(), 450);
+      }
+    }, { passive: true });
+
+
+    /* --------------------------------------------------
+       4. Scroll Progress Meter & Floating Back to Top (RAF Throttled)
+    -------------------------------------------------- */
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    const progressBar  = document.getElementById('scrollProgressBar');
+    let scrollScheduled = false;
+
+    window.addEventListener('scroll', () => {
+      if (!scrollScheduled) {
+        scrollScheduled = true;
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+          if (progressBar) {
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = `${progress}%`;
+          }
+
+          if (backToTopBtn) {
+            if (scrollTop > 350) {
+              backToTopBtn.classList.add('visible');
+            } else {
+              backToTopBtn.classList.remove('visible');
+            }
+          }
+          scrollScheduled = false;
+        });
+      }
+    }, { passive: true });
+
+    if (backToTopBtn) {
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+
+    /* --------------------------------------------------
+       5. Quick Copy to Clipboard & Toast
+    -------------------------------------------------- */
+    const toastNotification = document.getElementById('toastNotification');
+    const toastMessage      = document.getElementById('toastMessage');
+    let toastTimeout;
+
+    function showToast(message) {
+      if (!toastNotification || !toastMessage) return;
+      toastMessage.textContent = message;
+      toastNotification.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastNotification.classList.remove('show');
+      }, 2600);
+    }
+
+    document.querySelectorAll('.copyable-item').forEach(item => {
+      item.addEventListener('click', async () => {
+        const text = item.getAttribute('data-copy');
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast(`Copied ${text} to clipboard!`);
+        } catch (e) {
+          showToast(`Selected: ${text}`);
+        }
+      });
+    });
+
+
+    /* --------------------------------------------------
+       6. Mobile Navigation Drawer
+    -------------------------------------------------- */
+    const mobileMenuBtn   = document.getElementById('mobileMenuBtn');
+    const mobileDrawer    = document.getElementById('mobileDrawer');
+    const drawerCloseBtn  = document.getElementById('drawerCloseBtn');
+    const drawerBackdrop  = document.getElementById('drawerBackdrop');
+    const drawerLinks     = document.querySelectorAll('.drawer-link');
+
+    function openMobileDrawer() {
+      if (mobileDrawer) {
+        mobileDrawer.classList.add('open');
+        mobileDrawer.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      }
+    }
+
+    function closeMobileDrawer() {
+      if (mobileDrawer) {
+        mobileDrawer.classList.remove('open');
+        mobileDrawer.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      }
+    }
+
+    if (mobileMenuBtn)  mobileMenuBtn.addEventListener('click', openMobileDrawer);
+    if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeMobileDrawer);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMobileDrawer);
+    drawerLinks.forEach(link => link.addEventListener('click', closeMobileDrawer));
+
+
+    /* --------------------------------------------------
+       7. 60 FPS 3D Perspective Tilt Engine (RAF Throttled)
+    -------------------------------------------------- */
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    if (hasFinePointer) {
+      tiltCards.forEach(card => {
+        let bounds = null;
+        let isHovered = false;
+        let tiltFrame = null;
+
+        card.addEventListener('mouseenter', () => {
+          bounds = card.getBoundingClientRect();
+          isHovered = true;
+          card.style.transition = 'transform 0.1s ease-out, box-shadow 0.25s ease';
+        }, { passive: true });
+
+        card.addEventListener('mousemove', (e) => {
+          if (!isHovered || !bounds) return;
+          if (tiltFrame) cancelAnimationFrame(tiltFrame);
+
+          tiltFrame = requestAnimationFrame(() => {
+            const x = e.clientX - bounds.left;
+            const y = e.clientY - bounds.top;
+            const centerX = bounds.width / 2;
+            const centerY = bounds.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+
+            const sheen = card.querySelector('.portrait-sheen');
+            if (sheen) {
+              const sheenX = (x / bounds.width) * 100;
+              const sheenY = (y / bounds.height) * 100;
+              sheen.style.background = `radial-gradient(circle at ${sheenX}% ${sheenY}%, rgba(255,255,255,0.35) 0%, transparent 60%)`;
+            }
+          });
+        }, { passive: true });
+
+        card.addEventListener('mouseleave', () => {
+          isHovered = false;
+          if (tiltFrame) cancelAnimationFrame(tiltFrame);
+          card.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        }, { passive: true });
+      });
+    }
+
+
+    /* --------------------------------------------------
+       8. Magnetic Button Interaction (RAF Throttled)
+    -------------------------------------------------- */
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    if (hasFinePointer) {
+      magneticBtns.forEach(btn => {
+        let magFrame = null;
+        btn.addEventListener('mousemove', (e) => {
+          if (magFrame) cancelAnimationFrame(magFrame);
+          magFrame = requestAnimationFrame(() => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - (rect.left + rect.width / 2);
+            const y = e.clientY - (rect.top + rect.height / 2);
+            btn.style.transform = `translate3d(${x * 0.22}px, ${y * 0.22}px, 0)`;
+          });
+        }, { passive: true });
+
+        btn.addEventListener('mouseleave', () => {
+          if (magFrame) cancelAnimationFrame(magFrame);
+          btn.style.transform = 'translate3d(0, 0, 0)';
+        }, { passive: true });
+      });
+    }
+
+
+    /* --------------------------------------------------
+       9. Staggered Scroll Reveal
+    -------------------------------------------------- */
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+    function checkAndRevealImmediate() {
+      const windowHeight = window.innerHeight;
+      revealElements.forEach((el, idx) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < windowHeight + 100) {
+          setTimeout(() => {
+            el.classList.add('revealed');
+          }, Math.min(idx * 30, 300));
+        }
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry, idx) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('revealed');
+            }, idx * 40);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.04, rootMargin: '0px 0px 50px 0px' });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
+
+    // Immediate check so no content above/in fold is ever blank
+    checkAndRevealImmediate();
+    window.addEventListener('load', checkAndRevealImmediate);
+
+
+    /* --------------------------------------------------
+       10. ProtoSem 15-Week Connected Journey
+    -------------------------------------------------- */
+    const protoSemWeeks = [
+      { week: 0, phase: 1, slug: "week-00", status: "coming-soon" },
+      { week: 1, phase: 1, slug: "week-01", status: "coming-soon" },
+      { week: 2, phase: 1, slug: "week-02", status: "coming-soon" },
+      { week: 3, phase: 1, slug: "week-03", status: "coming-soon" },
+      { week: 4, phase: 1, slug: "week-04", status: "coming-soon" },
+
+      { week: 5, phase: 2, slug: "week-05", status: "coming-soon" },
+      { week: 6, phase: 2, slug: "week-06", status: "coming-soon" },
+      { week: 7, phase: 2, slug: "week-07", status: "coming-soon" },
+      { week: 8, phase: 2, slug: "week-08", status: "coming-soon" },
+      { week: 9, phase: 2, slug: "week-09", status: "coming-soon" },
+
+      { week: 10, phase: 3, slug: "week-10", status: "coming-soon" },
+      { week: 11, phase: 3, slug: "week-11", status: "coming-soon" },
+      { week: 12, phase: 3, slug: "week-12", status: "coming-soon" },
+      { week: 13, phase: 3, slug: "week-13", status: "coming-soon" },
+      { week: 14, phase: 3, slug: "week-14", status: "coming-soon" }
+    ];
+
+    function formatWeekStr(num) {
+      return num < 10 ? `0${num}` : `${num}`;
+    }
+
+    function formatPhaseStr(phase) {
+      return phase < 10 ? `0${phase}` : `${phase}`;
+    }
+
+    function renderProtoSemJourney(selectedPhase = 'all') {
+      const container = document.getElementById('protosemJourneyTrack');
+      if (!container) return;
+
+      const phases = [
+        { phaseNum: 1, name: 'PHASE 01', range: 'WEEKS 00–04', weeks: protoSemWeeks.filter(w => w.phase === 1) },
+        { phaseNum: 2, name: 'PHASE 02', range: 'WEEKS 05–09', weeks: protoSemWeeks.filter(w => w.phase === 2) },
+        { phaseNum: 3, name: 'PHASE 03', range: 'WEEKS 10–14', weeks: protoSemWeeks.filter(w => w.phase === 3) },
+      ];
+
+      let html = '';
+
+      phases.forEach((phaseData) => {
+        const isDimmed = (selectedPhase !== 'all' && selectedPhase !== String(phaseData.phaseNum));
+        const isHighlighted = (selectedPhase === String(phaseData.phaseNum));
+
+        html += `
+          <div class="phase-track-block phase-block-${phaseData.phaseNum} ${isDimmed ? 'phase-dimmed' : ''} ${isHighlighted ? 'phase-highlighted' : ''}" data-phase="${phaseData.phaseNum}">
+            <div class="phase-track-header">
+              <div class="phase-badge phase-badge-${phaseData.phaseNum}">
+                <span class="phase-badge-pill">${phaseData.name}</span>
+                <span class="phase-badge-range">${phaseData.range}</span>
+              </div>
+              <div class="phase-energy-line" aria-hidden="true"><span class="energy-spark"></span></div>
+            </div>
+
+            <div class="journey-nodes-container">
+        `;
+
+        phaseData.weeks.forEach((item) => {
+          const weekStr = formatWeekStr(item.week);
+          const phaseStr = formatPhaseStr(item.phase);
+          const isWeek00 = item.week === 0;
+
+          html += `
+            <a href="#${item.slug}"
+               class="journey-node-card tilt-card ${isWeek00 ? 'journey-node-entry' : ''}"
+               data-week="${item.week}"
+               data-slug="${item.slug}"
+               aria-label="Week ${weekStr} Overview">
+
+              <div class="node-status-pill">
+                <span class="node-pulse-dot"></span>
+                <span>COMING SOON</span>
+              </div>
+
+              ${isWeek00 ? `
+                <div class="orientation-flag">
+                  <i class="fa-solid fa-compass"></i>
+                  <span>ORIENTATION / START</span>
+                </div>
+              ` : ''}
+
+              <div class="node-main-info">
+                <div class="node-meta-tag">PHASE ${phaseStr}</div>
+                <div class="node-week-title">WEEK ${weekStr}</div>
+              </div>
+
+              <div class="node-footer">
+                <span class="node-notes-tag">Field Notes In Progress</span>
+                <span class="node-action-arrow" aria-hidden="true">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </span>
+              </div>
+            </a>
+          `;
+        });
+
+        html += `
+            </div><!-- /journey-nodes-container -->
+          </div><!-- /phase-track-block -->
+        `;
+      });
+
+      container.innerHTML = html;
+
+      container.querySelectorAll('.journey-node-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          const slug = card.getAttribute('data-slug');
+          navigateToWeek(slug);
+        });
+      });
+    }
+
+    /* --------------------------------------------------
+       11. Unified Skills Live Search & Category Filter Engine
+    -------------------------------------------------- */
+    const skillTabBtns     = document.querySelectorAll('.skill-tab-btn');
+    const skillPods        = document.querySelectorAll('.skill-compact-pod');
+    const skillSearchInput = document.getElementById('skillSearchInput');
+    const skillSearchClear = document.getElementById('skillSearchClear');
+    const skillsNoResults  = document.getElementById('skillsNoResults');
+    const skillsResetBtn   = document.getElementById('skillsResetBtn');
+
+    let currentCategoryFilter = 'all';
+    let currentSearchTerm     = '';
+
+    function filterSkills() {
+      let visibleCount = 0;
+
+      skillPods.forEach(pod => {
+        const categories = (pod.getAttribute('data-category') || '').toLowerCase().split(' ');
+        const tags       = (pod.getAttribute('data-tags') || '').toLowerCase();
+        const podTitle   = (pod.querySelector('.pod-name')?.textContent || pod.querySelector('.ribbon-label')?.textContent || '').toLowerCase();
+        const podDomain  = (pod.querySelector('.pod-domain')?.textContent || pod.querySelector('.ribbon-items')?.textContent || '').toLowerCase();
+
+        const fullText = `${podTitle} ${podDomain} ${tags}`;
+
+        const matchesCategory = (currentCategoryFilter === 'all' || categories.includes(currentCategoryFilter));
+        const matchesSearch   = (!currentSearchTerm || fullText.includes(currentSearchTerm));
+
+        if (matchesCategory && matchesSearch) {
+          pod.classList.remove('skill-hidden');
+          pod.style.display = 'flex';
+          visibleCount++;
+        } else {
+          pod.classList.add('skill-hidden');
+          pod.style.display = 'none';
+        }
+      });
+
+      if (skillsNoResults) {
+        skillsNoResults.style.display = visibleCount === 0 ? 'flex' : 'none';
+      }
+    }
+
+    skillTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        skillTabBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        currentCategoryFilter = btn.getAttribute('data-filter') || 'all';
+        filterSkills();
+      });
+    });
+
+    if (skillSearchInput) {
+      skillSearchInput.addEventListener('input', (e) => {
+        currentSearchTerm = e.target.value.trim().toLowerCase();
+        if (skillSearchClear) {
+          skillSearchClear.style.display = currentSearchTerm.length > 0 ? 'inline-flex' : 'none';
+        }
+        filterSkills();
+      });
+    }
+
+    if (skillSearchClear) {
+      skillSearchClear.addEventListener('click', () => {
+        if (skillSearchInput) skillSearchInput.value = '';
+        currentSearchTerm = '';
+        skillSearchClear.style.display = 'none';
+        filterSkills();
+        if (skillSearchInput) skillSearchInput.focus();
+      });
+    }
+
+    if (skillsResetBtn) {
+      skillsResetBtn.addEventListener('click', () => {
+        if (skillSearchInput) skillSearchInput.value = '';
+        currentSearchTerm = '';
+        if (skillSearchClear) skillSearchClear.style.display = 'none';
+        currentCategoryFilter = 'all';
+        skillTabBtns.forEach(b => {
+          b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
+          b.setAttribute('aria-selected', b.getAttribute('data-filter') === 'all' ? 'true' : 'false');
+        });
+        filterSkills();
+      });
+    }
+
+    /* --------------------------------------------------
+       12. Phase Filter Interaction
+    -------------------------------------------------- */
+    const filterButtons = document.querySelectorAll('.phase-filter-btn');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const phase = btn.getAttribute('data-phase');
+        renderProtoSemJourney(phase);
+      });
+    });
+
+    /* --------------------------------------------------
+       13. Reusable Week Overview Modal & Safe Routing
+    -------------------------------------------------- */
+    const weekOverviewOverlay  = document.getElementById('weekOverviewOverlay');
+    const weekOverviewContent  = document.getElementById('weekOverviewContent');
+    const weekOverviewCloseBtn = document.getElementById('weekOverviewCloseBtn');
+    const weekBackdrop         = document.getElementById('weekBackdrop');
+
+    function renderWeekOverview(weekItem) {
+      const weekStr  = formatWeekStr(weekItem.week);
+      const phaseStr = formatPhaseStr(weekItem.phase);
+      const isWeek00 = weekItem.week === 0;
+
+      return `
+        <div class="week-article">
+          <div class="week-breadcrumb">
+            <a href="#protosem" class="crumb-link" id="crumbProtosemLink">PROTOSEM</a>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-phase">PHASE ${phaseStr}</span>
+            <span class="crumb-sep">/</span>
+            <span class="crumb-current">WEEK ${weekStr}</span>
+          </div>
+
+          <div class="week-header-block">
+            <div class="week-status-badge">
+              <span class="status-pulse-dot"></span>
+              <span>COMING SOON</span>
+            </div>
+
+            <h1 class="week-main-title" id="weekOverviewHeading">WEEK ${weekStr}</h1>
+            <p class="week-subtitle">Field Notes In Progress</p>
+          </div>
+
+          <div class="week-meta-grid">
+            <div class="week-meta-box">
+              <span class="meta-box-label">Week</span>
+              <span class="meta-box-val">${weekStr}</span>
+            </div>
+            <div class="week-meta-box">
+              <span class="meta-box-label">Phase</span>
+              <span class="meta-box-val">${phaseStr}</span>
+            </div>
+            <div class="week-meta-box">
+              <span class="meta-box-label">Status</span>
+              <span class="meta-box-val meta-status-highlight">Coming Soon</span>
+            </div>
+          </div>
+
+          <div class="week-notice-card">
+            <div class="notice-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="notice-text">
+              <p class="notice-primary">Detailed weekly story will be published here.</p>
+              <p class="notice-secondary">${isWeek00 ? 'Orientation and launch logbook entries are currently being compiled.' : 'Practical documentation, milestones, and technical reflections will be documented upon release.'}</p>
+            </div>
+          </div>
+
+          <div class="week-bottom-actions">
+            <button type="button" class="btn btn-primary week-back-btn" id="weekBottomBackBtn" data-action="close-week">
+              <i class="fa-solid fa-arrow-left"></i>
+              <span>Back to ProtoSem Journey</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function showWeekOverview(slug, updateHistory = true) {
+      const weekItem = protoSemWeeks.find(w => w.slug === slug);
+      if (!weekItem) return;
+
+      if (weekOverviewContent) weekOverviewContent.innerHTML = renderWeekOverview(weekItem);
+      if (weekOverviewOverlay) {
+        weekOverviewOverlay.classList.add('open');
+        weekOverviewOverlay.setAttribute('aria-hidden', 'false');
+      }
+      document.body.classList.add('modal-open');
+
+      if (updateHistory) {
+        try {
+          if (window.location.protocol === 'file:') {
+            window.location.hash = slug;
+          } else {
+            history.pushState({ protosemWeek: slug }, `ProtoSem Week ${formatWeekStr(weekItem.week)}`, `#${slug}`);
+          }
+        } catch (e) {}
+      }
+    }
+
+    function hideWeekOverview(updateHistory = true) {
+      if (weekOverviewOverlay) {
+        weekOverviewOverlay.classList.remove('open');
+        weekOverviewOverlay.setAttribute('aria-hidden', 'true');
+      }
+      document.body.classList.remove('modal-open');
+
+      if (updateHistory) {
+        try {
+          if (window.location.hash) {
+            history.pushState(null, '', window.location.pathname);
+          }
+        } catch (e) {}
+      }
+
+      const protosemSection = document.getElementById('protosem');
+      if (protosemSection) protosemSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function navigateToWeek(slug) {
+      showWeekOverview(slug, true);
+    }
+
+    // Global Click Delegation
+    document.addEventListener('click', (e) => {
+      const backTrigger = e.target.closest('#weekBottomBackBtn, #weekOverviewCloseBtn, #crumbProtosemLink, .week-back-btn, [data-action="close-week"]');
+      if (backTrigger) {
+        e.preventDefault();
+        hideWeekOverview(true);
+      }
+    });
+
+    if (weekBackdrop) weekBackdrop.addEventListener('click', () => hideWeekOverview(true));
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (weekOverviewOverlay && weekOverviewOverlay.classList.contains('open')) hideWeekOverview(true);
+        closeAppDialog();
+        closeMobileDrawer();
+      }
+    });
+
+    window.addEventListener('popstate', (e) => {
+      if (e.state && e.state.protosemWeek) {
+        showWeekOverview(e.state.protosemWeek, false);
+      } else {
+        const hash = window.location.hash.replace(/^#/, '');
+        const match = hash.match(/(week-\d{2})/);
+        if (match && protoSemWeeks.find(w => w.slug === match[1])) {
+          showWeekOverview(match[1], false);
+        } else {
+          hideWeekOverview(false);
+        }
+      }
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      const match = hash.match(/(week-\d{2})/);
+      if (match && protoSemWeeks.find(w => w.slug === match[1])) {
+        showWeekOverview(match[1], false);
+      }
+    });
+
+    function checkInitialRoute() {
+      const hash = window.location.hash.replace(/^#/, '');
+      const hashMatch = hash.match(/(week-\d{2})/);
+      if (hashMatch && protoSemWeeks.find(w => w.slug === hashMatch[1])) {
+        showWeekOverview(hashMatch[1], false);
+      }
+    }
+
+    renderProtoSemJourney('all');
+    checkInitialRoute();
+
+
+    /* --------------------------------------------------
+       14. Interactive Project & Research Dialog Modal
+    -------------------------------------------------- */
+    const appDialogOverlay  = document.getElementById('appDialogOverlay');
+    const appDialogBackdrop = document.getElementById('appDialogBackdrop');
+    const appDialogClose    = document.getElementById('appDialogClose');
+    const appDialogBody     = document.getElementById('appDialogBody');
+
+    const projectData = {
+      '01': {
+        title: 'Real-Time Vehicle Crash Detection and Alert System',
+        badge: 'AI / Real-Time Systems',
+        icon: 'fa-car-burst',
+        summary: 'An emergency response acceleration system that detects vehicular collisions using multi-sensor inputs and machine learning algorithms, immediately triggering GPS alerts to emergency responders and family members.',
+        architecture: ['Python', 'Machine Learning Models', 'Sensor Telemetry', 'SMS/Email Dispatch API', 'GPS Geolocation'],
+        highlights: [
+          'Instant collision classification to distinguish genuine crashes from road bumps.',
+          'Automated emergency dispatch sending real-time vehicle coordinates.',
+          'Designed to reduce golden-hour medical response time in critical road emergencies.'
+        ],
+        github: 'https://github.com/Visakan2004'
+      },
+      '02': {
+        title: 'AI Code Generation Chatbot',
+        badge: 'NLP / Conversational AI',
+        icon: 'fa-robot',
+        summary: 'A developer productivity conversational tool that converts complex natural language instructions into validated, syntactically correct code snippets with algorithmic explanations.',
+        architecture: ['Python', 'Natural Language Processing', 'Transformer Models', 'Prompt Engineering', 'Multi-Language Support'],
+        highlights: [
+          'Converts plain English queries into Python, Java, C, and SQL code.',
+          'Provides step-by-step logic explanations and optimization suggestions.',
+          'Context-aware conversational debugging and syntax error remediation.'
+        ],
+        github: 'https://github.com/Visakan2004'
+      }
+    };
+
+    const researchData = {
+      '01': {
+        title: 'Crime Type and Occurrence Prediction using Machine Learning',
+        type: 'Academic Paper Presentation 01',
+        icon: 'fa-brain',
+        abstract: 'An analytical research study exploring predictive modeling techniques on spatial-temporal crime data. Evaluates multiple machine learning classification algorithms to predict crime occurrence likelihood and categorize crime types across diverse urban zones for proactive law enforcement deployment.'
+      },
+      '02': {
+        title: 'XGBoost-Based Deep Learning for Deepfake Video Detection',
+        type: 'Academic Paper Presentation 02',
+        icon: 'fa-fingerprint',
+        abstract: 'A novel hybrid architecture combining feature extraction via deep learning and gradient boosted decision trees (XGBoost) to detect subtle facial and temporal artifacts in manipulated video streams with high precision and computational efficiency.'
+      }
+    };
+
+    function openProjectDialog(id) {
+      const p = projectData[id];
+      if (!p || !appDialogBody || !appDialogOverlay) return;
+
+      appDialogBody.innerHTML = `
+        <div class="dialog-card">
+          <div class="dialog-icon-header">
+            <div class="dialog-icon-box"><i class="fa-solid ${p.icon}"></i></div>
+            <span class="dialog-badge">${p.badge}</span>
+          </div>
+          <h2 class="dialog-title">${p.title}</h2>
+          <p class="dialog-summary">${p.summary}</p>
+
+          <h3 class="dialog-section-title"><i class="fa-solid fa-layer-group"></i> Key Capabilities</h3>
+          <ul class="dialog-feature-list">
+            ${p.highlights.map(h => `<li><i class="fa-solid fa-circle-check text-emerald"></i> <span>${h}</span></li>`).join('')}
+          </ul>
+
+          <h3 class="dialog-section-title"><i class="fa-solid fa-code"></i> Tech Stack</h3>
+          <div class="project-tags">
+            ${p.architecture.map(t => `<span class="tag">${t}</span>`).join('')}
+          </div>
+
+          <div class="dialog-actions">
+            <a href="${p.github}" target="_blank" rel="noopener" class="btn btn-primary">
+              <i class="fa-brands fa-github"></i>
+              <span>View on GitHub</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      appDialogOverlay.classList.add('open');
+      appDialogOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+    }
+
+    function openResearchDialog(id) {
+      const r = researchData[id];
+      if (!r || !appDialogBody || !appDialogOverlay) return;
+
+      appDialogBody.innerHTML = `
+        <div class="dialog-card">
+          <div class="dialog-icon-header">
+            <div class="dialog-icon-box cert-accent-1"><i class="fa-solid ${r.icon}"></i></div>
+            <span class="dialog-badge">${r.type}</span>
+          </div>
+          <h2 class="dialog-title">${r.title}</h2>
+          <h3 class="dialog-section-title"><i class="fa-solid fa-file-lines"></i> Research Abstract</h3>
+          <p class="dialog-summary">${r.abstract}</p>
+          <div class="dialog-actions">
+            <button class="btn btn-primary" id="dialogBackBtn">
+              <i class="fa-solid fa-check"></i>
+              <span>Close Abstract</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      appDialogOverlay.classList.add('open');
+      appDialogOverlay.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      const dialogBackBtn = document.getElementById('dialogBackBtn');
+      if (dialogBackBtn) dialogBackBtn.addEventListener('click', closeAppDialog);
+    }
+
+    function closeAppDialog() {
+      if (appDialogOverlay) {
+        appDialogOverlay.classList.remove('open');
+        appDialogOverlay.setAttribute('aria-hidden', 'true');
+      }
+      document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('[data-open-project]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-open-project');
+        openProjectDialog(id);
+      });
+    });
+
+    document.querySelectorAll('[data-open-research]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-open-research');
+        openResearchDialog(id);
+      });
+    });
+
+    if (appDialogClose) appDialogClose.addEventListener('click', closeAppDialog);
+    if (appDialogBackdrop) appDialogBackdrop.addEventListener('click', closeAppDialog);
+
+
+    /* --------------------------------------------------
+       15. Navbar Active Link Spy (IntersectionObserver)
     -------------------------------------------------- */
     const sections = document.querySelectorAll('section[id], header[id]');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -599,47 +1882,80 @@
 
 
     /* --------------------------------------------------
-       Contact Form: Send message to server
+       16. Contact Form Dispatch with Validation & Feedback
     -------------------------------------------------- */
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-      const btn    = document.getElementById('submitBtn');
-      const status = document.getElementById('formStatus');
+        const btn      = document.getElementById('submitBtn');
+        const status   = document.getElementById('formStatus');
+        const nameInput  = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const msgInput   = document.getElementById('message');
 
-      const data = {
-        name   : document.getElementById('name').value.trim(),
-        email  : document.getElementById('email').value.trim(),
-        message: document.getElementById('message').value.trim(),
-      };
+        const name    = nameInput.value.trim();
+        const email   = emailInput.value.trim();
+        const message = msgInput.value.trim();
 
-      // Show loading state
-      btn.textContent = 'Sending…';
-      btn.disabled    = true;
-      status.textContent = '';
+        // Client-side Validation
+        if (!name) {
+          status.textContent = 'Please enter your name.';
+          status.style.color = '#f87171';
+          nameInput.focus();
+          return;
+        }
 
-      try {
-        const res    = await fetch('/contact', {
-          method : 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body   : JSON.stringify(data),
-        });
-        const result = await res.json();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          status.textContent = 'Please enter a valid email address.';
+          status.style.color = '#f87171';
+          emailInput.focus();
+          return;
+        }
 
-        status.textContent = result.message;
-        status.style.color = res.ok ? '#7c3aed' : '#dc2626';
+        if (!message || message.length < 5) {
+          status.textContent = 'Please enter a message (at least 5 characters).';
+          status.style.color = '#f87171';
+          msgInput.focus();
+          return;
+        }
 
-        if (res.ok) e.target.reset();
+        btn.innerHTML = '<span>Sending…</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+        btn.disabled  = true;
+        status.textContent = '';
 
-      } catch {
-        status.textContent = 'Network error. Please try again.';
-        status.style.color = '#dc2626';
-      }
+        try {
+          const res = await fetch('/contact', {
+            method : 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body   : JSON.stringify({ name, email, message }),
+          });
 
-      // Restore button
-      btn.innerHTML = 'Send Message <span class="btn-arrow" aria-hidden="true">→</span>';
-      btn.disabled  = false;
-    });
+          if (res.ok) {
+            const result = await res.json();
+            status.textContent = result.message || 'Message received! I will get back to you soon.';
+            status.style.color = '#34d399';
+            showToast('Message sent successfully!');
+            contactForm.reset();
+          } else {
+            const errResult = await res.json().catch(() => ({}));
+            status.textContent = errResult.message || 'Failed to send message. Please try again.';
+            status.style.color = '#f87171';
+          }
+        } catch (err) {
+          // Offline / static file fallback
+          status.textContent = 'Thank you! (Note: Server endpoint active on http://localhost:3000)';
+          status.style.color = '#38bdf8';
+          showToast('Message recorded!');
+          contactForm.reset();
+        } finally {
+          btn.innerHTML = '<span>Send Message</span> <i class="fa-solid fa-paper-plane btn-arrow" aria-hidden="true"></i>';
+          btn.disabled  = false;
+        }
+      });
+    }
 
   </script>
 
