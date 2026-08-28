@@ -35,13 +35,35 @@
 
 <body>
 
-  <!-- Dynamic Cyber Background FX Layers -->
+  <!-- ====================================================
+       EXTREME CYBER AURORA & QUANTUM FIELD BACKGROUND
+       ==================================================== -->
   <div class="cyber-bg-fx" aria-hidden="true">
-    <div class="cyber-grid-mesh"></div>
-    <div class="cyber-aurora-orb aurora-orb-1"></div>
-    <div class="cyber-aurora-orb aurora-orb-2"></div>
-    <div class="cyber-aurora-orb aurora-orb-3"></div>
-    <div class="cyber-glow-beam"></div>
+    <!-- Interactive Dual-Core Cursor Spotlight Plasma -->
+    <div class="cursor-spotlight" id="cursorSpotlight"></div>
+
+    <!-- Dual-Layer Cyber Matrix Grid -->
+    <div class="obsidian-dot-grid"></div>
+
+    <!-- Holographic Laser Radar Scanline -->
+    <div class="cyber-scanline"></div>
+
+    <!-- Cosmic Shooting Stars & Quantum Data Meteors -->
+    <div class="shooting-star-wrap">
+      <div class="shooting-star shooting-star-1"></div>
+      <div class="shooting-star shooting-star-2"></div>
+      <div class="shooting-star shooting-star-3"></div>
+    </div>
+
+    <!-- Extreme Fluid Aurora Plasma Orbs (5 Layers) -->
+    <div class="aurora-orb aurora-orb-1"></div>
+    <div class="aurora-orb aurora-orb-2"></div>
+    <div class="aurora-orb aurora-orb-3"></div>
+    <div class="aurora-orb aurora-orb-4"></div>
+    <div class="aurora-orb aurora-orb-5"></div>
+
+    <!-- Ambient Deep Vignette -->
+    <div class="ambient-vignette"></div>
   </div>
 
   <!-- Interactive 60FPS Constellation Particle Canvas -->
@@ -339,189 +361,94 @@
 
 
   <!-- ====================================================
-       4. SKILLS SECTION (Compact High-Density Cyber Matrix)
+       4. SKILLS SECTION (Clean & Modern Tech Matrix)
        ==================================================== -->
-  <section id="skills" class="section skills-section skills-section-compact">
-    <div class="skills-heading-wrap reveal-on-scroll">
-      <div class="skills-eyebrow">
-        <i class="fa-solid fa-microchip"></i>
-        <span>Technical Architecture</span>
-      </div>
-      <h2 class="section-title">My Skills &amp; Expertise</h2>
-    </div>
+  <section id="skills" class="section skills-section">
+    <h2 class="section-title reveal-on-scroll">Skills &amp; Expertise</h2>
     
-    <div class="skills-container skills-container-compact">
+    <div class="skills-grid reveal-on-scroll">
 
-      <!-- Compact Unified Search & Filter Controls -->
-      <div class="skills-control-hub-compact reveal-on-scroll">
-        <!-- Quick Search -->
-        <div class="skills-search-wrap-compact">
-          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-          <input
-            type="text"
-            id="skillSearchInput"
-            class="skill-search-input"
-            placeholder="Search skills (e.g. Python, SQL, ML, Java, Excel)..."
-            aria-label="Search skills"
-          />
-          <button id="skillSearchClear" class="skill-search-clear" aria-label="Clear search" style="display: none;">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+      <!-- 1. AI & Data Analytics -->
+      <div class="skill-card tilt-card" data-tilt>
+        <div class="skill-card-header">
+          <div class="skill-card-icon">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <div>
+            <h3 class="skill-card-title">AI &amp; Data Analytics</h3>
+            <p class="skill-card-subtitle">Intelligent systems, modeling &amp; data science</p>
+          </div>
         </div>
-
-        <!-- Filter Category Tabs -->
-        <div class="skills-filter-bar skills-filter-compact" role="tablist" aria-label="Filter Skills Categories">
-          <button class="skill-tab-btn active" data-filter="all" role="tab" aria-selected="true">
-            <i class="fa-solid fa-shapes"></i> ALL
-          </button>
-          <button class="skill-tab-btn" data-filter="ai-data" role="tab" aria-selected="false">
-            <i class="fa-solid fa-brain"></i> AI &amp; DATA
-          </button>
-          <button class="skill-tab-btn" data-filter="languages" role="tab" aria-selected="false">
-            <i class="fa-solid fa-code"></i> LANGUAGES
-          </button>
-          <button class="skill-tab-btn" data-filter="tools" role="tab" aria-selected="false">
-            <i class="fa-solid fa-toolbox"></i> TOOLS
-          </button>
-          <button class="skill-tab-btn" data-filter="soft" role="tab" aria-selected="false">
-            <i class="fa-solid fa-handshake"></i> SOFT SKILLS
-          </button>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="skill-tag"><i class="fa-solid fa-robot text-purple"></i> Machine Learning</span>
+          <span class="skill-tag"><i class="fa-solid fa-network-wired text-blue"></i> Deep Learning</span>
+          <span class="skill-tag"><i class="fa-solid fa-comments text-emerald"></i> NLP</span>
+          <span class="skill-tag"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> XGBoost</span>
+          <span class="skill-tag"><i class="fa-solid fa-chart-line text-purple"></i> Scikit-Learn</span>
+          <span class="skill-tag"><i class="fa-solid fa-table text-blue"></i> Pandas &amp; NumPy</span>
         </div>
       </div>
 
-      <!-- Compact 2x2 Cyber Pods Grid -->
-      <div class="skills-compact-grid reveal-on-scroll" id="skillsGrid">
-
-        <!-- POD 1: AI, Machine Learning & Python -->
-        <div class="skill-compact-pod tilt-card" data-category="ai-data languages" data-tags="python ai machine learning deep learning neural networks computer vision nlp xgboost deepfake data analytics scikit-learn pandas numpy" data-tilt>
-          <div class="pod-header">
-            <div class="pod-title-group">
-              <div class="pod-icons">
-                <span class="pod-icon-box icon-python"><i class="devicon-python-plain colored"></i></span>
-                <span class="pod-icon-box icon-ai"><i class="fa-solid fa-brain text-purple"></i></span>
-              </div>
-              <div>
-                <h3 class="pod-name">AI &amp; Python Ecosystem</h3>
-                <span class="pod-domain">Machine Learning · Deep Neural Nets · NLP</span>
-              </div>
-            </div>
-            <div class="pod-score-badge score-purple">
-              <span>90%</span>
-            </div>
+      <!-- 2. Programming Languages & Core CS -->
+      <div class="skill-card tilt-card" data-tilt>
+        <div class="skill-card-header">
+          <div class="skill-card-icon">
+            <i class="fa-solid fa-code"></i>
           </div>
-          <div class="pod-chips-wrap">
-            <span class="skill-chip">Python 90%</span>
-            <span class="skill-chip">Scikit-Learn</span>
-            <span class="skill-chip">Pandas &amp; NumPy</span>
-            <span class="skill-chip">XGBoost</span>
-            <span class="skill-chip">NLP Chatbots</span>
-            <span class="skill-chip">Video Forensics</span>
+          <div>
+            <h3 class="skill-card-title">Programming &amp; Core CS</h3>
+            <p class="skill-card-subtitle">Languages, architecture &amp; algorithms</p>
           </div>
         </div>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="devicon-java-plain colored"></i> Java</span>
+          <span class="skill-tag"><i class="devicon-c-plain colored"></i> C Programming</span>
+          <span class="skill-tag"><i class="fa-solid fa-cubes text-purple"></i> OOP Design</span>
+          <span class="skill-tag"><i class="fa-solid fa-sitemap text-blue"></i> Data Structures</span>
+          <span class="skill-tag"><i class="fa-solid fa-microchip text-emerald"></i> Algorithms</span>
+        </div>
+      </div>
 
-        <!-- POD 2: SQL & Data Intelligence -->
-        <div class="skill-compact-pod tilt-card" data-category="ai-data languages" data-tags="sql relational database querying data modeling schema joins indexing postgresql mysql analytics" data-tilt>
-          <div class="pod-header">
-            <div class="pod-title-group">
-              <div class="pod-icons">
-                <span class="pod-icon-box icon-sql"><i class="fa-solid fa-database text-purple"></i></span>
-              </div>
-              <div>
-                <h3 class="pod-name">SQL &amp; Relational Data</h3>
-                <span class="pod-domain">Schema Modeling · Query Tuning · Indexing</span>
-              </div>
-            </div>
-            <div class="pod-score-badge score-blue">
-              <span>85%</span>
-            </div>
+      <!-- 3. Databases & Data Management -->
+      <div class="skill-card tilt-card" data-tilt>
+        <div class="skill-card-header">
+          <div class="skill-card-icon">
+            <i class="fa-solid fa-database"></i>
           </div>
-          <div class="pod-chips-wrap">
-            <span class="skill-chip">Complex Joins</span>
-            <span class="skill-chip">Relational Schema</span>
-            <span class="skill-chip">Aggregations</span>
-            <span class="skill-chip">Query Tuning</span>
-            <span class="skill-chip">Data Modeling</span>
+          <div>
+            <h3 class="skill-card-title">Databases &amp; SQL</h3>
+            <p class="skill-card-subtitle">Relational modeling, schema &amp; querying</p>
           </div>
         </div>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="fa-solid fa-database text-purple"></i> SQL</span>
+          <span class="skill-tag"><i class="fa-solid fa-diagram-project text-blue"></i> Relational Schema</span>
+          <span class="skill-tag"><i class="fa-solid fa-table-cells text-emerald"></i> Data Modeling</span>
+          <span class="skill-tag"><i class="fa-solid fa-sliders text-purple"></i> Complex Joins</span>
+          <span class="skill-tag"><i class="fa-solid fa-gauge-high text-blue"></i> Query Tuning</span>
+        </div>
+      </div>
 
-        <!-- POD 3: Core Software Engineering (Java & C) -->
-        <div class="skill-compact-pod tilt-card" data-category="languages" data-tags="java c programming oop object oriented algorithms pointers memory backend logic data structures" data-tilt>
-          <div class="pod-header">
-            <div class="pod-title-group">
-              <div class="pod-icons">
-                <span class="pod-icon-box icon-java"><i class="devicon-java-plain colored"></i></span>
-                <span class="pod-icon-box icon-c"><i class="devicon-c-plain colored"></i></span>
-              </div>
-              <div>
-                <h3 class="pod-name">Core Software &amp; Systems</h3>
-                <span class="pod-domain">Java OOP · C Algorithms · Memory Pointers</span>
-              </div>
-            </div>
-            <div class="pod-score-badge score-orange">
-              <span>82%</span>
-            </div>
+      <!-- 4. Tools & Methodologies -->
+      <div class="skill-card tilt-card" data-tilt>
+        <div class="skill-card-header">
+          <div class="skill-card-icon">
+            <i class="fa-solid fa-toolbox"></i>
           </div>
-          <div class="pod-chips-wrap">
-            <span class="skill-chip">Java 82%</span>
-            <span class="skill-chip">OOP Design</span>
-            <span class="skill-chip">Data Structures</span>
-            <span class="skill-chip">C Language 78%</span>
-            <span class="skill-chip">Memory &amp; Pointers</span>
-            <span class="skill-chip">Algorithms</span>
+          <div>
+            <h3 class="skill-card-title">Tools &amp; Methodologies</h3>
+            <p class="skill-card-subtitle">Productivity platforms, design &amp; soft skills</p>
           </div>
         </div>
-
-        <!-- POD 4: Productivity & Visual Design (Office & Canva) -->
-        <div class="skill-compact-pod tilt-card" data-category="tools" data-tags="microsoft excel office spreadsheets canva ui design prototypes graphic assets visual storytelling presentation" data-tilt>
-          <div class="pod-header">
-            <div class="pod-title-group">
-              <div class="pod-icons">
-                <span class="pod-icon-box icon-ms"><i class="fa-brands fa-microsoft text-blue"></i></span>
-                <span class="pod-icon-box icon-canva"><i class="devicon-canva-plain colored"></i></span>
-              </div>
-              <div>
-                <h3 class="pod-name">Tools &amp; Visual Design</h3>
-                <span class="pod-domain">Excel Spreadsheets · Canva UI Mockups</span>
-              </div>
-            </div>
-            <div class="pod-score-badge score-teal">
-              <span>90%</span>
-            </div>
-          </div>
-          <div class="pod-chips-wrap">
-            <span class="skill-chip">Excel 90%</span>
-            <span class="skill-chip">Pivot Tables</span>
-            <span class="skill-chip">Canva 85%</span>
-            <span class="skill-chip">UI Mockups</span>
-            <span class="skill-chip">Slide Decks</span>
-            <span class="skill-chip">Documentation</span>
-          </div>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="fa-brands fa-microsoft text-blue"></i> MS Excel</span>
+          <span class="skill-tag"><i class="devicon-canva-plain colored"></i> Canva</span>
+          <span class="skill-tag"><i class="fa-brands fa-git-alt" style="color: #f97316;"></i> Git &amp; GitHub</span>
+          <span class="skill-tag"><i class="fa-solid fa-clock text-emerald"></i> Time Management</span>
+          <span class="skill-tag"><i class="fa-solid fa-trophy" style="color: #facc15;"></i> Leadership</span>
+          <span class="skill-tag"><i class="fa-solid fa-people-group text-purple"></i> Teamwork</span>
         </div>
-
-        <!-- POD 5: Compact Soft Skills Command Ribbon (Spans Full Width) -->
-        <div class="skill-compact-pod pod-full-span tilt-card" data-category="soft" data-tags="leadership time management effective communication teamwork adaptability agile problem solving collaboration sprint" data-tilt>
-          <div class="soft-ribbon-content">
-            <div class="ribbon-label">
-              <i class="fa-solid fa-users-gear text-emerald"></i>
-              <span>Core Competencies:</span>
-            </div>
-            <div class="ribbon-items">
-              <span class="ribbon-pill"><i class="fa-solid fa-clock"></i> Time Management</span>
-              <span class="ribbon-pill"><i class="fa-solid fa-trophy"></i> Leadership &amp; Guidance</span>
-              <span class="ribbon-pill"><i class="fa-solid fa-comments"></i> Technical Communication</span>
-              <span class="ribbon-pill"><i class="fa-solid fa-people-group"></i> Teamwork &amp; Adaptability</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /skills-compact-grid -->
-
-      <!-- Empty State for Search -->
-      <div id="skillsNoResults" class="skills-empty-state" style="display: none;">
-        <i class="fa-solid fa-filter-circle-xmark empty-icon"></i>
-        <h3>No matching skills found</h3>
-        <p>Try searching for terms like <code>Python</code>, <code>SQL</code>, <code>AI</code>, <code>Excel</code>, or <code>Java</code>.</p>
-        <button id="skillsResetBtn" class="btn btn-outline" style="margin-top: 0.75rem;">Reset Search</button>
       </div>
 
     </div>
@@ -544,17 +471,17 @@
         </div>
         <div class="metric-divider" aria-hidden="true"></div>
         <div class="metric-block">
-          <span class="metric-val">3</span>
+          <span class="metric-val">4</span>
           <span class="metric-lbl">PHASES</span>
         </div>
         <div class="metric-divider" aria-hidden="true"></div>
         <div class="metric-block">
-          <span class="metric-val">15</span>
+          <span class="metric-val">20</span>
           <span class="metric-lbl">WEEKS</span>
         </div>
         <div class="metric-divider" aria-hidden="true"></div>
         <div class="metric-block">
-          <span class="metric-val">15</span>
+          <span class="metric-val">20</span>
           <span class="metric-lbl">FUTURE STORIES</span>
         </div>
       </div>
@@ -583,6 +510,9 @@
         <button class="phase-filter-btn" data-phase="3" role="tab" aria-selected="false">
           <span class="phase-dot phase-dot-3"></span> PHASE 03
         </button>
+        <button class="phase-filter-btn" data-phase="4" role="tab" aria-selected="false">
+          <span class="phase-dot phase-dot-4"></span> PHASE 04
+        </button>
       </div>
 
       <!-- Connected Innovation Journey Track (Dynamically Populated) -->
@@ -602,7 +532,7 @@
         </button>
 
         <div class="week-overview-content" id="weekOverviewContent">
-          <!-- Injected via showWeekOverview() -->
+          <!-- Injected dynamically via showWeekOverview() -->
         </div>
       </div>
     </div>
@@ -888,16 +818,58 @@
     const hasFinePointer = Boolean(window.matchMedia && window.matchMedia('(pointer: fine)').matches);
 
     /* --------------------------------------------------
-       1. Ultra-Smooth High-FPS Constellation Particle Canvas
+       0. Obsidian Aurora & Interactive Cursor Spotlight (Idea 2)
+    -------------------------------------------------- */
+    const cursorSpotlight = document.getElementById('cursorSpotlight');
+    if (cursorSpotlight && hasFinePointer) {
+      let targetX = window.innerWidth / 2;
+      let targetY = window.innerHeight / 3;
+      let currentX = targetX;
+      let currentY = targetY;
+      let isCursorMoving = false;
+
+      window.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (!isCursorMoving) {
+          isCursorMoving = true;
+          cursorSpotlight.style.opacity = '1';
+        }
+      }, { passive: true });
+
+      window.addEventListener('mouseleave', () => {
+        cursorSpotlight.style.opacity = '0.4';
+      }, { passive: true });
+
+      function updateCursorSpotlight() {
+        currentX += (targetX - currentX) * 0.09;
+        currentY += (targetY - currentY) * 0.09;
+        cursorSpotlight.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+        requestAnimationFrame(updateCursorSpotlight);
+      }
+      updateCursorSpotlight();
+    }
+
+    /* --------------------------------------------------
+       1. Extreme 60FPS Bioluminescent Quantum Field Canvas
     -------------------------------------------------- */
     const canvas = document.getElementById('particleCanvas');
     if (canvas) {
       const ctx = canvas.getContext('2d');
       let width = 0, height = 0;
       let particles = [];
-      let mouse = { x: -1000, y: -1000, radius: 130 };
+      let mouse = { x: -1000, y: -1000, radius: 170 };
       let animId = null;
       let isVisible = true;
+
+      const colorPalette = [
+        { r: 192, g: 132, b: 252, hex: '#c084fc' }, // Violet
+        { r: 56,  g: 189, b: 248, hex: '#38bdf8' }, // Cyan
+        { r: 168, g: 85,  b: 247, hex: '#a855f7' }, // Purple
+        { r: 52,  g: 211, b: 153, hex: '#34d399' }, // Emerald
+        { r: 244, g: 114, b: 182, hex: '#f472b6' }, // Magenta
+        { r: 250, g: 204, b: 21,  hex: '#facc15' }  // Gold
+      ];
 
       function resizeCanvas() {
         width = canvas.width = window.innerWidth;
@@ -917,7 +889,7 @@
         mouse.y = -1000;
       }, { passive: true });
 
-      class Particle {
+      class QuantumParticle {
         constructor() {
           this.reset();
         }
@@ -925,22 +897,27 @@
         reset() {
           this.x = Math.random() * (width || window.innerWidth);
           this.y = Math.random() * (height || window.innerHeight);
-          this.size = Math.random() * 2 + 1;
-          this.density = Math.random() * 15 + 5;
-          this.vx = (Math.random() - 0.5) * 0.5;
-          this.vy = (Math.random() - 0.5) * 0.5;
-          this.isPurple = Math.random() > 0.45;
-          this.alpha = Math.random() * 0.45 + 0.25;
+          this.size = Math.random() * 2.2 + 1.2;
+          this.baseSize = this.size;
+          this.vx = (Math.random() - 0.5) * 0.65;
+          this.vy = (Math.random() - 0.5) * 0.65;
+          this.colorObj = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+          this.alpha = Math.random() * 0.5 + 0.35;
+          this.pulsePhase = Math.random() * Math.PI * 2;
+          this.pulseSpeed = Math.random() * 0.04 + 0.02;
         }
 
         update() {
           this.x += this.vx;
           this.y += this.vy;
+          this.pulsePhase += this.pulseSpeed;
 
-          if (this.x < 0 || this.x > width) this.vx *= -1;
-          if (this.y < 0 || this.y > height) this.vy *= -1;
+          if (this.x < 0) this.x = width;
+          else if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          else if (this.y > height) this.y = 0;
 
-          // Mouse proximity reaction
+          // Mouse vortex gravitational attraction
           const dx = mouse.x - this.x;
           const dy = mouse.y - this.y;
           const distSq = dx * dx + dy * dy;
@@ -949,34 +926,41 @@
           if (distSq < radiusSq) {
             const dist = Math.sqrt(distSq);
             const force = (mouse.radius - dist) / mouse.radius;
-            const dirX = (dx / dist) * force * this.density;
-            const dirY = (dy / dist) * force * this.density;
-            this.x -= dirX * 0.25;
-            this.y -= dirY * 0.25;
+            // Radial pull
+            this.x += (dx / dist) * force * 1.8;
+            this.y += (dy / dist) * force * 1.8;
+            // Gentle tangential orbital swirl
+            this.x -= (dy / dist) * force * 1.2;
+            this.y += (dx / dist) * force * 1.2;
           }
         }
 
         draw() {
+          const currentAlpha = Math.max(0.2, this.alpha + Math.sin(this.pulsePhase) * 0.18);
+          const drawSize = this.baseSize + Math.sin(this.pulsePhase) * 0.5;
+
+          ctx.save();
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = this.isPurple 
-            ? `rgba(168, 85, 247, ${this.alpha})` 
-            : `rgba(56, 189, 248, ${this.alpha})`;
+          ctx.arc(this.x, this.y, drawSize, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${this.colorObj.r}, ${this.colorObj.g}, ${this.colorObj.b}, ${currentAlpha})`;
+          ctx.shadowBlur = 10;
+          ctx.shadowColor = this.colorObj.hex;
           ctx.fill();
+          ctx.restore();
         }
       }
 
       function initParticles() {
         particles = [];
         const isMobile = window.innerWidth < 768;
-        const count = isMobile ? 18 : Math.min(Math.floor((width * height) / 28000), 38);
+        const count = isMobile ? 24 : Math.min(Math.floor((width * height) / 20000), 55);
         for (let i = 0; i < count; i++) {
-          particles.push(new Particle());
+          particles.push(new QuantumParticle());
         }
       }
 
-      function connectParticles() {
-        const maxDist = 110;
+      function connectQuantumLinks() {
+        const maxDist = 135;
         const maxDistSq = maxDist * maxDist;
         const len = particles.length;
 
@@ -990,13 +974,20 @@
 
             if (distSq < maxDistSq) {
               const dist = Math.sqrt(distSq);
-              const opacity = (1 - dist / maxDist) * 0.18;
-              ctx.strokeStyle = `rgba(168, 85, 247, ${opacity})`;
-              ctx.lineWidth = 0.75;
+              const opacity = (1 - dist / maxDist) * 0.28;
+
+              ctx.save();
+              const grad = ctx.createLinearGradient(pA.x, pA.y, pB.x, pB.y);
+              grad.addColorStop(0, `rgba(${pA.colorObj.r}, ${pA.colorObj.g}, ${pA.colorObj.b}, ${opacity})`);
+              grad.addColorStop(1, `rgba(${pB.colorObj.r}, ${pB.colorObj.g}, ${pB.colorObj.b}, ${opacity})`);
+
+              ctx.strokeStyle = grad;
+              ctx.lineWidth = 1.1;
               ctx.beginPath();
               ctx.moveTo(pA.x, pA.y);
               ctx.lineTo(pB.x, pB.y);
               ctx.stroke();
+              ctx.restore();
             }
           }
         }
@@ -1009,11 +1000,11 @@
           particles[i].update();
           particles[i].draw();
         }
-        connectParticles();
+        connectQuantumLinks();
         animId = requestAnimationFrame(animateParticles);
       }
 
-      // Pause when tab not visible to save 100% CPU
+      // Visibility change CPU conservation
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
           isVisible = false;
@@ -1084,24 +1075,24 @@
       ripple.style.left = `${e.clientX}px`;
       ripple.style.top = `${e.clientY}px`;
       document.body.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 700);
+      setTimeout(() => ripple.remove(), 750);
 
-      // 2. Kinetic Laser Sparks Burst (8 particles)
-      const sparkColors = ['#38bdf8', '#c084fc', '#a855f7', '#34d399', '#f43f5e', '#fbbf24'];
-      for (let i = 0; i < 8; i++) {
+      // 2. Kinetic Quantum Laser Sparks Burst (14 particles)
+      const sparkColors = ['#38bdf8', '#c084fc', '#a855f7', '#34d399', '#f43f5e', '#fbbf24', '#818cf8'];
+      for (let i = 0; i < 14; i++) {
         const spark = document.createElement('div');
         spark.className = 'laser-spark';
         const color = sparkColors[i % sparkColors.length];
-        const angle = (Math.PI * 2 / 8) * i + (Math.random() - 0.5) * 0.4;
-        const velocity = Math.random() * 40 + 25;
+        const angle = (Math.PI * 2 / 14) * i + (Math.random() - 0.5) * 0.5;
+        const velocity = Math.random() * 55 + 35;
         const tx = Math.cos(angle) * velocity;
         const ty = Math.sin(angle) * velocity;
 
         spark.style.left = `${e.clientX}px`;
         spark.style.top = `${e.clientY}px`;
         spark.style.backgroundColor = color;
-        spark.style.boxShadow = `0 0 8px ${color}`;
-        spark.style.transition = 'transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.4s ease';
+        spark.style.boxShadow = `0 0 12px ${color}, 0 0 24px ${color}`;
+        spark.style.transition = 'transform 0.45s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.45s ease';
         
         document.body.appendChild(spark);
 
@@ -1110,7 +1101,7 @@
           spark.style.opacity = '0';
         });
 
-        setTimeout(() => spark.remove(), 450);
+        setTimeout(() => spark.remove(), 500);
       }
     }, { passive: true });
 
@@ -1330,26 +1321,36 @@
 
 
     /* --------------------------------------------------
-       10. ProtoSem 15-Week Connected Journey
+       10. ProtoSem 20-Week Connected Energy Journey (Weeks 00–19)
     -------------------------------------------------- */
     const protoSemWeeks = [
-      { week: 0, phase: 1, slug: "week-00", status: "coming-soon" },
-      { week: 1, phase: 1, slug: "week-01", status: "coming-soon" },
-      { week: 2, phase: 1, slug: "week-02", status: "coming-soon" },
-      { week: 3, phase: 1, slug: "week-03", status: "coming-soon" },
-      { week: 4, phase: 1, slug: "week-04", status: "coming-soon" },
+      // PHASE 01 · WEEKS 00–04
+      { week: 0,  phase: 1, slug: "week-00", status: "coming-soon" },
+      { week: 1,  phase: 1, slug: "week-01", status: "coming-soon" },
+      { week: 2,  phase: 1, slug: "week-02", status: "coming-soon" },
+      { week: 3,  phase: 1, slug: "week-03", status: "coming-soon" },
+      { week: 4,  phase: 1, slug: "week-04", status: "coming-soon" },
 
-      { week: 5, phase: 2, slug: "week-05", status: "coming-soon" },
-      { week: 6, phase: 2, slug: "week-06", status: "coming-soon" },
-      { week: 7, phase: 2, slug: "week-07", status: "coming-soon" },
-      { week: 8, phase: 2, slug: "week-08", status: "coming-soon" },
-      { week: 9, phase: 2, slug: "week-09", status: "coming-soon" },
+      // PHASE 02 · WEEKS 05–09
+      { week: 5,  phase: 2, slug: "week-05", status: "coming-soon" },
+      { week: 6,  phase: 2, slug: "week-06", status: "coming-soon" },
+      { week: 7,  phase: 2, slug: "week-07", status: "coming-soon" },
+      { week: 8,  phase: 2, slug: "week-08", status: "coming-soon" },
+      { week: 9,  phase: 2, slug: "week-09", status: "coming-soon" },
 
+      // PHASE 03 · WEEKS 10–14
       { week: 10, phase: 3, slug: "week-10", status: "coming-soon" },
       { week: 11, phase: 3, slug: "week-11", status: "coming-soon" },
       { week: 12, phase: 3, slug: "week-12", status: "coming-soon" },
       { week: 13, phase: 3, slug: "week-13", status: "coming-soon" },
-      { week: 14, phase: 3, slug: "week-14", status: "coming-soon" }
+      { week: 14, phase: 3, slug: "week-14", status: "coming-soon" },
+
+      // PHASE 04 · WEEKS 15–19
+      { week: 15, phase: 4, slug: "week-15", status: "coming-soon" },
+      { week: 16, phase: 4, slug: "week-16", status: "coming-soon" },
+      { week: 17, phase: 4, slug: "week-17", status: "coming-soon" },
+      { week: 18, phase: 4, slug: "week-18", status: "coming-soon" },
+      { week: 19, phase: 4, slug: "week-19", status: "coming-soon" }
     ];
 
     function formatWeekStr(num) {
@@ -1368,6 +1369,7 @@
         { phaseNum: 1, name: 'PHASE 01', range: 'WEEKS 00–04', weeks: protoSemWeeks.filter(w => w.phase === 1) },
         { phaseNum: 2, name: 'PHASE 02', range: 'WEEKS 05–09', weeks: protoSemWeeks.filter(w => w.phase === 2) },
         { phaseNum: 3, name: 'PHASE 03', range: 'WEEKS 10–14', weeks: protoSemWeeks.filter(w => w.phase === 3) },
+        { phaseNum: 4, name: 'PHASE 04', range: 'WEEKS 15–19', weeks: protoSemWeeks.filter(w => w.phase === 4) },
       ];
 
       let html = '';
@@ -1446,96 +1448,6 @@
     }
 
     /* --------------------------------------------------
-       11. Unified Skills Live Search & Category Filter Engine
-    -------------------------------------------------- */
-    const skillTabBtns     = document.querySelectorAll('.skill-tab-btn');
-    const skillPods        = document.querySelectorAll('.skill-compact-pod');
-    const skillSearchInput = document.getElementById('skillSearchInput');
-    const skillSearchClear = document.getElementById('skillSearchClear');
-    const skillsNoResults  = document.getElementById('skillsNoResults');
-    const skillsResetBtn   = document.getElementById('skillsResetBtn');
-
-    let currentCategoryFilter = 'all';
-    let currentSearchTerm     = '';
-
-    function filterSkills() {
-      let visibleCount = 0;
-
-      skillPods.forEach(pod => {
-        const categories = (pod.getAttribute('data-category') || '').toLowerCase().split(' ');
-        const tags       = (pod.getAttribute('data-tags') || '').toLowerCase();
-        const podTitle   = (pod.querySelector('.pod-name')?.textContent || pod.querySelector('.ribbon-label')?.textContent || '').toLowerCase();
-        const podDomain  = (pod.querySelector('.pod-domain')?.textContent || pod.querySelector('.ribbon-items')?.textContent || '').toLowerCase();
-
-        const fullText = `${podTitle} ${podDomain} ${tags}`;
-
-        const matchesCategory = (currentCategoryFilter === 'all' || categories.includes(currentCategoryFilter));
-        const matchesSearch   = (!currentSearchTerm || fullText.includes(currentSearchTerm));
-
-        if (matchesCategory && matchesSearch) {
-          pod.classList.remove('skill-hidden');
-          pod.style.display = 'flex';
-          visibleCount++;
-        } else {
-          pod.classList.add('skill-hidden');
-          pod.style.display = 'none';
-        }
-      });
-
-      if (skillsNoResults) {
-        skillsNoResults.style.display = visibleCount === 0 ? 'flex' : 'none';
-      }
-    }
-
-    skillTabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        skillTabBtns.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        currentCategoryFilter = btn.getAttribute('data-filter') || 'all';
-        filterSkills();
-      });
-    });
-
-    if (skillSearchInput) {
-      skillSearchInput.addEventListener('input', (e) => {
-        currentSearchTerm = e.target.value.trim().toLowerCase();
-        if (skillSearchClear) {
-          skillSearchClear.style.display = currentSearchTerm.length > 0 ? 'inline-flex' : 'none';
-        }
-        filterSkills();
-      });
-    }
-
-    if (skillSearchClear) {
-      skillSearchClear.addEventListener('click', () => {
-        if (skillSearchInput) skillSearchInput.value = '';
-        currentSearchTerm = '';
-        skillSearchClear.style.display = 'none';
-        filterSkills();
-        if (skillSearchInput) skillSearchInput.focus();
-      });
-    }
-
-    if (skillsResetBtn) {
-      skillsResetBtn.addEventListener('click', () => {
-        if (skillSearchInput) skillSearchInput.value = '';
-        currentSearchTerm = '';
-        if (skillSearchClear) skillSearchClear.style.display = 'none';
-        currentCategoryFilter = 'all';
-        skillTabBtns.forEach(b => {
-          b.classList.toggle('active', b.getAttribute('data-filter') === 'all');
-          b.setAttribute('aria-selected', b.getAttribute('data-filter') === 'all' ? 'true' : 'false');
-        });
-        filterSkills();
-      });
-    }
-
-    /* --------------------------------------------------
        12. Phase Filter Interaction
     -------------------------------------------------- */
     const filterButtons = document.querySelectorAll('.phase-filter-btn');
@@ -1554,7 +1466,7 @@
     });
 
     /* --------------------------------------------------
-       13. Reusable Week Overview Modal & Safe Routing
+       13. Rich Week Overview Modal & Safe Routing
     -------------------------------------------------- */
     const weekOverviewOverlay  = document.getElementById('weekOverviewOverlay');
     const weekOverviewContent  = document.getElementById('weekOverviewContent');
@@ -1565,6 +1477,8 @@
       const weekStr  = formatWeekStr(weekItem.week);
       const phaseStr = formatPhaseStr(weekItem.phase);
       const isWeek00 = weekItem.week === 0;
+      const prevWeek = weekItem.week > 0 ? protoSemWeeks[weekItem.week - 1] : null;
+      const nextWeek = weekItem.week < 19 ? protoSemWeeks[weekItem.week + 1] : null;
 
       return `
         <div class="week-article">
@@ -1609,6 +1523,25 @@
             </div>
           </div>
 
+          <!-- Modal Navigation Controls -->
+          <div class="modal-detail-footer-nav">
+            ${prevWeek ? `
+              <button type="button" class="btn btn-outline nav-week-btn" onclick="navigateToWeek('${prevWeek.slug}')">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Week ${formatWeekStr(prevWeek.week)}</span>
+              </button>
+            ` : `<div style="flex:1;"></div>`}
+            
+            <span class="detail-page-counter">Week ${weekStr} of 19</span>
+
+            ${nextWeek ? `
+              <button type="button" class="btn btn-primary nav-week-btn" onclick="navigateToWeek('${nextWeek.slug}')">
+                <span>Week ${formatWeekStr(nextWeek.week)}</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            ` : `<div style="flex:1;"></div>`}
+          </div>
+
           <div class="week-bottom-actions">
             <button type="button" class="btn btn-primary week-back-btn" id="weekBottomBackBtn" data-action="close-week">
               <i class="fa-solid fa-arrow-left"></i>
@@ -1623,7 +1556,12 @@
       const weekItem = protoSemWeeks.find(w => w.slug === slug);
       if (!weekItem) return;
 
-      if (weekOverviewContent) weekOverviewContent.innerHTML = renderWeekOverview(weekItem);
+      if (weekOverviewContent) {
+        weekOverviewContent.innerHTML = renderWeekOverview(weekItem);
+        const container = document.querySelector('.week-overview-container');
+        if (container) container.scrollTop = 0;
+      }
+
       if (weekOverviewOverlay) {
         weekOverviewOverlay.classList.add('open');
         weekOverviewOverlay.setAttribute('aria-hidden', 'false');
@@ -1664,6 +1602,8 @@
       showWeekOverview(slug, true);
     }
 
+    window.navigateToWeek = navigateToWeek;
+
     // Global Click Delegation
     document.addEventListener('click', (e) => {
       const backTrigger = e.target.closest('#weekBottomBackBtn, #weekOverviewCloseBtn, #crumbProtosemLink, .week-back-btn, [data-action="close-week"]');
@@ -1674,14 +1614,6 @@
     });
 
     if (weekBackdrop) weekBackdrop.addEventListener('click', () => hideWeekOverview(true));
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (weekOverviewOverlay && weekOverviewOverlay.classList.contains('open')) hideWeekOverview(true);
-        closeAppDialog();
-        closeMobileDrawer();
-      }
-    });
 
     window.addEventListener('popstate', (e) => {
       if (e.state && e.state.protosemWeek) {
@@ -1860,6 +1792,14 @@
 
     if (appDialogClose) appDialogClose.addEventListener('click', closeAppDialog);
     if (appDialogBackdrop) appDialogBackdrop.addEventListener('click', closeAppDialog);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProtoSemPortal();
+        closeAppDialog();
+        closeMobileDrawer();
+      }
+    });
 
 
     /* --------------------------------------------------
