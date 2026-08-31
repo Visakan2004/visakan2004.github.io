@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Week 1 Recap — Infosys Springboard 7.0. A five-day learning journey through technology, design thinking, business strategy, and teamwork by Team 2." />
+  <title>Week 1 Recap — Infosys Springboard 7.0 | Team 2</title>
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       EDITORIAL LIGHT DESIGN SYSTEM
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #fafafc;
+      --bg-alt: #f1f5f9;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-heading: #0f172a;
+      
+      --brand: #4f46e5;
+      --brand-light: #eef2ff;
+      --brand-border: #c7d2fe;
+      
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --cyan-border: #bae6fd;
+      
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+      
+      --rose: #e11d48;
+      --rose-light: #fff1f2;
+      --rose-border: #fecdd3;
+
+      --onam-gold: #b45309;
+      --onam-bg: #fffbeb;
+      --onam-border: #fcd34d;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      font-size: 1.06rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Selection */
+    ::selection {
+      background: #c7d2fe;
+      color: #312e81;
+    }
+
+    /* Ambient Decorative Top Gradient */
+    .ambient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 480px;
+      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, rgba(56, 189, 248, 0.04) 40%, rgba(250, 250, 252, 0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Container */
+    .editorial-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Nav */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+      transition: all 0.2s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .nav-brand-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4f46e5, #0284c7);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    .nav-quick-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-pill {
+      font-size: 0.82rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 100px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-pill:hover {
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      text-align: left;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.95rem;
+      border-radius: 100px;
+      background: var(--emerald-light);
+      border: 1px solid var(--emerald-border);
+      color: var(--emerald);
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--cyan);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-intro-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--brand);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-intro-text {
+      font-size: 1.14rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .hero-author-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+    }
+
+    .hero-author-tag i {
+      color: var(--brand);
+    }
+
+    /* Table of Contents */
+    .toc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0 4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .toc-item:hover {
+      background: var(--brand-light);
+      border-color: var(--brand-border);
+      color: var(--brand);
+      transform: translateY(-2px);
+    }
+
+    .toc-day-pill {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text-heading);
+    }
+
+    /* Section Styles */
+    .day-article {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .day-pill {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+
+    .day-1-pill { background: var(--cyan); }
+    .day-2-pill { background: #7c3aed; }
+    .day-3-pill { background: #ea580c; }
+    .day-4-pill { background: #0284c7; }
+    .day-5-pill { background: #059669; }
+
+    .day-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.25rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.015em;
+    }
+
+    .prose-lead {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #334155;
+      margin-bottom: 2rem;
+    }
+
+    .sub-topic {
+      margin-top: 2.5rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .sub-topic-title {
+      font-family: var(--font-heading);
+      font-size: 1.38rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .sub-topic-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .body-p {
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .body-p strong {
+      color: var(--text-heading);
+      font-weight: 700;
+    }
+
+    /* Comparison Cards (Day 1 Recommendation) */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .editorial-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .editorial-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.85rem;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Process Flow Bar (Horizontal Design Thinking) */
+    .process-flow-container {
+      margin: 1.75rem 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .process-flow-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .flow-steps-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .flow-step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-radius: 100px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      transition: all 0.2s ease;
+    }
+
+    .flow-step-pill:hover {
+      background: var(--brand-light);
+      border-color: var(--brand-border);
+      color: var(--brand);
+    }
+
+    .flow-step-pill i {
+      color: var(--brand);
+      font-size: 0.85rem;
+    }
+
+    .flow-step-arrow {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    /* Editorial List Cards */
+    .bullet-list-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bullet-list-card ul, .bullet-list-card ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .bullet-list-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .bullet-icon {
+      color: var(--brand);
+      font-size: 0.85rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .num-bullet {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      color: var(--brand);
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* Editorial Quote Callouts */
+    .quote-callout {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-left: 4px solid var(--brand);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.25rem 1.6rem;
+      margin: 1.85rem 0;
+      font-style: italic;
+      color: #334155;
+      font-size: 1.08rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quote-callout i.fa-quote-left {
+      color: var(--brand);
+      font-size: 1.25rem;
+      opacity: 0.7;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .quote-callout.quote-purple { border-left-color: #7c3aed; }
+    .quote-callout.quote-purple i.fa-quote-left { color: #7c3aed; }
+
+    .quote-callout.quote-amber { border-left-color: #d97706; }
+    .quote-callout.quote-amber i.fa-quote-left { color: #d97706; }
+
+    .quote-callout.quote-rose { border-left-color: #e11d48; }
+    .quote-callout.quote-rose i.fa-quote-left { color: #e11d48; }
+
+    .quote-callout.quote-emerald { border-left-color: #059669; }
+    .quote-callout.quote-emerald i.fa-quote-left { color: #059669; }
+
+    /* Takeaway Callout Box */
+    .takeaway-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.6rem;
+      margin: 2rem 0 0;
+      display: flex;
+      align-items: center;
+      gap: 1.15rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .takeaway-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--emerald-light);
+      border: 1px solid var(--emerald-border);
+      color: var(--emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .takeaway-tag {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--emerald);
+      margin-bottom: 0.2rem;
+    }
+
+    .takeaway-text {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.45;
+    }
+
+    /* Day 3 — Onam Festive Card */
+    .onam-festive-card {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fff7ed 100%);
+      border: 1px solid var(--onam-border);
+      border-radius: var(--radius);
+      padding: 2.25rem 2.25rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .onam-festive-card::before {
+      content: '🌺 🌼 🌸 🪔';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      font-size: 2.5rem;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .onam-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .onam-badge {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: #f59e0b;
+      color: #ffffff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .onam-title {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #78350f;
+    }
+
+    .onam-quote-box {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem 1.4rem;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #92400e;
+      font-size: 1.05rem;
+    }
+
+    /* Day 5 — 3 Industry Blocks Grid */
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+      margin: 1.75rem 0;
+    }
+
+    .industry-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+    }
+
+    .industry-card:hover {
+      border-color: var(--brand-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .industry-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .ind-agri .industry-icon-wrap { background: var(--emerald-light); color: var(--emerald); }
+    .ind-textile .industry-icon-wrap { background: var(--cyan-light); color: var(--cyan); }
+    .ind-retail .industry-icon-wrap { background: var(--amber-light); color: var(--amber); }
+
+    .industry-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+
+    .industry-desc {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Highlight Tags for Finale */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .highlight-tag {
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      color: var(--brand);
+    }
+
+    /* Key Takeaways Final Highlight Section */
+    .takeaways-final-section {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.75rem 2.5rem;
+      margin: 5rem 0 3.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .takeaways-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+    }
+
+    .takeaways-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .takeaways-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .takeaway-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .takeaway-item:hover {
+      border-color: var(--brand-border);
+      transform: translateX(4px);
+    }
+
+    .takeaway-num-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .takeaway-item-text {
+      font-size: 1.02rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .final-statement-box {
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.6rem;
+      text-align: center;
+    }
+
+    .final-statement-text {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--brand);
+    }
+
+    /* Editorial Divider */
+    .editorial-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border-strong) 50%, transparent 100%);
+      margin: 4.5rem 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 0 3rem;
+      margin-top: 5rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .footer-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .footer-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: 100px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      transition: all 0.2s ease;
+    }
+
+    .footer-link-btn:hover {
+      background: var(--brand-light);
+      border-color: var(--brand-border);
+      color: var(--brand);
+      transform: translateY(-2px);
+    }
+
+    /* Subtle Scroll Animation Styles */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-in-section.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .comparison-grid, .industry-grid {
+        grid-template-columns: 1fr;
+      }
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      .onam-festive-card, .takeaways-final-section {
+        padding: 1.75rem 1.25rem;
+      }
+      .flow-steps-wrap {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .flow-step-arrow {
+        display: none;
+      }
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient-bg" aria-hidden="true"></div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <nav class="top-nav">
+    <div class="editorial-container nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-icon">IS</span>
+        <span>Infosys Springboard 7.0</span>
+      </a>
+      <div class="nav-quick-links">
+        <a href="#toc" class="nav-pill">Contents</a>
+        <a href="#day-1" class="nav-pill">Day 1</a>
+        <a href="#day-2" class="nav-pill">Day 2</a>
+        <a href="#day-3" class="nav-pill">Day 3</a>
+        <a href="#day-4" class="nav-pill">Day 4</a>
+        <a href="#day-5" class="nav-pill">Day 5</a>
+        <a href="#takeaways" class="nav-pill" style="color:var(--brand); font-weight:700;">Takeaways</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="editorial-container">
+
+    <!-- ============================================================
+         HERO SECTION
+         ============================================================ -->
+    <header class="hero-section fade-in-section">
+      <div class="hero-badge">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>WEEK 1: COMPLETE ✅</span>
+      </div>
+
+      <h1 class="hero-title">Week 1 Recap — Infosys Springboard 7.0</h1>
+      
+      <p class="hero-subtitle">
+        A five-day learning journey through technology, design thinking, business strategy, and teamwork.
+      </p>
+
+      <div class="hero-intro-box">
+        <p class="hero-intro-text">
+          “Week 1 was a fast-paced introduction to how technology, empathy, data, strategy, and communication come together in the real world. From recommendation algorithms to design thinking, dashboards, business analysis, and portfolio building, every day added a new perspective.”
+        </p>
+      </div>
+
+      <div class="hero-author-tag">
+        <i class="fa-solid fa-users"></i>
+        <span>Team 2 · Learning, building, and growing together</span>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         TABLE OF CONTENTS
+         ============================================================ -->
+    <section class="toc-card fade-in-section" id="toc">
+      <div class="toc-header">
+        <i class="fa-solid fa-list-ul"></i>
+        <span>Table of Contents</span>
+      </div>
+      <div class="toc-grid">
+        <a href="#day-1" class="toc-item">
+          <span class="toc-day-pill">Day 1</span>
+          <span>Users, Data &amp; Solutions</span>
+        </a>
+        <a href="#day-2" class="toc-item">
+          <span class="toc-day-pill">Day 2</span>
+          <span>Information Into Insight</span>
+        </a>
+        <a href="#day-3" class="toc-item">
+          <span class="toc-day-pill" style="background:#fff7ed; color:#ea580c;">Day 3</span>
+          <span>Onam Break 🌺</span>
+        </a>
+        <a href="#day-4" class="toc-item">
+          <span class="toc-day-pill">Day 4</span>
+          <span>Decisions &amp; Branding</span>
+        </a>
+        <a href="#day-5" class="toc-item">
+          <span class="toc-day-pill">Day 5</span>
+          <span>Building &amp; Finale</span>
+        </a>
+        <a href="#takeaways" class="toc-item" style="border-color:var(--brand-border); background:var(--brand-light); color:var(--brand);">
+          <i class="fa-solid fa-star" style="font-size:0.8rem;"></i>
+          <span>7 Key Takeaways</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DAY 1: UNDERSTANDING USERS, DATA & BETTER SOLUTIONS
+         ============================================================ -->
+    <article class="day-article fade-in-section" id="day-1">
+      <div class="day-header">
+        <span class="day-pill day-1-pill">Day 1</span>
+      </div>
+
+      <h2 class="day-heading">Understanding Users, Data &amp; Better Solutions</h2>
+
+      <p class="prose-lead">
+        “Week 1 began with a simple but important idea: strong products are built by understanding both user behaviour and real human problems.”
+      </p>
+
+      <!-- 1.1 Recommendation Algorithms -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--cyan-light); color:var(--cyan);"><i class="fa-solid fa-sliders"></i></span>
+          <span>Recommendation Algorithms</span>
+        </h3>
+
+        <p class="body-p">
+          “The first session introduced recommendation algorithms—the systems behind suggestions such as ‘Recommended for you,’ ‘Customers also bought,’ and personalised content feeds.”
+        </p>
+
+        <!-- 2 Simple Comparison Cards -->
+        <div class="comparison-grid">
+          <div class="editorial-card">
+            <span class="card-badge" style="background:var(--brand-light); color:var(--brand);">User Affinity</span>
+            <h4 class="card-title">Collaborative Filtering</h4>
+            <p class="card-desc">
+              Recommends items based on the interests and behaviour of users with similar preferences.
+            </p>
+          </div>
+
+          <div class="editorial-card">
+            <span class="card-badge" style="background:var(--cyan-light); color:var(--cyan);">Feature Matching</span>
+            <h4 class="card-title">Content-Based Filtering</h4>
+            <p class="card-desc">
+              Recommends items based on the features of content a user has previously liked or interacted with.
+            </p>
+          </div>
+        </div>
+
+        <p class="body-p">
+          “Recommendation engines are not magic. They identify patterns in data and user behaviour to make digital experiences feel more relevant.”
+        </p>
+
+        <div class="quote-callout">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Netflix now knows me better than my own family. Concerning, but efficient.”</span>
+        </div>
+      </div>
+
+      <!-- 1.2 Design Thinking 101 -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:#f3e8ff; color:#7c3aed;"><i class="fa-solid fa-lightbulb"></i></span>
+          <span>Design Thinking 101</span>
+        </h3>
+
+        <p class="body-p">
+          “The next session introduced design thinking: a human-centred approach to solving problems.”
+        </p>
+
+        <!-- Clean Horizontal Flow -->
+        <div class="process-flow-container">
+          <div class="process-flow-title">
+            <i class="fa-solid fa-arrow-progress"></i>
+            <span>Human-Centred 5-Stage Process</span>
+          </div>
+          <div class="flow-steps-wrap">
+            <span class="flow-step-pill"><i class="fa-solid fa-heart" style="color:#e11d48;"></i> Empathize</span>
+            <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
+            <span class="flow-step-pill"><i class="fa-solid fa-bullseye" style="color:#0284c7;"></i> Define</span>
+            <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
+            <span class="flow-step-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#7c3aed;"></i> Ideate</span>
+            <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
+            <span class="flow-step-pill"><i class="fa-solid fa-cubes" style="color:#d97706;"></i> Prototype</span>
+            <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
+            <span class="flow-step-pill"><i class="fa-solid fa-vial-circle-check" style="color:#059669;"></i> Test</span>
+          </div>
+        </div>
+
+        <p class="body-p">
+          “Instead of rushing toward the first solution, design thinking encourages us to understand people, define the real problem, explore possibilities, test ideas, and improve through feedback.”
+        </p>
+
+        <p class="body-p" style="font-weight:600; color:var(--text-heading);">
+          <i class="fa-solid fa-sparkles" style="color:var(--brand);"></i> Key learning: “Fall in love with the problem, not your first idea.”
+        </p>
+
+        <div class="quote-callout quote-purple">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Turns out the ‘obvious solution’ from minute one is rarely the right one. Rude, but fair.”</span>
+        </div>
+      </div>
+
+      <!-- 1.3 Eyewear Retail Case Study -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--amber-light); color:var(--amber);"><i class="fa-solid fa-glasses"></i></span>
+          <span>Eyewear Retail Case Study</span>
+        </h3>
+
+        <p class="body-p">
+          “We applied the design thinking framework to an eyewear retail case study. As a team, we explored the customer journey and considered the challenges people may face while choosing, purchasing, or using eyewear.”
+        </p>
+
+        <div class="bullet-list-card">
+          <ul>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Understanding customer personas and needs</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Identifying pain points in the buying experience</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Brainstorming customer-focused solutions</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Connecting ideas to practical user problems</span></li>
+          </ul>
+        </div>
+
+        <p class="body-p">
+          “The activity showed us that the best ideas are not simply creative—they solve a genuine user need.”
+        </p>
+
+        <div class="quote-callout quote-amber">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Four eyes are better than two — pun fully intended.”</span>
+        </div>
+      </div>
+
+      <!-- Day 1 Takeaway -->
+      <div class="takeaway-banner">
+        <div class="takeaway-icon">
+          <i class="fa-solid fa-compass"></i>
+        </div>
+        <div>
+          <div class="takeaway-tag">Day 1 Takeaway</div>
+          <div class="takeaway-text">
+            Data helps us understand patterns. Empathy helps us understand people. Great solutions need both.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="editorial-divider"></div>
+
+    <!-- ============================================================
+         DAY 2: TURNING INFORMATION INTO INSIGHT
+         ============================================================ -->
+    <article class="day-article fade-in-section" id="day-2">
+      <div class="day-header">
+        <span class="day-pill day-2-pill">Day 2</span>
+      </div>
+
+      <h2 class="day-heading">Turning Information Into Insight</h2>
+
+      <p class="prose-lead">
+        “Day 2 focused on making better decisions: first through data visualization, and then through structured business analysis.”
+      </p>
+
+      <!-- 2.1 Power BI Dashboards -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:#fef3c7; color:#b45309;"><i class="fa-solid fa-chart-pie"></i></span>
+          <span>Power BI Dashboards</span>
+        </h3>
+
+        <p class="body-p">
+          “We explored how Power BI can transform large sets of spreadsheet data into dashboards that are easier to understand, explore, and act upon.”
+        </p>
+
+        <div class="bullet-list-card">
+          <ul>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Visualisations can make complex information easier to interpret</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Filters help users explore data from different perspectives</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Interactive dashboards turn reports into useful decision-making tools</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Clear presentation matters as much as accurate data</span></li>
+          </ul>
+        </div>
+
+        <p class="body-p">
+          “A good dashboard does not just show numbers. It helps people notice what matters.”
+        </p>
+
+        <div class="quote-callout quote-amber">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Nothing says ‘I have my life together’ like a well-filtered pie chart.”</span>
+        </div>
+      </div>
+
+      <!-- 2.2 Design Thinking: The IDEO Method -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--brand-light); color:var(--brand);"><i class="fa-solid fa-arrows-rotate"></i></span>
+          <span>Design Thinking: The IDEO Method</span>
+        </h3>
+
+        <p class="body-p">
+          “We also looked at IDEO’s approach to design thinking, with its emphasis on experimentation, iteration, collaboration, and learning through testing.”
+        </p>
+
+        <p class="body-p">
+          “The process reminded us that progress often comes from trying, learning, improving, and trying again.”
+        </p>
+
+        <div class="quote-callout quote-purple">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“IDEO’s version of ‘fail fast’ sounds a lot more elegant than ours.”</span>
+        </div>
+      </div>
+
+      <!-- 2.3 Value Chain SWOT Analysis -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--emerald-light); color:var(--emerald);"><i class="fa-solid fa-diagram-project"></i></span>
+          <span>Value Chain SWOT Analysis</span>
+        </h3>
+
+        <p class="body-p">
+          “Our hands-on activity involved conducting a SWOT analysis across a value chain.”
+        </p>
+
+        <div class="bullet-list-card">
+          <ol>
+            <li><span class="num-bullet">1</span> <span>Map the journey from raw input to the end customer</span></li>
+            <li><span class="num-bullet">2</span> <span>Study each stage individually</span></li>
+            <li><span class="num-bullet">3</span> <span>Identify strengths, weaknesses, opportunities, and threats</span></li>
+            <li><span class="num-bullet">4</span> <span>Find gaps and prioritise areas for improvement</span></li>
+          </ol>
+        </div>
+
+        <p class="body-p">
+          “Looking at the value chain stage by stage gave us a more practical understanding of where a business can improve.”
+        </p>
+
+        <div class="quote-callout quote-emerald">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired.”</span>
+        </div>
+      </div>
+
+      <!-- Day 2 Takeaway -->
+      <div class="takeaway-banner">
+        <div class="takeaway-icon">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div>
+          <div class="takeaway-tag">Day 2 Takeaway</div>
+          <div class="takeaway-text">
+            Data is valuable when it is clear, and strategy is stronger when we look beyond the surface.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="editorial-divider"></div>
+
+    <!-- ============================================================
+         DAY 3: ONAM BREAK 🌺
+         ============================================================ -->
+    <article class="day-article fade-in-section" id="day-3">
+      <div class="onam-festive-card">
+        <div class="onam-header">
+          <span class="onam-badge">Day 3</span>
+          <h2 class="onam-title">Onam Break 🌺</h2>
+        </div>
+
+        <p class="body-p" style="font-size:1.15rem; color:#78350f; font-weight:600; margin-bottom:1rem;">
+          “Day 3 was reserved for Onam—a moment to pause, celebrate, and recharge.”
+        </p>
+
+        <div class="onam-quote-box">
+          <i class="fa-solid fa-quote-left" style="margin-right:0.4rem; opacity:0.7;"></i>
+          <span>“Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”</span>
+        </div>
+
+        <p class="body-p" style="color:#92400e; font-weight:600; margin-top:1rem; margin-bottom:0;">
+          ✨ “Even the most ambitious learning journey needs a good pause.”
+        </p>
+      </div>
+    </article>
+
+    <div class="editorial-divider"></div>
+
+    <!-- ============================================================
+         DAY 4: UNDERSTANDING DECISIONS & BUILDING A PERSONAL BRAND
+         ============================================================ -->
+    <article class="day-article fade-in-section" id="day-4">
+      <div class="day-header">
+        <span class="day-pill day-4-pill">Day 4</span>
+      </div>
+
+      <h2 class="day-heading">Understanding Decisions &amp; Building a Personal Brand</h2>
+
+      <p class="prose-lead">
+        “Day 4 brought together two important ideas: understanding why people make decisions and learning how to communicate our own professional journey.”
+      </p>
+
+      <!-- 4.1 Prospect Theory -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--cyan-light); color:var(--cyan);"><i class="fa-solid fa-brain"></i></span>
+          <span>Prospect Theory</span>
+        </h3>
+
+        <p class="body-p">
+          “We explored prospect theory, a concept from behavioural economics that explains why people often feel losses more strongly than they value equivalent gains.”
+        </p>
+
+        <div class="editorial-card" style="margin: 1.5rem 0;">
+          <h4 class="card-title" style="color:var(--cyan);"><i class="fa-solid fa-scale-unbalanced" style="margin-right:0.4rem;"></i> The Core Insight</h4>
+          <p class="card-desc" style="color:var(--text); font-size:1.02rem;">
+            “People do not always make decisions based only on logic. Emotions, risk, fear of loss, and framing can strongly influence choices.”
+          </p>
+        </div>
+
+        <p class="body-p">
+          “Understanding human behaviour is important for business, product design, communication, and everyday decision-making.”
+        </p>
+
+        <div class="quote-callout">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Explains perfectly why nobody in the group wanted to be the one who lost the case study debate.”</span>
+        </div>
+      </div>
+
+      <!-- 4.2 Building the Portfolio -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--rose-light); color:var(--rose);"><i class="fa-solid fa-id-card-clip"></i></span>
+          <span>Building the Portfolio</span>
+        </h3>
+
+        <p class="body-p">
+          “The portfolio-building session focused on personal branding and the importance of showing our skills, projects, interests, and growth in a clear and authentic way.”
+        </p>
+
+        <p class="body-p">
+          “A portfolio is more than a collection of work. It is a story of how we think, what we care about, and how we solve problems.”
+        </p>
+
+        <div class="bullet-list-card">
+          <ul>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Showcase skills and learning</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Document projects and experiences</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Communicate clearly and authentically</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Keep improving as confidence and experience grow</span></li>
+          </ul>
+        </div>
+
+        <div class="quote-callout quote-rose">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Portfolio status: under construction, much like everyone’s confidence at 9am.”</span>
+        </div>
+      </div>
+
+      <!-- Day 4 Takeaway -->
+      <div class="takeaway-banner">
+        <div class="takeaway-icon">
+          <i class="fa-solid fa-user-check"></i>
+        </div>
+        <div>
+          <div class="takeaway-tag">Day 4 Takeaway</div>
+          <div class="takeaway-text">
+            Understanding people helps us design better experiences; understanding ourselves helps us present our work with confidence.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="editorial-divider"></div>
+
+    <!-- ============================================================
+         DAY 5: BUILDING, MOTIVATION & BRINGING IT ALL TOGETHER
+         ============================================================ -->
+    <article class="day-article fade-in-section" id="day-5">
+      <div class="day-header">
+        <span class="day-pill day-5-pill">Day 5</span>
+      </div>
+
+      <h2 class="day-heading">Building, Motivation &amp; Bringing It All Together</h2>
+
+      <p class="prose-lead">
+        “The final day of Week 1 was about turning ideas into action, hearing industry perspectives, and presenting everything we had learned.”
+      </p>
+
+      <!-- 5.1 Base44 -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--brand-light); color:var(--brand);"><i class="fa-solid fa-cubes-stacked"></i></span>
+          <span>Base44</span>
+        </h3>
+
+        <p class="body-p">
+          “We explored Base44 and how modern no-code or low-code tools can help transform an app idea into a working product much faster.”
+        </p>
+
+        <p class="body-p">
+          “The session showed how accessible tools can reduce the distance between an idea and a first version of a product.”
+        </p>
+
+        <div class="quote-callout">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“The gap between ‘I have an app idea’ and ‘I have an app’ just got a lot smaller.”</span>
+        </div>
+      </div>
+
+      <!-- 5.2 Motivation and Vision Talk -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:#fef3c7; color:#b45309;"><i class="fa-solid fa-bullseye"></i></span>
+          <span>Motivation and Vision Talk</span>
+        </h3>
+
+        <p class="body-p">
+          “A motivation and vision talk by Ram encouraged us to think beyond the immediate programme and connect what we are learning with our future goals.”
+        </p>
+
+        <p class="body-p">
+          “The session was a reminder that skills grow through consistency, curiosity, confidence, and the willingness to keep learning.”
+        </p>
+      </div>
+
+      <!-- 5.3 Guest Lecture: Agriculture, Textile & Retail -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:var(--emerald-light); color:var(--emerald);"><i class="fa-solid fa-industry"></i></span>
+          <span>Guest Lecture: Agriculture, Textile &amp; Retail</span>
+        </h3>
+
+        <p class="body-p">
+          “We gained industry perspectives on agriculture, textile, and retail businesses, and the complex systems behind products and services that people often take for granted.”
+        </p>
+
+        <!-- 3 Clean Visual Blocks -->
+        <div class="industry-grid">
+          <div class="industry-card ind-agri">
+            <div class="industry-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
+            <h4 class="industry-title">Agriculture</h4>
+            <p class="industry-desc">
+              “Understanding the ground realities behind supply chains, production, and the journey from source to market.”
+            </p>
+          </div>
+
+          <div class="industry-card ind-textile">
+            <div class="industry-icon-wrap"><i class="fa-solid fa-shirt"></i></div>
+            <h4 class="industry-title">Textile</h4>
+            <p class="industry-desc">
+              “Exploring the path from raw material to finished product, along with the many operational challenges in between.”
+            </p>
+          </div>
+
+          <div class="industry-card ind-retail">
+            <div class="industry-icon-wrap"><i class="fa-solid fa-store"></i></div>
+            <h4 class="industry-title">Retail</h4>
+            <p class="industry-desc">
+              “Understanding how products ultimately meet customers at the point of sale and how customer experience shapes business outcomes.”
+            </p>
+          </div>
+        </div>
+
+        <div class="quote-callout quote-emerald">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Three very different industries, one common theme: real-world business is messier than the case studies.”</span>
+        </div>
+      </div>
+
+      <!-- 5.4 Week 1 Presentation — The Finale -->
+      <div class="sub-topic">
+        <h3 class="sub-topic-title">
+          <span class="sub-topic-icon" style="background:#f3e8ff; color:#7c3aed;"><i class="fa-solid fa-trophy"></i></span>
+          <span>Week 1 Presentation — The Finale</span>
+        </h3>
+
+        <p class="body-p">
+          “Week 1 concluded with a team presentation that brought together everything we learned during the week.”
+        </p>
+
+        <!-- Highlighted Tags -->
+        <div class="tag-cloud">
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Recommendation Algorithms</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Power BI Dashboards</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Design Thinking</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Value Chain SWOT Analysis</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Prospect Theory</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Industry Insights</span>
+        </div>
+
+        <p class="body-p" style="margin-top:1.25rem; font-weight:600;">
+          “We survived, presented, and lived to start Week 2.”
+        </p>
+
+        <div class="quote-callout quote-purple">
+          <i class="fa-solid fa-quote-left"></i>
+          <span>“Nothing bonds a team like collectively realising the deadline was today, not tomorrow.”</span>
+        </div>
+      </div>
+
+      <!-- Day 5 Takeaway -->
+      <div class="takeaway-banner">
+        <div class="takeaway-icon">
+          <i class="fa-solid fa-handshake-angle"></i>
+        </div>
+        <div>
+          <div class="takeaway-tag">Day 5 Takeaway</div>
+          <div class="takeaway-text">
+            Learning becomes meaningful when we connect ideas, communicate clearly, and apply them together.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============================================================
+         WEEK 1 KEY TAKEAWAYS
+         ============================================================ -->
+    <section class="takeaways-final-section fade-in-section" id="takeaways">
+      <h2 class="takeaways-title">Week 1 Key Takeaways</h2>
+      <p class="takeaways-subtitle">Seven core lessons from our first five days together.</p>
+
+      <ul class="takeaways-list">
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">1</span>
+          <span class="takeaway-item-text">Technology is most useful when it solves a real human problem.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">2</span>
+          <span class="takeaway-item-text">Design thinking begins with empathy, not assumptions.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">3</span>
+          <span class="takeaway-item-text">Data becomes powerful when it is communicated clearly.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">4</span>
+          <span class="takeaway-item-text">Business strategy requires understanding the full value chain.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">5</span>
+          <span class="takeaway-item-text">Human behaviour influences decisions as much as logic does.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">6</span>
+          <span class="takeaway-item-text">A portfolio is an evolving record of learning and growth.</span>
+        </li>
+        <li class="takeaway-item">
+          <span class="takeaway-num-badge">7</span>
+          <span class="takeaway-item-text">Collaboration, iteration, and communication are essential professional skills.</span>
+        </li>
+      </ul>
+
+      <div class="final-statement-box">
+        <span class="final-statement-text">
+          ✨ Week 1 complete. More learning, building, and growing ahead.
+        </span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="editorial-container footer-content">
+      <div class="footer-left">
+        <div class="footer-title">Created by: Visakan K</div>
+        <div class="footer-sub">Infosys Springboard 7.0 · Team 2</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/visakan-k" target="_blank" rel="noopener noreferrer" class="footer-link-btn">
+          <i class="fa-brands fa-linkedin" style="color:#0a66c2;"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://github.com/Visakan2004" target="_blank" rel="noopener noreferrer" class="footer-link-btn">
+          <i class="fa-brands fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="index.html" class="footer-link-btn" style="background:var(--brand-light); border-color:var(--brand-border); color:var(--brand);">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Animation & Interactive Scripts -->
+  <script>
+    // Smooth Intersection Observer for Section Animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -40px 0px',
+        threshold: 0.08
+      };
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in-section').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+
+</body>
+</html>

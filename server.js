@@ -36,6 +36,11 @@ app.get(['/price-protosem-week-1', '/price-protosem-1st-week', '/protosem-week-1
   res.sendFile(path.join(__dirname, 'price-protosem-week-1.html'));
 });
 
+// Infosys Springboard 7.0 Week 1 Recap Routes
+app.get(['/infosys-springboard-week-1', '/springboard-week-1', '/week-1-recap', '/infosys-week-1'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'infosys-springboard-week-1.html'));
+});
+
 // POST /contact — save message to messages.txt
 app.post('/contact', (req, res) => {
   const name = (req.body.name || '').trim();
