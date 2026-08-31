@@ -26,6 +26,11 @@ app.get('/assets/resume.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'assets', 'resume.html'));
 });
 
+// PRICE Protosem Week 0 Blog Routes
+app.get(['/price-protosem', '/price-protosem-0th-week', '/protosem-week-0', '/price-protosem-week-0', '/week-00-story'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-0th-week.html'));
+});
+
 // POST /contact — save message to messages.txt
 app.post('/contact', (req, res) => {
   const name = (req.body.name || '').trim();

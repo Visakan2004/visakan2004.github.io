@@ -1325,7 +1325,7 @@
     -------------------------------------------------- */
     const protoSemWeeks = [
       // PHASE 01 · WEEKS 00–04
-      { week: 0,  phase: 1, slug: "week-00", status: "coming-soon" },
+      { week: 0,  phase: 1, slug: "week-00", status: "published", title: "PRICE Protosem — Our 0th Week", link: "price-protosem-0th-week.html" },
       { week: 1,  phase: 1, slug: "week-01", status: "coming-soon" },
       { week: 2,  phase: 1, slug: "week-02", status: "coming-soon" },
       { week: 3,  phase: 1, slug: "week-03", status: "coming-soon" },
@@ -1397,31 +1397,31 @@
           const isWeek00 = item.week === 0;
 
           html += `
-            <a href="#${item.slug}"
+            <a href="${isWeek00 ? 'price-protosem-0th-week.html' : '#' + item.slug}"
                class="journey-node-card tilt-card ${isWeek00 ? 'journey-node-entry' : ''}"
                data-week="${item.week}"
                data-slug="${item.slug}"
                aria-label="Week ${weekStr} Overview">
 
-              <div class="node-status-pill">
-                <span class="node-pulse-dot"></span>
-                <span>COMING SOON</span>
+              <div class="node-status-pill ${isWeek00 ? 'node-status-published' : ''}">
+                <span class="node-pulse-dot" style="${isWeek00 ? 'background:#10b981; box-shadow:0 0 8px #10b981;' : ''}"></span>
+                <span>${isWeek00 ? 'STORY PUBLISHED' : 'COMING SOON'}</span>
               </div>
 
               ${isWeek00 ? `
-                <div class="orientation-flag">
-                  <i class="fa-solid fa-compass"></i>
-                  <span>ORIENTATION / START</span>
+                <div class="orientation-flag" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(16,185,129,0.2)); border:1px solid rgba(16,185,129,0.4); color:#34d399;">
+                  <i class="fa-solid fa-sparkles"></i>
+                  <span>ORIENTATION · 5 EXPERIENCES</span>
                 </div>
               ` : ''}
 
               <div class="node-main-info">
                 <div class="node-meta-tag">PHASE ${phaseStr}</div>
-                <div class="node-week-title">WEEK ${weekStr}</div>
+                <div class="node-week-title">${isWeek00 ? 'OUR 0th WEEK' : `WEEK ${weekStr}`}</div>
               </div>
 
               <div class="node-footer">
-                <span class="node-notes-tag">Field Notes In Progress</span>
+                <span class="node-notes-tag" style="${isWeek00 ? 'color:#38bdf8;' : ''}">${isWeek00 ? 'Read 5-Day Chronicle' : 'Field Notes In Progress'}</span>
                 <span class="node-action-arrow" aria-hidden="true">
                   <i class="fa-solid fa-arrow-right"></i>
                 </span>
@@ -1440,6 +1440,11 @@
 
       container.querySelectorAll('.journey-node-card').forEach(card => {
         card.addEventListener('click', (e) => {
+          const week = card.getAttribute('data-week');
+          if (week === '0') {
+            // Week 0 has full dedicated blog page
+            return; // allow default link navigation to price-protosem-0th-week.html
+          }
           e.preventDefault();
           const slug = card.getAttribute('data-slug');
           navigateToWeek(slug);
@@ -1491,13 +1496,13 @@
           </div>
 
           <div class="week-header-block">
-            <div class="week-status-badge">
-              <span class="status-pulse-dot"></span>
-              <span>COMING SOON</span>
+            <div class="week-status-badge" style="${isWeek00 ? 'background:rgba(16,185,129,0.15); border-color:rgba(16,185,129,0.4); color:#34d399;' : ''}">
+              <span class="status-pulse-dot" style="${isWeek00 ? 'background:#10b981; box-shadow:0 0 8px #10b981;' : ''}"></span>
+              <span>${isWeek00 ? 'STORY PUBLISHED' : 'COMING SOON'}</span>
             </div>
 
-            <h1 class="week-main-title" id="weekOverviewHeading">WEEK ${weekStr}</h1>
-            <p class="week-subtitle">Field Notes In Progress</p>
+            <h1 class="week-main-title" id="weekOverviewHeading">${isWeek00 ? 'PRICE Protosem — Our 0th Week' : `WEEK ${weekStr}`}</h1>
+            <p class="week-subtitle">${isWeek00 ? '17–21 August 2026 • 5 Days. 5 Experiences. 1 New Perspective.' : 'Field Notes In Progress'}</p>
           </div>
 
           <div class="week-meta-grid">
@@ -1511,15 +1516,27 @@
             </div>
             <div class="week-meta-box">
               <span class="meta-box-label">Status</span>
-              <span class="meta-box-val meta-status-highlight">Coming Soon</span>
+              <span class="meta-box-val meta-status-highlight" style="${isWeek00 ? 'color:#34d399;' : ''}">${isWeek00 ? 'Published' : 'Coming Soon'}</span>
             </div>
           </div>
 
-          <div class="week-notice-card">
-            <div class="notice-icon"><i class="fa-solid fa-book-open"></i></div>
+          <div class="week-notice-card" style="${isWeek00 ? 'border-color:rgba(99,102,241,0.4); background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(16,185,129,0.08));' : ''}">
+            <div class="notice-icon" style="${isWeek00 ? 'color:#38bdf8;' : ''}"><i class="fa-solid ${isWeek00 ? 'fa-newspaper' : 'fa-book-open'}"></i></div>
             <div class="notice-text">
-              <p class="notice-primary">Detailed weekly story will be published here.</p>
-              <p class="notice-secondary">${isWeek00 ? 'Orientation and launch logbook entries are currently being compiled.' : 'Practical documentation, milestones, and technical reflections will be documented upon release.'}</p>
+              <p class="notice-primary">${isWeek00 ? '“We didn’t just learn entrepreneurship. We experienced the mindset.”' : 'Detailed weekly story will be published here.'}</p>
+              <p class="notice-secondary">${isWeek00 ? 'Explore the full interactive 5-day chronicle featuring real orientation photos, Connect, Discover, Collaborate, Own, and Create.' : 'Practical documentation, milestones, and technical reflections will be documented upon release.'}</p>
+              ${isWeek00 ? `
+                <div style="margin-top:1.1rem; display:flex; flex-direction:column; gap:0.9rem;">
+                  <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); max-height:160px;">
+                    <img src="assets/protosem/price-inauguration-stage.jpg" alt="PRICE Protosem Inauguration" style="width:100%; height:160px; object-fit:cover; display:block;" />
+                  </div>
+                  <a href="price-protosem-0th-week.html" class="btn btn-primary" style="display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.7rem 1.4rem; font-size:0.92rem; text-decoration:none; width:100%;">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span>Read Full 5-Day Chronicle &amp; Photo Gallery</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              ` : ''}
             </div>
           </div>
 

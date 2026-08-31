@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PRICE Protosem — Our 0th Week (17–21 August 2026): 5 Days. 5 Experiences. 1 New Perspective." />
+  <title>PRICE Protosem — Our 0th Week | Visakan K</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       CLEAN, MODERN & MINIMALIST STYLING
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #090d16;
+      --card-bg: #101626;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #e2e8f0;
+      --text-heading: #ffffff;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-cyan: #38bdf8;
+      --radius: 16px;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      padding-bottom: 5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation Bar */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .nav-logo-badge {
+      background: var(--accent);
+      color: #ffffff;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .nav-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+    }
+
+    .nav-back-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Container */
+    .article-container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 0;
+    }
+
+    /* Hero Section */
+    .hero-header {
+      margin-bottom: 3.5rem;
+      text-align: left;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-dates-tag {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-dates-tag .dot {
+      color: var(--text-muted);
+    }
+
+    .hero-quote-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-quote-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    /* 5 Themes Horizontal Progression Flow */
+    .themes-chain-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .themes-chain-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .themes-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: 100px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .theme-step-pill i {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+    }
+
+    .theme-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .hero-intro {
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    /* Divider */
+    .clean-divider {
+      height: 1px;
+      background: var(--card-border);
+      margin: 3.5rem 0;
+    }
+
+    /* ============================================================
+       DAILY SECTIONS
+       ============================================================ */
+    .day-section {
+      margin-bottom: 4rem;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .day-num-tag {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #ffffff;
+      background: var(--accent);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .day-1 .day-num-tag { background: #0284c7; }
+    .day-2 .day-num-tag { background: #9333ea; }
+    .day-3 .day-num-tag { background: #d97706; }
+    .day-4 .day-num-tag { background: #059669; }
+    .day-5 .day-num-tag { background: #e11d48; }
+
+    .day-meta-text {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .day-title {
+      font-family: var(--font-heading);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .day-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .day-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .day-text strong {
+      color: #ffffff;
+    }
+
+    /* Clean Key Points Pills */
+    .key-points-box {
+      margin: 1.25rem 0;
+    }
+
+    .key-points-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .key-points-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .key-pill {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: #f1f5f9;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .key-pill i {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+    }
+
+    /* Day Quote */
+    .quote-box {
+      background: var(--card-bg);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 1.1rem 1.4rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: #f8fafc;
+      font-size: 1.05rem;
+    }
+
+    .day-1 .quote-box { border-left-color: #0284c7; }
+    .day-2 .quote-box { border-left-color: #9333ea; }
+    .day-3 .quote-box { border-left-color: #d97706; }
+    .day-4 .quote-box { border-left-color: #059669; }
+    .day-5 .quote-box { border-left-color: #e11d48; }
+
+    /* Day Takeaway Badge */
+    .takeaway-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 0.5rem;
+    }
+
+    .takeaway-tag i {
+      color: #10b981;
+    }
+
+    /* ============================================================
+       CLEAN PHOTO CARDS
+       ============================================================ */
+    .photo-card {
+      margin: 1.75rem 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      max-height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-caption {
+      padding: 0.85rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .photo-caption strong {
+      color: #ffffff;
+    }
+
+    .photo-zoom-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      white-space: nowrap;
+    }
+
+    /* 2-Photo Grid */
+    .photo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .photo-grid-2 .photo-card {
+      margin: 0;
+    }
+
+    .photo-grid-2 .photo-card img {
+      max-height: 250px;
+      height: 230px;
+    }
+
+    /* ============================================================
+       OUR WEEK IN ONE FRAME & CLOSING
+       ============================================================ */
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2.25rem;
+      margin: 3.5rem 0;
+    }
+
+    .summary-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .summary-sub {
+      color: var(--text-muted);
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+    }
+
+    .summary-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      font-size: 1rem;
+      color: #cbd5e1;
+    }
+
+    .summary-num {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .summary-item strong {
+      color: #ffffff;
+      font-family: var(--font-heading);
+    }
+
+    /* Closing Block */
+    .closing-block {
+      text-align: center;
+      margin: 4.5rem 0 2rem;
+    }
+
+    .take-forward-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+
+    .take-forward-heading {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+    }
+
+    .take-forward-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .forward-pill {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .forward-pill i {
+      color: #10b981;
+      font-size: 0.75rem;
+    }
+
+    .closing-reflection {
+      font-style: italic;
+      color: #e2e8f0;
+      border-top: 1px solid var(--card-border);
+      padding-top: 1.25rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .final-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 2.75rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .final-sub {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+    }
+
+    .cta-btn:hover {
+      background: #4f46e5;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-wrap {
+      max-width: 900px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      object-fit: contain;
+    }
+
+    .lightbox-text {
+      margin-top: 0.85rem;
+      color: #ffffff;
+      font-size: 0.92rem;
+      text-align: center;
+      font-family: var(--font-heading);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -2.8rem;
+      right: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-close:hover {
+      background: #ef4444;
+    }
+
+    @media (max-width: 640px) {
+      .photo-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .article-container {
+        padding: 2rem 1.2rem 0;
+      }
+      .hero-h1 {
+        font-size: 2rem;
+      }
+      .day-title {
+        font-size: 1.5rem;
+      }
+      .summary-card, .take-forward-box {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <a href="index.html#protosem" class="nav-logo">
+        <span class="nav-logo-badge">V</span>
+        <span>PRICE Protosem</span>
+      </a>
+      <a href="index.html#protosem" class="nav-back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Portfolio</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Article -->
+  <main class="article-container">
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+      <div class="badge-pill">
+        <i class="fa-regular fa-compass"></i>
+        <span>PRICE Protosem • Orientation Chronicle</span>
+      </div>
+
+      <h1 class="hero-h1">PRICE Protosem — Our 0th Week</h1>
+
+      <div class="hero-dates-tag">
+        <span>17–21 August 2026</span>
+        <span class="dot">•</span>
+        <span>5 Days. 5 Experiences. 1 New Perspective.</span>
+      </div>
+
+      <div class="hero-quote-card">
+        <p class="hero-quote-text">
+          “We didn’t just learn entrepreneurship. We experienced the mindset.”
+        </p>
+      </div>
+
+      <!-- 5 Themes Chain -->
+      <div class="themes-chain-wrap">
+        <div class="themes-chain-title">5-Day Mindset Progression</div>
+        <div class="themes-chain">
+          <span class="theme-step-pill"><i class="fa-solid fa-handshake"></i> Connect</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-compass"></i> Discover</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-users"></i> Collaborate</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-flag"></i> Own</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> Create</span>
+        </div>
+      </div>
+
+      <p class="hero-intro">
+        PRICE Protosem’s first batch began its journey with five immersive days of learning, reflection, games, teamwork, ownership, and entrepreneurial inspiration. Each day brought a new experience—and together they shaped <strong>one new perspective</strong>.
+      </p>
+    </header>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 1: CONNECT
+         ============================================================ -->
+    <section class="day-section day-1">
+      <div class="day-header">
+        <span class="day-num-tag">Day 1</span>
+        <span class="day-meta-text">17 August 2026</span>
+      </div>
+
+      <h2 class="day-title">Connect</h2>
+      <h3 class="day-subtitle">Break the Ice. Build the Connection.</h3>
+
+      <p class="day-text">
+        Our first day was about <strong>introductions, first hellos, and building comfort</strong> with one another. We got to know PRICE Protosem, the programme, and the people beginning this journey alongside us.
+      </p>
+      <p class="day-text">
+        A simple Rock–Paper–Scissors tournament got us talking, laughing, competing, and connecting across diverse backgrounds.
+      </p>
+
+      <div class="key-points-box">
+        <div class="key-points-label">What we discovered</div>
+        <div class="key-points-list">
+          <span class="key-pill"><i class="fa-solid fa-comments"></i> Talking</span>
+          <span class="key-pill"><i class="fa-solid fa-face-smile"></i> Laughing</span>
+          <span class="key-pill"><i class="fa-solid fa-gamepad"></i> Competing</span>
+          <span class="key-pill"><i class="fa-solid fa-link"></i> Connecting</span>
+        </div>
+      </div>
+
+      <!-- Photo: Day 1 Icebreaker Gathering -->
+      <div class="photo-card" onclick="openLightbox('assets/protosem/day1-icebreaker-connect.jpg', 'Day 1 Icebreaker Session: Building connections and comfort in the cohort.')">
+        <img src="assets/protosem/day1-icebreaker-connect.jpg" alt="Day 1 Icebreaker circle gathering" loading="lazy" />
+        <div class="photo-caption">
+          <span><strong>Day 1 Gathering:</strong> Breaking the ice and getting to know the cohort.</span>
+          <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i> Tap to enlarge</span>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        “Before we build ideas together, we need to connect first.”
+      </div>
+
+      <div class="takeaway-tag">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Takeaway: Connect</span>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 2: DISCOVER
+         ============================================================ -->
+    <section class="day-section day-2">
+      <div class="day-header">
+        <span class="day-num-tag">Day 2</span>
+        <span class="day-meta-text">18 August 2026</span>
+      </div>
+
+      <h2 class="day-title">Discover</h2>
+      <h3 class="day-subtitle">Know Yourself. Know Your Journey.</h3>
+
+      <p class="day-text">
+        Day two focused on <strong>personality, purpose, and self-awareness</strong>. Through the 16 Personalities activity, we explored our strengths, preferences, and thinking styles.
+      </p>
+      <p class="day-text">
+        Zen Pencils gave us a story that encouraged deep reflection on our individual journeys and how diverse minds build formidable startup teams.
+      </p>
+
+      <div class="key-points-box">
+        <div class="key-points-label">What we explored</div>
+        <div class="key-points-list">
+          <span class="key-pill"><i class="fa-solid fa-bolt"></i> Strengths</span>
+          <span class="key-pill"><i class="fa-solid fa-sliders"></i> Preferences</span>
+          <span class="key-pill"><i class="fa-solid fa-brain"></i> Thinking styles</span>
+        </div>
+      </div>
+
+      <!-- Photo: Day 2 Zen Pencils Reflection Session -->
+      <div class="photo-card" onclick="openLightbox('assets/protosem/zen-pencils-reflection.jpg', 'Day 2 Reflection: Zen Pencils story and self-discovery discussion.')">
+        <img src="assets/protosem/zen-pencils-reflection.jpg" alt="Zen Pencils reflection session on screen" loading="lazy" />
+        <div class="photo-caption">
+          <span><strong>Self-Discovery Session:</strong> Reflecting on individual journeys via Zen Pencils.</span>
+          <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i> Tap to enlarge</span>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        “Different paths. Different pace. Same possibility of success.”
+      </div>
+
+      <div class="takeaway-tag">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Takeaway: Understand Yourself</span>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 3: COLLABORATE
+         ============================================================ -->
+    <section class="day-section day-3">
+      <div class="day-header">
+        <span class="day-num-tag">Day 3</span>
+        <span class="day-meta-text">19 August 2026</span>
+      </div>
+
+      <h2 class="day-title">Collaborate</h2>
+      <h3 class="day-subtitle">Who’s the Imposter?</h3>
+
+      <p class="day-text">
+        Day three transformed interactive games into high-stakes lessons in <strong>trust, communication, and teamwork</strong>.
+      </p>
+      <p class="day-text">
+        In a real-life version of <em>Among Us</em>, every team had a specific mission—except one hidden imposter. To find the imposter, we had to observe micro-behaviors, communicate clearly, build mutual trust, and decide together under time pressure. Later, the <strong>Marshmallow Challenge</strong> pushed us to iterate rapidly, listen actively, and build resilient structures collaboratively.
+      </p>
+
+      <div class="key-points-box">
+        <div class="key-points-label">What teamwork required</div>
+        <div class="key-points-list">
+          <span class="key-pill"><i class="fa-solid fa-eye"></i> Observe</span>
+          <span class="key-pill"><i class="fa-solid fa-comment"></i> Communicate</span>
+          <span class="key-pill"><i class="fa-solid fa-shield"></i> Trust</span>
+          <span class="key-pill"><i class="fa-solid fa-gavel"></i> Decide</span>
+          <span class="key-pill"><i class="fa-solid fa-ear-listen"></i> Listen</span>
+          <span class="key-pill"><i class="fa-solid fa-cubes"></i> Build</span>
+          <span class="key-pill"><i class="fa-solid fa-flask"></i> Experiment</span>
+          <span class="key-pill"><i class="fa-solid fa-arrows-rotate"></i> Adapt</span>
+        </div>
+      </div>
+
+      <!-- 2 Photos: Marshmallow Challenge + Forge Lab Collaboration -->
+      <div class="photo-grid-2">
+        <div class="photo-card" onclick="openLightbox('assets/protosem/marshmallow-challenge.jpg', 'The Marshmallow Challenge: Rapid prototyping and spaghetti tower construction.')">
+          <img src="assets/protosem/marshmallow-challenge.jpg" alt="Marshmallow spaghetti tower challenge in action" loading="lazy" />
+          <div class="photo-caption">
+            <span><strong>Marshmallow Challenge:</strong> Rapid team prototyping.</span>
+            <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i></span>
+          </div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('assets/protosem/forge-team-collaboration.jpg', 'Collaborative problem solving & teamwork inside the FORGE Innovation Lab')">
+          <img src="assets/protosem/forge-team-collaboration.jpg" alt="Team brainstorming around laptop in the Forge Lab" loading="lazy" />
+          <div class="photo-caption">
+            <span><strong>Innovation Lab:</strong> Collaborative problem solving.</span>
+            <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        “Great teams don’t just talk. They listen, connect and build together.”
+      </div>
+
+      <div class="takeaway-tag">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Takeaway: Trust + Teamwork</span>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 4: OWN
+         ============================================================ -->
+    <section class="day-section day-4">
+      <div class="day-header">
+        <span class="day-num-tag">Day 4</span>
+        <span class="day-meta-text">20 August 2026</span>
+      </div>
+
+      <h2 class="day-title">Own</h2>
+      <h3 class="day-subtitle">From Participants to Pioneers.</h3>
+
+      <p class="day-text">
+        Day four introduced us to the <strong>rigorous mindset and accountability</strong> behind the programme. Mrs. Hema’s orientation introduced the <strong>seven FORGE principles</strong>—centred on mindset, discipline, and growth, along with the scoreboard to track our total ownership of results.
+      </p>
+      <p class="day-text">
+        The inauguration of the first PRICE batch featured <strong>Rai Kumar, CEO of RAI</strong>. He showed us retail through the customer’s eyes, encouraging us to look beyond surface-level answers and step into real market problem-solving.
+      </p>
+
+      <div class="key-points-box">
+        <div class="key-points-label">What we learned</div>
+        <div class="key-points-list">
+          <span class="key-pill"><i class="fa-solid fa-question"></i> Ask better questions</span>
+          <span class="key-pill"><i class="fa-solid fa-glasses"></i> See new perspectives</span>
+          <span class="key-pill"><i class="fa-solid fa-wrench"></i> Look for solutions</span>
+          <span class="key-pill"><i class="fa-solid fa-trophy"></i> Take ownership</span>
+        </div>
+      </div>
+
+      <!-- 2 Photos: Inauguration Stage + Retail Evolution Slide -->
+      <div class="photo-grid-2">
+        <div class="photo-card" onclick="openLightbox('assets/protosem/price-inauguration-stage.jpg', 'PRICE Protosem Official Inauguration Ceremony at Sarabhai Kalam Theater, KCT')">
+          <img src="assets/protosem/price-inauguration-stage.jpg" alt="Inauguration stage screen at Sarabhai Kalam Theater" loading="lazy" />
+          <div class="photo-caption">
+            <span><strong>Inauguration Ceremony</strong> at Sarabhai Kalam Theater.</span>
+            <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i></span>
+          </div>
+        </div>
+
+        <div class="photo-card" onclick="openLightbox('assets/protosem/retail-evolution-rai.jpg', 'Rai Kumar, CEO of RAI: Retail Evolution from 1900s to 2026 Keynote')">
+          <img src="assets/protosem/retail-evolution-rai.jpg" alt="Retail Evolution presentation slide" loading="lazy" />
+          <div class="photo-caption">
+            <span><strong>Retail Evolution:</strong> Customer perspective masterclass.</span>
+            <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photo: Batch 01 Pioneers in Auditorium -->
+      <div class="photo-card" onclick="openLightbox('assets/protosem/price-cohort-pioneers.jpg', 'PRICE Protosem Batch 01 Pioneers attending orientation sessions in FORGE shirts')">
+        <img src="assets/protosem/price-cohort-pioneers.jpg" alt="Visakan and peers in FORGE uniform during orientation" loading="lazy" />
+        <div class="photo-caption">
+          <span><strong>The Pioneer Cohort:</strong> Batch 01 pioneers ready to take ownership and build.</span>
+          <span class="photo-zoom-hint"><i class="fa-solid fa-expand"></i> Tap to enlarge</span>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        “He didn’t just explain retail—he made us experience it from the customer’s point of view.”
+      </div>
+
+      <div class="takeaway-tag">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Takeaway: Observe • Question • Own</span>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 5: CREATE
+         ============================================================ -->
+    <section class="day-section day-5">
+      <div class="day-header">
+        <span class="day-num-tag">Day 5</span>
+        <span class="day-meta-text">21 August 2026</span>
+      </div>
+
+      <h2 class="day-title">Create</h2>
+      <h3 class="day-subtitle">Entrepreneurship, Beyond Theory.</h3>
+
+      <p class="day-text">
+        The final day marked the <strong>YEP Kick-Off on World Entrepreneurs’ Day</strong> at KCT. <strong>Ramkrishna Muthu</strong>, Managing Director of Thulasi Pharmacies, shared real-life entrepreneurial stories that revealed how authentic growth unfolds sustainably over time through grit and daily decisions.
+      </p>
+
+      <div class="key-points-box">
+        <div class="key-points-label">The entrepreneurial journey</div>
+        <div class="key-points-list">
+          <span class="key-pill">Challenge</span>
+          <span class="key-pill">→ Choice</span>
+          <span class="key-pill">→ Courage</span>
+          <span class="key-pill">→ Consistency</span>
+          <span class="key-pill" style="color: #f43f5e; font-weight:700;">→ Growth</span>
+        </div>
+      </div>
+
+      <p class="day-text">
+        The biggest realisation from the session was that <strong>growth is a daily choice, not a single moment</strong>.
+      </p>
+
+      <div class="quote-box">
+        “Entrepreneurs aren’t built overnight. They are built through the choices they make every day.”
+      </div>
+
+      <div class="takeaway-tag">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Takeaway: Experience • Persist • Create</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         OUR WEEK IN ONE FRAME SUMMARY
+         ============================================================ -->
+    <section class="summary-card">
+      <h2 class="summary-title">Our Week in One Frame</h2>
+      <p class="summary-sub">Five days. Five lessons. One mindset.</p>
+
+      <ul class="summary-list">
+        <li class="summary-item">
+          <span class="summary-num">1</span>
+          <div><strong>Connect</strong> — Build relationships before building ideas.</div>
+        </li>
+        <li class="summary-item">
+          <span class="summary-num">2</span>
+          <div><strong>Discover</strong> — Understand your strengths and your journey.</div>
+        </li>
+        <li class="summary-item">
+          <span class="summary-num">3</span>
+          <div><strong>Collaborate</strong> — Trust, listen, and build with others.</div>
+        </li>
+        <li class="summary-item">
+          <span class="summary-num">4</span>
+          <div><strong>Own</strong> — Observe, question, and take responsibility.</div>
+        </li>
+        <li class="summary-item">
+          <span class="summary-num">5</span>
+          <div><strong>Create</strong> — Make courageous choices and create impact.</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============================================================
+         CLOSING & FINAL CALL TO ACTION
+         ============================================================ -->
+    <section class="closing-block">
+
+      <div class="take-forward-box">
+        <h3 class="take-forward-heading">What we take forward</h3>
+        <div class="take-forward-pills">
+          <span class="forward-pill"><i class="fa-solid fa-check"></i> Question more.</span>
+          <span class="forward-pill"><i class="fa-solid fa-check"></i> Listen better.</span>
+          <span class="forward-pill"><i class="fa-solid fa-check"></i> Think differently.</span>
+          <span class="forward-pill"><i class="fa-solid fa-check"></i> Work together.</span>
+          <span class="forward-pill"><i class="fa-solid fa-check"></i> Create impact.</span>
+        </div>
+
+        <p class="closing-reflection">
+          “We came as participants. We leave as the first batch—ready to build, experiment and make an impact.”
+        </p>
+      </div>
+
+      <h2 class="final-headline">And this is just the beginning.</h2>
+      <p class="final-sub">20 Weeks of PRICE Protosem • KCT FORGE</p>
+
+      <div>
+        <a href="index.html#protosem" class="cta-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Portfolio</span>
+        </a>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightboxModal">
+    <div class="lightbox-wrap">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightboxImage" src="" alt="PRICE Protosem Highlight" />
+      <div class="lightbox-text" id="lightboxText"></div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImage');
+      const text = document.getElementById('lightboxText');
+      if (modal && img) {
+        img.src = src;
+        if (text) text.textContent = caption || '';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.getElementById('lightboxModal').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
