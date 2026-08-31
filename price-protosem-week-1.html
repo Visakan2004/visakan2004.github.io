@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PRICE Protosem — Week 01 (Day 1): Understanding Users, Data & Better Solutions. Recommendation algorithms, Design Thinking process, and Eyewear Retail case study." />
+  <title>PRICE Protosem — Week 01 | Visakan K</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       CLEAN, MODERN & MINIMALIST STYLING — WEEK 01
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #090d16;
+      --card-bg: #101626;
+      --card-bg-subtle: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-border-hover: rgba(99, 102, 241, 0.35);
+      --text: #e2e8f0;
+      --text-heading: #ffffff;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      font-size: 1.05rem;
+      padding-bottom: 5rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation Bar */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0.9rem 1.5rem;
+    }
+
+    .nav-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .nav-logo-badge {
+      background: linear-gradient(135deg, #6366f1, #38bdf8);
+      color: #ffffff;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .nav-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+    }
+
+    .nav-breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-breadcrumb a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.4rem 0.85rem;
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn.nav-btn-highlight {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #a5b4fc;
+    }
+
+    .nav-btn.nav-btn-highlight:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Container */
+    .article-container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 0;
+    }
+
+    /* Hero Header */
+    .hero-header {
+      margin-bottom: 3.5rem;
+      text-align: left;
+    }
+
+    .badge-pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .badge-pill-cyan {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #7dd3fc;
+    }
+
+    .hero-h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.3rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-dates-tag {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin-bottom: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-dates-tag .dot {
+      color: var(--text-muted);
+    }
+
+    .hero-quote-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 1.35rem 1.6rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-quote-text {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    /* Themes Horizontal Progression Flow */
+    .themes-chain-wrap {
+      margin-bottom: 2.25rem;
+    }
+
+    .themes-chain-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .themes-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .theme-step-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: 100px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .theme-step-pill i {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+    }
+
+    .theme-arrow {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .hero-intro {
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: #cbd5e1;
+    }
+
+    /* Divider */
+    .clean-divider {
+      height: 1px;
+      background: var(--card-border);
+      margin: 3.5rem 0;
+    }
+
+    /* ============================================================
+       DAILY SECTIONS & SUBSECTIONS
+       ============================================================ */
+    .day-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .day-num-tag {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #ffffff;
+      background: #0284c7;
+      padding: 0.35rem 0.85rem;
+      border-radius: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .day-meta-text {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .day-title {
+      font-family: var(--font-heading);
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+
+    .day-subtitle {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 1.5rem;
+    }
+
+    .topic-block {
+      margin-top: 2.75rem;
+      margin-bottom: 2.75rem;
+    }
+
+    .topic-heading {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .topic-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .day-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+      margin-bottom: 1.25rem;
+    }
+
+    .day-text strong {
+      color: #ffffff;
+    }
+
+    /* Comparison / Interactive Algorithm Box */
+    .algo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .algo-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .algo-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-2px);
+    }
+
+    .algo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .algo-collab::before {
+      background: linear-gradient(90deg, #6366f1, #a855f7);
+    }
+
+    .algo-content::before {
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+    }
+
+    .algo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      margin-bottom: 0.85rem;
+      font-family: var(--font-heading);
+    }
+
+    .algo-collab .algo-badge {
+      background: rgba(99, 102, 241, 0.15);
+      color: #c7d2fe;
+    }
+
+    .algo-content .algo-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: #bae6fd;
+    }
+
+    .algo-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.6rem;
+    }
+
+    .algo-desc {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .algo-example-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+    }
+
+    .algo-example-box strong {
+      color: var(--accent-cyan);
+    }
+
+    /* Interactive Filtering Sandbox */
+    .algo-interactive-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.75rem 0;
+    }
+
+    .sandbox-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .sandbox-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.25rem;
+      border-radius: 8px;
+      gap: 0.25rem;
+    }
+
+    .filter-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-tab-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .sandbox-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sandbox-view {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .sandbox-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Visual Simulation Flow */
+    .flow-step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .flow-step-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .flow-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .flow-step-text {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    /* Quotes */
+    .quote-box {
+      background: var(--card-bg);
+      border-left: 3px solid #0284c7;
+      border-radius: 0 12px 12px 0;
+      padding: 1.15rem 1.4rem;
+      margin: 1.75rem 0;
+      font-style: italic;
+      color: #f8fafc;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .quote-box.quote-purple {
+      border-left-color: #a855f7;
+    }
+
+    .quote-box.quote-amber {
+      border-left-color: #f59e0b;
+    }
+
+    /* ============================================================
+       DESIGN THINKING 5-STAGE INTERACTIVE COMPONENT
+       ============================================================ */
+    .dt-interactive-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .dt-step-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .dt-step-btn {
+      background: var(--card-bg-subtle);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dt-step-btn i {
+      font-size: 1.1rem;
+    }
+
+    .dt-step-btn span {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .dt-step-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .dt-step-btn.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(56, 189, 248, 0.25));
+      border-color: var(--accent-cyan);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .dt-stage-card {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      display: none;
+    }
+
+    .dt-stage-card.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .dt-stage-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+    }
+
+    .dt-stage-num {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .dt-stage-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .dt-stage-desc {
+      font-size: 1rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .dt-key-takeaway {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      color: #34d399;
+    }
+
+    .dt-key-takeaway i {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       EYEWEAR CASE STUDY 4-PILLAR GRID
+       ============================================================ */
+    .case-study-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .case-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .case-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .case-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .case-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .case-title {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .case-desc {
+      font-size: 0.94rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+    }
+
+    .case-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-top: auto;
+    }
+
+    .case-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .case-bullets li i {
+      color: #fbbf24;
+      font-size: 0.75rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    /* Day Takeaway Badge */
+    .takeaway-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(16, 185, 129, 0.12));
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin: 3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .takeaway-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      flex-shrink: 0;
+    }
+
+    .takeaway-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #34d399;
+      margin-bottom: 0.25rem;
+    }
+
+    .takeaway-quote {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.45;
+    }
+
+    /* Footer Navigation */
+    .footer-nav-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 4rem;
+    }
+
+    .footer-nav-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer-nav-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .footer-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav-link:hover {
+      color: var(--accent-cyan);
+    }
+
+    .cta-portfolio-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: 100px;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+    }
+
+    .cta-portfolio-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .algo-grid, .case-study-grid {
+        grid-template-columns: 1fr;
+      }
+      .dt-step-nav {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .flow-step-grid {
+        grid-template-columns: 1fr;
+      }
+      .article-container {
+        padding: 2rem 1.2rem 0;
+      }
+      .hero-h1 {
+        font-size: 2rem;
+      }
+      .day-title {
+        font-size: 1.55rem;
+      }
+      .footer-nav-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="index.html#protosem" class="nav-logo">
+          <span class="nav-logo-badge">V</span>
+          <span>PRICE Protosem</span>
+        </a>
+        <div class="nav-breadcrumb">
+          <span>/</span>
+          <a href="index.html#protosem">Phase 01</a>
+          <span>/</span>
+          <span style="color:#ffffff;">Week 01</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="price-protosem-0th-week.html" class="nav-btn" title="Previous: Week 00">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Week 00</span>
+        </a>
+        <a href="index.html#protosem" class="nav-btn nav-btn-highlight">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Timeline</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Article -->
+  <main class="article-container">
+
+    <!-- Hero Header -->
+    <header class="hero-header">
+      <div class="badge-pill-group">
+        <div class="badge-pill">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Phase 01 · Week 01</span>
+        </div>
+        <div class="badge-pill badge-pill-cyan">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Users &amp; Data</span>
+        </div>
+      </div>
+
+      <h1 class="hero-h1">Understanding Users, Data &amp; Better Solutions</h1>
+
+      <div class="hero-dates-tag">
+        <span>24–28 August 2026</span>
+        <span class="dot">•</span>
+        <span>Recommendation Algorithms</span>
+        <span class="dot">•</span>
+        <span>Design Thinking</span>
+        <span class="dot">•</span>
+        <span>Eyewear Retail Study</span>
+      </div>
+
+      <div class="hero-quote-card">
+        <p class="hero-quote-text">
+          “Good products are built by understanding both user behaviour and real human problems.”
+        </p>
+      </div>
+
+      <!-- Themes Progression -->
+      <div class="themes-chain-wrap">
+        <div class="themes-chain-title">Week 1 Discovery Flow</div>
+        <div class="themes-chain">
+          <span class="theme-step-pill"><i class="fa-solid fa-database"></i> User Data</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-brain"></i> Recommendation Engines</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-lightbulb"></i> 5-Stage Design Thinking</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-glasses"></i> Eyewear Case Study</span>
+          <i class="fa-solid fa-arrow-right theme-arrow"></i>
+          <span class="theme-step-pill"><i class="fa-solid fa-bullseye"></i> Empathy + Impact</span>
+        </div>
+      </div>
+
+      <p class="hero-intro">
+        Week 1 shifted our focus from team orientation to core product intelligence. By bridging algorithmic patterns with genuine human empathy, we learned how modern digital products anticipate user desires, uncover hidden pain points, and build solutions that truly matter.
+      </p>
+    </header>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 1: UNDERSTANDING USERS, DATA & BETTER SOLUTIONS
+         ============================================================ -->
+    <section class="day-section day-1">
+      <div class="day-header">
+        <span class="day-num-tag">Day 1</span>
+        <span class="day-meta-text">Week 01 Kick-Off</span>
+      </div>
+
+      <h2 class="day-title">Understanding Users, Data &amp; Better Solutions</h2>
+      <h3 class="day-subtitle">Decoding Behavioural Patterns to Solve Real Human Problems</h3>
+
+      <p class="day-text">
+        Week 1 began with a simple but important idea: <strong>good products are built by understanding both user behaviour and real human problems.</strong> Without data, we are guessing; without empathy, we build irrelevant features.
+      </p>
+
+      <!-- Topic 1: How Recommendation Algorithms Work -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-sliders"></i></span>
+          <span>How Recommendation Algorithms Work</span>
+        </h3>
+
+        <p class="day-text">
+          The first session introduced recommendation algorithms—the intelligent systems behind suggestions such as <em>“Customers also bought,”</em> <em>“Recommended for you,”</em> and personalized content feeds on Spotify, Amazon, and YouTube.
+        </p>
+        <p class="day-text">
+          We explored the two core approaches that power modern digital experiences:
+        </p>
+
+        <!-- 2 Column Algorithm Breakdown -->
+        <div class="algo-grid">
+          <!-- Collaborative Filtering -->
+          <div class="algo-card algo-collab">
+            <span class="algo-badge"><i class="fa-solid fa-users"></i> Behavioral Clustering</span>
+            <h4 class="algo-title">Collaborative Filtering</h4>
+            <p class="algo-desc">
+              Recommendations based on the preferences, ratings, and browsing behaviors of <strong>similar users</strong>.
+            </p>
+            <div class="algo-example-box">
+              <strong>Mechanism:</strong> If User A &amp; User B share 90% common favorites, User B is recommended items User A loved.
+            </div>
+          </div>
+
+          <!-- Content-Based Filtering -->
+          <div class="algo-card algo-content">
+            <span class="algo-badge"><i class="fa-solid fa-tags"></i> Feature Matching</span>
+            <h4 class="algo-title">Content-Based Filtering</h4>
+            <p class="algo-desc">
+              Recommendations based on the <strong>intrinsic attributes and features</strong> of items a user has interacted with previously.
+            </p>
+            <div class="algo-example-box">
+              <strong>Mechanism:</strong> If you read books tagged <em>#SciFi</em> and <em>#AI</em>, the engine recommends other items sharing those exact metadata attributes.
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Recommendation Simulator -->
+        <div class="algo-interactive-wrap">
+          <div class="sandbox-header">
+            <div class="sandbox-title">
+              <i class="fa-solid fa-code-compare" style="color:var(--accent-cyan);"></i>
+              <span>Algorithmic Logic Explorer</span>
+            </div>
+            <div class="filter-tabs">
+              <button class="filter-tab-btn active" onclick="switchAlgoTab('collab', this)">Collaborative</button>
+              <button class="filter-tab-btn" onclick="switchAlgoTab('content', this)">Content-Based</button>
+              <button class="filter-tab-btn" onclick="switchAlgoTab('hybrid', this)">Hybrid Engine</button>
+            </div>
+          </div>
+
+          <div class="sandbox-body">
+            <!-- Collab View -->
+            <div class="sandbox-view active" id="view-collab">
+              <p style="font-size:0.95rem; color:#cbd5e1; margin-bottom:0.75rem;">
+                <strong>Collaborative Pipeline:</strong> Discovers latent user affinity networks without needing to understand the item itself.
+              </p>
+              <div class="flow-step-grid">
+                <div class="flow-step-card">
+                  <div class="flow-step-num">1</div>
+                  <div class="flow-step-text"><strong>User Activity</strong><br/>Tracks clicks, watch time, and upvotes</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num">2</div>
+                  <div class="flow-step-text"><strong>Cohort Similarity</strong><br/>Finds users with matching taste vectors</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num">3</div>
+                  <div class="flow-step-text"><strong>Predictive Delivery</strong><br/>Recommends unseen items from peers</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Content View -->
+            <div class="sandbox-view" id="view-content">
+              <p style="font-size:0.95rem; color:#cbd5e1; margin-bottom:0.75rem;">
+                <strong>Content-Based Pipeline:</strong> Extracts granular metadata tags and maps them directly to your personal taste profile.
+              </p>
+              <div class="flow-step-grid">
+                <div class="flow-step-card">
+                  <div class="flow-step-num">1</div>
+                  <div class="flow-step-text"><strong>Item Feature Vector</strong><br/>Tags genre, author, director, material</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num">2</div>
+                  <div class="flow-step-text"><strong>User Profile Matrix</strong><br/>Weights features you frequent most</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num">3</div>
+                  <div class="flow-step-text"><strong>Cosine Similarity</strong><br/>Matches highest ranking item vectors</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hybrid View -->
+            <div class="sandbox-view" id="view-hybrid">
+              <p style="font-size:0.95rem; color:#cbd5e1; margin-bottom:0.75rem;">
+                <strong>Modern Hybrid Engines (e.g. Netflix, Spotify):</strong> Combines collaborative crowd wisdom with granular content tags to conquer the cold-start problem.
+              </p>
+              <div class="flow-step-grid">
+                <div class="flow-step-card">
+                  <div class="flow-step-num"><i class="fa-solid fa-users"></i></div>
+                  <div class="flow-step-text"><strong>Crowd Patterns</strong><br/>What similar listeners stream right now</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num"><i class="fa-solid fa-plus"></i></div>
+                  <div class="flow-step-text"><strong>Acoustic &amp; Meta</strong><br/>Tempo, key signature, and lyrical mood</div>
+                </div>
+                <div class="flow-step-card">
+                  <div class="flow-step-num"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                  <div class="flow-step-text"><strong>Hyper-Personalization</strong><br/>The perfect recommendation feed</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="day-text">
+          The session made it clear that recommendation engines are not magic. They learn from <strong>data, patterns, and user behaviour</strong> to make digital experiences more relevant.
+        </p>
+
+        <div class="quote-box">
+          “Netflix now knows me better than my own family. Concerning, but efficient.”
+        </div>
+      </div>
+
+      <div class="clean-divider"></div>
+
+      <!-- Topic 2: Design Thinking: Starting With People -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon" style="background:rgba(168,85,247,0.15); color:#c084fc;"><i class="fa-solid fa-lightbulb"></i></span>
+          <span>Design Thinking: Starting With People</span>
+        </h3>
+
+        <p class="day-text">
+          Our design thinking session focused on a mindset that shaped the rest of the week: <strong>begin with the problem, not with a ready-made solution.</strong>
+        </p>
+
+        <p class="day-text">
+          We learned and applied the five iterative stages of the human-centered design thinking process:
+        </p>
+
+        <!-- Interactive 5-Stage Explorer -->
+        <div class="dt-interactive-container">
+          <div class="dt-step-nav">
+            <button class="dt-step-btn active" onclick="showDtStage(0, this)">
+              <i class="fa-solid fa-heart" style="color:#f43f5e;"></i>
+              <span>1. Empathize</span>
+            </button>
+            <button class="dt-step-btn" onclick="showDtStage(1, this)">
+              <i class="fa-solid fa-bullseye" style="color:#38bdf8;"></i>
+              <span>2. Define</span>
+            </button>
+            <button class="dt-step-btn" onclick="showDtStage(2, this)">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color:#a855f7;"></i>
+              <span>3. Ideate</span>
+            </button>
+            <button class="dt-step-btn" onclick="showDtStage(3, this)">
+              <i class="fa-solid fa-cubes" style="color:#f59e0b;"></i>
+              <span>4. Prototype</span>
+            </button>
+            <button class="dt-step-btn" onclick="showDtStage(4, this)">
+              <i class="fa-solid fa-vial-circle-check" style="color:#10b981;"></i>
+              <span>5. Test</span>
+            </button>
+          </div>
+
+          <!-- Stage 1 -->
+          <div class="dt-stage-card active" id="dt-stage-0">
+            <div class="dt-stage-header">
+              <span class="dt-stage-num">Stage 01 · Foundation</span>
+              <span class="badge-pill" style="border-color:#f43f5e; color:#fda4af; background:rgba(244,63,94,0.15);">Observe &amp; Immerse</span>
+            </div>
+            <h4 class="dt-stage-title">Empathize: Understand the Human Experience</h4>
+            <p class="dt-stage-desc">
+              Rather than assuming what users need, we immerse ourselves in their daily reality. We conduct interviews, observe behaviors, and uncover latent frustrations without imposing our own biases.
+            </p>
+            <div class="dt-key-takeaway">
+              <i class="fa-solid fa-circle-info"></i>
+              <span><strong>Guiding Question:</strong> What does the user feel, think, and struggle with when nobody is watching?</span>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="dt-stage-card" id="dt-stage-1">
+            <div class="dt-stage-header">
+              <span class="dt-stage-num">Stage 02 · Synthesis</span>
+              <span class="badge-pill" style="border-color:#38bdf8; color:#bae6fd; background:rgba(56,189,248,0.15);">Problem Framing</span>
+            </div>
+            <h4 class="dt-stage-title">Define: Pinpoint the Root Problem</h4>
+            <p class="dt-stage-desc">
+              Synthesize field observations to identify the core obstacle. A well-framed problem statement focuses on user needs rather than business objectives or pre-determined technical solutions.
+            </p>
+            <div class="dt-key-takeaway">
+              <i class="fa-solid fa-circle-info"></i>
+              <span><strong>Guiding Question:</strong> How might we solve the root cause rather than just addressing the surface symptom?</span>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="dt-stage-card" id="dt-stage-2">
+            <div class="dt-stage-header">
+              <span class="dt-stage-num">Stage 03 · Divergence</span>
+              <span class="badge-pill" style="border-color:#a855f7; color:#e9d5ff; background:rgba(168,85,247,0.15);">Brainstorming</span>
+            </div>
+            <h4 class="dt-stage-title">Ideate: Explore Unconstrained Possibilities</h4>
+            <p class="dt-stage-desc">
+              Generate a wide spectrum of ideas without immediate judgment. The goal is volume and diversity—pushing past conventional, obvious answers to uncover innovative approaches.
+            </p>
+            <div class="dt-key-takeaway">
+              <i class="fa-solid fa-circle-info"></i>
+              <span><strong>Guiding Question:</strong> What wild or non-traditional ways could transform this user journey entirely?</span>
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="dt-stage-card" id="dt-stage-3">
+            <div class="dt-stage-header">
+              <span class="dt-stage-num">Stage 04 · Convergence</span>
+              <span class="badge-pill" style="border-color:#f59e0b; color:#fde68a; background:rgba(245,158,11,0.15);">Rapid Building</span>
+            </div>
+            <h4 class="dt-stage-title">Prototype: Build to Learn</h4>
+            <p class="dt-stage-desc">
+              Transform ideas into tangible, low-cost prototypes. Whether a paper wireframe, mock flow, or simple simulation, prototypes allow teams to experiment quickly and fail cheaply.
+            </p>
+            <div class="dt-key-takeaway">
+              <i class="fa-solid fa-circle-info"></i>
+              <span><strong>Guiding Question:</strong> What is the fastest and cheapest artifact we can build to test our key hypothesis?</span>
+            </div>
+          </div>
+
+          <!-- Stage 5 -->
+          <div class="dt-stage-card" id="dt-stage-4">
+            <div class="dt-stage-header">
+              <span class="dt-stage-num">Stage 05 · Validation</span>
+              <span class="badge-pill" style="border-color:#10b981; color:#a7f3d0; background:rgba(16,185,129,0.15);">Feedback Loop</span>
+            </div>
+            <h4 class="dt-stage-title">Test: Validate with Real Users</h4>
+            <p class="dt-stage-desc">
+              Put the prototype into real users' hands. Observe where they hesitate, listen to their candid reactions, and feed those insights back into empathy and refinement loops.
+            </p>
+            <div class="dt-key-takeaway">
+              <i class="fa-solid fa-circle-info"></i>
+              <span><strong>Guiding Question:</strong> Did this genuinely improve the user's friction point, and what should we iterate next?</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="day-text">
+          The key lesson: <strong>the first idea is rarely the final answer.</strong> Better solutions come from curiosity, empathy, experimentation, and continuous iteration.
+        </p>
+
+        <div class="quote-box quote-purple">
+          “Turns out the ‘obvious solution’ from minute one is rarely the right one. Rude, but fair.”
+        </div>
+      </div>
+
+      <div class="clean-divider"></div>
+
+      <!-- Topic 3: Eyewear Retail Case Study -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon" style="background:rgba(245,158,11,0.15); color:#fbbf24;"><i class="fa-solid fa-glasses"></i></span>
+          <span>Applying Design Thinking: Eyewear Retail Case Study</span>
+        </h3>
+
+        <p class="day-text">
+          We put the framework into practice through an <strong>eyewear retail case study</strong>. Working as a collaborative team, we examined the entire customer journey and looked beyond the physical product itself to identify challenges that customers face while choosing, purchasing, or wearing eyewear.
+        </p>
+
+        <!-- 4-Pillar Case Study Grid -->
+        <div class="case-study-grid">
+          <!-- Pillar 1 -->
+          <div class="case-card">
+            <div class="case-header">
+              <div class="case-icon"><i class="fa-solid fa-user-tag"></i></div>
+              <h4 class="case-title">1. Customer Personas &amp; Needs</h4>
+            </div>
+            <p class="case-desc">
+              Mapped distinct profiles—first-time prescription wearers, fashion-driven shoppers, and professionals with heavy screen fatigue.
+            </p>
+            <ul class="case-bullets">
+              <li><i class="fa-solid fa-check"></i> Understanding emotional anxiety of changing appearance.</li>
+              <li><i class="fa-solid fa-check"></i> Varying priorities: budget, style vs optical accuracy.</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="case-card">
+            <div class="case-header">
+              <div class="case-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <h4 class="case-title">2. Friction &amp; Pain Points</h4>
+            </div>
+            <p class="case-desc">
+              Identified critical hurdles throughout the eyewear purchasing and selection cycle.
+            </p>
+            <ul class="case-bullets">
+              <li><i class="fa-solid fa-check"></i> Frame fit uncertainty without prescription lenses fitted.</li>
+              <li><i class="fa-solid fa-check"></i> Opaque lens pricing and confusing coating add-ons.</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="case-card">
+            <div class="case-header">
+              <div class="case-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+              <h4 class="case-title">3. Customer-Friendly Ideation</h4>
+            </div>
+            <p class="case-desc">
+              Discussed concepts to make the customer journey simpler, more intuitive, and confidence-building.
+            </p>
+            <ul class="case-bullets">
+              <li><i class="fa-solid fa-check"></i> Face-shape AI matching and real-time AR try-on.</li>
+              <li><i class="fa-solid fa-check"></i> At-home trial kits and transparent tier breakdowns.</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="case-card">
+            <div class="case-header">
+              <div class="case-icon"><i class="fa-solid fa-arrows-to-circle"></i></div>
+              <h4 class="case-title">4. Practical Problem Connection</h4>
+            </div>
+            <p class="case-desc">
+              Tethered creative ideas back to viable, real-world user solutions rather than vanity tech gimmicks.
+            </p>
+            <ul class="case-bullets">
+              <li><i class="fa-solid fa-check"></i> Ensuring accessibility across diverse age demographics.</li>
+              <li><i class="fa-solid fa-check"></i> Measurable reduction in post-purchase return friction.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="day-text">
+          The activity showed us that effective problem-solving is not about having the loudest idea in the room. <strong>It is about finding the idea that genuinely improves the user’s experience.</strong>
+        </p>
+
+        <div class="quote-box quote-amber">
+          “Four eyes are better than two — pun fully intended.”
+        </div>
+      </div>
+
+      <!-- Takeaway Card -->
+      <div class="takeaway-box">
+        <div class="takeaway-icon-circle">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <div>
+          <div class="takeaway-label">Day 1 Key Takeaway</div>
+          <div class="takeaway-quote">
+            “Data can help us understand patterns, but empathy helps us understand people. The best solutions need both.”
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer Navigation -->
+    <div class="footer-nav-card">
+      <div class="footer-nav-col">
+        <span class="footer-nav-label">Previous Story</span>
+        <a href="price-protosem-0th-week.html" class="footer-nav-link">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Week 00: Our 0th Week (Orientation)</span>
+        </a>
+      </div>
+
+      <div>
+        <a href="index.html#protosem" class="cta-portfolio-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Portfolio Journey</span>
+        </a>
+      </div>
+
+      <div class="footer-nav-col" style="text-align:right;">
+        <span class="footer-nav-label">Next Up</span>
+        <span class="footer-nav-link" style="color:var(--text-muted); cursor:default;">
+          <span>Week 02 · Coming Soon</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Algorithmic Explorer Tab Switcher
+    function switchAlgoTab(tabType, btn) {
+      document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.sandbox-view').forEach(v => v.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetView = document.getElementById('view-' + tabType);
+      if (targetView) {
+        targetView.classList.add('active');
+      }
+    }
+
+    // Design Thinking 5-Stage Step Explorer
+    function showDtStage(index, btn) {
+      document.querySelectorAll('.dt-step-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.dt-stage-card').forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const targetCard = document.getElementById('dt-stage-' + index);
+      if (targetCard) {
+        targetCard.classList.add('active');
+      }
+    }
+  </script>
+
+</body>
+</html>

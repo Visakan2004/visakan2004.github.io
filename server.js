@@ -31,6 +31,11 @@ app.get(['/price-protosem', '/price-protosem-0th-week', '/protosem-week-0', '/pr
   res.sendFile(path.join(__dirname, 'price-protosem-0th-week.html'));
 });
 
+// PRICE Protosem Week 1 Blog Routes
+app.get(['/price-protosem-week-1', '/price-protosem-1st-week', '/protosem-week-1', '/week-01-story', '/week-1'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-1.html'));
+});
+
 // POST /contact — save message to messages.txt
 app.post('/contact', (req, res) => {
   const name = (req.body.name || '').trim();
