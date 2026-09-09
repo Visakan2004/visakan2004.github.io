@@ -362,6 +362,19 @@ function buildPipeline() {
     evidence: allEvidence
   };
 
+  // Avoid unnecessary commits if content did not change
+  if (fs.existsSync(JSON_OUTPUT_PATH)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(JSON_OUTPUT_PATH, 'utf8'));
+      if (
+        JSON.stringify(existing.days || {}) === JSON.stringify(finalJson.days) &&
+        JSON.stringify(existing.evidence || []) === JSON.stringify(finalJson.evidence)
+      ) {
+        finalJson.lastCompiled = existing.lastCompiled || finalJson.lastCompiled;
+      }
+    } catch (e) {}
+  }
+
   fs.writeFileSync(JSON_OUTPUT_PATH, JSON.stringify(finalJson, null, 2), 'utf8');
 
   console.log('✅ Compilation Completed Successfully!');

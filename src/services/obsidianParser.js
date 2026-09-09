@@ -112,12 +112,12 @@ function convertObsidianLinks(content, week, day) {
     // If altText is pure number (e.g. 300 for resizing in Obsidian), use filename
     const isDimension = altText && /^\d+x?\d*$/.test(altText.trim());
     const caption = (altText && !isDimension) ? altText.trim() : fileName;
-    return `![${caption}](${assetBasePath}/${fileName})`;
+    return `![${caption}](${assetBasePath}/${encodeURI(fileName)})`;
   });
 
   // 2. Convert standard relative markdown image links: ![alt](filename.ext) or ![alt](./filename.ext)
   converted = converted.replace(/!\[([^\]]*)\]\((?:\.\/)?([^):/\\]+\.[a-zA-Z0-9]+)\)/g, (match, alt, file) => {
-    return `![${alt || file}](${assetBasePath}/${file})`;
+    return `![${alt || file}](${assetBasePath}/${encodeURI(file)})`;
   });
 
   // 3. Convert Obsidian wikilinks: [[Target|Label]] -> Label or Target
