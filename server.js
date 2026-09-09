@@ -10,7 +10,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static assets and root directory
+app.use('/assets', express.static(path.join(__dirname, 'public', 'assets')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname));
 
 // Explicit Routes

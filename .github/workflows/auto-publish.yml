@@ -1,0 +1,58 @@
+name: Auto-Publish Obsidian Portfolio Content
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'portfolio-content/**'
+  workflow_dispatch:
+  schedule:
+    # Every Monday at 05:00 AM UTC
+    - cron: '0 5 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci --ignore-scripts || npm install --ignore-scripts
+          else
+            npm install --ignore-scripts
+          fi
+
+      - name: Compile Obsidian Content
+        run: node scripts/build-templates.js
+
+      - name: Commit and push generated changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage compiled content and media
+          git add public/assets/weekly src/content/blogs src/data/compiledProtoSem.json assets/weekly
+          
+          if git diff --staged --quiet; then
+            echo "✅ No compiled changes detected. Working tree clean."
+          else
+            echo "📝 Changes detected in compiled artifacts. Committing..."
+            git commit -m "Auto-compile ProtoSem portfolio content [skip ci]"
+            git push
+            echo "🚀 Successfully pushed compiled portfolio content."
+          fi

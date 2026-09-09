@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Week 1 Recap — Infosys Springboard 7.0. A five-day learning journey through technology, design thinking, business strategy, and teamwork by Team 2." />
+  <meta name="description" content="Week 1 Recap — Infosys Springboard 7.0 for Team 2. An editorial recap covering recommendation algorithms, design thinking, Power BI, value chain SWOT, behavioural economics, and industry insights." />
+  <meta name="author" content="Visakan K · Team 2" />
   <title>Week 1 Recap — Infosys Springboard 7.0 | Team 2</title>
 
-  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+  <!-- Google Fonts: Space Grotesk (headings) & Plus Jakarta Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -17,7 +18,7 @@
 
   <style>
     /* ============================================================
-       EDITORIAL LIGHT DESIGN SYSTEM
+       EDITORIAL DESIGN SYSTEM TOKENS
        ============================================================ */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -32,12 +33,15 @@
       --surface-subtle: #f8fafc;
       --border: #e2e8f0;
       --border-strong: #cbd5e1;
-      --text: #1e293b;
+      --border-focus: #818cf8;
+      
+      --text: #334155;
       --text-muted: #64748b;
       --text-light: #94a3b8;
       --text-heading: #0f172a;
       
       --brand: #4f46e5;
+      --brand-hover: #4338ca;
       --brand-light: #eef2ff;
       --brand-border: #c7d2fe;
       
@@ -45,6 +49,10 @@
       --cyan-light: #f0f9ff;
       --cyan-border: #bae6fd;
       
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-border: #ddd6fe;
+
       --emerald: #059669;
       --emerald-light: #ecfdf5;
       --emerald-border: #a7f3d0;
@@ -66,9 +74,12 @@
       
       --radius: 16px;
       --radius-sm: 10px;
-      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-      --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+      --radius-pill: 9999px;
+      
+      --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+      --shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.06), 0 1px 4px -1px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 10px 25px -3px rgba(15, 23, 42, 0.07), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 20px 35px -5px rgba(15, 23, 42, 0.09), 0 8px 16px -4px rgba(15, 23, 42, 0.05);
     }
 
     html {
@@ -92,19 +103,31 @@
       color: #312e81;
     }
 
-    /* Ambient Decorative Top Gradient */
-    .ambient-bg {
+    /* Scroll progress bar */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, var(--brand), var(--cyan), var(--purple));
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Ambient Background Gradients */
+    .ambient-glow-top {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 480px;
-      background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.08) 0%, rgba(56, 189, 248, 0.04) 40%, rgba(250, 250, 252, 0) 70%);
+      height: 520px;
+      background: radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.12) 0%, rgba(56, 189, 248, 0.06) 45%, rgba(250, 250, 252, 0) 75%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* Container */
+    /* Layout Container */
     .editorial-container {
       max-width: 860px;
       margin: 0 auto;
@@ -113,17 +136,22 @@
       z-index: 1;
     }
 
-    /* Header Nav */
+    /* Top Sticky Navigation */
     .top-nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      padding: 0.85rem 0;
-      transition: all 0.2s ease;
+      padding: 0.75rem 0;
+      transition: all 0.25s ease;
+    }
+
+    .top-nav.scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
     }
 
     .nav-inner {
@@ -145,9 +173,9 @@
     }
 
     .nav-brand-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
       background: linear-gradient(135deg, #4f46e5, #0284c7);
       color: #ffffff;
       display: flex;
@@ -155,13 +183,21 @@
       justify-content: center;
       font-size: 0.85rem;
       font-weight: 800;
-      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
     }
 
     .nav-quick-links {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.35rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding: 2px;
+    }
+
+    .nav-quick-links::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-pill {
@@ -170,47 +206,77 @@
       font-weight: 600;
       color: var(--text-muted);
       text-decoration: none;
-      padding: 0.35rem 0.75rem;
-      border-radius: 100px;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-pill);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    .nav-pill:hover {
+    .nav-pill:hover,
+    .nav-pill.active {
       color: var(--brand);
       background: var(--brand-light);
     }
 
-    /* Hero Section */
+    /* Hero Header */
     .hero-section {
-      padding: 4.5rem 0 3.5rem;
+      padding: 4.5rem 0 3.25rem;
       text-align: left;
+    }
+
+    .hero-badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.35rem;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 0.95rem;
-      border-radius: 100px;
+      gap: 0.45rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge-complete {
       background: var(--emerald-light);
       border: 1px solid var(--emerald-border);
       color: var(--emerald);
-      font-family: var(--font-heading);
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge-team {
+      background: var(--brand-light);
+      border: 1px solid var(--brand-border);
+      color: var(--brand);
+    }
+
+    .hero-badge-read {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5.5vw, 3.4rem);
+      font-size: clamp(2.3rem, 5.2vw, 3.35rem);
       font-weight: 800;
       color: var(--text-heading);
-      line-height: 1.18;
+      line-height: 1.16;
       letter-spacing: -0.025em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.15rem;
+    }
+
+    .hero-title .title-gradient {
+      background: linear-gradient(135deg, #0f172a 30%, #4f46e5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
@@ -218,7 +284,7 @@
       color: var(--cyan);
       font-family: var(--font-heading);
       font-weight: 600;
-      line-height: 1.45;
+      line-height: 1.5;
       margin-bottom: 1.75rem;
     }
 
@@ -227,21 +293,30 @@
       border: 1px solid var(--border);
       border-left: 4px solid var(--brand);
       border-radius: var(--radius-sm);
-      padding: 1.5rem 1.8rem;
+      padding: 1.4rem 1.75rem;
       margin-bottom: 1.5rem;
       box-shadow: var(--shadow-sm);
     }
 
     .hero-intro-text {
-      font-size: 1.14rem;
+      font-size: 1.12rem;
       color: var(--text);
       line-height: 1.75;
+    }
+
+    .hero-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 0.5rem;
     }
 
     .hero-author-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--text-muted);
@@ -252,14 +327,37 @@
       color: var(--brand);
     }
 
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      font-weight: 600;
+      font-family: var(--font-heading);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .share-btn:hover {
+      background: var(--brand-light);
+      border-color: var(--brand-border);
+      color: var(--brand);
+    }
+
     /* Table of Contents */
     .toc-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 1.75rem 2rem;
-      margin: 2.5rem 0 4rem;
+      margin: 2rem 0 3.75rem;
       box-shadow: var(--shadow-sm);
+      position: relative;
     }
 
     .toc-header {
@@ -267,7 +365,7 @@
       align-items: center;
       gap: 0.65rem;
       font-family: var(--font-heading);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -277,7 +375,7 @@
 
     .toc-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 0.75rem;
     }
 
@@ -285,7 +383,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 0.7rem 0.9rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius-sm);
       background: var(--surface-subtle);
       border: 1px solid var(--border);
@@ -314,7 +412,7 @@
       color: var(--text-heading);
     }
 
-    /* Section Styles */
+    /* Section Articles */
     .day-article {
       margin-bottom: 4.5rem;
       scroll-margin-top: 5rem;
@@ -338,14 +436,14 @@
     }
 
     .day-1-pill { background: var(--cyan); }
-    .day-2-pill { background: #7c3aed; }
+    .day-2-pill { background: var(--purple); }
     .day-3-pill { background: #ea580c; }
-    .day-4-pill { background: #0284c7; }
-    .day-5-pill { background: #059669; }
+    .day-4-pill { background: var(--brand); }
+    .day-5-pill { background: var(--emerald); }
 
     .day-heading {
       font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 3.5vw, 2.25rem);
+      font-size: clamp(1.8rem, 3.6vw, 2.3rem);
       font-weight: 800;
       color: var(--text-heading);
       line-height: 1.25;
@@ -361,7 +459,7 @@
     }
 
     .sub-topic {
-      margin-top: 2.5rem;
+      margin-top: 2.75rem;
       margin-bottom: 2.25rem;
     }
 
@@ -372,14 +470,14 @@
       color: var(--text-heading);
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 0.85rem;
+      gap: 0.7rem;
+      margin-bottom: 0.95rem;
     }
 
     .sub-topic-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -411,9 +509,10 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
       transition: all 0.25s ease;
+      position: relative;
     }
 
     .editorial-card:hover {
@@ -438,57 +537,58 @@
 
     .card-title {
       font-family: var(--font-heading);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: var(--text-heading);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
 
     .card-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
+      font-size: 0.98rem;
+      color: var(--text);
       line-height: 1.65;
     }
 
-    /* Process Flow Bar (Horizontal Design Thinking) */
+    /* Process Flow Bar (Design Thinking: Empathize -> Define -> Ideate -> Prototype -> Test) */
     .process-flow-container {
       margin: 1.75rem 0;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
     }
 
     .process-flow-title {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
+      font-family: var(--font-heading);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--text-muted);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .flow-steps-wrap {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.65rem;
     }
 
     .flow-step-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1rem;
-      border-radius: 100px;
+      gap: 0.55rem;
+      padding: 0.6rem 1.15rem;
+      border-radius: var(--radius-pill);
       background: var(--surface-subtle);
       border: 1px solid var(--border);
       font-family: var(--font-heading);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
       color: var(--text-heading);
       transition: all 0.2s ease;
@@ -498,11 +598,18 @@
       background: var(--brand-light);
       border-color: var(--brand-border);
       color: var(--brand);
+      transform: translateY(-2px);
     }
 
-    .flow-step-pill i {
-      color: var(--brand);
-      font-size: 0.85rem;
+    .flow-step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.06);
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .flow-step-arrow {
@@ -524,34 +631,34 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.85rem;
     }
 
     .bullet-list-card li {
       display: flex;
       align-items: flex-start;
-      gap: 0.75rem;
-      font-size: 1rem;
+      gap: 0.85rem;
+      font-size: 1.02rem;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .bullet-icon {
       color: var(--brand);
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       margin-top: 0.35rem;
       flex-shrink: 0;
     }
 
     .num-bullet {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: var(--brand-light);
       border: 1px solid var(--brand-border);
       color: var(--brand);
       font-family: var(--font-heading);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 800;
       display: inline-flex;
       align-items: center;
@@ -565,7 +672,7 @@
       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       border-left: 4px solid var(--brand);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      padding: 1.25rem 1.6rem;
+      padding: 1.35rem 1.65rem;
       margin: 1.85rem 0;
       font-style: italic;
       color: #334155;
@@ -580,92 +687,92 @@
     .quote-callout i.fa-quote-left {
       color: var(--brand);
       font-size: 1.25rem;
-      opacity: 0.7;
+      opacity: 0.75;
       margin-top: 0.15rem;
       flex-shrink: 0;
     }
 
-    .quote-callout.quote-purple { border-left-color: #7c3aed; }
-    .quote-callout.quote-purple i.fa-quote-left { color: #7c3aed; }
+    .quote-callout.quote-purple { border-left-color: var(--purple); }
+    .quote-callout.quote-purple i.fa-quote-left { color: var(--purple); }
 
-    .quote-callout.quote-amber { border-left-color: #d97706; }
-    .quote-callout.quote-amber i.fa-quote-left { color: #d97706; }
+    .quote-callout.quote-amber { border-left-color: var(--amber); }
+    .quote-callout.quote-amber i.fa-quote-left { color: var(--amber); }
 
-    .quote-callout.quote-rose { border-left-color: #e11d48; }
-    .quote-callout.quote-rose i.fa-quote-left { color: #e11d48; }
+    .quote-callout.quote-rose { border-left-color: var(--rose); }
+    .quote-callout.quote-rose i.fa-quote-left { color: var(--rose); }
 
-    .quote-callout.quote-emerald { border-left-color: #059669; }
-    .quote-callout.quote-emerald i.fa-quote-left { color: #059669; }
+    .quote-callout.quote-emerald { border-left-color: var(--emerald); }
+    .quote-callout.quote-emerald i.fa-quote-left { color: var(--emerald); }
 
     /* Takeaway Callout Box */
     .takeaway-banner {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.35rem 1.6rem;
-      margin: 2rem 0 0;
+      padding: 1.4rem 1.65rem;
+      margin: 2.25rem 0 0;
       display: flex;
       align-items: center;
-      gap: 1.15rem;
+      gap: 1.25rem;
       box-shadow: var(--shadow-sm);
     }
 
     .takeaway-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: var(--emerald-light);
       border: 1px solid var(--emerald-border);
       color: var(--emerald);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       flex-shrink: 0;
     }
 
     .takeaway-tag {
       font-family: var(--font-heading);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--emerald);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
     .takeaway-text {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-heading);
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
     /* Day 3 — Onam Festive Card */
     .onam-festive-card {
-      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fff7ed 100%);
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 45%, #fff7ed 100%);
       border: 1px solid var(--onam-border);
       border-radius: var(--radius);
-      padding: 2.25rem 2.25rem;
+      padding: 2.5rem 2.25rem;
       box-shadow: var(--shadow-md);
       position: relative;
       overflow: hidden;
     }
 
-    .onam-festive-card::before {
-      content: '🌺 🌼 🌸 🪔';
+    .onam-pookalam-decor {
       position: absolute;
-      top: -10px;
+      top: -15px;
       right: 20px;
-      font-size: 2.5rem;
+      font-size: 3rem;
       opacity: 0.25;
       pointer-events: none;
+      filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
     }
 
     .onam-header {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       margin-bottom: 1.25rem;
     }
 
@@ -683,27 +790,54 @@
 
     .onam-title {
       font-family: var(--font-heading);
-      font-size: 1.85rem;
+      font-size: clamp(1.8rem, 3.5vw, 2.2rem);
       font-weight: 800;
       color: #78350f;
     }
 
+    .onam-body-text {
+      font-size: 1.15rem;
+      color: #78350f;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+
     .onam-quote-box {
-      background: rgba(255, 255, 255, 0.75);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: var(--radius-sm);
-      padding: 1.15rem 1.4rem;
-      margin: 1.25rem 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-left: 4px solid #f59e0b;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.25rem 1.6rem;
+      margin: 1.25rem 0 1.5rem;
       font-style: italic;
       color: #92400e;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .onam-takeaway-box {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--onam-border);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: #78350f;
+      font-weight: 700;
+      font-size: 1.02rem;
     }
 
     /* Day 5 — 3 Industry Blocks Grid */
     .industry-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.15rem;
+      gap: 1.25rem;
       margin: 1.75rem 0;
     }
 
@@ -711,7 +845,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.4rem;
+      padding: 1.5rem;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
@@ -720,19 +854,19 @@
 
     .industry-card:hover {
       border-color: var(--brand-border);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
     }
 
     .industry-icon-wrap {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 0.85rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.95rem;
     }
 
     .ind-agri .industry-icon-wrap { background: var(--emerald-light); color: var(--emerald); }
@@ -741,15 +875,15 @@
 
     .industry-title {
       font-family: var(--font-heading);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: var(--text-heading);
       margin-bottom: 0.5rem;
     }
 
     .industry-desc {
-      font-size: 0.93rem;
-      color: var(--text-muted);
+      font-size: 0.95rem;
+      color: var(--text);
       line-height: 1.6;
     }
 
@@ -757,19 +891,29 @@
     .tag-cloud {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 1.25rem 0;
+      gap: 0.65rem;
+      margin: 1.5rem 0;
     }
 
     .highlight-tag {
       font-family: var(--font-heading);
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      padding: 0.35rem 0.85rem;
-      border-radius: 100px;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-pill);
       background: var(--brand-light);
       border: 1px solid var(--brand-border);
       color: var(--brand);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .highlight-tag:hover {
+      background: var(--brand);
+      color: #ffffff;
+      transform: translateY(-1px);
     }
 
     /* Key Takeaways Final Highlight Section */
@@ -777,7 +921,7 @@
       background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 2.75rem 2.5rem;
+      padding: 3rem 2.5rem;
       margin: 5rem 0 3.5rem;
       box-shadow: var(--shadow-md);
       position: relative;
@@ -785,7 +929,7 @@
 
     .takeaways-title {
       font-family: var(--font-heading);
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
       color: var(--text-heading);
       margin-bottom: 0.4rem;
@@ -801,35 +945,36 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.95rem;
       margin-bottom: 2.25rem;
     }
 
     .takeaway-item {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 1.15rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 1rem 1.25rem;
-      box-shadow: var(--shadow-sm);
+      padding: 1.1rem 1.35rem;
+      box-shadow: var(--shadow-subtle);
       transition: all 0.2s ease;
     }
 
     .takeaway-item:hover {
       border-color: var(--brand-border);
       transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
     }
 
     .takeaway-num-badge {
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: var(--brand);
       color: #ffffff;
       font-family: var(--font-heading);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -839,8 +984,9 @@
     }
 
     .takeaway-item-text {
-      font-size: 1.02rem;
-      color: var(--text);
+      font-size: 1.04rem;
+      font-weight: 600;
+      color: var(--text-heading);
       line-height: 1.6;
     }
 
@@ -912,7 +1058,7 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.45rem 0.95rem;
-      border-radius: 100px;
+      border-radius: var(--radius-pill);
       background: var(--surface-subtle);
       border: 1px solid var(--border);
       color: var(--text);
@@ -930,10 +1076,44 @@
       transform: translateY(-2px);
     }
 
+    /* Back to Top Floating Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 900;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background: var(--brand);
+      color: #ffffff;
+      border-color: var(--brand);
+      transform: translateY(-3px);
+    }
+
     /* Subtle Scroll Animation Styles */
     .fade-in-section {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(22px);
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
@@ -952,10 +1132,10 @@
         grid-template-columns: 1fr;
       }
       .hero-title {
-        font-size: 2.1rem;
+        font-size: 2.15rem;
       }
       .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.12rem;
       }
       .onam-festive-card, .takeaways-final-section {
         padding: 1.75rem 1.25rem;
@@ -971,18 +1151,26 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .hero-meta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="ambient-bg" aria-hidden="true"></div>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- Ambient Glow -->
+  <div class="ambient-glow-top" aria-hidden="true"></div>
 
   <!-- Top Sticky Navigation Bar -->
-  <nav class="top-nav">
+  <nav class="top-nav" id="topNav">
     <div class="editorial-container nav-inner">
-      <a href="#" class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <span class="nav-brand-icon">IS</span>
         <span>Infosys Springboard 7.0</span>
       </a>
@@ -990,7 +1178,7 @@
         <a href="#toc" class="nav-pill">Contents</a>
         <a href="#day-1" class="nav-pill">Day 1</a>
         <a href="#day-2" class="nav-pill">Day 2</a>
-        <a href="#day-3" class="nav-pill">Day 3</a>
+        <a href="#day-3" class="nav-pill">Day 3 🌺</a>
         <a href="#day-4" class="nav-pill">Day 4</a>
         <a href="#day-5" class="nav-pill">Day 5</a>
         <a href="#takeaways" class="nav-pill" style="color:var(--brand); font-weight:700;">Takeaways</a>
@@ -1004,12 +1192,21 @@
          HERO SECTION
          ============================================================ -->
     <header class="hero-section fade-in-section">
-      <div class="hero-badge">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>WEEK 1: COMPLETE ✅</span>
+      <div class="hero-badge-wrap">
+        <span class="hero-badge hero-badge-complete">
+          <i class="fa-solid fa-circle-check"></i> Week 1 Complete
+        </span>
+        <span class="hero-badge hero-badge-team">
+          <i class="fa-solid fa-users"></i> Team 2
+        </span>
+        <span class="hero-badge hero-badge-read">
+          <i class="fa-regular fa-clock"></i> 5 Min Read
+        </span>
       </div>
 
-      <h1 class="hero-title">Week 1 Recap — Infosys Springboard 7.0</h1>
+      <h1 class="hero-title">
+        <span class="title-gradient">Week 1 Recap — Infosys Springboard 7.0</span>
+      </h1>
       
       <p class="hero-subtitle">
         A five-day learning journey through technology, design thinking, business strategy, and teamwork.
@@ -1017,13 +1214,19 @@
 
       <div class="hero-intro-box">
         <p class="hero-intro-text">
-          “Week 1 was a fast-paced introduction to how technology, empathy, data, strategy, and communication come together in the real world. From recommendation algorithms to design thinking, dashboards, business analysis, and portfolio building, every day added a new perspective.”
+          Week 1 was an immersive deep-dive into how data patterns, empathetic design, analytical dashboards, behavioural economics, and rapid prototyping integrate into impactful real-world solutions.
         </p>
       </div>
 
-      <div class="hero-author-tag">
-        <i class="fa-solid fa-users"></i>
-        <span>Team 2 · Learning, building, and growing together</span>
+      <div class="hero-meta-row">
+        <div class="hero-author-tag">
+          <i class="fa-solid fa-users-gear"></i>
+          <span>Curated for <strong>Team 2</strong> · Infosys Springboard 7.0</span>
+        </div>
+        <button class="share-btn" onclick="copyPageUrl()" id="shareBtn">
+          <i class="fa-regular fa-clone"></i>
+          <span>Copy Article Link</span>
+        </button>
       </div>
     </header>
 
@@ -1032,49 +1235,49 @@
          ============================================================ -->
     <section class="toc-card fade-in-section" id="toc">
       <div class="toc-header">
-        <i class="fa-solid fa-list-ul"></i>
-        <span>Table of Contents</span>
+        <i class="fa-solid fa-compass"></i>
+        <span>Section Navigation</span>
       </div>
       <div class="toc-grid">
         <a href="#day-1" class="toc-item">
-          <span class="toc-day-pill">Day 1</span>
-          <span>Users, Data &amp; Solutions</span>
+          <span class="toc-day-pill" style="color:var(--cyan);">Day 1</span>
+          <span>From User Data to User Needs</span>
         </a>
         <a href="#day-2" class="toc-item">
-          <span class="toc-day-pill">Day 2</span>
-          <span>Information Into Insight</span>
+          <span class="toc-day-pill" style="color:var(--purple);">Day 2</span>
+          <span>Turning Data Into Decisions</span>
         </a>
         <a href="#day-3" class="toc-item">
           <span class="toc-day-pill" style="background:#fff7ed; color:#ea580c;">Day 3</span>
           <span>Onam Break 🌺</span>
         </a>
         <a href="#day-4" class="toc-item">
-          <span class="toc-day-pill">Day 4</span>
-          <span>Decisions &amp; Branding</span>
+          <span class="toc-day-pill" style="color:var(--brand);">Day 4</span>
+          <span>Decisions, Behaviour &amp; Branding</span>
         </a>
         <a href="#day-5" class="toc-item">
-          <span class="toc-day-pill">Day 5</span>
-          <span>Building &amp; Finale</span>
+          <span class="toc-day-pill" style="color:var(--emerald);">Day 5</span>
+          <span>Building Ideas &amp; Finale</span>
         </a>
         <a href="#takeaways" class="toc-item" style="border-color:var(--brand-border); background:var(--brand-light); color:var(--brand);">
           <i class="fa-solid fa-star" style="font-size:0.8rem;"></i>
-          <span>7 Key Takeaways</span>
+          <span>Week 1 Key Takeaways</span>
         </a>
       </div>
     </section>
 
     <!-- ============================================================
-         DAY 1: UNDERSTANDING USERS, DATA & BETTER SOLUTIONS
+         DAY 1: FROM USER DATA TO USER NEEDS
          ============================================================ -->
     <article class="day-article fade-in-section" id="day-1">
       <div class="day-header">
         <span class="day-pill day-1-pill">Day 1</span>
       </div>
 
-      <h2 class="day-heading">Understanding Users, Data &amp; Better Solutions</h2>
+      <h2 class="day-heading">Day 1 — From User Data to User Needs</h2>
 
       <p class="prose-lead">
-        “Week 1 began with a simple but important idea: strong products are built by understanding both user behaviour and real human problems.”
+        “Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”
       </p>
 
       <!-- 1.1 Recommendation Algorithms -->
@@ -1085,30 +1288,30 @@
         </h3>
 
         <p class="body-p">
-          “The first session introduced recommendation algorithms—the systems behind suggestions such as ‘Recommended for you,’ ‘Customers also bought,’ and personalised content feeds.”
+          “We learned how recommendation algorithms power familiar experiences such as ‘Recommended for you’ and ‘Customers also bought.’”
         </p>
 
-        <!-- 2 Simple Comparison Cards -->
+        <!-- 2 Comparison Cards -->
         <div class="comparison-grid">
           <div class="editorial-card">
-            <span class="card-badge" style="background:var(--brand-light); color:var(--brand);">User Affinity</span>
+            <span class="card-badge" style="background:var(--brand-light); color:var(--brand);"><i class="fa-solid fa-users"></i> User-Centric</span>
             <h4 class="card-title">Collaborative Filtering</h4>
             <p class="card-desc">
-              Recommends items based on the interests and behaviour of users with similar preferences.
+              Recommends content based on users with similar interests.
             </p>
           </div>
 
           <div class="editorial-card">
-            <span class="card-badge" style="background:var(--cyan-light); color:var(--cyan);">Feature Matching</span>
+            <span class="card-badge" style="background:var(--cyan-light); color:var(--cyan);"><i class="fa-solid fa-shapes"></i> Item Features</span>
             <h4 class="card-title">Content-Based Filtering</h4>
             <p class="card-desc">
-              Recommends items based on the features of content a user has previously liked or interacted with.
+              Recommends content based on features of items a user previously liked.
             </p>
           </div>
         </div>
 
         <p class="body-p">
-          “Recommendation engines are not magic. They identify patterns in data and user behaviour to make digital experiences feel more relevant.”
+          “Recommendation systems use data patterns and user behaviour to make digital experiences more relevant.”
         </p>
 
         <div class="quote-callout">
@@ -1117,48 +1320,54 @@
         </div>
       </div>
 
-      <!-- 1.2 Design Thinking 101 -->
+      <!-- 1.2 Design Thinking -->
       <div class="sub-topic">
         <h3 class="sub-topic-title">
-          <span class="sub-topic-icon" style="background:#f3e8ff; color:#7c3aed;"><i class="fa-solid fa-lightbulb"></i></span>
-          <span>Design Thinking 101</span>
+          <span class="sub-topic-icon" style="background:var(--purple-light); color:var(--purple);"><i class="fa-solid fa-lightbulb"></i></span>
+          <span>Design Thinking</span>
         </h3>
 
         <p class="body-p">
-          “The next session introduced design thinking: a human-centred approach to solving problems.”
+          “We learned design thinking as a human-centred method for solving problems.”
         </p>
 
-        <!-- Clean Horizontal Flow -->
+        <!-- 5-Stage Process Flow -->
         <div class="process-flow-container">
           <div class="process-flow-title">
-            <i class="fa-solid fa-arrow-progress"></i>
-            <span>Human-Centred 5-Stage Process</span>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <span>Human-Centred Problem-Solving Flow</span>
           </div>
           <div class="flow-steps-wrap">
-            <span class="flow-step-pill"><i class="fa-solid fa-heart" style="color:#e11d48;"></i> Empathize</span>
+            <span class="flow-step-pill">
+              <span class="flow-step-num">1</span>
+              <i class="fa-solid fa-heart" style="color:var(--rose);"></i> Empathize
+            </span>
             <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
-            <span class="flow-step-pill"><i class="fa-solid fa-bullseye" style="color:#0284c7;"></i> Define</span>
+            <span class="flow-step-pill">
+              <span class="flow-step-num">2</span>
+              <i class="fa-solid fa-bullseye" style="color:var(--cyan);"></i> Define
+            </span>
             <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
-            <span class="flow-step-pill"><i class="fa-solid fa-wand-magic-sparkles" style="color:#7c3aed;"></i> Ideate</span>
+            <span class="flow-step-pill">
+              <span class="flow-step-num">3</span>
+              <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--purple);"></i> Ideate
+            </span>
             <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
-            <span class="flow-step-pill"><i class="fa-solid fa-cubes" style="color:#d97706;"></i> Prototype</span>
+            <span class="flow-step-pill">
+              <span class="flow-step-num">4</span>
+              <i class="fa-solid fa-cubes" style="color:var(--amber);"></i> Prototype
+            </span>
             <i class="fa-solid fa-arrow-right flow-step-arrow"></i>
-            <span class="flow-step-pill"><i class="fa-solid fa-vial-circle-check" style="color:#059669;"></i> Test</span>
+            <span class="flow-step-pill">
+              <span class="flow-step-num">5</span>
+              <i class="fa-solid fa-vial-circle-check" style="color:var(--emerald);"></i> Test
+            </span>
           </div>
         </div>
 
         <p class="body-p">
-          “Instead of rushing toward the first solution, design thinking encourages us to understand people, define the real problem, explore possibilities, test ideas, and improve through feedback.”
+          “Instead of starting with an answer, we start by understanding the user, their challenges, and the actual problem.”
         </p>
-
-        <p class="body-p" style="font-weight:600; color:var(--text-heading);">
-          <i class="fa-solid fa-sparkles" style="color:var(--brand);"></i> Key learning: “Fall in love with the problem, not your first idea.”
-        </p>
-
-        <div class="quote-callout quote-purple">
-          <i class="fa-solid fa-quote-left"></i>
-          <span>“Turns out the ‘obvious solution’ from minute one is rarely the right one. Rude, but fair.”</span>
-        </div>
       </div>
 
       <!-- 1.3 Eyewear Retail Case Study -->
@@ -1169,20 +1378,20 @@
         </h3>
 
         <p class="body-p">
-          “We applied the design thinking framework to an eyewear retail case study. As a team, we explored the customer journey and considered the challenges people may face while choosing, purchasing, or using eyewear.”
+          “We applied design thinking to an eyewear retail case study.”
         </p>
 
         <div class="bullet-list-card">
           <ul>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Understanding customer personas and needs</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Identifying pain points in the buying experience</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Brainstorming customer-focused solutions</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Connecting ideas to practical user problems</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--cyan);"></i> <span>Discussed customer personas</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--cyan);"></i> <span>Identified possible buying challenges</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--cyan);"></i> <span>Explored customer pain points</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--cyan);"></i> <span>Brainstormed practical solutions</span></li>
           </ul>
         </div>
 
         <p class="body-p">
-          “The activity showed us that the best ideas are not simply creative—they solve a genuine user need.”
+          “Good problem-solving starts with listening to users.”
         </p>
 
         <div class="quote-callout quote-amber">
@@ -1199,7 +1408,7 @@
         <div>
           <div class="takeaway-tag">Day 1 Takeaway</div>
           <div class="takeaway-text">
-            Data helps us understand patterns. Empathy helps us understand people. Great solutions need both.
+            Data shows behaviour. Empathy explains the person behind it.
           </div>
         </div>
       </div>
@@ -1208,17 +1417,17 @@
     <div class="editorial-divider"></div>
 
     <!-- ============================================================
-         DAY 2: TURNING INFORMATION INTO INSIGHT
+         DAY 2: TURNING DATA INTO DECISIONS
          ============================================================ -->
     <article class="day-article fade-in-section" id="day-2">
       <div class="day-header">
         <span class="day-pill day-2-pill">Day 2</span>
       </div>
 
-      <h2 class="day-heading">Turning Information Into Insight</h2>
+      <h2 class="day-heading">Day 2 — Turning Data Into Decisions</h2>
 
       <p class="prose-lead">
-        “Day 2 focused on making better decisions: first through data visualization, and then through structured business analysis.”
+        “Day 2 focused on using data and structured analysis to understand business problems more clearly.”
       </p>
 
       <!-- 2.1 Power BI Dashboards -->
@@ -1229,21 +1438,17 @@
         </h3>
 
         <p class="body-p">
-          “We explored how Power BI can transform large sets of spreadsheet data into dashboards that are easier to understand, explore, and act upon.”
+          “We explored Power BI and how dashboards turn spreadsheet data into useful insights.”
         </p>
 
         <div class="bullet-list-card">
           <ul>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Visualisations can make complex information easier to interpret</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Filters help users explore data from different perspectives</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Interactive dashboards turn reports into useful decision-making tools</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon"></i> <span>Clear presentation matters as much as accurate data</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--purple);"></i> <span>Visualisations make information easier to understand</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--purple);"></i> <span>Filters help users explore data</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--purple);"></i> <span>Interactive dashboards support better decisions</span></li>
+            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--purple);"></i> <span>Clear presentation matters as much as accurate data</span></li>
           </ul>
         </div>
-
-        <p class="body-p">
-          “A good dashboard does not just show numbers. It helps people notice what matters.”
-        </p>
 
         <div class="quote-callout quote-amber">
           <i class="fa-solid fa-quote-left"></i>
@@ -1251,19 +1456,15 @@
         </div>
       </div>
 
-      <!-- 2.2 Design Thinking: The IDEO Method -->
+      <!-- 2.2 The IDEO Approach -->
       <div class="sub-topic">
         <h3 class="sub-topic-title">
           <span class="sub-topic-icon" style="background:var(--brand-light); color:var(--brand);"><i class="fa-solid fa-arrows-rotate"></i></span>
-          <span>Design Thinking: The IDEO Method</span>
+          <span>The IDEO Approach</span>
         </h3>
 
         <p class="body-p">
-          “We also looked at IDEO’s approach to design thinking, with its emphasis on experimentation, iteration, collaboration, and learning through testing.”
-        </p>
-
-        <p class="body-p">
-          “The process reminded us that progress often comes from trying, learning, improving, and trying again.”
+          “We explored IDEO’s approach to design thinking, which values experimentation, teamwork, iteration, and learning through testing.”
         </p>
 
         <div class="quote-callout quote-purple">
@@ -1280,21 +1481,17 @@
         </h3>
 
         <p class="body-p">
-          “Our hands-on activity involved conducting a SWOT analysis across a value chain.”
+          “We performed SWOT analysis across a value chain, from raw input to the end customer.”
         </p>
 
         <div class="bullet-list-card">
           <ol>
-            <li><span class="num-bullet">1</span> <span>Map the journey from raw input to the end customer</span></li>
-            <li><span class="num-bullet">2</span> <span>Study each stage individually</span></li>
-            <li><span class="num-bullet">3</span> <span>Identify strengths, weaknesses, opportunities, and threats</span></li>
-            <li><span class="num-bullet">4</span> <span>Find gaps and prioritise areas for improvement</span></li>
+            <li><span class="num-bullet">1</span> <span>Map every stage in the value chain</span></li>
+            <li><span class="num-bullet">2</span> <span>Identify strengths and weaknesses</span></li>
+            <li><span class="num-bullet">3</span> <span>Explore opportunities and threats</span></li>
+            <li><span class="num-bullet">4</span> <span>Find gaps worth improving</span></li>
           </ol>
         </div>
-
-        <p class="body-p">
-          “Looking at the value chain stage by stage gave us a more practical understanding of where a business can improve.”
-        </p>
 
         <div class="quote-callout quote-emerald">
           <i class="fa-solid fa-quote-left"></i>
@@ -1310,7 +1507,7 @@
         <div>
           <div class="takeaway-tag">Day 2 Takeaway</div>
           <div class="takeaway-text">
-            Data is valuable when it is clear, and strategy is stronger when we look beyond the surface.
+            Data is useful when it is clear, and strategy improves when we see the whole picture.
           </div>
         </div>
       </div>
@@ -1323,62 +1520,58 @@
          ============================================================ -->
     <article class="day-article fade-in-section" id="day-3">
       <div class="onam-festive-card">
+        <div class="onam-pookalam-decor" aria-hidden="true">🌺 🌼 🌸 🪔</div>
+
         <div class="onam-header">
           <span class="onam-badge">Day 3</span>
-          <h2 class="onam-title">Onam Break 🌺</h2>
+          <h2 class="onam-title">Day 3 — Onam Break 🌺</h2>
         </div>
 
-        <p class="body-p" style="font-size:1.15rem; color:#78350f; font-weight:600; margin-bottom:1rem;">
-          “Day 3 was reserved for Onam—a moment to pause, celebrate, and recharge.”
+        <p class="onam-body-text">
+          “Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”
         </p>
 
         <div class="onam-quote-box">
-          <i class="fa-solid fa-quote-left" style="margin-right:0.4rem; opacity:0.7;"></i>
+          <i class="fa-solid fa-quote-left"></i>
           <span>“Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”</span>
         </div>
 
-        <p class="body-p" style="color:#92400e; font-weight:600; margin-top:1rem; margin-bottom:0;">
-          ✨ “Even the most ambitious learning journey needs a good pause.”
-        </p>
+        <div class="onam-takeaway-box">
+          <i class="fa-solid fa-sparkles" style="color:#d97706;"></i>
+          <span><strong>Day 3 takeaway:</strong> Rest is also part of the process.</span>
+        </div>
       </div>
     </article>
 
     <div class="editorial-divider"></div>
 
     <!-- ============================================================
-         DAY 4: UNDERSTANDING DECISIONS & BUILDING A PERSONAL BRAND
+         DAY 4: DECISIONS, BEHAVIOUR & PERSONAL BRANDING
          ============================================================ -->
     <article class="day-article fade-in-section" id="day-4">
       <div class="day-header">
         <span class="day-pill day-4-pill">Day 4</span>
       </div>
 
-      <h2 class="day-heading">Understanding Decisions &amp; Building a Personal Brand</h2>
+      <h2 class="day-heading">Day 4 — Decisions, Behaviour &amp; Personal Branding</h2>
 
       <p class="prose-lead">
-        “Day 4 brought together two important ideas: understanding why people make decisions and learning how to communicate our own professional journey.”
+        “Day 4 helped us understand how people make decisions and how we can present our own professional journey.”
       </p>
 
       <!-- 4.1 Prospect Theory -->
       <div class="sub-topic">
         <h3 class="sub-topic-title">
-          <span class="sub-topic-icon" style="background:var(--cyan-light); color:var(--cyan);"><i class="fa-solid fa-brain"></i></span>
+          <span class="sub-topic-icon" style="background:var(--brand-light); color:var(--brand);"><i class="fa-solid fa-brain"></i></span>
           <span>Prospect Theory</span>
         </h3>
 
         <p class="body-p">
-          “We explored prospect theory, a concept from behavioural economics that explains why people often feel losses more strongly than they value equivalent gains.”
+          “We learned about prospect theory, a behavioural economics concept that explains why losses often feel more powerful than equal gains.”
         </p>
 
-        <div class="editorial-card" style="margin: 1.5rem 0;">
-          <h4 class="card-title" style="color:var(--cyan);"><i class="fa-solid fa-scale-unbalanced" style="margin-right:0.4rem;"></i> The Core Insight</h4>
-          <p class="card-desc" style="color:var(--text); font-size:1.02rem;">
-            “People do not always make decisions based only on logic. Emotions, risk, fear of loss, and framing can strongly influence choices.”
-          </p>
-        </div>
-
         <p class="body-p">
-          “Understanding human behaviour is important for business, product design, communication, and everyday decision-making.”
+          “People do not always make decisions logically. Risk, emotion, fear of loss, and the way choices are presented can influence behaviour.”
         </p>
 
         <div class="quote-callout">
@@ -1395,21 +1588,12 @@
         </h3>
 
         <p class="body-p">
-          “The portfolio-building session focused on personal branding and the importance of showing our skills, projects, interests, and growth in a clear and authentic way.”
+          “We explored personal branding and the importance of creating a portfolio that clearly shows our skills, work, interests, and progress.”
         </p>
 
         <p class="body-p">
-          “A portfolio is more than a collection of work. It is a story of how we think, what we care about, and how we solve problems.”
+          “A portfolio is not just a list of projects. It is a story of how we learn, think, and solve problems.”
         </p>
-
-        <div class="bullet-list-card">
-          <ul>
-            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Showcase skills and learning</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Document projects and experiences</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Communicate clearly and authentically</span></li>
-            <li><i class="fa-solid fa-circle-check bullet-icon" style="color:var(--rose);"></i> <span>Keep improving as confidence and experience grow</span></li>
-          </ul>
-        </div>
 
         <div class="quote-callout quote-rose">
           <i class="fa-solid fa-quote-left"></i>
@@ -1425,7 +1609,7 @@
         <div>
           <div class="takeaway-tag">Day 4 Takeaway</div>
           <div class="takeaway-text">
-            Understanding people helps us design better experiences; understanding ourselves helps us present our work with confidence.
+            Understanding people improves solutions; communicating our work builds confidence.
           </div>
         </div>
       </div>
@@ -1434,17 +1618,17 @@
     <div class="editorial-divider"></div>
 
     <!-- ============================================================
-         DAY 5: BUILDING, MOTIVATION & BRINGING IT ALL TOGETHER
+         DAY 5: BUILDING IDEAS & BRINGING WEEK 1 TOGETHER
          ============================================================ -->
     <article class="day-article fade-in-section" id="day-5">
       <div class="day-header">
         <span class="day-pill day-5-pill">Day 5</span>
       </div>
 
-      <h2 class="day-heading">Building, Motivation &amp; Bringing It All Together</h2>
+      <h2 class="day-heading">Day 5 — Building Ideas &amp; Bringing Week 1 Together</h2>
 
       <p class="prose-lead">
-        “The final day of Week 1 was about turning ideas into action, hearing industry perspectives, and presenting everything we had learned.”
+        “The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”
       </p>
 
       <!-- 5.1 Base44 -->
@@ -1455,11 +1639,7 @@
         </h3>
 
         <p class="body-p">
-          “We explored Base44 and how modern no-code or low-code tools can help transform an app idea into a working product much faster.”
-        </p>
-
-        <p class="body-p">
-          “The session showed how accessible tools can reduce the distance between an idea and a first version of a product.”
+          “We explored Base44 and how no-code or low-code tools can help turn an idea into a working app more quickly.”
         </p>
 
         <div class="quote-callout">
@@ -1476,32 +1656,24 @@
         </h3>
 
         <p class="body-p">
-          “A motivation and vision talk by Ram encouraged us to think beyond the immediate programme and connect what we are learning with our future goals.”
-        </p>
-
-        <p class="body-p">
-          “The session was a reminder that skills grow through consistency, curiosity, confidence, and the willingness to keep learning.”
+          “A motivation and vision talk by Ram encouraged us to connect our learning with long-term goals, confidence, and career growth.”
         </p>
       </div>
 
-      <!-- 5.3 Guest Lecture: Agriculture, Textile & Retail -->
+      <!-- 5.3 Industry Perspectives: Agriculture, Textile & Retail -->
       <div class="sub-topic">
         <h3 class="sub-topic-title">
           <span class="sub-topic-icon" style="background:var(--emerald-light); color:var(--emerald);"><i class="fa-solid fa-industry"></i></span>
-          <span>Guest Lecture: Agriculture, Textile &amp; Retail</span>
+          <span>Industry Perspectives: Agriculture, Textile &amp; Retail</span>
         </h3>
 
-        <p class="body-p">
-          “We gained industry perspectives on agriculture, textile, and retail businesses, and the complex systems behind products and services that people often take for granted.”
-        </p>
-
-        <!-- 3 Clean Visual Blocks -->
+        <!-- 3 Visual Cards -->
         <div class="industry-grid">
           <div class="industry-card ind-agri">
             <div class="industry-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
             <h4 class="industry-title">Agriculture</h4>
             <p class="industry-desc">
-              “Understanding the ground realities behind supply chains, production, and the journey from source to market.”
+              Supply chains and the realities behind products at their source.
             </p>
           </div>
 
@@ -1509,7 +1681,7 @@
             <div class="industry-icon-wrap"><i class="fa-solid fa-shirt"></i></div>
             <h4 class="industry-title">Textile</h4>
             <p class="industry-desc">
-              “Exploring the path from raw material to finished product, along with the many operational challenges in between.”
+              The journey from raw material to finished product.
             </p>
           </div>
 
@@ -1517,7 +1689,7 @@
             <div class="industry-icon-wrap"><i class="fa-solid fa-store"></i></div>
             <h4 class="industry-title">Retail</h4>
             <p class="industry-desc">
-              “Understanding how products ultimately meet customers at the point of sale and how customer experience shapes business outcomes.”
+              How products meet customers at the point of sale.
             </p>
           </div>
         </div>
@@ -1528,28 +1700,28 @@
         </div>
       </div>
 
-      <!-- 5.4 Week 1 Presentation — The Finale -->
+      <!-- 5.4 Week 1 Presentation -->
       <div class="sub-topic">
         <h3 class="sub-topic-title">
-          <span class="sub-topic-icon" style="background:#f3e8ff; color:#7c3aed;"><i class="fa-solid fa-trophy"></i></span>
-          <span>Week 1 Presentation — The Finale</span>
+          <span class="sub-topic-icon" style="background:var(--purple-light); color:var(--purple);"><i class="fa-solid fa-trophy"></i></span>
+          <span>Week 1 Presentation</span>
         </h3>
 
         <p class="body-p">
-          “Week 1 concluded with a team presentation that brought together everything we learned during the week.”
+          “Week 1 ended with a team presentation bringing together our learning.”
         </p>
 
-        <!-- Highlighted Tags -->
+        <!-- Presentation Tags -->
         <div class="tag-cloud">
           <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Recommendation Algorithms</span>
-          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Power BI Dashboards</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Power BI</span>
           <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Design Thinking</span>
-          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Value Chain SWOT Analysis</span>
+          <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Value Chain SWOT</span>
           <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Prospect Theory</span>
           <span class="highlight-tag"><i class="fa-solid fa-tag"></i> Industry Insights</span>
         </div>
 
-        <p class="body-p" style="margin-top:1.25rem; font-weight:600;">
+        <p class="body-p" style="font-weight:600; color:var(--text-heading); margin-top:1.25rem;">
           “We survived, presented, and lived to start Week 2.”
         </p>
 
@@ -1567,7 +1739,7 @@
         <div>
           <div class="takeaway-tag">Day 5 Takeaway</div>
           <div class="takeaway-text">
-            Learning becomes meaningful when we connect ideas, communicate clearly, and apply them together.
+            Learning becomes meaningful when ideas are applied, shared, and presented together.
           </div>
         </div>
       </div>
@@ -1578,42 +1750,42 @@
          ============================================================ -->
     <section class="takeaways-final-section fade-in-section" id="takeaways">
       <h2 class="takeaways-title">Week 1 Key Takeaways</h2>
-      <p class="takeaways-subtitle">Seven core lessons from our first five days together.</p>
+      <p class="takeaways-subtitle">Seven core lessons that shaped our journey during Week 1.</p>
 
       <ul class="takeaways-list">
         <li class="takeaway-item">
           <span class="takeaway-num-badge">1</span>
-          <span class="takeaway-item-text">Technology is most useful when it solves a real human problem.</span>
+          <span class="takeaway-item-text">Technology is valuable when it solves real human problems.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">2</span>
-          <span class="takeaway-item-text">Design thinking begins with empathy, not assumptions.</span>
+          <span class="takeaway-item-text">Empathy is the foundation of good design.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">3</span>
-          <span class="takeaway-item-text">Data becomes powerful when it is communicated clearly.</span>
+          <span class="takeaway-item-text">Data is more useful when communicated clearly.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">4</span>
-          <span class="takeaway-item-text">Business strategy requires understanding the full value chain.</span>
+          <span class="takeaway-item-text">Strategy requires understanding the full value chain.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">5</span>
-          <span class="takeaway-item-text">Human behaviour influences decisions as much as logic does.</span>
+          <span class="takeaway-item-text">Human decisions are shaped by logic and emotion.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">6</span>
-          <span class="takeaway-item-text">A portfolio is an evolving record of learning and growth.</span>
+          <span class="takeaway-item-text">A portfolio grows alongside our skills and confidence.</span>
         </li>
         <li class="takeaway-item">
           <span class="takeaway-num-badge">7</span>
-          <span class="takeaway-item-text">Collaboration, iteration, and communication are essential professional skills.</span>
+          <span class="takeaway-item-text">Collaboration turns learning into shared progress.</span>
         </li>
       </ul>
 
       <div class="final-statement-box">
         <span class="final-statement-text">
-          ✨ Week 1 complete. More learning, building, and growing ahead.
+          ✨ Week 1 complete. On to building greater things in Week 2!
         </span>
       </div>
     </section>
@@ -1626,8 +1798,8 @@
   <footer class="site-footer">
     <div class="editorial-container footer-content">
       <div class="footer-left">
-        <div class="footer-title">Created by: Visakan K</div>
-        <div class="footer-sub">Infosys Springboard 7.0 · Team 2</div>
+        <div class="footer-title">Visakan K · Team 2</div>
+        <div class="footer-sub">Infosys Springboard 7.0 · Week 1 Learning Journey</div>
       </div>
       <div class="footer-links">
         <a href="https://linkedin.com/in/visakan-k" target="_blank" rel="noopener noreferrer" class="footer-link-btn">
@@ -1640,16 +1812,21 @@
         </a>
         <a href="index.html" class="footer-link-btn" style="background:var(--brand-light); border-color:var(--brand-border); color:var(--brand);">
           <i class="fa-solid fa-arrow-left"></i>
-          <span>Portfolio</span>
+          <span>Back to Portfolio</span>
         </a>
       </div>
     </div>
   </footer>
 
-  <!-- Scroll Animation & Interactive Scripts -->
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scroll Progress & Intersection Observer -->
   <script>
-    // Smooth Intersection Observer for Section Animations
     document.addEventListener('DOMContentLoaded', () => {
+      // Intersection Observer for fade-in animations
       const observerOptions = {
         root: null,
         rootMargin: '0px 0px -40px 0px',
@@ -1668,7 +1845,63 @@
       document.querySelectorAll('.fade-in-section').forEach(el => {
         observer.observe(el);
       });
+
+      // Reading Progress Bar and Back-to-Top Button
+      const progressBar = document.getElementById('progressBar');
+      const backToTop = document.getElementById('backToTop');
+      const topNav = document.getElementById('topNav');
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        
+        if (progressBar) {
+          progressBar.style.width = progress + '%';
+        }
+
+        if (scrollTop > 350) {
+          backToTop.classList.add('show');
+          topNav.classList.add('scrolled');
+        } else {
+          backToTop.classList.remove('show');
+          topNav.classList.remove('scrolled');
+        }
+
+        // Active navigation link tracking
+        const sections = document.querySelectorAll('article[id], section[id]');
+        let currentSection = '';
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          if (scrollTop >= sectionTop) {
+            currentSection = section.getAttribute('id');
+          }
+        });
+
+        document.querySelectorAll('.nav-pill').forEach(pill => {
+          const href = pill.getAttribute('href');
+          if (href === '#' + currentSection) {
+            pill.classList.add('active');
+          } else {
+            pill.classList.remove('active');
+          }
+        });
+      });
     });
+
+    function copyPageUrl() {
+      const shareBtn = document.getElementById('shareBtn');
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const originalHtml = shareBtn.innerHTML;
+        shareBtn.innerHTML = '<i class="fa-solid fa-check" style="color:var(--emerald);"></i> <span>Link Copied!</span>';
+        setTimeout(() => {
+          shareBtn.innerHTML = originalHtml;
+        }, 2200);
+      }).catch(err => {
+        console.error('Could not copy URL:', err);
+      });
+    }
   </script>
 
 </body>

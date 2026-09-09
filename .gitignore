@@ -3,3 +3,6 @@ node_modules/
 Thumbs.db
 messages.txt
 
+# Obsidian local cache & workspace state
+portfolio-content/.obsidian/workspace*
+portfolio-content/.obsidian/cache*

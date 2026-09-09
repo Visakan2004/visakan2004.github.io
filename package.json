@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "node scripts/build-templates.js",
+    "build:content": "node scripts/build-templates.js"
   },
   "keywords": ["portfolio", "nodejs", "express"],
   "author": "Visakan",
