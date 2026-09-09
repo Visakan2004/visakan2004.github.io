@@ -1,12 +1,12 @@
 {
-  "lastCompiled": "2026-09-09T10:51:23.396Z",
+  "lastCompiled": "2026-09-09T11:01:15.211Z",
   "weeksCount": 20,
   "stats": {
     "totalWeeks": 20,
-    "totalNotesProcessed": 7,
-    "totalMediaCopied": 3,
-    "totalEvidenceGenerated": 3,
-    "activeDaysCount": 7
+    "totalNotesProcessed": 8,
+    "totalMediaCopied": 4,
+    "totalEvidenceGenerated": 4,
+    "activeDaysCount": 8
   },
   "days": {
     "Week_00_01_Monday": {
@@ -512,6 +512,74 @@
       "storageKey": "Week_02/01_Monday",
       "compiledMarkdown": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.\n\n## Topics Covered\n- Customer Persona Development\n- User Journey Mapping\n- Empathy Interviewing Techniques\n\n## Practical Activities\n- Interviewed cohort peers on campus retail bottlenecks\n- Built 3 distinct user personas for phygital commerce\n- Created an empathy map identifying key user pain points\n\n## Evidence\n\n\n## Key Takeaways\n- A product fails not from bad code, but from solving the wrong problem.\n- Listening without pitching is the hardest and most important interview skill.\n\n### Gallery\n\n![WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg](/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg)",
       "hasContent": true
+    },
+    "Week_07_02_Tuesday": {
+      "id": "Week_07_02_Tuesday",
+      "week": "Week_07",
+      "weekNumber": 7,
+      "day": "02_Tuesday",
+      "dayName": "Tuesday",
+      "dayNumber": 2,
+      "date": "",
+      "title": "Untitled",
+      "summary": "![[Pasted image 20260909163039.png]]",
+      "topics": [],
+      "activities": [],
+      "takeaways": [],
+      "evidence": [
+        {
+          "id": "week_07_02_tuesday_pasted_image_20260909163039_png",
+          "title": "Pasted image 20260909163039.png",
+          "caption": "Pasted image 20260909163039.png",
+          "fileName": "Pasted image 20260909163039.png",
+          "fileType": "image",
+          "url": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "previewUrl": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "storageKey": "Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "linked": true
+        }
+      ],
+      "gallery": [
+        "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png"
+      ],
+      "unlinkedMedia": [],
+      "storageKey": "Week_07/02_Tuesday",
+      "compiledMarkdown": "![Pasted image 20260909163039.png](/assets/weekly/Week_07/02_Tuesday/Pasted%20image%2020260909163039.png)",
+      "hasContent": true
+    },
+    "Week_07/02_Tuesday": {
+      "id": "Week_07_02_Tuesday",
+      "week": "Week_07",
+      "weekNumber": 7,
+      "day": "02_Tuesday",
+      "dayName": "Tuesday",
+      "dayNumber": 2,
+      "date": "",
+      "title": "Untitled",
+      "summary": "![[Pasted image 20260909163039.png]]",
+      "topics": [],
+      "activities": [],
+      "takeaways": [],
+      "evidence": [
+        {
+          "id": "week_07_02_tuesday_pasted_image_20260909163039_png",
+          "title": "Pasted image 20260909163039.png",
+          "caption": "Pasted image 20260909163039.png",
+          "fileName": "Pasted image 20260909163039.png",
+          "fileType": "image",
+          "url": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "previewUrl": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "storageKey": "Week_07/02_Tuesday/Pasted image 20260909163039.png",
+          "linked": true
+        }
+      ],
+      "gallery": [
+        "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png"
+      ],
+      "unlinkedMedia": [],
+      "storageKey": "Week_07/02_Tuesday",
+      "compiledMarkdown": "![Pasted image 20260909163039.png](/assets/weekly/Week_07/02_Tuesday/Pasted%20image%2020260909163039.png)",
+      "hasContent": true
     }
   },
   "evidence": [
@@ -559,6 +627,21 @@
       "day": "01_Monday",
       "weekNumber": 2,
       "dayNumber": 1
+    },
+    {
+      "id": "week_07_02_tuesday_pasted_image_20260909163039_png",
+      "title": "Pasted image 20260909163039.png",
+      "caption": "Pasted image 20260909163039.png",
+      "fileName": "Pasted image 20260909163039.png",
+      "fileType": "image",
+      "url": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+      "previewUrl": "/assets/weekly/Week_07/02_Tuesday/Pasted image 20260909163039.png",
+      "storageKey": "Week_07/02_Tuesday/Pasted image 20260909163039.png",
+      "linked": true,
+      "week": "Week_07",
+      "day": "02_Tuesday",
+      "weekNumber": 7,
+      "dayNumber": 2
     }
   ]
 }
