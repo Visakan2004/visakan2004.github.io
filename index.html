@@ -1326,7 +1326,7 @@
     const protoSemWeeks = [
       // PHASE 01 · WEEKS 00–04
       { week: 0,  phase: 1, slug: "week-00", status: "published", title: "PRICE Protosem — Our 0th Week", subtitle: "17–21 August 2026 • 5 Days. 5 Experiences. 1 New Perspective.", link: "price-protosem-0th-week.html", quote: "“We didn’t just learn entrepreneurship. We experienced the mindset.”", badgeText: "ORIENTATION · 5 EXPERIENCES", notesText: "Read 5-Day Chronicle", desc: "Explore the full interactive 5-day chronicle featuring real orientation photos, Connect, Discover, Collaborate, Own, and Create." },
-      { week: 1,  phase: 1, slug: "week-01", status: "published", title: "PRICE Protosem — Week 01", subtitle: "24–28 August 2026 • Understanding Users, Data & Better Solutions", link: "price-protosem-week-1.html", quote: "“Good products are built by understanding both user behaviour and real human problems.”", badgeText: "ALGORITHMS · DESIGN THINKING", notesText: "Read Week 1 Chronicle", desc: "Explore recommendation algorithms (Collaborative vs Content-Based), 5 stages of Design Thinking, and the Eyewear Retail case study." },
+      { week: 1,  phase: 1, slug: "week-01", status: "published", title: "PRICE Protosem — Week 01", subtitle: "24–28 August 2026 • 5 Days. Understanding Users, Data & Better Solutions", link: "price-protosem-week-1.html", quote: "“Good products are built by understanding both user behaviour and real human problems.”", badgeText: "5 DAYS · DATA & USERS", notesText: "Explore 5-Day Chronicle", desc: "Explore the full interactive 5-day chronicle: Recommendation Algorithms, Design Thinking, Power BI, Onam Break, Prospect Theory, and Base44." },
       { week: 2,  phase: 1, slug: "week-02", status: "coming-soon" },
       { week: 3,  phase: 1, slug: "week-03", status: "coming-soon" },
       { week: 4,  phase: 1, slug: "week-04", status: "coming-soon" },
@@ -1395,7 +1395,7 @@
           const weekStr = formatWeekStr(item.week);
           const phaseStr = formatPhaseStr(item.phase);
           const isPublished = item.status === 'published';
-          const linkTarget = isPublished && item.link ? item.link : '#' + item.slug;
+          const linkTarget = '#' + item.slug;
           const displayTitle = item.week === 0 ? 'OUR 0th WEEK' : (item.week === 1 ? 'WEEK 01 · DATA & USERS' : `WEEK ${weekStr}`);
           const badgeText = item.badgeText || 'FIELD NOTES IN PROGRESS';
           const notesTagText = isPublished ? (item.notesText || 'Read Chronicle') : 'Field Notes In Progress';
@@ -1444,12 +1444,6 @@
 
       container.querySelectorAll('.journey-node-card').forEach(card => {
         card.addEventListener('click', (e) => {
-          const week = parseInt(card.getAttribute('data-week'), 10);
-          const weekItem = protoSemWeeks.find(w => w.week === week);
-          if (weekItem && weekItem.status === 'published' && weekItem.link) {
-            // Allow default direct link navigation
-            return;
-          }
           e.preventDefault();
           const slug = card.getAttribute('data-slug');
           navigateToWeek(slug);
