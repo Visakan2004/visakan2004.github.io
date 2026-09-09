@@ -26,6 +26,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -57,7 +58,6 @@ jobs:
           else
             echo "📝 Changes detected in compiled artifacts. Committing..."
             git commit -m "Auto-compile ProtoSem portfolio content [skip ci]"
-            git pull --rebase origin main
-            git push origin main
+            git push origin HEAD:main
             echo "🚀 Successfully pushed compiled portfolio content."
           fi

@@ -165,37 +165,49 @@ function parseDailyNote(rawContent, context = {}) {
 
   const { frontmatter, body } = extractFrontmatter(rawContent);
 
-  // Extract Top-level Title (# Title)
-  let title = frontmatter.title || '';
-  let cleanedBody = body;
+  // Extract Top-level Title (# Title) or from fileName if descriptive
+  const rawFileTitle = context.fileName ? path.basename(context.fileName, path.extname(context.fileName)) : '';
+  const isGenericFileName = !rawFileTitle || /^(note|notes|monday|tuesday|wednesday|thursday|friday|saturday|\d+_\w+)$/i.test(rawFileTitle.trim());
+  const fileTitle = isGenericFileName ? '' : rawFileTitle.trim();
 
+  let title = frontmatter.title || '';
   const h1Match = body.match(/^#\s+(.+)$/m);
   if (h1Match) {
     if (!title) title = h1Match[1].trim();
   }
+  if (!title && fileTitle) {
+    title = fileTitle;
+  }
 
-  // Split into sections by Markdown H2 headings (## Heading)
+  // Split into sections by Markdown H2 or H3 headings (## or ### Heading)
   const sections = {};
-  const sectionRegex = /^##\s+([^\r\n]+)\r?\n([\s\S]*?)(?=^##\s+|$)/gm;
+  const headingsFound = [];
+  const sectionRegex = /^#{2,3}\s+([^\r\n]+)\r?\n([\s\S]*?)(?=^#{2,3}\s+|$)/gm;
   let match;
   let firstParagraph = '';
 
-  // Extract introductory summary (text before the first ## heading)
-  const firstH2Idx = body.search(/^##\s+/m);
-  if (firstH2Idx > 0) {
-    firstParagraph = body.substring(0, firstH2Idx)
+  // Extract introductory summary (text before the first ## or ### heading)
+  const firstHIdx = body.search(/^#{2,3}\s+/m);
+  if (firstHIdx > 0) {
+    firstParagraph = body.substring(0, firstHIdx)
       .replace(/^#\s+[^\r\n]+\r?\n?/m, '') // remove # Title
       .trim();
-  } else if (firstH2Idx === -1) {
+  } else if (firstHIdx === -1) {
     firstParagraph = body
       .replace(/^#\s+[^\r\n]+\r?\n?/m, '')
       .trim();
   }
 
   while ((match = sectionRegex.exec(body)) !== null) {
-    const heading = match[1].trim().toLowerCase();
+    const rawHeading = match[1].trim();
+    const headingKey = rawHeading.toLowerCase();
     const content = match[2].trim();
-    sections[heading] = content;
+    sections[headingKey] = content;
+
+    // Collect descriptive subheadings as potential topics
+    if (!headingKey.includes('evidence') && !headingKey.includes('gallery') && !headingKey.includes('takeaway')) {
+      headingsFound.push(rawHeading);
+    }
   }
 
   // Find Topics
@@ -208,6 +220,10 @@ function parseDailyNote(rawContent, context = {}) {
         topics = extractSectionList(content);
         break;
       }
+    }
+    // Fallback: If no dedicated topics section, use the extracted subheadings
+    if (topics.length === 0 && headingsFound.length > 0) {
+      topics = headingsFound;
     }
   }
 
@@ -234,6 +250,13 @@ function parseDailyNote(rawContent, context = {}) {
       if (key.includes('takeaway') || key.includes('reflection') || key.includes('summary')) {
         takeaways = extractSectionList(content);
         break;
+      }
+    }
+    // Check for inline takeaway formats like **Day X takeaway: ...**
+    if (takeaways.length === 0) {
+      const inlineMatches = body.matchAll(/\*\*[^:*]*takeaway:\s*([^*]+)\*\*/gi);
+      for (const m of inlineMatches) {
+        if (m[1]) takeaways.push(m[1].trim());
       }
     }
   }

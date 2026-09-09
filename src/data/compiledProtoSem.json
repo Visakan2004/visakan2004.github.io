@@ -1,12 +1,12 @@
 {
-  "lastCompiled": "2026-09-09T10:10:40.960Z",
+  "lastCompiled": "2026-09-09T10:51:23.396Z",
   "weeksCount": 20,
   "stats": {
     "totalWeeks": 20,
-    "totalNotesProcessed": 2,
+    "totalNotesProcessed": 7,
     "totalMediaCopied": 3,
     "totalEvidenceGenerated": 3,
-    "activeDaysCount": 2
+    "activeDaysCount": 7
   },
   "days": {
     "Week_00_01_Monday": {
@@ -145,6 +145,258 @@
       ],
       "storageKey": "Week_00/01_Monday",
       "compiledMarkdown": "Our journey began with immersive introductions, exploring the philosophy of ProtoSem, and getting to know our fellow innovators. Rather than standard lectures, we dove directly into experiential problem-solving.\n\n## Topics Covered\n- Introduction to PRICE ProtoSem Fellowship\n- Cohort Networking & Mindset Alignment\n- Design Thinking Fundamentals\n\n## Practical Activities\n- The Marshmallow Challenge spaghetti tower prototyping\n- Cross-functional team formation and introductions\n- Interactive cohort goal setting\n\n## Evidence\n- ![The Marshmallow Challenge: Rapid prototyping in action](/assets/weekly/Week_00/01_Monday/marshmallow-challenge.jpg)\n\n## Key Takeaways\n- Rapid prototyping reveals assumptions earlier than endless planning.\n- True collaboration requires empathy, active listening, and collective ownership.\n\n### Gallery\n\n![icebreaker-circle.jpg](/assets/weekly/Week_00/01_Monday/icebreaker-circle.jpg)",
+      "hasContent": true
+    },
+    "Week_01_01_Monday": {
+      "id": "Week_01_01_Monday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "01_Monday",
+      "dayName": "Monday",
+      "dayNumber": 1,
+      "date": "",
+      "title": "Day 1 — From User Data to User Needs",
+      "summary": "“Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”",
+      "topics": [
+        "Recommendation Algorithms",
+        "Design Thinking",
+        "Eyewear Retail Case Study"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Data shows behaviour. Empathy explains the person behind it."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/01_Monday",
+      "compiledMarkdown": "“Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”\n\n### Recommendation Algorithms\n\n“We learned how recommendation algorithms power familiar experiences such as ‘Recommended for you’ and ‘Customers also bought.’”\n\n- **Collaborative Filtering:** Recommends content based on users with similar interests.\n    \n- **Content-Based Filtering:** Recommends content based on features of items a user previously liked.\n    \n\n“Recommendation systems use data patterns and user behaviour to make digital experiences more relevant.”\n\nQuote: “Netflix now knows me better than my own family. Concerning, but efficient.”\n\n### Design Thinking\n\n“We learned design thinking as a human-centred method for solving problems.”\n\nShow this flow:\n\n**Empathize → Define → Ideate → Prototype → Test**\n\n“Instead of starting with an answer, we start by understanding the user, their challenges, and the actual problem.”\n\n### Eyewear Retail Case Study\n\n“We applied design thinking to an eyewear retail case study.”\n\n- Discussed customer personas\n    \n- Identified possible buying challenges\n    \n- Explored customer pain points\n    \n- Brainstormed practical solutions\n    \n\n“Good problem-solving starts with listening to users.”\n\nQuote: “Four eyes are better than two — pun fully intended.”\n\n**Day 1 takeaway: Data shows behaviour. Empathy explains the person behind it.**",
+      "hasContent": true
+    },
+    "Week_01/01_Monday": {
+      "id": "Week_01_01_Monday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "01_Monday",
+      "dayName": "Monday",
+      "dayNumber": 1,
+      "date": "",
+      "title": "Day 1 — From User Data to User Needs",
+      "summary": "“Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”",
+      "topics": [
+        "Recommendation Algorithms",
+        "Design Thinking",
+        "Eyewear Retail Case Study"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Data shows behaviour. Empathy explains the person behind it."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/01_Monday",
+      "compiledMarkdown": "“Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”\n\n### Recommendation Algorithms\n\n“We learned how recommendation algorithms power familiar experiences such as ‘Recommended for you’ and ‘Customers also bought.’”\n\n- **Collaborative Filtering:** Recommends content based on users with similar interests.\n    \n- **Content-Based Filtering:** Recommends content based on features of items a user previously liked.\n    \n\n“Recommendation systems use data patterns and user behaviour to make digital experiences more relevant.”\n\nQuote: “Netflix now knows me better than my own family. Concerning, but efficient.”\n\n### Design Thinking\n\n“We learned design thinking as a human-centred method for solving problems.”\n\nShow this flow:\n\n**Empathize → Define → Ideate → Prototype → Test**\n\n“Instead of starting with an answer, we start by understanding the user, their challenges, and the actual problem.”\n\n### Eyewear Retail Case Study\n\n“We applied design thinking to an eyewear retail case study.”\n\n- Discussed customer personas\n    \n- Identified possible buying challenges\n    \n- Explored customer pain points\n    \n- Brainstormed practical solutions\n    \n\n“Good problem-solving starts with listening to users.”\n\nQuote: “Four eyes are better than two — pun fully intended.”\n\n**Day 1 takeaway: Data shows behaviour. Empathy explains the person behind it.**",
+      "hasContent": true
+    },
+    "Week_01_02_Tuesday": {
+      "id": "Week_01_02_Tuesday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "02_Tuesday",
+      "dayName": "Tuesday",
+      "dayNumber": 2,
+      "date": "",
+      "title": "Day 2 — Turning Data Into Decisions",
+      "summary": "“Day 2 focused on using data and structured analysis to understand business problems more clearly.”",
+      "topics": [
+        "Power BI Dashboards",
+        "The IDEO Approach",
+        "Value Chain SWOT Analysis"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Data is useful when it is clear, and strategy improves when we see the whole picture."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/02_Tuesday",
+      "compiledMarkdown": "“Day 2 focused on using data and structured analysis to understand business problems more clearly.”\n\n### Power BI Dashboards\n\n“We explored Power BI and how dashboards turn spreadsheet data into useful insights.”\n\n- Visualisations make information easier to understand\n    \n- Filters help users explore data\n    \n- Interactive dashboards support better decisions\n    \n- Clear presentation matters as much as accurate data\n    \n\nQuote: “Nothing says ‘I have my life together’ like a well-filtered pie chart.”\n\n### The IDEO Approach\n\n“We explored IDEO’s approach to design thinking, which values experimentation, teamwork, iteration, and learning through testing.”\n\nQuote: “IDEO’s version of ‘fail fast’ sounds a lot more elegant than ours.”\n\n### Value Chain SWOT Analysis\n\n“We performed SWOT analysis across a value chain, from raw input to the end customer.”\n\n1. Map every stage in the value chain\n    \n2. Identify strengths and weaknesses\n    \n3. Explore opportunities and threats\n    \n4. Find gaps worth improving\n    \n\nQuote: “SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired.”\n\n**Day 2 takeaway: Data is useful when it is clear, and strategy improves when we see the whole picture.**",
+      "hasContent": true
+    },
+    "Week_01/02_Tuesday": {
+      "id": "Week_01_02_Tuesday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "02_Tuesday",
+      "dayName": "Tuesday",
+      "dayNumber": 2,
+      "date": "",
+      "title": "Day 2 — Turning Data Into Decisions",
+      "summary": "“Day 2 focused on using data and structured analysis to understand business problems more clearly.”",
+      "topics": [
+        "Power BI Dashboards",
+        "The IDEO Approach",
+        "Value Chain SWOT Analysis"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Data is useful when it is clear, and strategy improves when we see the whole picture."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/02_Tuesday",
+      "compiledMarkdown": "“Day 2 focused on using data and structured analysis to understand business problems more clearly.”\n\n### Power BI Dashboards\n\n“We explored Power BI and how dashboards turn spreadsheet data into useful insights.”\n\n- Visualisations make information easier to understand\n    \n- Filters help users explore data\n    \n- Interactive dashboards support better decisions\n    \n- Clear presentation matters as much as accurate data\n    \n\nQuote: “Nothing says ‘I have my life together’ like a well-filtered pie chart.”\n\n### The IDEO Approach\n\n“We explored IDEO’s approach to design thinking, which values experimentation, teamwork, iteration, and learning through testing.”\n\nQuote: “IDEO’s version of ‘fail fast’ sounds a lot more elegant than ours.”\n\n### Value Chain SWOT Analysis\n\n“We performed SWOT analysis across a value chain, from raw input to the end customer.”\n\n1. Map every stage in the value chain\n    \n2. Identify strengths and weaknesses\n    \n3. Explore opportunities and threats\n    \n4. Find gaps worth improving\n    \n\nQuote: “SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired.”\n\n**Day 2 takeaway: Data is useful when it is clear, and strategy improves when we see the whole picture.**",
+      "hasContent": true
+    },
+    "Week_01_03_Wednesday": {
+      "id": "Week_01_03_Wednesday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "03_Wednesday",
+      "dayName": "Wednesday",
+      "dayNumber": 3,
+      "date": "",
+      "title": "Day 3 — Onam Break",
+      "summary": "Use a short festive section with subtle Kerala-inspired flowers or pookalam visuals.\n\n“Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”\n\nQuote: “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”\n\n**Day 3 takeaway: Rest is also part of the process.**\n\n---",
+      "topics": [],
+      "activities": [],
+      "takeaways": [
+        "Rest is also part of the process."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/03_Wednesday",
+      "compiledMarkdown": "Use a short festive section with subtle Kerala-inspired flowers or pookalam visuals.\n\n“Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”\n\nQuote: “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”\n\n**Day 3 takeaway: Rest is also part of the process.**\n\n---",
+      "hasContent": true
+    },
+    "Week_01/03_Wednesday": {
+      "id": "Week_01_03_Wednesday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "03_Wednesday",
+      "dayName": "Wednesday",
+      "dayNumber": 3,
+      "date": "",
+      "title": "Day 3 — Onam Break",
+      "summary": "Use a short festive section with subtle Kerala-inspired flowers or pookalam visuals.\n\n“Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”\n\nQuote: “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”\n\n**Day 3 takeaway: Rest is also part of the process.**\n\n---",
+      "topics": [],
+      "activities": [],
+      "takeaways": [
+        "Rest is also part of the process."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/03_Wednesday",
+      "compiledMarkdown": "Use a short festive section with subtle Kerala-inspired flowers or pookalam visuals.\n\n“Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”\n\nQuote: “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”\n\n**Day 3 takeaway: Rest is also part of the process.**\n\n---",
+      "hasContent": true
+    },
+    "Week_01_04_Thursday": {
+      "id": "Week_01_04_Thursday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "04_Thursday",
+      "dayName": "Thursday",
+      "dayNumber": 4,
+      "date": "",
+      "title": "Day 4 — Decisions, Behaviour & Personal Branding",
+      "summary": "“Day 4 helped us understand how people make decisions and how we can present our own professional journey.”",
+      "topics": [
+        "Prospect Theory",
+        "Building the Portfolio"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Understanding people improves solutions; communicating our work builds confidence"
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/04_Thursday",
+      "compiledMarkdown": "“Day 4 helped us understand how people make decisions and how we can present our own professional journey.”\n\n### Prospect Theory\n\n“We learned about prospect theory, a behavioural economics concept that explains why losses often feel more powerful than equal gains.”\n\n“People do not always make decisions logically. Risk, emotion, fear of loss, and the way choices are presented can influence behaviour.”\n\nQuote: “Explains perfectly why nobody in the group wanted to be the one who lost the case study debate.”\n\n### Building the Portfolio\n\n“We explored personal branding and the importance of creating a portfolio that clearly shows our skills, work, interests, and progress.”\n\n“A portfolio is not just a list of projects. It is a story of how we learn, think, and solve problems.”\n\nQuote: “Portfolio status: under construction, much like everyone’s confidence at 9am.”\n\n**Day 4 takeaway: Understanding people improves solutions; communicating our work builds confidence**",
+      "hasContent": true
+    },
+    "Week_01/04_Thursday": {
+      "id": "Week_01_04_Thursday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "04_Thursday",
+      "dayName": "Thursday",
+      "dayNumber": 4,
+      "date": "",
+      "title": "Day 4 — Decisions, Behaviour & Personal Branding",
+      "summary": "“Day 4 helped us understand how people make decisions and how we can present our own professional journey.”",
+      "topics": [
+        "Prospect Theory",
+        "Building the Portfolio"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Understanding people improves solutions; communicating our work builds confidence"
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/04_Thursday",
+      "compiledMarkdown": "“Day 4 helped us understand how people make decisions and how we can present our own professional journey.”\n\n### Prospect Theory\n\n“We learned about prospect theory, a behavioural economics concept that explains why losses often feel more powerful than equal gains.”\n\n“People do not always make decisions logically. Risk, emotion, fear of loss, and the way choices are presented can influence behaviour.”\n\nQuote: “Explains perfectly why nobody in the group wanted to be the one who lost the case study debate.”\n\n### Building the Portfolio\n\n“We explored personal branding and the importance of creating a portfolio that clearly shows our skills, work, interests, and progress.”\n\n“A portfolio is not just a list of projects. It is a story of how we learn, think, and solve problems.”\n\nQuote: “Portfolio status: under construction, much like everyone’s confidence at 9am.”\n\n**Day 4 takeaway: Understanding people improves solutions; communicating our work builds confidence**",
+      "hasContent": true
+    },
+    "Week_01_05_Friday": {
+      "id": "Week_01_05_Friday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "05_Friday",
+      "dayName": "Friday",
+      "dayNumber": 5,
+      "date": "",
+      "title": "Day 5 — Building Ideas & Bringing Week 1 Together",
+      "summary": "“The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”",
+      "topics": [
+        "Base44",
+        "Motivation and Vision Talk",
+        "Industry Perspectives: Agriculture, Textile & Retail",
+        "Week 1 Presentation"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Learning becomes meaningful when ideas are applied, shared, and presented together."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/05_Friday",
+      "compiledMarkdown": "“The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”\n\n### Base44\n\n“We explored Base44 and how no-code or low-code tools can help turn an idea into a working app more quickly.”\n\nQuote: “The gap between ‘I have an app idea’ and ‘I have an app’ just got a lot smaller.”\n\n### Motivation and Vision Talk\n\n“A motivation and vision talk by Ram encouraged us to connect our learning with long-term goals, confidence, and career growth.”\n\n### Industry Perspectives: Agriculture, Textile & Retail\n\nCreate three visual cards:\n\n- **Agriculture:** Supply chains and the realities behind products at their source.\n    \n- **Textile:** The journey from raw material to finished product.\n    \n- **Retail:** How products meet customers at the point of sale.\n    \n\nQuote: “Three very different industries, one common theme: real-world business is messier than the case studies.”\n\n### Week 1 Presentation\n\n“Week 1 ended with a team presentation bringing together our learning.”\n\nShow these as tags:\n\n**Recommendation Algorithms · Power BI · Design Thinking · Value Chain SWOT · Prospect Theory · Industry Insights**\n\n“We survived, presented, and lived to start Week 2.”\n\nQuote: “Nothing bonds a team like collectively realising the deadline was today, not tomorrow.”\n\n**Day 5 takeaway: Learning becomes meaningful when ideas are applied, shared, and presented together.**",
+      "hasContent": true
+    },
+    "Week_01/05_Friday": {
+      "id": "Week_01_05_Friday",
+      "week": "Week_01",
+      "weekNumber": 1,
+      "day": "05_Friday",
+      "dayName": "Friday",
+      "dayNumber": 5,
+      "date": "",
+      "title": "Day 5 — Building Ideas & Bringing Week 1 Together",
+      "summary": "“The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”",
+      "topics": [
+        "Base44",
+        "Motivation and Vision Talk",
+        "Industry Perspectives: Agriculture, Textile & Retail",
+        "Week 1 Presentation"
+      ],
+      "activities": [],
+      "takeaways": [
+        "Learning becomes meaningful when ideas are applied, shared, and presented together."
+      ],
+      "evidence": [],
+      "gallery": [],
+      "unlinkedMedia": [],
+      "storageKey": "Week_01/05_Friday",
+      "compiledMarkdown": "“The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”\n\n### Base44\n\n“We explored Base44 and how no-code or low-code tools can help turn an idea into a working app more quickly.”\n\nQuote: “The gap between ‘I have an app idea’ and ‘I have an app’ just got a lot smaller.”\n\n### Motivation and Vision Talk\n\n“A motivation and vision talk by Ram encouraged us to connect our learning with long-term goals, confidence, and career growth.”\n\n### Industry Perspectives: Agriculture, Textile & Retail\n\nCreate three visual cards:\n\n- **Agriculture:** Supply chains and the realities behind products at their source.\n    \n- **Textile:** The journey from raw material to finished product.\n    \n- **Retail:** How products meet customers at the point of sale.\n    \n\nQuote: “Three very different industries, one common theme: real-world business is messier than the case studies.”\n\n### Week 1 Presentation\n\n“Week 1 ended with a team presentation bringing together our learning.”\n\nShow these as tags:\n\n**Recommendation Algorithms · Power BI · Design Thinking · Value Chain SWOT · Prospect Theory · Industry Insights**\n\n“We survived, presented, and lived to start Week 2.”\n\nQuote: “Nothing bonds a team like collectively realising the deadline was today, not tomorrow.”\n\n**Day 5 takeaway: Learning becomes meaningful when ideas are applied, shared, and presented together.**",
       "hasContent": true
     },
     "Week_02_01_Monday": {
