@@ -1,11 +1,11 @@
 {
-  "lastCompiled": "2026-09-09T09:50:45.297Z",
+  "lastCompiled": "2026-09-09T10:10:40.960Z",
   "weeksCount": 20,
   "stats": {
     "totalWeeks": 20,
     "totalNotesProcessed": 2,
     "totalMediaCopied": 3,
-    "totalEvidenceGenerated": 4,
+    "totalEvidenceGenerated": 3,
     "activeDaysCount": 2
   },
   "days": {
@@ -147,13 +147,13 @@
       "compiledMarkdown": "Our journey began with immersive introductions, exploring the philosophy of ProtoSem, and getting to know our fellow innovators. Rather than standard lectures, we dove directly into experiential problem-solving.\n\n## Topics Covered\n- Introduction to PRICE ProtoSem Fellowship\n- Cohort Networking & Mindset Alignment\n- Design Thinking Fundamentals\n\n## Practical Activities\n- The Marshmallow Challenge spaghetti tower prototyping\n- Cross-functional team formation and introductions\n- Interactive cohort goal setting\n\n## Evidence\n- ![The Marshmallow Challenge: Rapid prototyping in action](/assets/weekly/Week_00/01_Monday/marshmallow-challenge.jpg)\n\n## Key Takeaways\n- Rapid prototyping reveals assumptions earlier than endless planning.\n- True collaboration requires empathy, active listening, and collective ownership.\n\n### Gallery\n\n![icebreaker-circle.jpg](/assets/weekly/Week_00/01_Monday/icebreaker-circle.jpg)",
       "hasContent": true
     },
-    "Week_01_02_Tuesday": {
-      "id": "Week_01_02_Tuesday",
-      "week": "Week_01",
-      "weekNumber": 1,
-      "day": "02_Tuesday",
-      "dayName": "Tuesday",
-      "dayNumber": 2,
+    "Week_02_01_Monday": {
+      "id": "Week_02_01_Monday",
+      "week": "Week_02",
+      "weekNumber": 2,
+      "day": "01_Monday",
+      "dayName": "Monday",
+      "dayNumber": 1,
       "date": "2026-08-18",
       "title": "Customer Empathy & Problem Validation",
       "summary": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.",
@@ -173,43 +173,44 @@
       ],
       "evidence": [
         {
-          "id": "week_01_02_tuesday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
+          "id": "week_02_01_monday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
           "title": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "caption": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "fileName": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "fileType": "image",
-          "url": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "previewUrl": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "storageKey": "Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "linked": true
-        },
-        {
-          "id": "week_01_02_tuesday_user_journey_map_jpg",
-          "title": "User Journey Map Brainstorming Session",
-          "caption": "User Journey Map Brainstorming Session",
-          "fileName": "user-journey-map.jpg",
-          "fileType": "image",
-          "url": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-          "previewUrl": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-          "storageKey": "Week_01/02_Tuesday/user-journey-map.jpg",
-          "linked": true
+          "url": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "previewUrl": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "storageKey": "Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "linked": false
         }
       ],
       "gallery": [
-        "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg"
+        "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg"
       ],
-      "unlinkedMedia": [],
-      "storageKey": "Week_01/02_Tuesday",
-      "compiledMarkdown": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.\n\n## Topics Covered\n- Customer Persona Development\n- User Journey Mapping\n- Empathy Interviewing Techniques\n\n## Practical Activities\n- Interviewed cohort peers on campus retail bottlenecks\n- Built 3 distinct user personas for phygital commerce\n- Created an empathy map identifying key user pain points\n\n## Evidence\n-![WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg](/assets/weekly/Week_01/02_Tuesday/WhatsApp%20Image%202026-08-28%20at%2012.50.30%20PM.jpeg)![User Journey Map Brainstorming Session](/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg)\n\n## Key Takeaways\n- A product fails not from bad code, but from solving the wrong problem.\n- Listening without pitching is the hardest and most important interview skill.",
+      "unlinkedMedia": [
+        {
+          "id": "week_02_01_monday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
+          "title": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "caption": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "fileName": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "fileType": "image",
+          "url": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "previewUrl": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "storageKey": "Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "linked": false
+        }
+      ],
+      "storageKey": "Week_02/01_Monday",
+      "compiledMarkdown": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.\n\n## Topics Covered\n- Customer Persona Development\n- User Journey Mapping\n- Empathy Interviewing Techniques\n\n## Practical Activities\n- Interviewed cohort peers on campus retail bottlenecks\n- Built 3 distinct user personas for phygital commerce\n- Created an empathy map identifying key user pain points\n\n## Evidence\n\n\n## Key Takeaways\n- A product fails not from bad code, but from solving the wrong problem.\n- Listening without pitching is the hardest and most important interview skill.\n\n### Gallery\n\n![WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg](/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg)",
       "hasContent": true
     },
-    "Week_01/02_Tuesday": {
-      "id": "Week_01_02_Tuesday",
-      "week": "Week_01",
-      "weekNumber": 1,
-      "day": "02_Tuesday",
-      "dayName": "Tuesday",
-      "dayNumber": 2,
+    "Week_02/01_Monday": {
+      "id": "Week_02_01_Monday",
+      "week": "Week_02",
+      "weekNumber": 2,
+      "day": "01_Monday",
+      "dayName": "Monday",
+      "dayNumber": 1,
       "date": "2026-08-18",
       "title": "Customer Empathy & Problem Validation",
       "summary": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.",
@@ -229,34 +230,35 @@
       ],
       "evidence": [
         {
-          "id": "week_01_02_tuesday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
+          "id": "week_02_01_monday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
           "title": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "caption": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "fileName": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
           "fileType": "image",
-          "url": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "previewUrl": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "storageKey": "Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-          "linked": true
-        },
-        {
-          "id": "week_01_02_tuesday_user_journey_map_jpg",
-          "title": "User Journey Map Brainstorming Session",
-          "caption": "User Journey Map Brainstorming Session",
-          "fileName": "user-journey-map.jpg",
-          "fileType": "image",
-          "url": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-          "previewUrl": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-          "storageKey": "Week_01/02_Tuesday/user-journey-map.jpg",
-          "linked": true
+          "url": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "previewUrl": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "storageKey": "Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "linked": false
         }
       ],
       "gallery": [
-        "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg"
+        "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg"
       ],
-      "unlinkedMedia": [],
-      "storageKey": "Week_01/02_Tuesday",
-      "compiledMarkdown": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.\n\n## Topics Covered\n- Customer Persona Development\n- User Journey Mapping\n- Empathy Interviewing Techniques\n\n## Practical Activities\n- Interviewed cohort peers on campus retail bottlenecks\n- Built 3 distinct user personas for phygital commerce\n- Created an empathy map identifying key user pain points\n\n## Evidence\n-![WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg](/assets/weekly/Week_01/02_Tuesday/WhatsApp%20Image%202026-08-28%20at%2012.50.30%20PM.jpeg)![User Journey Map Brainstorming Session](/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg)\n\n## Key Takeaways\n- A product fails not from bad code, but from solving the wrong problem.\n- Listening without pitching is the hardest and most important interview skill.",
+      "unlinkedMedia": [
+        {
+          "id": "week_02_01_monday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
+          "title": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "caption": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "fileName": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "fileType": "image",
+          "url": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "previewUrl": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "storageKey": "Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+          "linked": false
+        }
+      ],
+      "storageKey": "Week_02/01_Monday",
+      "compiledMarkdown": "Today we stepped away from laptops and focused entirely on understanding the humans we are designing solutions for. We learned how to uncover unspoken user friction points through structured empathy interviews.\n\n## Topics Covered\n- Customer Persona Development\n- User Journey Mapping\n- Empathy Interviewing Techniques\n\n## Practical Activities\n- Interviewed cohort peers on campus retail bottlenecks\n- Built 3 distinct user personas for phygital commerce\n- Created an empathy map identifying key user pain points\n\n## Evidence\n\n\n## Key Takeaways\n- A product fails not from bad code, but from solving the wrong problem.\n- Listening without pitching is the hardest and most important interview skill.\n\n### Gallery\n\n![WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg](/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg)",
       "hasContent": true
     }
   },
@@ -292,34 +294,19 @@
       "dayNumber": 1
     },
     {
-      "id": "week_01_02_tuesday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
+      "id": "week_02_01_monday_whatsapp_image_2026_08_28_at_12_50_30_pm_jpeg",
       "title": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
       "caption": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
       "fileName": "WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
       "fileType": "image",
-      "url": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-      "previewUrl": "/assets/weekly/Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-      "storageKey": "Week_01/02_Tuesday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
-      "linked": true,
-      "week": "Week_01",
-      "day": "02_Tuesday",
-      "weekNumber": 1,
-      "dayNumber": 2
-    },
-    {
-      "id": "week_01_02_tuesday_user_journey_map_jpg",
-      "title": "User Journey Map Brainstorming Session",
-      "caption": "User Journey Map Brainstorming Session",
-      "fileName": "user-journey-map.jpg",
-      "fileType": "image",
-      "url": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-      "previewUrl": "/assets/weekly/Week_01/02_Tuesday/user-journey-map.jpg",
-      "storageKey": "Week_01/02_Tuesday/user-journey-map.jpg",
-      "linked": true,
-      "week": "Week_01",
-      "day": "02_Tuesday",
-      "weekNumber": 1,
-      "dayNumber": 2
+      "url": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+      "previewUrl": "/assets/weekly/Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+      "storageKey": "Week_02/01_Monday/WhatsApp Image 2026-08-28 at 12.50.30 PM.jpeg",
+      "linked": false,
+      "week": "Week_02",
+      "day": "01_Monday",
+      "weekNumber": 2,
+      "dayNumber": 1
     }
   ]
 }
