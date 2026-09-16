@@ -1541,6 +1541,13 @@
                     <span>Read Full ${isWeek00 ? '5-Day Orientation Chronicle' : 'Week ' + weekStr + ' Chronicle'}</span>
                     <i class="fa-solid fa-arrow-right"></i>
                   </a>
+                  ${weekItem.week === 1 ? `
+                    <a href="infosys-springboard-week-1.html" class="btn btn-outline" style="display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.65rem 1.3rem; font-size:0.9rem; text-decoration:none; width:100%; border:1px solid rgba(99,102,241,0.5); color:#a5b4fc; background:rgba(99,102,241,0.1);">
+                      <i class="fa-solid fa-newspaper"></i>
+                      <span>Read Infosys Springboard 7.0 Editorial Recap (5 Days)</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
+                    </a>
+                  ` : ''}
                 </div>
               ` : ''}
             </div>
@@ -1761,15 +1768,17 @@
                 .filter((d, idx, arr) => d && d.week === weekStr && arr.findIndex(x => x.id === d.id) === idx);
               
               if (weekDays.length > 0) {
-                if (w.status !== 'published') {
-                  w.status = 'published';
+                w.status = 'published';
+                if (!w.badgeText || w.badgeText === 'FIELD NOTES IN PROGRESS') {
                   w.badgeText = `${weekDays.length} DAYS ACTIVE`;
+                }
+                if (!w.notesText) {
                   w.notesText = 'Explore Daily Notes';
-                  const firstDay = weekDays[0];
-                  if (firstDay && firstDay.title) {
-                    w.title = `PRICE Protosem — ${weekStr.replace('_', ' ')}`;
-                    w.subtitle = `${firstDay.dayName}: ${firstDay.title}`;
-                  }
+                }
+                const firstDay = weekDays[0];
+                if (firstDay && firstDay.title && (!w.title || w.title.includes('Week '))) {
+                  w.title = `PRICE Protosem — ${weekStr.replace('_', ' ')}`;
+                  w.subtitle = `${firstDay.dayName}: ${firstDay.title}`;
                 }
               }
             });

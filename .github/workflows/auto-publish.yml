@@ -57,7 +57,7 @@ jobs:
             echo "✅ No compiled changes detected. Working tree clean."
           else
             echo "📝 Changes detected in compiled artifacts. Committing..."
-            git commit -m "Auto-compile ProtoSem portfolio content [skip ci]"
+            git commit -m "Auto-compile ProtoSem portfolio content"
             git push origin HEAD:main
             echo "🚀 Successfully pushed compiled portfolio content."
           fi

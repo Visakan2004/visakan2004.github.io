@@ -952,6 +952,116 @@
         flex-direction: column;
         align-items: flex-start;
       }
+      .industry-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .day-2-tag { background: #7c3aed; }
+    .day-3-tag { background: #d97706; }
+    .day-4-tag { background: #e11d48; }
+    .day-5-tag { background: #059669; }
+
+    .bullet-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+    .bullet-card ul, .bullet-card ol {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: #cbd5e1;
+    }
+    .bullet-card li {
+      line-height: 1.6;
+    }
+
+    .onam-festive-container {
+      background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(234, 179, 8, 0.08));
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+    .onam-decor {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+    .industry-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .industry-card:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+    .industry-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .industry-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .industry-card-desc {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .tag-badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+    .tag-badge-item {
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #a5b4fc;
+      font-size: 0.82rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: 8px;
+    }
+
+    .companion-banner {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(56, 189, 248, 0.1));
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      margin: 3.5rem 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
     }
   </style>
 </head>
@@ -977,6 +1087,10 @@
         <a href="price-protosem-0th-week.html" class="nav-btn" title="Previous: Week 00">
           <i class="fa-solid fa-arrow-left"></i>
           <span>Week 00</span>
+        </a>
+        <a href="infosys-springboard-week-1.html" class="nav-btn" title="Infosys Springboard 7.0 Editorial Recap" style="border-color:rgba(99,102,241,0.4); color:#a5b4fc;">
+          <i class="fa-solid fa-newspaper"></i>
+          <span>Editorial Recap</span>
         </a>
         <a href="index.html#protosem" class="nav-btn nav-btn-highlight">
           <i class="fa-solid fa-layer-group"></i>
@@ -1420,6 +1534,349 @@
       </div>
 
     </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 2: TURNING DATA INTO DECISIONS
+         ============================================================ -->
+    <section class="day-section day-2" id="day-2">
+      <div class="day-header">
+        <span class="day-num-tag day-2-tag">Day 2</span>
+        <span class="day-meta-text">Tuesday · Analytical Strategy</span>
+      </div>
+
+      <h2 class="day-title">Turning Data Into Decisions</h2>
+      <h3 class="day-subtitle">Using Structured Analysis &amp; Dashboards to Frame Business Strategy</h3>
+
+      <p class="day-text">
+        Day 2 focused on using data and structured analysis to understand business problems more clearly. Without clear presentation, valuable data stays trapped in spreadsheets.
+      </p>
+
+      <!-- Topic 1: Power BI Dashboards -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-chart-pie"></i></span>
+          <span>Power BI Dashboards</span>
+        </h3>
+        <p class="day-text">
+          We explored Power BI and how dynamic dashboards turn raw spreadsheet rows into intuitive, high-impact business insights:
+        </p>
+        <div class="bullet-card">
+          <ul>
+            <li><strong>Visualisations:</strong> Make complex multivariate information easy to parse at a glance.</li>
+            <li><strong>Interactive Filters:</strong> Empower users to slice, dice, and explore data across cohorts.</li>
+            <li><strong>Decision Support:</strong> Enable executives to make confident, evidence-backed strategic moves.</li>
+            <li><strong>Storytelling with Data:</strong> Clear presentation matters just as much as mathematical accuracy.</li>
+          </ul>
+        </div>
+        <div class="quote-box quote-amber">
+          “Nothing says ‘I have my life together’ like a well-filtered pie chart.”
+        </div>
+      </div>
+
+      <!-- Topic 2: The IDEO Approach -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+          <span>The IDEO Approach</span>
+        </h3>
+        <p class="day-text">
+          We studied IDEO’s renowned framework for design thinking, which places deep value on rapid experimentation, cross-functional collaboration, early iteration, and active learning through testing hypotheses.
+        </p>
+        <div class="quote-box quote-purple">
+          “IDEO’s version of ‘fail fast’ sounds a lot more elegant than ours.”
+        </div>
+      </div>
+
+      <!-- Topic 3: Value Chain SWOT Analysis -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-diagram-project"></i></span>
+          <span>Value Chain SWOT Analysis</span>
+        </h3>
+        <p class="day-text">
+          We performed a complete SWOT analysis across the end-to-end value chain—from initial raw inputs all the way to the end customer:
+        </p>
+        <div class="bullet-card">
+          <ol>
+            <li><strong>Map the Value Chain:</strong> Document every operational touchpoint and handover.</li>
+            <li><strong>Identify Strengths &amp; Weaknesses:</strong> Audit internal competencies and bottlenecks.</li>
+            <li><strong>Explore Opportunities &amp; Threats:</strong> Scan market dynamics, supply shifts, and customer trends.</li>
+            <li><strong>Find Unmet Gaps:</strong> Pinpoint high-leverage areas ripe for innovation and improvement.</li>
+          </ol>
+        </div>
+        <div class="quote-box quote-amber">
+          “SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired.”
+        </div>
+      </div>
+
+      <!-- Day 2 Takeaway Card -->
+      <div class="takeaway-box">
+        <div class="takeaway-icon-circle">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div>
+          <div class="takeaway-label">Day 2 Key Takeaway</div>
+          <div class="takeaway-quote">
+            “Data is useful when it is clear, and strategy improves when we see the whole picture.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 3: ONAM BREAK 🌺
+         ============================================================ -->
+    <section class="day-section day-3" id="day-3">
+      <div class="day-header">
+        <span class="day-num-tag day-3-tag">Day 3</span>
+        <span class="day-meta-text">Wednesday · Cultural Festivity</span>
+      </div>
+
+      <h2 class="day-title">Onam Break 🌺</h2>
+      <h3 class="day-subtitle">Recharge, Cultural Celebration &amp; Fresh Perspective</h3>
+
+      <div class="onam-festive-container">
+        <div class="onam-decor">🌺 🌼 🌸 🪔</div>
+        <p class="day-text" style="font-size:1.12rem; color:#fef3c7;">
+          Day 3 was an Onam break—a festive pause to celebrate Kerala heritage, recharge our mental bandwidth, and return to problem-solving with renewed clarity and energy.
+        </p>
+        <div class="quote-box" style="border-left-color:#f59e0b; background:rgba(0,0,0,0.3); margin-top:1.5rem;">
+          “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”
+        </div>
+      </div>
+
+      <!-- Day 3 Takeaway Card -->
+      <div class="takeaway-box" style="border-color:rgba(245,158,11,0.35); background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(16,185,129,0.1));">
+        <div class="takeaway-icon-circle" style="background:rgba(245,158,11,0.2); color:#f59e0b;">
+          <i class="fa-solid fa-sparkles"></i>
+        </div>
+        <div>
+          <div class="takeaway-label" style="color:#fbbf24;">Day 3 Key Takeaway</div>
+          <div class="takeaway-quote">
+            “Rest is also part of the process.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 4: DECISIONS, BEHAVIOUR & PERSONAL BRANDING
+         ============================================================ -->
+    <section class="day-section day-4" id="day-4">
+      <div class="day-header">
+        <span class="day-num-tag day-4-tag">Day 4</span>
+        <span class="day-meta-text">Thursday · Behavioural Economics</span>
+      </div>
+
+      <h2 class="day-title">Decisions, Behaviour &amp; Personal Branding</h2>
+      <h3 class="day-subtitle">Cognitive Asymmetry &amp; Communicating Professional Identity</h3>
+
+      <p class="day-text">
+        Day 4 explored the fascinating intersection of human decision-making and personal career storytelling. We learned why humans act counter to pure logic, and how to authentically articulate our engineering journey.
+      </p>
+
+      <!-- Topic 1: Prospect Theory -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-brain"></i></span>
+          <span>Prospect Theory</span>
+        </h3>
+        <p class="day-text">
+          We unpacked Prospect Theory, a cornerstone concept of behavioural economics developed by Daniel Kahneman and Amos Tversky:
+        </p>
+        <div class="bullet-card">
+          <ul>
+            <li><strong>Loss Aversion:</strong> Psychologically, the pain of losing $100 is twice as intense as the joy of gaining $100.</li>
+            <li><strong>Irrational Framing:</strong> People do not evaluate options in absolute terms, but relative to psychological reference points.</li>
+            <li><strong>Emotional Decision-Making:</strong> Risk perception, regret avoidance, and choice architecture heavily govern user adoption.</li>
+          </ul>
+        </div>
+        <div class="quote-box quote-purple">
+          “Explains perfectly why nobody in the group wanted to be the one who lost the case study debate.”
+        </div>
+      </div>
+
+      <!-- Topic 2: Building the Portfolio -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-id-card-clip"></i></span>
+          <span>Building the Portfolio</span>
+        </h3>
+        <p class="day-text">
+          We explored personal branding and why building a live digital portfolio is essential for engineers, designers, and innovators:
+        </p>
+        <div class="bullet-card">
+          <ul>
+            <li><strong>Story Over Resume:</strong> A portfolio is not a static resume checklist; it is an evolving narrative of how we learn, iterate, and solve problems.</li>
+            <li><strong>Proof of Work:</strong> Real code, documented challenges, case studies, and evidence speak louder than credentials.</li>
+            <li><strong>Continuous Documentation:</strong> Capturing daily reflections builds authentic personal authority over time.</li>
+          </ul>
+        </div>
+        <div class="quote-box quote-amber">
+          “Portfolio status: under construction, much like everyone’s confidence at 9am.”
+        </div>
+      </div>
+
+      <!-- Day 4 Takeaway Card -->
+      <div class="takeaway-box">
+        <div class="takeaway-icon-circle">
+          <i class="fa-solid fa-user-check"></i>
+        </div>
+        <div>
+          <div class="takeaway-label">Day 4 Key Takeaway</div>
+          <div class="takeaway-quote">
+            “Understanding people improves solutions; communicating our work builds confidence.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="clean-divider"></div>
+
+    <!-- ============================================================
+         DAY 5: BUILDING IDEAS & BRINGING WEEK 1 TOGETHER
+         ============================================================ -->
+    <section class="day-section day-5" id="day-5">
+      <div class="day-header">
+        <span class="day-num-tag day-5-tag">Day 5</span>
+        <span class="day-meta-text">Friday · Prototyping &amp; Culmination</span>
+      </div>
+
+      <h2 class="day-title">Building Ideas &amp; Bringing Week 1 Together</h2>
+      <h3 class="day-subtitle">Rapid Low-Code Prototyping, Industry Reality &amp; Final Presentation</h3>
+
+      <p class="day-text">
+        The final day synthesized technological tools, founder motivation, cross-industry perspectives, and our first high-stakes team presentation.
+      </p>
+
+      <!-- Topic 1: Base44 -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-cubes-stacked"></i></span>
+          <span>Base44 Low-Code Prototyping</span>
+        </h3>
+        <p class="day-text">
+          We explored Base44 and witnessed how modern low-code / no-code platforms collapse the cycle time between ideation and functional MVP:
+        </p>
+        <div class="quote-box quote-purple">
+          “The gap between ‘I have an app idea’ and ‘I have an app’ just got a lot smaller.”
+        </div>
+      </div>
+
+      <!-- Topic 2: Motivation & Vision Talk by Ram -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-bullseye"></i></span>
+          <span>Motivation &amp; Vision Talk</span>
+        </h3>
+        <p class="day-text">
+          A dedicated vision session by Ram pushed us to align our immediate day-to-day experiments with long-term ambition, self-belief, and proactive ownership of our technical trajectories.
+        </p>
+      </div>
+
+      <!-- Topic 3: Industry Perspectives -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-industry"></i></span>
+          <span>Industry Perspectives: Agriculture, Textile &amp; Retail</span>
+        </h3>
+        <p class="day-text">
+          We compared the operational friction and supply chain realities across three foundational sectors:
+        </p>
+        <div class="industry-grid">
+          <div class="industry-card">
+            <div class="industry-card-icon" style="background:rgba(16,185,129,0.15); color:#34d399;">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <h4 class="industry-card-title">Agriculture</h4>
+            <p class="industry-card-desc">
+              Examining raw input procurement, harvest variability, cold chain logistics, and fair value distribution at the source.
+            </p>
+          </div>
+          <div class="industry-card">
+            <div class="industry-card-icon" style="background:rgba(99,102,241,0.15); color:#a5b4fc;">
+              <i class="fa-solid fa-shirt"></i>
+            </div>
+            <h4 class="industry-card-title">Textile</h4>
+            <p class="industry-card-desc">
+              Tracking the transformation of raw fibres into yarn, fabric dyeing quality control, and garment export supply lines.
+            </p>
+          </div>
+          <div class="industry-card">
+            <div class="industry-card-icon" style="background:rgba(56,189,248,0.15); color:#7dd3fc;">
+              <i class="fa-solid fa-shop"></i>
+            </div>
+            <h4 class="industry-card-title">Retail</h4>
+            <p class="industry-card-desc">
+              Understanding inventory turnover, point-of-sale friction, omnichannel fulfillment, and evolving customer retention.
+            </p>
+          </div>
+        </div>
+        <div class="quote-box quote-amber">
+          “Three very different industries, one common theme: real-world business is messier than the case studies.”
+        </div>
+      </div>
+
+      <!-- Topic 4: Week 1 Presentation -->
+      <div class="topic-block">
+        <h3 class="topic-heading">
+          <span class="topic-icon"><i class="fa-solid fa-person-chalkboard"></i></span>
+          <span>Week 1 Presentation &amp; Synthesis</span>
+        </h3>
+        <p class="day-text">
+          Week 1 concluded with a comprehensive team presentation uniting all five days of learning into one cohesive narrative:
+        </p>
+        <div class="tag-badge-wrap">
+          <span class="tag-badge-item"><i class="fa-solid fa-sliders"></i> Recommendation Algorithms</span>
+          <span class="tag-badge-item"><i class="fa-solid fa-chart-pie"></i> Power BI</span>
+          <span class="tag-badge-item"><i class="fa-solid fa-lightbulb"></i> Design Thinking</span>
+          <span class="tag-badge-item"><i class="fa-solid fa-diagram-project"></i> Value Chain SWOT</span>
+          <span class="tag-badge-item"><i class="fa-solid fa-brain"></i> Prospect Theory</span>
+          <span class="tag-badge-item"><i class="fa-solid fa-industry"></i> Industry Insights</span>
+        </div>
+        <p class="day-text">
+          We survived, presented, and lived to start Week 2 with stronger teamwork and clearer vision.
+        </p>
+        <div class="quote-box quote-purple">
+          “Nothing bonds a team like collectively realising the deadline was today, not tomorrow.”
+        </div>
+      </div>
+
+      <!-- Day 5 Takeaway Card -->
+      <div class="takeaway-box">
+        <div class="takeaway-icon-circle">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div>
+          <div class="takeaway-label">Day 5 Key Takeaway</div>
+          <div class="takeaway-quote">
+            “Learning becomes meaningful when ideas are applied, shared, and presented together.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Companion Editorial Callout -->
+    <div class="companion-banner">
+      <div>
+        <span style="font-family:var(--font-heading); font-size:0.8rem; font-weight:800; color:#38bdf8; text-transform:uppercase; letter-spacing:0.06em;">Editorial Companion</span>
+        <h3 style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:#fff; margin-top:0.25rem;">Infosys Springboard 7.0 Recap (Team 2)</h3>
+        <p style="font-size:0.95rem; color:#cbd5e1; margin-top:0.4rem; max-width:580px;">
+          Read the full magazine-style editorial recap covering deep dives into recommendation algorithms, design thinking stages, and Team 2 reflections.
+        </p>
+      </div>
+      <a href="infosys-springboard-week-1.html" style="display:inline-flex; align-items:center; gap:0.6rem; padding:0.8rem 1.6rem; border-radius:100px; background:linear-gradient(135deg,#4f46e5,#0284c7); color:#fff; text-decoration:none; font-family:var(--font-heading); font-weight:700; font-size:0.92rem; white-space:nowrap;">
+        <i class="fa-solid fa-newspaper"></i>
+        <span>Read Editorial Recap</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
 
     <!-- Footer Navigation -->
     <div class="footer-nav-card">
