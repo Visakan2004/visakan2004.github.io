@@ -33,11 +33,6 @@ app.get(['/price-protosem', '/price-protosem-0th-week', '/protosem-week-0', '/pr
   res.sendFile(path.join(__dirname, 'price-protosem-0th-week.html'));
 });
 
-// PRICE Protosem Week 1 Blog Routes
-app.get(['/price-protosem-week-1', '/price-protosem-1st-week', '/protosem-week-1', '/week-01-story', '/week-1'], (req, res) => {
-  res.sendFile(path.join(__dirname, 'price-protosem-week-1.html'));
-});
-
 // Infosys Springboard 7.0 Week 1 Recap Routes
 app.get(['/infosys-springboard-week-1', '/springboard-week-1', '/week-1-recap', '/infosys-week-1'], (req, res) => {
   res.sendFile(path.join(__dirname, 'infosys-springboard-week-1.html'));

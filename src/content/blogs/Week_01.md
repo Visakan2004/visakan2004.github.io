@@ -1,176 +1,68 @@
-# PRICE ProtoSem — Week 01
+# Week 1 Recap — Infosys Springboard 7.0 | Team 2
 
 > Consolidated Weekly Learning Journey & Portfolio Evidence
 
-## Monday — Day 1 — From User Data to User Needs
+A five-day learning journey through technology, design thinking, business strategy, and teamwork.
 
-“Day 1 connected two important ideas: how digital platforms understand user preferences, and how people-centred thinking helps create better solutions.”
-
-### Recommendation Algorithms
-
-“We learned how recommendation algorithms power familiar experiences such as ‘Recommended for you’ and ‘Customers also bought.’”
-
-- **Collaborative Filtering:** Recommends content based on users with similar interests.
-    
-- **Content-Based Filtering:** Recommends content based on features of items a user previously liked.
-    
-
-“Recommendation systems use data patterns and user behaviour to make digital experiences more relevant.”
-
-Quote: “Netflix now knows me better than my own family. Concerning, but efficient.”
-
-### Design Thinking
-
-“We learned design thinking as a human-centred method for solving problems.”
-
-Show this flow:
-
-**Empathize → Define → Ideate → Prototype → Test**
-
-“Instead of starting with an answer, we start by understanding the user, their challenges, and the actual problem.”
-
-### Eyewear Retail Case Study
-
-“We applied design thinking to an eyewear retail case study.”
-
-- Discussed customer personas
-    
-- Identified possible buying challenges
-    
-- Explored customer pain points
-    
-- Brainstormed practical solutions
-    
-
-“Good problem-solving starts with listening to users.”
-
-Quote: “Four eyes are better than two — pun fully intended.”
-
-**Day 1 takeaway: Data shows behaviour. Empathy explains the person behind it.**
+- 📖 **Full Interactive Editorial**: [Read Week 1 Recap](infosys-springboard-week-1.html)
+- 👥 **Curated For**: Team 2 · Infosys Springboard 7.0
 
 ---
 
-## Tuesday — Day 2 — Turning Data Into Decisions
+## Day 1 — Algorithms, Empathy & Eyewear
 
-“Day 2 focused on using data and structured analysis to understand business problems more clearly.”
+Collaborative and content-based recommendation systems paired with design thinking fundamentals and the Lenskart omnichannel case study.
 
-### Power BI Dashboards
-
-“We explored Power BI and how dashboards turn spreadsheet data into useful insights.”
-
-- Visualisations make information easier to understand
-    
-- Filters help users explore data
-    
-- Interactive dashboards support better decisions
-    
-- Clear presentation matters as much as accurate data
-    
-
-Quote: “Nothing says ‘I have my life together’ like a well-filtered pie chart.”
-
-### The IDEO Approach
-
-“We explored IDEO’s approach to design thinking, which values experimentation, teamwork, iteration, and learning through testing.”
-
-Quote: “IDEO’s version of ‘fail fast’ sounds a lot more elegant than ours.”
-
-### Value Chain SWOT Analysis
-
-“We performed SWOT analysis across a value chain, from raw input to the end customer.”
-
-1. Map every stage in the value chain
-    
-2. Identify strengths and weaknesses
-    
-3. Explore opportunities and threats
-    
-4. Find gaps worth improving
-    
-
-Quote: “SWOT: Strengths, Weaknesses, Opportunities, Threats — not Stressed, Worried, Overwhelmed, Tired.”
-
-**Day 2 takeaway: Data is useful when it is clear, and strategy improves when we see the whole picture.**
+### Topics Covered
+- Recommendation Systems
+- Collaborative & Content-Based Filtering
+- Design Thinking Fundamentals
+- Lenskart Omnichannel Case Study
 
 ---
 
-## Wednesday — Day 3 — Onam Break
+## Day 2 — Dashboards & Deeper Thinking
 
-Use a short festive section with subtle Kerala-inspired flowers or pookalam visuals.
+Building interactive analytical dashboards in Power BI and framing problems using advanced user journey and empathy mapping.
 
-“Day 3 was an Onam break—a chance to celebrate, recharge, and return with fresh energy.”
-
-Quote: “Official schedule: admire the pookalam, enjoy an unreasonable amount of sadya, and nap like it is a KPI.”
-
-**Day 3 takeaway: Rest is also part of the process.**
-
----
+### Topics Covered
+- Power BI Interactive Dashboards
+- Empathy Mapping
+- Problem Framing
+- Data Visualisation Techniques
 
 ---
 
-## Thursday — Day 4 — Decisions, Behaviour & Personal Branding
+## Day 3 — Strategy, Value & Celebration
 
-“Day 4 helped us understand how people make decisions and how we can present our own professional journey.”
+Deconstructing Porter's Value Chain and SWOT architectures to connect technical engineering with business viability, alongside Women's Day celebrations.
 
-### Prospect Theory
-
-“We learned about prospect theory, a behavioural economics concept that explains why losses often feel more powerful than equal gains.”
-
-“People do not always make decisions logically. Risk, emotion, fear of loss, and the way choices are presented can influence behaviour.”
-
-Quote: “Explains perfectly why nobody in the group wanted to be the one who lost the case study debate.”
-
-### Building the Portfolio
-
-“We explored personal branding and the importance of creating a portfolio that clearly shows our skills, work, interests, and progress.”
-
-“A portfolio is not just a list of projects. It is a story of how we learn, think, and solve problems.”
-
-Quote: “Portfolio status: under construction, much like everyone’s confidence at 9am.”
-
-**Day 4 takeaway: Understanding people improves solutions; communicating our work builds confidence**
+### Topics Covered
+- Porter's Value Chain Architecture
+- SWOT Analysis for Strategic Alignment
+- Business Viability Modeling
+- Women's Day Celebration 🌺
 
 ---
 
-## Friday — Day 5 — Building Ideas & Bringing Week 1 Together
+## Day 4 — Behavioural Economics & Market Realities
 
-“The final day brought together technology, motivation, industry knowledge, and our Week 1 presentation.”
+Analyzing human decision-making biases including Nudge Theory, Anchoring, and Choice Architecture to design ethical, high-conversion systems.
 
-### Base44
-
-“We explored Base44 and how no-code or low-code tools can help turn an idea into a working app more quickly.”
-
-Quote: “The gap between ‘I have an app idea’ and ‘I have an app’ just got a lot smaller.”
-
-### Motivation and Vision Talk
-
-“A motivation and vision talk by Ram encouraged us to connect our learning with long-term goals, confidence, and career growth.”
-
-### Industry Perspectives: Agriculture, Textile & Retail
-
-Create three visual cards:
-
-- **Agriculture:** Supply chains and the realities behind products at their source.
-    
-- **Textile:** The journey from raw material to finished product.
-    
-- **Retail:** How products meet customers at the point of sale.
-    
-
-Quote: “Three very different industries, one common theme: real-world business is messier than the case studies.”
-
-### Week 1 Presentation
-
-“Week 1 ended with a team presentation bringing together our learning.”
-
-Show these as tags:
-
-**Recommendation Algorithms · Power BI · Design Thinking · Value Chain SWOT · Prospect Theory · Industry Insights**
-
-“We survived, presented, and lived to start Week 2.”
-
-Quote: “Nothing bonds a team like collectively realising the deadline was today, not tomorrow.”
-
-**Day 5 takeaway: Learning becomes meaningful when ideas are applied, shared, and presented together.**
+### Topics Covered
+- Behavioural Economics & Heuristics
+- Nudge Theory
+- Choice Architecture & Anchoring
+- Market Dynamics & Consumer Behavior
 
 ---
+
+## Day 5 — Synthesis, Prototyping & Future Roadmap
+
+Cross-disciplinary synthesis, rapid prototyping, Team 2 presentation, and establishing milestones for the upcoming project build phase.
+
+### Topics Covered
+- Rapid Prototyping
+- Cross-Disciplinary Synthesis
+- Team 2 Final Presentation
+- Project Execution Roadmap

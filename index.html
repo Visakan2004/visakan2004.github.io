@@ -455,74 +455,279 @@
   </section>
 
 
-  <!-- ====================================================
-       5. PROTOSEM SECTION (15-Week Connected Energy Journey)
+   <!-- ====================================================
+       5. PROTOSEM RACING — MY 20-WEEK JOURNEY
        ==================================================== -->
-  <section id="protosem" class="section protosem-section">
-    <h2 class="section-title reveal-on-scroll">ProtoSem</h2>
+  <section id="protosem" class="section protosem-racing-section">
+    
+    <!-- Hero & HUD Telemetry Header -->
+    <div class="racing-hero-container reveal-on-scroll">
+      <div class="racing-badge-wrap">
+        <span class="racing-badge">
+          <i class="fa-solid fa-flag-checkered"></i> PROTOSEM RACING
+        </span>
+        <span class="racing-edition-tag">KCT FORGE SPEEDWAY</span>
+      </div>
 
-    <div class="protosem-container">
+      <h2 class="racing-title">
+        PROTOSEM RACING
+      </h2>
+      <p class="racing-subtitle">
+        "My 20-Week Journey" • Phygital Retail • Intelligent Commerce • Entrepreneurship
+      </p>
 
-      <!-- Programme Visual Bar -->
-      <div class="protosem-metrics-strip reveal-on-scroll" aria-label="Programme Overview">
-        <div class="metric-block">
-          <span class="metric-val">1</span>
-          <span class="metric-lbl">PROGRAMME</span>
+      <!-- Futuristic Racing HUD Bar -->
+      <div class="racing-hud-panel" role="region" aria-label="Racing Telemetry HUD">
+        <div class="hud-box hud-box-checkpoint">
+          <div class="hud-box-icon"><i class="fa-solid fa-location-crosshairs"></i></div>
+          <div class="hud-box-content">
+            <span class="hud-label">CHECKPOINT</span>
+            <div class="hud-val-wrap">
+              <span class="hud-val-accent" id="hudWeekDisplay">WEEK 00</span>
+              <span class="hud-val-total">/ 19</span>
+            </div>
+          </div>
         </div>
-        <div class="metric-divider" aria-hidden="true"></div>
-        <div class="metric-block">
-          <span class="metric-val">4</span>
-          <span class="metric-lbl">PHASES</span>
+
+        <div class="hud-box hud-box-progress">
+          <div class="hud-box-content" style="width: 100%;">
+            <div class="hud-progress-labels">
+              <span class="hud-label"><i class="fa-solid fa-gauge-high"></i> RACE PROGRESS</span>
+              <span class="hud-percent" id="hudProgressPercent">5%</span>
+            </div>
+            <div class="hud-meter-track" aria-label="Progress Bar">
+              <div class="hud-meter-fill" id="hudProgressBar" style="width: 5%"></div>
+              <div class="hud-meter-glow"></div>
+            </div>
+          </div>
         </div>
-        <div class="metric-divider" aria-hidden="true"></div>
-        <div class="metric-block">
-          <span class="metric-val">20</span>
-          <span class="metric-lbl">WEEKS</span>
+
+        <div class="hud-box hud-box-phase">
+          <div class="hud-box-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="hud-box-content">
+            <span class="hud-label">SECTOR</span>
+            <span class="hud-phase-val" id="hudPhaseDisplay">PHASE 01 — FOUNDATION</span>
+          </div>
         </div>
-        <div class="metric-divider" aria-hidden="true"></div>
-        <div class="metric-block">
-          <span class="metric-val">20</span>
-          <span class="metric-lbl">FUTURE STORIES</span>
+
+        <div class="hud-box hud-box-status">
+          <div class="hud-box-content">
+            <span class="hud-label">STATUS</span>
+            <div class="hud-status-badge status-completed" id="hudStatusDisplay">
+              <span class="hud-status-dot"></span>
+              <span id="hudStatusText">✓ COMPLETED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Racing Track & Interactive Experience -->
+    <div class="racing-track-wrapper reveal-on-scroll">
+
+      <!-- Phase Selector Ribbon -->
+      <div class="phase-circuit-ribbon" role="tablist" aria-label="Phase Filters">
+        <button class="phase-ribbon-btn active" data-phase="all" role="tab" aria-selected="true">
+          <i class="fa-solid fa-road"></i> FULL CIRCUIT
+        </button>
+        <button class="phase-ribbon-btn" data-phase="1" role="tab" aria-selected="false">
+          <span class="phase-color-dot dot-p1"></span> PHASE 01 (W00–W04)
+        </button>
+        <button class="phase-ribbon-btn" data-phase="2" role="tab" aria-selected="false">
+          <span class="phase-color-dot dot-p2"></span> PHASE 02 (W05–W09)
+        </button>
+        <button class="phase-ribbon-btn" data-phase="3" role="tab" aria-selected="false">
+          <span class="phase-color-dot dot-p3"></span> PHASE 03 (W10–W14)
+        </button>
+        <button class="phase-ribbon-btn" data-phase="4" role="tab" aria-selected="false">
+          <span class="phase-color-dot dot-p4"></span> PHASE 04 (W15–W19)
+        </button>
+      </div>
+
+      <!-- Desktop Grand Prix SVG Circuit -->
+      <div class="racing-circuit-board" id="racingCircuitBoard">
+        <svg id="racingCircuitSvg" viewBox="0 0 1000 600" class="racing-circuit-svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <!-- Neon glow filters -->
+            <filter id="neonFilterCyan" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="neonFilterPurple" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+            <filter id="glowCar" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
+              <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.22  0 0 0 0 0.74  0 0 0 0 0.97  0 0 0 0.8 0" result="cyanGlow" />
+              <feMerge>
+                <feMergeNode in="cyanGlow" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <!-- Asphalt linear gradient -->
+            <linearGradient id="circuitAsphalt" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#080c1a" />
+              <stop offset="50%" stop-color="#10172e" />
+              <stop offset="100%" stop-color="#060914" />
+            </linearGradient>
+
+            <linearGradient id="circuitNeonStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="30%" stop-color="#818cf8" />
+              <stop offset="70%" stop-color="#c084fc" />
+              <stop offset="100%" stop-color="#f43f5e" />
+            </linearGradient>
+
+            <!-- Checkered start/finish line pattern -->
+            <pattern id="checkeredStartPattern" width="16" height="16" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#ffffff" />
+              <rect x="8" width="8" height="8" fill="#0f172a" />
+              <rect y="8" width="8" height="8" fill="#0f172a" />
+              <rect x="8" y="8" width="8" height="8" fill="#ffffff" />
+            </pattern>
+          </defs>
+
+          <!-- Circuit Infield Subtle Grid -->
+          <g class="circuit-grid-underlay" opacity="0.15">
+            <line x1="100" y1="100" x2="900" y2="100" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="100" y1="200" x2="900" y2="200" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="100" y1="300" x2="900" y2="300" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="100" y1="400" x2="900" y2="400" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="100" y1="500" x2="900" y2="500" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="200" y1="60" x2="200" y2="540" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="400" y1="60" x2="400" y2="540" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="600" y1="60" x2="600" y2="540" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+            <line x1="800" y1="60" x2="800" y2="540" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+          </g>
+
+          <!-- Infield Telemetry Branding Watermark -->
+          <g class="circuit-watermark" opacity="0.35" transform="translate(500, 360)">
+            <text x="0" y="-15" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="900" letter-spacing="4" fill="#818cf8">PROTOSEM RACING</text>
+            <text x="0" y="15" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="12" font-weight="700" letter-spacing="3" fill="#94a3b8">20-WEEK CHRONICLE CIRCUIT</text>
+          </g>
+
+          <!-- Layer 1: Road Runoff / Kerb Underlay -->
+          <path id="circuitRoadRunoff" class="circuit-road-runoff"
+                d="M 260 500 L 740 500 C 840 500 910 440 920 340 C 930 240 860 170 760 160 C 660 150 590 220 500 250 C 420 280 340 250 280 180 C 220 110 140 120 100 200 C 60 280 70 380 130 460 C 170 500 210 500 260 500 Z"
+                fill="none" stroke="#1e1b4b" stroke-width="72" stroke-linejoin="round" stroke-linecap="round" />
+
+          <!-- Layer 2: Glowing Outer Track Edge -->
+          <path id="circuitOuterGlow" class="circuit-outer-glow"
+                d="M 260 500 L 740 500 C 840 500 910 440 920 340 C 930 240 860 170 760 160 C 660 150 590 220 500 250 C 420 280 340 250 280 180 C 220 110 140 120 100 200 C 60 280 70 380 130 460 C 170 500 210 500 260 500 Z"
+                fill="none" stroke="url(#circuitNeonStroke)" stroke-width="58" stroke-linejoin="round" stroke-linecap="round" opacity="0.45" />
+
+          <!-- Layer 3: Main Asphalt Road Surface -->
+          <path id="circuitAsphaltRoad" class="circuit-asphalt-road"
+                d="M 260 500 L 740 500 C 840 500 910 440 920 340 C 930 240 860 170 760 160 C 660 150 590 220 500 250 C 420 280 340 250 280 180 C 220 110 140 120 100 200 C 60 280 70 380 130 460 C 170 500 210 500 260 500 Z"
+                fill="none" stroke="url(#circuitAsphalt)" stroke-width="52" stroke-linejoin="round" stroke-linecap="round" />
+
+          <!-- Layer 4: Neon Centerline & Path Navigation Reference -->
+          <path id="trackPath" class="circuit-centerline"
+                d="M 260 500 L 740 500 C 840 500 910 440 920 340 C 930 240 860 170 760 160 C 660 150 590 220 500 250 C 420 280 340 250 280 180 C 220 110 140 120 100 200 C 60 280 70 380 130 460 C 170 500 210 500 260 500 Z"
+                fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="10 14" stroke-linecap="round" opacity="0.85" />
+
+          <!-- Start / Finish Line Graphics on Asphalt -->
+          <g class="start-finish-gates">
+            <!-- Finish Line (W19) -->
+            <line x1="210" y1="474" x2="210" y2="526" stroke="url(#checkeredStartPattern)" stroke-width="8" />
+            <text x="210" y="465" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="800" fill="#ec4899">🏁 FINISH (W19)</text>
+
+            <!-- Start Line (W00) -->
+            <line x1="260" y1="474" x2="260" y2="526" stroke="#10b981" stroke-width="4" />
+            <text x="260" y="542" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="800" fill="#10b981">🏁 START (W00)</text>
+          </g>
+
+          <!-- Phase Sector Signs on Circuit -->
+          <g class="circuit-sector-markers">
+            <!-- Phase 1 Badge -->
+            <g class="sector-tag sector-tag-1" transform="translate(500, 545)">
+              <rect x="-105" y="-14" width="210" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+              <text x="0" y="3" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="800" fill="#38bdf8">PHASE 01 • FOUNDATION (W00–W04)</text>
+            </g>
+
+            <!-- Phase 2 Badge -->
+            <g class="sector-tag sector-tag-2" transform="translate(930, 230)">
+              <rect x="-95" y="-14" width="190" height="26" rx="13" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+              <text x="0" y="3" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="800" fill="#c084fc">PHASE 02 • BUILDING (W05–W09)</text>
+            </g>
+
+            <!-- Phase 3 Badge -->
+            <g class="sector-tag sector-tag-3" transform="translate(540, 190)">
+              <rect x="-95" y="-14" width="190" height="26" rx="13" fill="#0f172a" stroke="#ec4899" stroke-width="1.5" />
+              <text x="0" y="3" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="800" fill="#f472b6">PHASE 03 • CREATING (W10–W14)</text>
+            </g>
+
+            <!-- Phase 4 Badge -->
+            <g class="sector-tag sector-tag-4" transform="translate(75, 140)">
+              <rect x="-90" y="-14" width="180" height="26" rx="13" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+              <text x="0" y="3" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="800" fill="#34d399">PHASE 04 • FINISH (W15–W19)</text>
+            </g>
+          </g>
+
+          <!-- Checkpoint Group Container (Injected dynamically via JS) -->
+          <g id="circuitCheckpointsGroup" class="circuit-checkpoints-group"></g>
+
+          <!-- Futuristic Cyber Sports Car (Dynamic position & rotation via JS) -->
+          <g id="cyberCarGroup" class="cyber-car-group" style="cursor: pointer;" transform="translate(260, 500) rotate(0)">
+            <!-- Headlight Projection Cones -->
+            <polygon points="18,-7 65,-22 65,22 18,7" fill="url(#headlightBeam)" opacity="0.65" />
+            
+            <!-- Neon Underglow -->
+            <ellipse cx="0" cy="0" rx="26" ry="14" fill="#38bdf8" filter="url(#glowCar)" opacity="0.8" />
+            <ellipse cx="0" cy="0" rx="18" ry="10" fill="#a855f7" opacity="0.7" />
+
+            <!-- Car Body (Aerodynamic Cyber Hypercar) -->
+            <path d="M -18 -8 L -14 -12 L 8 -11 L 18 -6 L 22 0 L 18 6 L 8 11 L -14 12 L -18 8 Z" fill="#090d1a" stroke="#38bdf8" stroke-width="1.5" />
+            
+            <!-- Color Accents / Racing Stripe -->
+            <path d="M -12 -5 L 12 -4 L 14 0 L 12 4 L -12 5 Z" fill="url(#carBodyGrad)" />
+            
+            <!-- Tinted Cockpit Windshield -->
+            <polygon points="-4,-5 6,-4 7,0 6,4 -4,5" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+            
+            <!-- Front Twin Laser Headlights -->
+            <circle cx="17" cy="-5" r="2" fill="#ffffff" filter="url(#neonFilterCyan)" />
+            <circle cx="17" cy="5" r="2" fill="#ffffff" filter="url(#neonFilterCyan)" />
+            
+            <!-- Rear Thruster Exhaust Flames -->
+            <circle cx="-19" cy="-4" r="2.5" fill="#f43f5e" />
+            <circle cx="-19" cy="4" r="2.5" fill="#f43f5e" />
+            <line x1="-19" y1="-4" x2="-25" y2="-4" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" class="car-thruster-pulse" />
+            <line x1="-19" y1="4" x2="-25" y2="4" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" class="car-thruster-pulse" />
+            
+            <!-- Rear Spoiler Wing -->
+            <line x1="-17" y1="-10" x2="-17" y2="10" stroke="#a855f7" stroke-width="2" stroke-linecap="round" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Mobile Vertical Racing Speedway (< 768px) -->
+      <div class="mobile-racing-speedway" id="mobileRacingSpeedway">
+        <div class="mobile-speedway-header">
+          <span class="mobile-speedway-badge"><i class="fa-solid fa-flag-checkered"></i> 20-WEEK SPEEDWAY ROUTE</span>
+          <span class="mobile-speedway-hint">Tap any week to inspect story</span>
+        </div>
+        <div class="mobile-speedway-list" id="mobileSpeedwayList">
+          <!-- Injected dynamically via JS -->
         </div>
       </div>
 
-      <!-- ProtoSem Highlight Banner / Description Card -->
-      <div class="protosem-banner reveal-on-scroll tilt-card" data-tilt>
-        <div class="protosem-banner-icon"><i class="fa-solid fa-rocket"></i></div>
-        <div class="protosem-banner-content">
-          <p class="protosem-desc-text">
-            <strong>PRICE protoSem :</strong> A full time On-site Internship at KCT Forge, Phygital Retail Intelligent Commerce and Entrepreneurship.
-          </p>
-        </div>
+      <!-- Futuristic Mission Briefing Panel -->
+      <div class="racing-mission-panel" id="racingMissionPanel" role="region" aria-label="Mission Briefing">
+        <!-- Rendered dynamically via renderMissionPanel() -->
       </div>
 
-      <!-- Phase Filter Bar -->
-      <div class="phase-filter-bar reveal-on-scroll" role="tablist" aria-label="Filter ProtoSem Phases">
-        <button class="phase-filter-btn active" data-phase="all" role="tab" aria-selected="true">
-          <i class="fa-solid fa-layer-group"></i> ALL
-        </button>
-        <button class="phase-filter-btn" data-phase="1" role="tab" aria-selected="false">
-          <span class="phase-dot phase-dot-1"></span> PHASE 01
-        </button>
-        <button class="phase-filter-btn" data-phase="2" role="tab" aria-selected="false">
-          <span class="phase-dot phase-dot-2"></span> PHASE 02
-        </button>
-        <button class="phase-filter-btn" data-phase="3" role="tab" aria-selected="false">
-          <span class="phase-dot phase-dot-3"></span> PHASE 03
-        </button>
-        <button class="phase-filter-btn" data-phase="4" role="tab" aria-selected="false">
-          <span class="phase-dot phase-dot-4"></span> PHASE 04
-        </button>
-      </div>
+    </div><!-- /racing-track-wrapper -->
 
-      <!-- Connected Innovation Journey Track (Dynamically Populated) -->
-      <div class="protosem-journey-track reveal-on-scroll" id="protosemJourneyTrack">
-        <!-- Rendered via JavaScript from protoSemWeeks data -->
-      </div>
-
-    </div><!-- /protosem-container -->
-
-    <!-- Dynamic Reusable Week Overview Modal/Overlay -->
+    <!-- Dynamic Reusable Week Modal/Overlay (Preserved for full dialogs) -->
     <div id="weekOverviewOverlay" class="week-overview-overlay" aria-hidden="true">
       <div class="week-overview-backdrop" id="weekBackdrop"></div>
       <div class="week-overview-container" role="dialog" aria-modal="true" aria-labelledby="weekOverviewHeading">
@@ -1317,489 +1522,557 @@
 
     // Immediate check so no content above/in fold is ever blank
     checkAndRevealImmediate();
-    window.addEventListener('load', checkAndRevealImmediate);
-
-
-    /* --------------------------------------------------
-       10. ProtoSem 20-Week Connected Energy Journey (Weeks 00–19)
+        /* --------------------------------------------------
+       10. PROTOSEM RACING ENGINE — 20-WEEK GRAND PRIX
     -------------------------------------------------- */
-    const protoSemWeeks = [
-      // PHASE 01 · WEEKS 00–04
-      { week: 0,  phase: 1, slug: "week-00", status: "published", title: "PRICE Protosem — Our 0th Week", subtitle: "17–21 August 2026 • 5 Days. 5 Experiences. 1 New Perspective.", link: "price-protosem-0th-week.html", quote: "“We didn’t just learn entrepreneurship. We experienced the mindset.”", badgeText: "ORIENTATION · 5 EXPERIENCES", notesText: "Read 5-Day Chronicle", desc: "Explore the full interactive 5-day chronicle featuring real orientation photos, Connect, Discover, Collaborate, Own, and Create." },
-      { week: 1,  phase: 1, slug: "week-01", status: "published", title: "PRICE Protosem — Week 01", subtitle: "24–28 August 2026 • 5 Days. Understanding Users, Data & Better Solutions", link: "price-protosem-week-1.html", quote: "“Good products are built by understanding both user behaviour and real human problems.”", badgeText: "5 DAYS · DATA & USERS", notesText: "Explore 5-Day Chronicle", desc: "Explore the full interactive 5-day chronicle: Recommendation Algorithms, Design Thinking, Power BI, Onam Break, Prospect Theory, and Base44." },
-      { week: 2,  phase: 1, slug: "week-02", status: "coming-soon" },
-      { week: 3,  phase: 1, slug: "week-03", status: "coming-soon" },
-      { week: 4,  phase: 1, slug: "week-04", status: "coming-soon" },
-
+    const racingTimelineData = [
+      {
+        week: 0,
+        phase: 1,
+        phaseName: "FOUNDATION",
+        slug: "week-00",
+        status: "completed",
+        title: "PRICE Protosem — Our 0th Week",
+        subtitle: "17–21 August 2026 • 5 Days. 5 Experiences. 1 New Perspective.",
+        link: "price-protosem-0th-week.html",
+        badgeText: "ORIENTATION • 5 EXPERIENCES",
+        quote: "“We didn’t just learn entrepreneurship. We experienced the mindset.”",
+        desc: "Explore the full interactive 5-day chronicle featuring real orientation photos, Connect, Discover, Collaborate, Own, and Create.",
+        days: [
+          { day: "Day 1", title: "Connect & Team Formation", summary: "Immersive icebreakers, orientation to Forge accelerator, and the Marshmallow Prototyping Challenge.", topics: ["Fellowship Vision", "Icebreakers", "Rapid Prototyping"], color: "#0284c7" },
+          { day: "Day 2", title: "Discover & Mindset Alignment", summary: "Unpacking the entrepreneurial mindset, retail evolution paradigms, and problem discovery.", topics: ["Retail Shifts", "Problem Framing", "Mindset Shift"], color: "#7c3aed" },
+          { day: "Day 3", title: "Collaborate & Cross-Functional Synergy", summary: "Team alignment sessions, defining team charters, and collaborative design explorations.", topics: ["Team Synergy", "Charter Definition", "Empathy"], color: "#ec4899" },
+          { day: "Day 4", title: "Own & Accountability", summary: "Taking extreme ownership of innovation trajectories and engineering responsibilities.", topics: ["Ownership", "Product Vision", "Execution Rigor"], color: "#f59e0b" },
+          { day: "Day 5", title: "Create & Inauguration Pitch", summary: "Formal cohort inauguration, presenting initial perspectives, and setting semester goals.", topics: ["Inauguration", "Cohort Presentation", "Roadmap"], color: "#10b981" }
+        ]
+      },
+      {
+        week: 1,
+        phase: 1,
+        phaseName: "FOUNDATION",
+        slug: "week-01",
+        status: "completed",
+        title: "Week 1 Recap — Infosys Springboard 7.0 | Team 2",
+        subtitle: "A five-day learning journey through technology, design thinking, business strategy, and teamwork.",
+        link: "infosys-springboard-week-1.html",
+        badgeText: "INFOSYS SPRINGBOARD • TEAM 2",
+        quote: "“Week 1 was an immersive deep-dive into how data patterns, empathetic design, analytical dashboards, behavioural economics, and rapid prototyping integrate into impactful real-world solutions.”",
+        desc: "An editorial recap covering recommendation algorithms, design thinking, Power BI dashboards, value chain SWOT, behavioural economics, and industry insights curated for Team 2.",
+        days: [
+          { day: "Day 1", title: "Algorithms, Empathy & Eyewear", summary: "Collaborative and content-based recommendation systems paired with design thinking fundamentals and the Lenskart omnichannel case study.", topics: ["Recommendation Systems", "Collaborative Filtering", "Design Thinking", "Lenskart Case Study"], color: "#0284c7" },
+          { day: "Day 2", title: "Dashboards & Deeper Thinking", summary: "Building interactive analytical dashboards in Power BI and framing problems using advanced user journey and empathy mapping.", topics: ["Power BI Dashboards", "Empathy Mapping", "Problem Framing", "Data Visualisation"], color: "#7c3aed" },
+          { day: "Day 3", title: "Strategy, Value & Celebration", summary: "Deconstructing Porter's Value Chain and SWOT architectures to connect technical engineering with business viability, alongside Women's Day celebrations.", topics: ["Porter's Value Chain", "SWOT Analysis", "Business Strategy", "Women's Day 🌺"], color: "#ec4899" },
+          { day: "Day 4", title: "Behavioural Economics & Market Realities", summary: "Analyzing human decision-making biases including Nudge Theory, Anchoring, and Choice Architecture to design ethical, high-conversion systems.", topics: ["Behavioural Economics", "Nudge Theory", "Choice Architecture", "Heuristics"], color: "#f59e0b" },
+          { day: "Day 5", title: "Synthesis, Prototyping & Future Roadmap", summary: "Synthesizing cross-disciplinary insights into actionable prototypes with Team 2, presenting findings, and planning the project phase.", topics: ["Rapid Prototyping", "Team 2 Presentation", "Synthesis", "Roadmapping"], color: "#10b981" }
+        ]
+      },
+      { week: 2,  phase: 1, phaseName: "FOUNDATION", slug: "week-02", status: "upcoming", milestone: "Foundational Architecture & Problem Discovery" },
+      { week: 3,  phase: 1, phaseName: "FOUNDATION", slug: "week-03", status: "upcoming", milestone: "Customer Journey & Requirements Synthesis" },
+      { week: 4,  phase: 1, phaseName: "FOUNDATION", slug: "week-04", status: "upcoming", milestone: "Phase 1 Gate: Foundation Review" },
+      
       // PHASE 02 · WEEKS 05–09
-      { week: 5,  phase: 2, slug: "week-05", status: "coming-soon" },
-      { week: 6,  phase: 2, slug: "week-06", status: "coming-soon" },
-      { week: 7,  phase: 2, slug: "week-07", status: "coming-soon" },
-      { week: 8,  phase: 2, slug: "week-08", status: "coming-soon" },
-      { week: 9,  phase: 2, slug: "week-09", status: "coming-soon" },
-
+      { week: 5,  phase: 2, phaseName: "BUILDING", slug: "week-05", status: "upcoming", milestone: "Architectural Prototyping & Data Ingestion" },
+      { week: 6,  phase: 2, phaseName: "BUILDING", slug: "week-06", status: "upcoming", milestone: "Machine Learning Model Exploration" },
+      { week: 7,  phase: 2, phaseName: "BUILDING", slug: "week-07", status: "upcoming", milestone: "Model Iteration & Validation" },
+      { week: 8,  phase: 2, phaseName: "BUILDING", slug: "week-08", status: "upcoming", milestone: "System Pipeline Integration" },
+      { week: 9,  phase: 2, phaseName: "BUILDING", slug: "week-09", status: "upcoming", milestone: "Phase 2 Gate: MVP Alpha Review" },
+      
       // PHASE 03 · WEEKS 10–14
-      { week: 10, phase: 3, slug: "week-10", status: "coming-soon" },
-      { week: 11, phase: 3, slug: "week-11", status: "coming-soon" },
-      { week: 12, phase: 3, slug: "week-12", status: "coming-soon" },
-      { week: 13, phase: 3, slug: "week-13", status: "coming-soon" },
-      { week: 14, phase: 3, slug: "week-14", status: "coming-soon" },
-
-      // PHASE 04 · WEEKS 15–19
-      { week: 15, phase: 4, slug: "week-15", status: "coming-soon" },
-      { week: 16, phase: 4, slug: "week-16", status: "coming-soon" },
-      { week: 17, phase: 4, slug: "week-17", status: "coming-soon" },
-      { week: 18, phase: 4, slug: "week-18", status: "coming-soon" },
-      { week: 19, phase: 4, slug: "week-19", status: "coming-soon" }
+      { week: 10, phase: 3, phaseName: "CREATING", slug: "week-10", status: "upcoming", milestone: "Product Polish & User Experience Tuning" },
+      { week: 11, phase: 3, phaseName: "CREATING", slug: "week-11", status: "upcoming", milestone: "Performance Optimization & Scaling" },
+      { week: 12, phase: 3, phaseName: "CREATING", slug: "week-12", status: "upcoming", milestone: "Analytics & Telemetry Dashboarding" },
+      { week: 13, phase: 3, phaseName: "CREATING", slug: "week-13", status: "upcoming", milestone: "User Testing & Feedback Synthesis" },
+      { week: 14, phase: 3, phaseName: "CREATING", slug: "week-14", status: "upcoming", milestone: "Phase 3 Gate: Beta Verification" },
+      
+      // PHASE 04 · WEEKS 15–20
+      { week: 15, phase: 4, phaseName: "FINISH", slug: "week-15", status: "upcoming", milestone: "Production Readiness & Hardening" },
+      { week: 16, phase: 4, phaseName: "FINISH", slug: "week-16", status: "upcoming", milestone: "Final Pilot Deployment" },
+      { week: 17, phase: 4, phaseName: "FINISH", slug: "week-17", status: "upcoming", milestone: "Comprehensive Impact Assessment" },
+      { week: 18, phase: 4, phaseName: "FINISH", slug: "week-18", status: "upcoming", milestone: "Final Showcase Pitch & Demos" },
+      { week: 19, phase: 4, phaseName: "FINISH", slug: "week-19", status: "upcoming", milestone: "🏁 Grand Prix Finale & Fellowship Completion" }
     ];
+
+    let currentSelectedWeek = 0;
+    let trackCheckpointCoords = [];
 
     function formatWeekStr(num) {
       return num < 10 ? `0${num}` : `${num}`;
     }
 
-    function formatPhaseStr(phase) {
-      return phase < 10 ? `0${phase}` : `${phase}`;
-    }
+    /* --------------------------------------------------
+       Initialize Checkpoint Coordinates from SVG Circuit
+    -------------------------------------------------- */
+    function initializeCircuitTrack() {
+      const trackPath = document.getElementById('trackPath');
+      const checkpointsGroup = document.getElementById('circuitCheckpointsGroup');
+      if (!trackPath || !checkpointsGroup) return;
 
-    function renderProtoSemJourney(selectedPhase = 'all') {
-      const container = document.getElementById('protosemJourneyTrack');
-      if (!container) return;
+      const totalLen = trackPath.getTotalLength();
+      trackCheckpointCoords = [];
+      checkpointsGroup.innerHTML = '';
 
-      const phases = [
-        { phaseNum: 1, name: 'PHASE 01', range: 'WEEKS 00–04', weeks: protoSemWeeks.filter(w => w.phase === 1) },
-        { phaseNum: 2, name: 'PHASE 02', range: 'WEEKS 05–09', weeks: protoSemWeeks.filter(w => w.phase === 2) },
-        { phaseNum: 3, name: 'PHASE 03', range: 'WEEKS 10–14', weeks: protoSemWeeks.filter(w => w.phase === 3) },
-        { phaseNum: 4, name: 'PHASE 04', range: 'WEEKS 15–19', weeks: protoSemWeeks.filter(w => w.phase === 4) },
-      ];
+      // Sample 20 points along the path (Weeks 00 to 19)
+      // Week 00 at start (distance 0), Week 19 right before finish line (distance 0.95*totalLen)
+      for (let w = 0; w <= 19; w++) {
+        // Distribute proportionally across the track
+        const t = (w / 20);
+        const distance = t * totalLen;
+        const pt = trackPath.getPointAtLength(distance);
 
-      let html = '';
+        // Next point for tangent angle
+        const step = Math.min(distance + 3, totalLen);
+        const ptNext = trackPath.getPointAtLength(step);
+        const angle = Math.atan2(ptNext.y - pt.y, ptNext.x - pt.x) * (180 / Math.PI);
 
-      phases.forEach((phaseData) => {
-        const isDimmed = (selectedPhase !== 'all' && selectedPhase !== String(phaseData.phaseNum));
-        const isHighlighted = (selectedPhase === String(phaseData.phaseNum));
+        // Calculate perpendicular normal for badge offset (so text never collides with road)
+        const rad = (angle + 90) * (Math.PI / 180);
+        const labelOffsetDist = 28;
+        const lx = pt.x + Math.cos(rad) * labelOffsetDist;
+        const ly = pt.y + Math.sin(rad) * labelOffsetDist;
 
-        html += `
-          <div class="phase-track-block phase-block-${phaseData.phaseNum} ${isDimmed ? 'phase-dimmed' : ''} ${isHighlighted ? 'phase-highlighted' : ''}" data-phase="${phaseData.phaseNum}">
-            <div class="phase-track-header">
-              <div class="phase-badge phase-badge-${phaseData.phaseNum}">
-                <span class="phase-badge-pill">${phaseData.name}</span>
-                <span class="phase-badge-range">${phaseData.range}</span>
-              </div>
-              <div class="phase-energy-line" aria-hidden="true"><span class="energy-spark"></span></div>
-            </div>
+        trackCheckpointCoords[w] = {
+          week: w,
+          x: pt.x,
+          y: pt.y,
+          angle: angle,
+          labelX: lx,
+          labelY: ly,
+          distance: distance
+        };
 
-            <div class="journey-nodes-container">
+        const weekData = racingTimelineData.find(item => item.week === w);
+        const isCompleted = weekData && weekData.status === 'completed';
+        const isCurrent = (w === currentSelectedWeek);
+
+        // Render SVG Checkpoint Marker
+        const cpG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        cpG.setAttribute('class', `track-checkpoint-node ${isCompleted ? 'cp-completed' : 'cp-upcoming'} ${isCurrent ? 'cp-current' : ''}`);
+        cpG.setAttribute('id', `svgCheckpoint_${w}`);
+        cpG.setAttribute('data-week', w);
+        cpG.setAttribute('style', 'cursor: pointer;');
+
+        cpG.innerHTML = `
+          <!-- Pulsing Ring for Active -->
+          <circle class="cp-pulse-ring" cx="${pt.x}" cy="${pt.y}" r="16" fill="none" stroke="${isCompleted ? '#10b981' : '#818cf8'}" stroke-width="2" opacity="${isCurrent ? '0.8' : '0'}" />
+          
+          <!-- Base Aura -->
+          <circle class="cp-aura" cx="${pt.x}" cy="${pt.y}" r="14" fill="${isCompleted ? 'rgba(16, 185, 129, 0.25)' : 'rgba(30, 27, 75, 0.6)'}" stroke="${isCompleted ? '#10b981' : 'rgba(129, 140, 248, 0.4)'}" stroke-width="1.5" />
+          
+          <!-- Core Disc -->
+          <circle class="cp-core" cx="${pt.x}" cy="${pt.y}" r="9" fill="${isCompleted ? '#10b981' : (isCurrent ? '#38bdf8' : '#0f172a')}" stroke="${isCurrent ? '#ffffff' : (isCompleted ? '#34d399' : '#818cf8')}" stroke-width="2" />
+          
+          <!-- Icon / Indicator -->
+          ${isCompleted ? `
+            <path d="M ${pt.x - 4} ${pt.y} L ${pt.x - 1} ${pt.y + 3} L ${pt.x + 4} ${pt.y - 3}" fill="none" stroke="#042f2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          ` : `
+            <circle cx="${pt.x}" cy="${pt.y}" r="2" fill="${isCurrent ? '#090d1a' : '#818cf8'}" />
+          `}
+
+          <!-- Floating Pill Label -->
+          <g class="cp-label-wrap" transform="translate(${lx}, ${ly})">
+            <rect x="-18" y="-9" width="36" height="18" rx="9" fill="${isCompleted ? '#064e3b' : '#0f172a'}" stroke="${isCompleted ? '#10b981' : (isCurrent ? '#38bdf8' : '#334155')}" stroke-width="1.2" />
+            <text x="0" y="3.5" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="9.5" font-weight="800" fill="${isCompleted ? '#34d399' : (isCurrent ? '#38bdf8' : '#94a3b8')}">W${formatWeekStr(w)}</text>
+          </g>
         `;
 
-        phaseData.weeks.forEach((item) => {
-          const weekStr = formatWeekStr(item.week);
-          const phaseStr = formatPhaseStr(item.phase);
-          const isPublished = item.status === 'published';
-          const linkTarget = '#' + item.slug;
-          const displayTitle = item.week === 0 ? 'OUR 0th WEEK' : (item.week === 1 ? 'WEEK 01 · DATA & USERS' : `WEEK ${weekStr}`);
-          const badgeText = item.badgeText || 'FIELD NOTES IN PROGRESS';
-          const notesTagText = isPublished ? (item.notesText || 'Read Chronicle') : 'Field Notes In Progress';
-
-          html += `
-            <a href="${linkTarget}"
-               class="journey-node-card tilt-card ${isPublished ? 'journey-node-entry' : ''}"
-               data-week="${item.week}"
-               data-slug="${item.slug}"
-               aria-label="Week ${weekStr} Overview">
-
-              <div class="node-status-pill ${isPublished ? 'node-status-published' : ''}">
-                <span class="node-pulse-dot" style="${isPublished ? 'background:#10b981; box-shadow:0 0 8px #10b981;' : ''}"></span>
-                <span>${isPublished ? 'STORY PUBLISHED' : 'COMING SOON'}</span>
-              </div>
-
-              ${isPublished ? `
-                <div class="orientation-flag" style="background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(16,185,129,0.2)); border:1px solid rgba(16,185,129,0.4); color:#34d399;">
-                  <i class="fa-solid fa-sparkles"></i>
-                  <span>${badgeText}</span>
-                </div>
-              ` : ''}
-
-              <div class="node-main-info">
-                <div class="node-meta-tag">PHASE ${phaseStr}</div>
-                <div class="node-week-title">${displayTitle}</div>
-              </div>
-
-              <div class="node-footer">
-                <span class="node-notes-tag" style="${isPublished ? 'color:#38bdf8;' : ''}">${notesTagText}</span>
-                <span class="node-action-arrow" aria-hidden="true">
-                  <i class="fa-solid fa-arrow-right"></i>
-                </span>
-              </div>
-            </a>
-          `;
+        cpG.addEventListener('click', () => {
+          selectRacingWeek(w, true);
         });
 
-        html += `
-            </div><!-- /journey-nodes-container -->
-          </div><!-- /phase-track-block -->
-        `;
+        checkpointsGroup.appendChild(cpG);
+      }
+
+      // Initial car placement
+      moveCarToCheckpoint(currentSelectedWeek, false);
+    }
+
+    /* --------------------------------------------------
+       Smooth Car Movement along Track
+    -------------------------------------------------- */
+    function moveCarToCheckpoint(weekNumber, animate = true) {
+      const carGroup = document.getElementById('cyberCarGroup');
+      if (!carGroup) return;
+
+      const coord = trackCheckpointCoords[weekNumber];
+      if (!coord) return;
+
+      if (!animate) {
+        carGroup.setAttribute('transform', `translate(${coord.x}, ${coord.y}) rotate(${coord.angle})`);
+        return;
+      }
+
+      // Smooth transition via SVG interpolation
+      const currentTransform = carGroup.getAttribute('transform') || '';
+      const match = currentTransform.match(/translate\(([^,]+),\s*([^)]+)\)\s*rotate\(([^)]+)\)/);
+
+      let startX = coord.x;
+      let startY = coord.y;
+      let startAngle = coord.angle;
+
+      if (match) {
+        startX = parseFloat(match[1]);
+        startY = parseFloat(match[2]);
+        startAngle = parseFloat(match[3]);
+      }
+
+      // Handle angle wrap-around for shortest rotation
+      let angleDiff = coord.angle - startAngle;
+      while (angleDiff > 180) angleDiff -= 360;
+      while (angleDiff < -180) angleDiff += 360;
+      const targetAngle = startAngle + angleDiff;
+
+      const duration = 400; // ms
+      const startTime = performance.now();
+
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Smooth ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        const curX = startX + (coord.x - startX) * ease;
+        const curY = startY + (coord.y - startY) * ease;
+        const curAngle = startAngle + (targetAngle - startAngle) * ease;
+
+        carGroup.setAttribute('transform', `translate(${curX}, ${curY}) rotate(${curAngle})`);
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          carGroup.setAttribute('transform', `translate(${coord.x}, ${coord.y}) rotate(${coord.angle})`);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    /* --------------------------------------------------
+       Select and Update Week Telemetry & Briefing
+    -------------------------------------------------- */
+    function selectRacingWeek(weekNumber, animateCar = true) {
+      currentSelectedWeek = weekNumber;
+      const weekData = racingTimelineData.find(item => item.week === weekNumber) || {
+        week: weekNumber,
+        phase: Math.min(4, Math.floor(weekNumber / 5) + 1),
+        phaseName: weekNumber <= 4 ? "FOUNDATION" : (weekNumber <= 9 ? "BUILDING" : (weekNumber <= 14 ? "CREATING" : "FINISH")),
+        slug: `week-${formatWeekStr(weekNumber)}`,
+        status: "upcoming",
+        milestone: "Field Notes & In-Progress Milestones"
+      };
+
+      // 1. Move car
+      moveCarToCheckpoint(weekNumber, animateCar);
+
+      // 2. Update HUD
+      updateRacingHud(weekData);
+
+      // 3. Update Checkpoint Nodes on SVG
+      document.querySelectorAll('.track-checkpoint-node').forEach(node => {
+        const w = parseInt(node.getAttribute('data-week'));
+        const isCurrent = (w === weekNumber);
+        
+        node.classList.toggle('cp-current', isCurrent);
+        const ring = node.querySelector('.cp-pulse-ring');
+        if (ring) {
+          ring.setAttribute('opacity', isCurrent ? '0.85' : '0');
+        }
       });
+
+      // 4. Update Mobile Speedway Nodes
+      document.querySelectorAll('.mobile-node-tile').forEach(tile => {
+        const w = parseInt(tile.getAttribute('data-week'));
+        tile.classList.toggle('active-mobile-node', w === weekNumber);
+      });
+
+      // 5. Render Mission Briefing Panel
+      renderMissionPanel(weekData);
+    }
+
+    /* --------------------------------------------------
+       Update HUD Telemetry Bar
+    -------------------------------------------------- */
+    function updateRacingHud(weekData) {
+      const hudWeekDisplay = document.getElementById('hudWeekDisplay');
+      const hudProgressPercent = document.getElementById('hudProgressPercent');
+      const hudProgressBar = document.getElementById('hudProgressBar');
+      const hudPhaseDisplay = document.getElementById('hudPhaseDisplay');
+      const hudStatusDisplay = document.getElementById('hudStatusDisplay');
+      const hudStatusText = document.getElementById('hudStatusText');
+
+      const weekNum = weekData.week;
+      const pct = Math.round(((weekNum + 1) / 20) * 100);
+
+      if (hudWeekDisplay) hudWeekDisplay.textContent = `WEEK ${formatWeekStr(weekNum)}`;
+      if (hudProgressPercent) hudProgressPercent.textContent = `${pct}%`;
+      if (hudProgressBar) hudProgressBar.style.width = `${pct}%`;
+      if (hudPhaseDisplay) hudPhaseDisplay.textContent = `PHASE 0${weekData.phase} — ${weekData.phaseName}`;
+
+      if (hudStatusDisplay && hudStatusText) {
+        if (weekData.status === 'completed') {
+          hudStatusDisplay.className = 'hud-status-badge status-completed';
+          hudStatusText.textContent = '✓ COMPLETED';
+        } else {
+          hudStatusDisplay.className = 'hud-status-badge status-upcoming';
+          hudStatusText.textContent = '🔒 UPCOMING';
+        }
+      }
+    }
+
+    /* --------------------------------------------------
+       Render Mission Briefing Panel
+    -------------------------------------------------- */
+    function renderMissionPanel(weekData) {
+      const panel = document.getElementById('racingMissionPanel');
+      if (!panel) return;
+
+      const isCompleted = weekData.status === 'completed';
+      const isPublished = Boolean(weekData.link);
+      const weekStr = formatWeekStr(weekData.week);
+
+      let curriculumHtml = '';
+      if (weekData.days && weekData.days.length) {
+        curriculumHtml = `
+          <div class="mission-curriculum-section">
+            <div class="curriculum-header">
+              <span class="curriculum-title"><i class="fa-solid fa-list-check"></i> 5-DAY CURRICULUM HIGHLIGHTS</span>
+              <span class="curriculum-team-tag"><i class="fa-solid fa-layer-group"></i> ${weekData.badgeText || 'Curated Highlights'}</span>
+            </div>
+            <div class="curriculum-cards-grid">
+              ${weekData.days.map(d => `
+                <div class="curriculum-card">
+                  <div class="curriculum-card-top">
+                    <span class="curriculum-day-pill" style="color: ${d.color || '#38bdf8'}; border-color: ${d.color || '#38bdf8'}40;">${d.day}</span>
+                    <h5 class="curriculum-day-title">${d.title}</h5>
+                  </div>
+                  <p class="curriculum-day-desc">${d.summary}</p>
+                  ${d.topics && d.topics.length ? `
+                    <div class="curriculum-tags">
+                      ${d.topics.map(t => `<span class="curriculum-tag">${t}</span>`).join('')}
+                    </div>
+                  ` : ''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      panel.innerHTML = `
+        <div class="mission-briefing-frame ${isCompleted ? 'mission-frame-completed' : 'mission-frame-locked'}">
+          
+          <!-- Telemetry Top Bar -->
+          <div class="mission-top-bar">
+            <div class="mission-telemetry-meta">
+              <span class="telemetry-pill ${isCompleted ? 'telemetry-online' : 'telemetry-standby'}">
+                <i class="fa-solid ${isCompleted ? 'fa-satellite-dish' : 'fa-lock'}"></i>
+                <span>${isCompleted ? 'TELEMETRY ONLINE' : 'SECTOR STANDBY'}</span>
+              </span>
+              <span class="telemetry-sector-crumb">PHASE 0${weekData.phase} • ${weekData.phaseName}</span>
+            </div>
+
+            <div class="mission-status-indicator ${isCompleted ? 'status-pill-done' : 'status-pill-wait'}">
+              <span class="status-indicator-dot"></span>
+              <span>${isCompleted ? '✓ STORY PUBLISHED' : '🔒 UPCOMING CHECKPOINT'}</span>
+            </div>
+          </div>
+
+          <!-- Mission Heading Cluster -->
+          <div class="mission-header-group">
+            <div class="mission-number-box">
+              <span class="num-sub">CHECKPOINT</span>
+              <span class="num-main">${weekStr}</span>
+              <span class="num-max">/ 19</span>
+            </div>
+
+            <div class="mission-title-content">
+              <h3 class="mission-heading">${weekData.title || `WEEK ${weekStr} • ${weekData.milestone}`}</h3>
+              <p class="mission-subheading">${weekData.subtitle || `Phase 0${weekData.phase} progression milestone during PRICE ProtoSem.`}</p>
+            </div>
+          </div>
+
+          <!-- Mission Quote / Overview -->
+          <div class="mission-briefing-quote">
+            <i class="fa-solid fa-quote-left quote-corner-icon"></i>
+            <p>${weekData.quote || (isCompleted ? 'Practical documentation, milestones, and technical reflections.' : 'Chronicle in preparation. Check back as new milestones are unlocked.')}</p>
+            ${weekData.desc ? `<p class="mission-desc-secondary">${weekData.desc}</p>` : ''}
+          </div>
+
+          <!-- 5-Day Curriculum (if available) -->
+          ${curriculumHtml}
+
+          <!-- Mission Actions & Stepper Controls -->
+          <div class="mission-bottom-actions">
+            <div class="mission-primary-cta">
+              ${isPublished ? `
+                <a href="${weekData.link}" class="btn btn-race-cta">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                  <span>READ FULL STORY</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              ` : `
+                <button class="btn btn-race-locked" disabled>
+                  <i class="fa-solid fa-lock"></i>
+                  <span>STORY LOCKED • COMING SOON</span>
+                </button>
+              `}
+            </div>
+
+            <div class="mission-steppers">
+              <button class="btn btn-race-step" id="racePrevBtn" aria-label="Previous Checkpoint">
+                <i class="fa-solid fa-chevron-left"></i> <span>PREV</span>
+              </button>
+              <button class="btn btn-race-step" id="raceNextBtn" aria-label="Next Checkpoint">
+                <span>NEXT</span> <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      // Hook up steppers
+      const prevBtn = document.getElementById('racePrevBtn');
+      const nextBtn = document.getElementById('raceNextBtn');
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          const nextW = currentSelectedWeek > 0 ? currentSelectedWeek - 1 : 19;
+          selectRacingWeek(nextW, true);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          const nextW = currentSelectedWeek < 19 ? currentSelectedWeek + 1 : 0;
+          selectRacingWeek(nextW, true);
+        });
+      }
+    }
+
+    /* --------------------------------------------------
+       Render Mobile Vertical Speedway List
+    -------------------------------------------------- */
+    function renderMobileSpeedway() {
+      const container = document.getElementById('mobileSpeedwayList');
+      if (!container) return;
+
+      let html = '';
+      for (let w = 0; w <= 19; w++) {
+        const weekData = racingTimelineData.find(item => item.week === w);
+        const isCompleted = weekData && weekData.status === 'completed';
+        const isCurrent = (w === currentSelectedWeek);
+        const weekStr = formatWeekStr(w);
+        const title = weekData && weekData.title ? weekData.title : `Week ${weekStr} Milestone`;
+
+        // Add phase headers before weeks 0, 5, 10, 15
+        if (w === 0) html += `<div class="mobile-phase-divider"><span class="mp-badge mp-1">PHASE 01 • FOUNDATION (W00–W04)</span></div>`;
+        if (w === 5) html += `<div class="mobile-phase-divider"><span class="mp-badge mp-2">PHASE 02 • BUILDING (W05–W09)</span></div>`;
+        if (w === 10) html += `<div class="mobile-phase-divider"><span class="mp-badge mp-3">PHASE 03 • CREATING (W10–W14)</span></div>`;
+        if (w === 15) html += `<div class="mobile-phase-divider"><span class="mp-badge mp-4">PHASE 04 • FINISH (W15–W19)</span></div>`;
+
+        html += `
+          <div class="mobile-node-tile ${isCompleted ? 'tile-completed' : 'tile-upcoming'} ${isCurrent ? 'active-mobile-node' : ''}" data-week="${w}">
+            <div class="mobile-tile-indicator">
+              <span class="mobile-tile-dot"></span>
+              <span class="mobile-tile-num">${weekStr}</span>
+            </div>
+            <div class="mobile-tile-info">
+              <div class="mobile-tile-status">${isCompleted ? '✓ STORY PUBLISHED' : '🔒 UPCOMING'}</div>
+              <h4 class="mobile-tile-title">${title}</h4>
+            </div>
+            <div class="mobile-tile-arrow">
+              <i class="fa-solid fa-chevron-right"></i>
+            </div>
+          </div>
+        `;
+      }
 
       container.innerHTML = html;
 
-      container.querySelectorAll('.journey-node-card').forEach(card => {
-        card.addEventListener('click', (e) => {
+      container.querySelectorAll('.mobile-node-tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+          const w = parseInt(tile.getAttribute('data-week'));
+          selectRacingWeek(w, true);
+          // Scroll smoothly to mission briefing on mobile
+          const panel = document.getElementById('racingMissionPanel');
+          if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    }
+
+    /* --------------------------------------------------
+       Phase Filter Ribbon Buttons & Navigation
+    -------------------------------------------------- */
+    function initializePhaseFilters() {
+      const buttons = document.querySelectorAll('.phase-ribbon-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const phase = btn.getAttribute('data-phase');
+          if (phase === 'all') {
+            selectRacingWeek(0, true);
+          } else if (phase === '1') {
+            selectRacingWeek(0, true);
+          } else if (phase === '2') {
+            selectRacingWeek(5, true);
+          } else if (phase === '3') {
+            selectRacingWeek(10, true);
+          } else if (phase === '4') {
+            selectRacingWeek(15, true);
+          }
+        });
+      });
+    }
+
+    /* --------------------------------------------------
+       Keyboard Navigation (Left/Right Arrows)
+    -------------------------------------------------- */
+    window.addEventListener('keydown', (e) => {
+      const protosemEl = document.getElementById('protosem');
+      if (!protosemEl) return;
+      const rect = protosemEl.getBoundingClientRect();
+      const inView = (rect.top < window.innerHeight && rect.bottom > 0);
+
+      if (inView) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
           e.preventDefault();
-          const slug = card.getAttribute('data-slug');
-          navigateToWeek(slug);
-        });
-      });
-    }
-
-    /* --------------------------------------------------
-       12. Phase Filter Interaction
-    -------------------------------------------------- */
-    const filterButtons = document.querySelectorAll('.phase-filter-btn');
-    filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        const phase = btn.getAttribute('data-phase');
-        renderProtoSemJourney(phase);
-      });
-    });
-
-    /* --------------------------------------------------
-       13. Rich Week Overview Modal & Safe Routing
-    -------------------------------------------------- */
-    const weekOverviewOverlay  = document.getElementById('weekOverviewOverlay');
-    const weekOverviewContent  = document.getElementById('weekOverviewContent');
-    const weekOverviewCloseBtn = document.getElementById('weekOverviewCloseBtn');
-    const weekBackdrop         = document.getElementById('weekBackdrop');
-
-    function renderWeekOverview(weekItem) {
-      const weekStr  = formatWeekStr(weekItem.week);
-      const phaseStr = formatPhaseStr(weekItem.phase);
-      const isPublished = weekItem.status === 'published';
-      const isWeek00 = weekItem.week === 0;
-      const prevWeek = weekItem.week > 0 ? protoSemWeeks[weekItem.week - 1] : null;
-      const nextWeek = weekItem.week < 19 ? protoSemWeeks[weekItem.week + 1] : null;
-      const headingTitle = weekItem.title || `WEEK ${weekStr}`;
-      const subTitle = weekItem.subtitle || (isPublished ? 'Published Story' : 'Field Notes In Progress');
-      const quoteText = weekItem.quote || (isPublished ? '“Good products are built by understanding both user behaviour and real human problems.”' : 'Detailed weekly story will be published here.');
-      const descText = weekItem.desc || (isPublished ? 'Explore the full interactive chronicle and insights.' : 'Practical documentation, milestones, and technical reflections will be documented upon release.');
-
-      return `
-        <div class="week-article">
-          <div class="week-breadcrumb">
-            <a href="#protosem" class="crumb-link" id="crumbProtosemLink">PROTOSEM</a>
-            <span class="crumb-sep">/</span>
-            <span class="crumb-phase">PHASE ${phaseStr}</span>
-            <span class="crumb-sep">/</span>
-            <span class="crumb-current">WEEK ${weekStr}</span>
-          </div>
-
-          <div class="week-header-block">
-            <div class="week-status-badge" style="${isPublished ? 'background:rgba(16,185,129,0.15); border-color:rgba(16,185,129,0.4); color:#34d399;' : ''}">
-              <span class="status-pulse-dot" style="${isPublished ? 'background:#10b981; box-shadow:0 0 8px #10b981;' : ''}"></span>
-              <span>${isPublished ? 'STORY PUBLISHED' : 'COMING SOON'}</span>
-            </div>
-
-            <h1 class="week-main-title" id="weekOverviewHeading">${headingTitle}</h1>
-            <p class="week-subtitle">${subTitle}</p>
-          </div>
-
-          <div class="week-meta-grid">
-            <div class="week-meta-box">
-              <span class="meta-box-label">Week</span>
-              <span class="meta-box-val">${weekStr}</span>
-            </div>
-            <div class="week-meta-box">
-              <span class="meta-box-label">Phase</span>
-              <span class="meta-box-val">${phaseStr}</span>
-            </div>
-            <div class="week-meta-box">
-              <span class="meta-box-label">Status</span>
-              <span class="meta-box-val meta-status-highlight" style="${isPublished ? 'color:#34d399;' : ''}">${isPublished ? 'Published' : 'Coming Soon'}</span>
-            </div>
-          </div>
-
-          <div class="week-notice-card" style="${isPublished ? 'border-color:rgba(99,102,241,0.4); background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(16,185,129,0.08));' : ''}">
-            <div class="notice-icon" style="${isPublished ? 'color:#38bdf8;' : ''}"><i class="fa-solid ${isPublished ? 'fa-newspaper' : 'fa-book-open'}"></i></div>
-            <div class="notice-text">
-              <p class="notice-primary">${quoteText}</p>
-              <p class="notice-secondary">${descText}</p>
-              ${isPublished && weekItem.link ? `
-                <div style="margin-top:1.1rem; display:flex; flex-direction:column; gap:0.9rem;">
-                  ${isWeek00 ? `
-                    <div style="border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.15); max-height:160px;">
-                      <img src="assets/protosem/price-inauguration-stage.jpg" alt="PRICE Protosem Inauguration" style="width:100%; height:160px; object-fit:cover; display:block;" />
-                    </div>
-                  ` : ''}
-                  <a href="${weekItem.link}" class="btn btn-primary" style="display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.7rem 1.4rem; font-size:0.92rem; text-decoration:none; width:100%;">
-                    <i class="fa-solid fa-book-open-reader"></i>
-                    <span>Read Full ${isWeek00 ? '5-Day Orientation Chronicle' : 'Week ' + weekStr + ' Chronicle'}</span>
-                    <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                  ${weekItem.week === 1 ? `
-                    <a href="infosys-springboard-week-1.html" class="btn btn-outline" style="display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; padding:0.65rem 1.3rem; font-size:0.9rem; text-decoration:none; width:100%; border:1px solid rgba(99,102,241,0.5); color:#a5b4fc; background:rgba(99,102,241,0.1);">
-                      <i class="fa-solid fa-newspaper"></i>
-                      <span>Read Infosys Springboard 7.0 Editorial Recap (5 Days)</span>
-                      <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
-                    </a>
-                  ` : ''}
-                </div>
-              ` : ''}
-            </div>
-          </div>
-
-          <!-- Dynamic Obsidian Compiled Daily Notes & Evidence -->
-          ${(() => {
-            if (!compiledProtoSemData || !compiledProtoSemData.days) return '';
-            const weekKey = `Week_${weekStr}`;
-            const daysForWeek = Object.values(compiledProtoSemData.days)
-              .filter((d, idx, arr) => d && d.week === weekKey && arr.findIndex(x => x.id === d.id) === idx)
-              .sort((a, b) => (a.dayNumber || 0) - (b.dayNumber || 0));
-
-            if (!daysForWeek.length) return '';
-
-            return `
-              <div class="week-compiled-days" style="margin-top:1.5rem;">
-                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.6rem;">
-                  <h3 style="font-size:1.05rem; font-weight:700; color:#fff; display:flex; align-items:center; gap:0.5rem; margin:0;">
-                    <i class="fa-solid fa-calendar-week" style="color:#38bdf8;"></i>
-                    <span>Daily Chronicles (${daysForWeek.length} Documented)</span>
-                  </h3>
-                  <span style="font-size:0.75rem; color:#10b981; background:rgba(16,185,129,0.12); padding:0.2rem 0.6rem; border-radius:12px; border:1px solid rgba(16,185,129,0.3);">
-                    <i class="fa-solid fa-check-double"></i> Synced from Obsidian
-                  </span>
-                </div>
-
-                <div style="display:flex; flex-direction:column; gap:1rem;">
-                  ${daysForWeek.map(d => `
-                    <div class="day-breakdown-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.25rem;">
-                      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
-                        <div>
-                          <span style="font-weight:700; color:#38bdf8; font-size:0.82rem; text-transform:uppercase; letter-spacing:0.04em;">${d.dayName}</span>
-                          <h4 style="font-size:1.08rem; color:#fff; margin-top:0.2rem; font-weight:600;">${d.title}</h4>
-                        </div>
-                        ${d.date ? `<span style="font-size:0.8rem; color:#94a3b8; background:rgba(255,255,255,0.05); padding:0.25rem 0.6rem; border-radius:6px;"><i class="fa-regular fa-calendar" style="margin-right:4px;"></i>${d.date}</span>` : ''}
-                      </div>
-
-                      ${d.summary ? `<p style="font-size:0.92rem; color:#cbd5e1; line-height:1.6; margin-bottom:0.8rem;">${d.summary}</p>` : ''}
-
-                      ${d.topics && d.topics.length ? `
-                        <div style="margin-bottom:0.8rem;">
-                          <span style="font-size:0.72rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.35rem;">Topics Covered</span>
-                          <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
-                            ${d.topics.map(t => `<span style="background:rgba(99,102,241,0.14); border:1px solid rgba(99,102,241,0.3); color:#a5b4fc; font-size:0.78rem; padding:0.2rem 0.55rem; border-radius:6px;"><i class="fa-solid fa-tag" style="font-size:0.65rem; margin-right:4px;"></i>${t}</span>`).join('')}
-                          </div>
-                        </div>
-                      ` : ''}
-
-                      ${d.activities && d.activities.length ? `
-                        <div style="margin-bottom:0.8rem;">
-                          <span style="font-size:0.72rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.35rem;">Practical Activities</span>
-                          <ul style="margin:0; padding-left:1.2rem; font-size:0.88rem; color:#cbd5e1;">
-                            ${d.activities.map(a => `<li style="margin-bottom:0.25rem;">${a}</li>`).join('')}
-                          </ul>
-                        </div>
-                      ` : ''}
-
-                      ${d.evidence && d.evidence.length ? `
-                        <div style="margin-top:0.9rem;">
-                          <span style="font-size:0.72rem; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.4rem;">Evidence & Multimedia</span>
-                          <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:0.6rem;">
-                            ${d.evidence.filter(e => e.fileType === 'image').map(img => `
-                              <a href="${img.url}" target="_blank" rel="noopener" title="${img.caption || img.title}" style="display:block; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); height:90px; position:relative; background:#0b0f19;">
-                                <img src="${img.url}" alt="${img.caption || img.title}" style="width:100%; height:100%; object-fit:cover; display:block;" loading="lazy" />
-                                <div style="position:absolute; bottom:0; left:0; right:0; padding:0.2rem 0.4rem; background:linear-gradient(to top, rgba(0,0,0,0.85), transparent); font-size:0.68rem; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                                  ${img.caption || img.title}
-                                </div>
-                              </a>
-                            `).join('')}
-                          </div>
-                        </div>
-                      ` : ''}
-                    </div>
-                  `).join('')}
-                </div>
-              </div>
-            `;
-          })()}
-
-          <!-- Modal Navigation Controls -->
-          <div class="modal-detail-footer-nav">
-            ${prevWeek ? `
-              <button type="button" class="btn btn-outline nav-week-btn" onclick="navigateToWeek('${prevWeek.slug}')">
-                <i class="fa-solid fa-arrow-left"></i>
-                <span>Week ${formatWeekStr(prevWeek.week)}</span>
-              </button>
-            ` : `<div style="flex:1;"></div>`}
-            
-            <span class="detail-page-counter">Week ${weekStr} of 19</span>
-
-            ${nextWeek ? `
-              <button type="button" class="btn btn-primary nav-week-btn" onclick="navigateToWeek('${nextWeek.slug}')">
-                <span>Week ${formatWeekStr(nextWeek.week)}</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </button>
-            ` : `<div style="flex:1;"></div>`}
-          </div>
-
-          <div class="week-bottom-actions">
-            <button type="button" class="btn btn-primary week-back-btn" id="weekBottomBackBtn" data-action="close-week">
-              <i class="fa-solid fa-arrow-left"></i>
-              <span>Back to ProtoSem Journey</span>
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
-    function showWeekOverview(slug, updateHistory = true) {
-      const weekItem = protoSemWeeks.find(w => w.slug === slug);
-      if (!weekItem) return;
-
-      if (weekOverviewContent) {
-        weekOverviewContent.innerHTML = renderWeekOverview(weekItem);
-        const container = document.querySelector('.week-overview-container');
-        if (container) container.scrollTop = 0;
-      }
-
-      if (weekOverviewOverlay) {
-        weekOverviewOverlay.classList.add('open');
-        weekOverviewOverlay.setAttribute('aria-hidden', 'false');
-      }
-      document.body.classList.add('modal-open');
-
-      if (updateHistory) {
-        try {
-          if (window.location.protocol === 'file:') {
-            window.location.hash = slug;
-          } else {
-            history.pushState({ protosemWeek: slug }, `ProtoSem Week ${formatWeekStr(weekItem.week)}`, `#${slug}`);
-          }
-        } catch (e) {}
-      }
-    }
-
-    function hideWeekOverview(updateHistory = true) {
-      if (weekOverviewOverlay) {
-        weekOverviewOverlay.classList.remove('open');
-        weekOverviewOverlay.setAttribute('aria-hidden', 'true');
-      }
-      document.body.classList.remove('modal-open');
-
-      if (updateHistory) {
-        try {
-          if (window.location.hash) {
-            history.pushState(null, '', window.location.pathname);
-          }
-        } catch (e) {}
-      }
-
-      const protosemSection = document.getElementById('protosem');
-      if (protosemSection) protosemSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function navigateToWeek(slug) {
-      showWeekOverview(slug, true);
-    }
-
-    window.navigateToWeek = navigateToWeek;
-
-    // Global Click Delegation
-    document.addEventListener('click', (e) => {
-      const backTrigger = e.target.closest('#weekBottomBackBtn, #weekOverviewCloseBtn, #crumbProtosemLink, .week-back-btn, [data-action="close-week"]');
-      if (backTrigger) {
-        e.preventDefault();
-        hideWeekOverview(true);
-      }
-    });
-
-    if (weekBackdrop) weekBackdrop.addEventListener('click', () => hideWeekOverview(true));
-
-    window.addEventListener('popstate', (e) => {
-      if (e.state && e.state.protosemWeek) {
-        showWeekOverview(e.state.protosemWeek, false);
-      } else {
-        const hash = window.location.hash.replace(/^#/, '');
-        const match = hash.match(/(week-\d{2})/);
-        if (match && protoSemWeeks.find(w => w.slug === match[1])) {
-          showWeekOverview(match[1], false);
-        } else {
-          hideWeekOverview(false);
+          const nextW = currentSelectedWeek < 19 ? currentSelectedWeek + 1 : 0;
+          selectRacingWeek(nextW, true);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          const nextW = currentSelectedWeek > 0 ? currentSelectedWeek - 1 : 19;
+          selectRacingWeek(nextW, true);
         }
       }
     });
 
-    window.addEventListener('hashchange', () => {
+    // Check URL hash (#week-01 etc.)
+    function checkInitialRacingRoute() {
       const hash = window.location.hash.replace(/^#/, '');
-      const match = hash.match(/(week-\d{2})/);
-      if (match && protoSemWeeks.find(w => w.slug === match[1])) {
-        showWeekOverview(match[1], false);
-      }
-    });
-
-    function checkInitialRoute() {
-      const hash = window.location.hash.replace(/^#/, '');
-      const hashMatch = hash.match(/(week-\d{2})/);
-      if (hashMatch && protoSemWeeks.find(w => w.slug === hashMatch[1])) {
-        showWeekOverview(hashMatch[1], false);
-      }
-    }
-
-    renderProtoSemJourney('all');
-    checkInitialRoute();
-
-    // Dynamically load compiled ProtoSem JSON from Obsidian pipeline
-    let compiledProtoSemData = null;
-    async function loadCompiledProtoSem() {
-      try {
-        const res = await fetch('src/data/compiledProtoSem.json');
-        if (res.ok) {
-          compiledProtoSemData = await res.json();
-          if (compiledProtoSemData && compiledProtoSemData.days) {
-            // Update weeks that have compiled notes
-            protoSemWeeks.forEach(w => {
-              const weekStr = 'Week_' + (w.week < 10 ? '0' + w.week : w.week);
-              const weekDays = Object.values(compiledProtoSemData.days)
-                .filter((d, idx, arr) => d && d.week === weekStr && arr.findIndex(x => x.id === d.id) === idx);
-              
-              if (weekDays.length > 0) {
-                w.status = 'published';
-                if (!w.badgeText || w.badgeText === 'FIELD NOTES IN PROGRESS') {
-                  w.badgeText = `${weekDays.length} DAYS ACTIVE`;
-                }
-                if (!w.notesText) {
-                  w.notesText = 'Explore Daily Notes';
-                }
-                const firstDay = weekDays[0];
-                if (firstDay && firstDay.title && (!w.title || w.title.includes('Week '))) {
-                  w.title = `PRICE Protosem — ${weekStr.replace('_', ' ')}`;
-                  w.subtitle = `${firstDay.dayName}: ${firstDay.title}`;
-                }
-              }
-            });
-
-            // Re-render journey with dynamic updates
-            const activeFilter = document.querySelector('.phase-filter-btn.active');
-            const currentPhase = activeFilter ? activeFilter.getAttribute('data-phase') : 'all';
-            renderProtoSemJourney(currentPhase);
-
-            // If a week modal is currently open, refresh its content with daily chronicles
-            const hashMatch = window.location.hash.match(/(week-\d{2})/);
-            if (hashMatch && weekOverviewOverlay && weekOverviewOverlay.classList.contains('open')) {
-              showWeekOverview(hashMatch[1], false);
-            }
-          }
+      const match = hash.match(/week-(\d{2})/);
+      if (match) {
+        const w = parseInt(match[1]);
+        if (w >= 0 && w <= 19) {
+          selectRacingWeek(w, false);
+          return;
         }
-      } catch (err) {
-        // Fallback gracefully to pre-rendered static content
       }
+      // Default: Week 00 (Start Line)
+      selectRacingWeek(0, false);
     }
-    loadCompiledProtoSem();
+
+    // Initialize all racing timeline components
+    initializeCircuitTrack();
+    renderMobileSpeedway();
+    initializePhaseFilters();
+    checkInitialRacingRoute();
+
+    window.addEventListener('resize', () => {
+      // Re-sample track if container resizes
+      initializeCircuitTrack();
+    });
 
 
     /* --------------------------------------------------

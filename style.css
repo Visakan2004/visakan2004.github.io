@@ -1563,730 +1563,1106 @@ button { font-family: inherit; }
 
 
 /* ================================================================
-   13. PROTOSEM SECTION & INNOVATIVE 15-WEEK TIMELINE BOXES
+   13. PROTOSEM RACING — MY 20-WEEK JOURNEY
    ================================================================ */
-.protosem-section {
+.protosem-racing-section {
   background: transparent;
   position  : relative;
   z-index   : 1;
+  padding   : 5rem 0;
 }
 
-.protosem-container {
+.racing-hero-container {
   display       : flex;
   flex-direction: column;
-  gap           : 2.5rem;
-  margin        : 0 auto;
-  max-width     : 1120px;
-}
-
-/* 13a. Metrics Visual Bar */
-.protosem-metrics-strip {
-  align-items    : center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background     : linear-gradient(135deg, rgba(21, 28, 48, 0.9) 0%, rgba(13, 18, 33, 0.98) 100%);
-  border         : 1px solid rgba(168, 85, 247, 0.35);
-  border-radius  : var(--radius-card);
-  box-shadow     : inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 16px 36px rgba(0, 0, 0, 0.55);
-  color          : #ffffff;
-  display        : flex;
-  justify-content: space-around;
-  padding        : 1.6rem 2rem;
-}
-
-.metric-block {
   align-items   : center;
-  display       : flex;
-  flex-direction: column;
-  gap           : 0.2rem;
   text-align    : center;
+  margin        : 0 auto 2.5rem;
+  max-width     : 1100px;
+  padding       : 0 1.5rem;
 }
 
-.metric-val {
-  color         : var(--purple-light);
-  font-family   : var(--font-mono);
-  font-size     : clamp(1.8rem, 3vw, 2.4rem);
-  font-weight   : 800;
-  line-height   : 1;
+.racing-badge-wrap {
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.6rem;
+  margin-bottom : 1rem;
 }
 
-.metric-lbl {
-  color         : #cbd5e1;
-  font-size     : 0.76rem;
-  font-weight   : 700;
-  letter-spacing: 1.2px;
-}
-
-.metric-divider {
-  background: rgba(255, 255, 255, 0.12);
-  height    : 42px;
-  width     : 1px;
-}
-
-/* 13b. Description Banner */
-.protosem-banner {
-  align-items  : center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background   : linear-gradient(145deg, rgba(21, 28, 48, 0.85) 0%, rgba(13, 18, 33, 0.95) 100%);
-  border       : 1px solid rgba(168, 85, 247, 0.3);
-  border-radius: var(--radius-card);
-  box-shadow   : inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 24px rgba(0, 0, 0, 0.4);
-  display      : flex;
-  gap          : 1.5rem;
-  padding      : 1.6rem 2rem;
-  position     : relative;
-  overflow     : hidden;
-  transition   : all var(--transition);
-}
-
-.protosem-banner::before {
-  background: linear-gradient(90deg, transparent, #c084fc, #38bdf8, transparent);
-  content   : '';
-  height    : 2px;
-  left      : 15%;
-  opacity   : 0.7;
-  position  : absolute;
-  top       : 0;
-  transition: all 0.35s ease;
-  width     : 70%;
-}
-
-.protosem-banner:hover {
-  border-color: rgba(192, 132, 252, 0.65);
-  box-shadow  : inset 0 1px 0 rgba(255, 255, 255, 0.25), var(--shadow-sm);
-}
-
-.protosem-banner:hover::before {
-  left   : 0;
-  opacity: 1;
-  width  : 100%;
-}
-
-.protosem-banner-icon {
+.racing-badge {
+  display        : inline-flex;
   align-items    : center;
-  background     : linear-gradient(135deg, var(--purple), var(--purple-mid));
-  border-radius  : 16px;
-  box-shadow     : 0 6px 16px rgba(139, 92, 246, 0.45);
-  color          : #ffffff;
-  display        : flex;
-  flex-shrink    : 0;
-  font-size      : 1.3rem;
-  height         : 48px;
-  justify-content: center;
-  width          : 48px;
-}
-
-.protosem-desc-text {
-  color      : var(--dark);
-  font-size  : 1.02rem;
-  font-weight: 500;
-  line-height: 1.7;
-}
-
-.protosem-desc-text strong {
-  color      : var(--purple-light);
-  font-weight: 800;
-}
-
-/* 13c. Phase Filter Bar */
-.phase-filter-bar {
-  align-items    : center;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background     : rgba(18, 24, 41, 0.85);
-  border         : 1.5px solid var(--purple-border);
+  gap            : 0.5rem;
+  font-family    : var(--font-heading);
+  font-size      : 0.78rem;
+  font-weight    : 800;
+  letter-spacing : 0.08em;
+  text-transform : uppercase;
+  color          : #38bdf8;
+  background     : rgba(56, 189, 248, 0.12);
+  border         : 1px solid rgba(56, 189, 248, 0.35);
   border-radius  : var(--radius-pill);
-  box-shadow     : 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  display        : flex;
-  gap            : 0.4rem;
-  justify-content: center;
-  margin         : 0.5rem auto 0;
-  padding        : 0.4rem;
-  width          : fit-content;
+  padding        : 0.35rem 0.9rem;
+  box-shadow     : 0 0 14px rgba(56, 189, 248, 0.2);
 }
 
-.phase-filter-btn {
-  align-items  : center;
-  background   : transparent;
-  border       : none;
-  border-radius: var(--radius-pill);
-  color        : var(--body-text);
-  cursor       : pointer;
-  display      : inline-flex;
-  font-family  : var(--font);
-  font-size    : 0.86rem;
-  font-weight  : 700;
-  gap          : 0.5rem;
-  letter-spacing: 0.5px;
-  padding      : 0.55rem 1.3rem;
-  transition   : all var(--transition);
+.racing-edition-tag {
+  font-family    : var(--font-heading);
+  font-size      : 0.72rem;
+  font-weight    : 700;
+  letter-spacing : 0.06em;
+  color          : #c084fc;
+  background     : rgba(168, 85, 247, 0.12);
+  border         : 1px solid rgba(168, 85, 247, 0.3);
+  border-radius  : var(--radius-pill);
+  padding        : 0.35rem 0.8rem;
 }
 
-.phase-filter-btn:hover { color: var(--purple-light); }
-
-.phase-filter-btn.active {
-  background: var(--purple);
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.5);
-  color     : #ffffff;
+.racing-title {
+  font-family    : var(--font-heading);
+  font-size      : clamp(2.2rem, 5vw, 3.6rem);
+  font-weight    : 900;
+  letter-spacing : 0.03em;
+  color          : #ffffff;
+  text-transform : uppercase;
+  margin-bottom  : 0.6rem;
+  background     : linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow    : 0 0 30px rgba(168, 85, 247, 0.3);
 }
 
-.phase-dot {
-  border-radius: 50%;
-  display      : inline-block;
-  height       : 8px;
-  width        : 8px;
+.racing-subtitle {
+  font-size      : clamp(0.92rem, 1.8vw, 1.08rem);
+  color          : #94a3b8;
+  max-width      : 720px;
+  line-height    : 1.6;
+  margin-bottom  : 2rem;
 }
 
-.phase-dot-1 { background: #38bdf8; }
-.phase-dot-2 { background: #a855f7; }
-.phase-dot-3 { background: #ec4899; }
-.phase-dot-4 { background: #10b981; }
-
-/* 13d. Connected Journey Tracks & Traveling Energy Sparks */
-.protosem-journey-track {
-  display       : flex;
-  flex-direction: column;
-  gap           : 3rem;
-  margin-top    : 1rem;
-  position      : relative;
+/* --------------------------------------------------
+   Futuristic Racing HUD Telemetry Bar
+-------------------------------------------------- */
+.racing-hud-panel {
+  display              : grid;
+  grid-template-columns: 1.2fr 2fr 1.6fr 1.2fr;
+  gap                  : 1rem;
+  width                : 100%;
+  max-width            : 1060px;
+  background           : linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(9, 13, 26, 0.95) 100%);
+  border               : 1px solid rgba(129, 140, 248, 0.32);
+  border-radius        : 18px;
+  padding              : 1.1rem 1.6rem;
+  box-shadow           : inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(129, 140, 248, 0.1);
+  backdrop-filter      : blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position             : relative;
+  overflow             : hidden;
 }
 
-.phase-track-block {
-  display       : flex;
-  flex-direction: column;
-  gap           : 1.5rem;
-  position      : relative;
-  transition    : opacity 0.3s ease, filter 0.3s ease, transform 0.3s ease;
-}
-
-.phase-track-block.phase-dimmed {
-  filter    : grayscale(0.6);
-  opacity   : 0.35;
-  transform : scale(0.98);
-}
-
-.phase-track-block.phase-highlighted {
-  opacity   : 1;
-  transform : scale(1.01);
-}
-
-.phase-track-header {
-  align-items: center;
-  display    : flex;
-  gap        : 1.5rem;
-}
-
-.phase-badge {
-  align-items  : center;
-  border-radius: var(--radius-pill);
-  display      : inline-flex;
-  gap          : 0.75rem;
-  padding      : 0.45rem 1.2rem;
-  box-shadow   : inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.phase-badge-1 {
-  background: rgba(56, 189, 248, 0.15);
-  border    : 1.5px solid rgba(56, 189, 248, 0.45);
-  color     : #38bdf8;
-}
-
-.phase-badge-2 {
-  background: rgba(168, 85, 247, 0.15);
-  border    : 1.5px solid rgba(168, 85, 247, 0.45);
-  color     : #c084fc;
-}
-
-.phase-badge-3 {
-  background: rgba(236, 72, 153, 0.15);
-  border    : 1.5px solid rgba(236, 72, 153, 0.45);
-  color     : #f472b6;
-}
-
-.phase-badge-4 {
-  background: rgba(16, 185, 129, 0.15);
-  border    : 1.5px solid rgba(16, 185, 129, 0.45);
-  color     : #34d399;
-}
-
-.phase-badge-pill {
-  font-family   : var(--font-mono);
-  font-size     : 0.88rem;
-  font-weight   : 800;
-  letter-spacing: 0.8px;
-}
-
-.phase-badge-range {
-  font-size  : 0.78rem;
-  font-weight: 700;
+.racing-hud-panel::before {
+  content    : '';
+  position   : absolute;
+  top        : 0;
+  left       : 15%;
+  width      : 70%;
+  height     : 2px;
+  background : linear-gradient(90deg, transparent, #38bdf8, #c084fc, transparent);
   opacity    : 0.85;
 }
 
-.phase-energy-line {
-  animation    : pulseEnergy 3s infinite linear;
-  background   : linear-gradient(90deg, rgba(139,92,246,0.4) 0%, rgba(56,189,248,0.85) 50%, rgba(139,92,246,0.4) 100%);
-  background-size: 200% 100%;
-  border-radius: 2px;
-  flex         : 1;
-  height       : 2px;
-  position     : relative;
+.hud-box {
+  display    : flex;
+  align-items: center;
+  gap        : 0.85rem;
+  padding    : 0.35rem 0.5rem;
 }
 
-.energy-spark {
-  animation    : sparkTravel 2.4s infinite ease-in-out;
-  background   : #ffffff;
-  border-radius: 50%;
-  box-shadow   : 0 0 10px #38bdf8, 0 0 20px #8b5cf6;
-  height       : 6px;
-  position     : absolute;
-  top          : -2px;
-  width        : 6px;
+.hud-box:not(:last-child) {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@keyframes sparkTravel {
-  0%   { left: 0%; opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 1; }
-  100% { left: 100%; opacity: 0; }
+.hud-box-icon {
+  width          : 36px;
+  height         : 36px;
+  border-radius  : 10px;
+  background     : rgba(56, 189, 248, 0.12);
+  border         : 1px solid rgba(56, 189, 248, 0.3);
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  color          : #38bdf8;
+  font-size      : 0.95rem;
 }
 
-@keyframes pulseEnergy {
-  0%   { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
-
-.journey-nodes-container {
-  display              : grid;
-  gap                  : 1.3rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-/* ================================================================
-   INNOVATIVE BOX SYSTEM 4: PROTOSEM 15-WEEK NODES
-   ================================================================ */
-.journey-node-card {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background   : linear-gradient(145deg, rgba(21, 28, 48, 0.85) 0%, rgba(13, 18, 33, 0.95) 100%);
-  border       : 1px solid rgba(168, 85, 247, 0.28);
-  border-radius: 18px;
-  box-shadow   : inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 0 20px rgba(139, 92, 246, 0.04), var(--shadow-sm);
-  cursor       : pointer;
-  display      : flex;
-  flex-direction: column;
-  gap          : 0.75rem;
-  overflow     : hidden;
-  padding      : 1.3rem 1.4rem;
-  position     : relative;
-  text-decoration: none;
-  transition   : all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.journey-node-card::before {
-  background: linear-gradient(90deg, transparent, #c084fc, #38bdf8, transparent);
-  content   : '';
-  height    : 2px;
-  left      : 15%;
-  opacity   : 0.7;
-  position  : absolute;
-  top       : 0;
-  transition: all 0.35s ease;
-  width     : 70%;
-}
-
-.journey-node-card:hover {
-  border-color: rgba(192, 132, 252, 0.7);
-  box-shadow  : inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 14px 38px rgba(139, 92, 246, 0.35);
-  transform   : translateY(-4px) scale(1.02);
-}
-
-.journey-node-card:hover::before {
-  left   : 0;
-  opacity: 1;
-  width  : 100%;
-}
-
-.node-status-pill {
-  align-items  : center;
-  background   : rgba(245, 158, 11, 0.18);
-  border       : 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: var(--radius-pill);
-  color        : #fbbf24;
-  display      : inline-flex;
-  font-size    : 0.72rem;
-  font-weight  : 800;
-  gap          : 0.45rem;
-  letter-spacing: 0.5px;
-  padding      : 0.25rem 0.7rem;
-  width        : fit-content;
-}
-
-.node-pulse-dot {
-  animation    : pulseDot 2s infinite ease-in-out;
-  background   : #f59e0b;
-  border-radius: 50%;
-  display      : inline-block;
-  height       : 6px;
-  width        : 6px;
-}
-
-@keyframes pulseDot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%       { transform: scale(1.4); opacity: 0.5; }
-}
-
-.journey-node-card.journey-node-entry {
-  background: linear-gradient(145deg, #1c1917 0%, #1e1b4b 100%);
-  border    : 1.5px solid #ca8a04;
-  box-shadow: inset 0 1px 0 rgba(253, 224, 71, 0.3), 0 10px 30px rgba(202, 138, 4, 0.2);
-}
-
-.journey-node-card.journey-node-entry:hover {
-  border-color: #facc15;
-  box-shadow  : inset 0 1px 0 rgba(253, 224, 71, 0.5), 0 16px 40px rgba(234, 179, 8, 0.35);
-}
-
-.orientation-flag {
-  align-items  : center;
-  background   : rgba(234, 179, 8, 0.2);
-  border       : 1px solid rgba(234, 179, 8, 0.35);
-  border-radius: var(--radius-pill);
-  color        : #fde047;
-  display      : inline-flex;
-  font-size    : 0.72rem;
-  font-weight  : 800;
-  gap          : 0.4rem;
-  letter-spacing: 0.5px;
-  padding      : 0.2rem 0.65rem;
-  width        : fit-content;
-}
-
-.orientation-flag i { font-size: 0.8rem; }
-
-.node-main-info {
+.hud-box-content {
   display       : flex;
   flex-direction: column;
   gap           : 0.2rem;
+  text-align    : left;
 }
 
-.node-meta-tag {
-  color         : var(--muted);
-  font-family   : var(--font-mono);
-  font-size     : 0.74rem;
-  font-weight   : 700;
-  letter-spacing: 0.8px;
-}
-
-.node-week-title {
-  color         : var(--dark);
-  font-size     : 1.22rem;
+.hud-label {
+  font-family   : var(--font-heading);
+  font-size     : 0.68rem;
   font-weight   : 800;
-  letter-spacing: -0.4px;
-  transition    : color var(--transition);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color         : #64748b;
+  display       : flex;
+  align-items   : center;
+  gap           : 0.4rem;
 }
 
-.node-topic-text {
-  color      : var(--body-text);
-  font-size  : 0.82rem;
-  font-weight: 500;
-  line-height: 1.35;
+.hud-val-wrap {
+  display    : flex;
+  align-items: baseline;
+  gap        : 0.3rem;
 }
 
-.journey-node-card:hover .node-week-title { color: var(--purple-light); }
+.hud-val-accent {
+  font-family : var(--font-heading);
+  font-size   : 1.28rem;
+  font-weight : 900;
+  color       : #38bdf8;
+  letter-spacing: 0.04em;
+}
 
-.node-footer {
-  align-items    : center;
-  border-top     : 1px solid rgba(255, 255, 255, 0.08);
+.hud-val-total {
+  font-family: var(--font-heading);
+  font-size  : 0.85rem;
+  color      : #64748b;
+}
+
+.hud-progress-labels {
   display        : flex;
   justify-content: space-between;
-  margin-top     : auto;
-  padding-top    : 0.7rem;
-}
-
-.node-notes-tag {
-  color      : var(--body-text);
-  font-size  : 0.76rem;
-  font-weight: 500;
-}
-
-.node-action-arrow {
   align-items    : center;
-  background     : rgba(139, 92, 246, 0.2);
-  border         : 1px solid rgba(168, 85, 247, 0.3);
-  border-radius  : 50%;
-  color          : var(--purple-light);
-  display        : flex;
-  font-size      : 0.82rem;
-  height         : 28px;
-  justify-content: center;
-  transition     : all var(--transition);
-  width          : 28px;
+  margin-bottom  : 0.4rem;
 }
 
-.journey-node-card:hover .node-action-arrow {
-  background: var(--purple);
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+.hud-percent {
+  font-family: var(--font-heading);
+  font-size  : 0.85rem;
+  font-weight: 800;
+  color      : #a855f7;
+}
+
+.hud-meter-track {
+  width        : 100%;
+  height       : 8px;
+  background   : rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow     : hidden;
+  position     : relative;
+  border       : 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-meter-fill {
+  height       : 100%;
+  background   : linear-gradient(90deg, #38bdf8, #818cf8, #a855f7);
+  border-radius: 4px;
+  box-shadow   : 0 0 10px rgba(56, 189, 248, 0.6);
+  transition   : width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hud-phase-val {
+  font-family   : var(--font-heading);
+  font-size     : 0.88rem;
+  font-weight   : 800;
+  color         : #c084fc;
+  letter-spacing: 0.04em;
+}
+
+.hud-status-badge {
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.45rem;
+  padding       : 0.28rem 0.75rem;
+  border-radius : var(--radius-pill);
+  font-family   : var(--font-heading);
+  font-size     : 0.74rem;
+  font-weight   : 800;
+  letter-spacing: 0.04em;
+  width         : fit-content;
+}
+
+.hud-status-badge.status-completed {
+  background: rgba(16, 185, 129, 0.16);
+  border    : 1px solid rgba(16, 185, 129, 0.4);
+  color     : #34d399;
+}
+
+.hud-status-badge.status-upcoming {
+  background: rgba(148, 163, 184, 0.12);
+  border    : 1px solid rgba(148, 163, 184, 0.25);
+  color     : #94a3b8;
+}
+
+.hud-status-dot {
+  width        : 6px;
+  height       : 6px;
+  border-radius: 50%;
+  background   : currentColor;
+  box-shadow   : 0 0 8px currentColor;
+}
+
+/* --------------------------------------------------
+   Main Track Wrapper & Phase Selector Ribbon
+-------------------------------------------------- */
+.racing-track-wrapper {
+  max-width     : 1140px;
+  margin        : 0 auto;
+  padding       : 0 1.5rem;
+  display       : flex;
+  flex-direction: column;
+  gap           : 2rem;
+}
+
+.phase-circuit-ribbon {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-wrap      : wrap;
+  gap            : 0.6rem;
+  background     : rgba(15, 23, 42, 0.65);
+  border         : 1px solid rgba(255, 255, 255, 0.1);
+  border-radius  : var(--radius-pill);
+  padding        : 0.4rem 0.6rem;
+  backdrop-filter: blur(12px);
+  width          : fit-content;
+  margin         : 0 auto;
+}
+
+.phase-ribbon-btn {
+  background    : transparent;
+  border        : none;
+  color         : #94a3b8;
+  font-family   : var(--font-heading);
+  font-size     : 0.78rem;
+  font-weight   : 700;
+  letter-spacing: 0.04em;
+  padding       : 0.5rem 1rem;
+  border-radius : var(--radius-pill);
+  cursor        : pointer;
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.45rem;
+  transition    : all 0.22s ease;
+}
+
+.phase-ribbon-btn:hover {
   color     : #ffffff;
-  transform : translateX(3px);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-
-/* ================================================================
-   13e. Reusable Rich Week Overview Modal
-   ================================================================ */
-.week-overview-overlay {
-  align-items    : center;
-  bottom         : 0;
-  display        : flex;
-  justify-content: center;
-  left           : 0;
-  opacity        : 0;
-  pointer-events : none;
-  position       : fixed;
-  right          : 0;
-  top            : 0;
-  transition     : opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index        : 2000;
+.phase-ribbon-btn.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.35), rgba(168, 85, 247, 0.35));
+  border    : 1px solid rgba(168, 85, 247, 0.5);
+  color     : #ffffff;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
 }
 
-.week-overview-overlay.open {
-  opacity       : 1;
-  pointer-events: auto;
+.phase-color-dot {
+  width        : 8px;
+  height       : 8px;
+  border-radius: 50%;
 }
 
-.week-overview-backdrop {
-  background     : rgba(0, 0, 0, 0.85);
+.dot-p1 { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
+.dot-p2 { background: #a855f7; box-shadow: 0 0 6px #a855f7; }
+.dot-p3 { background: #ec4899; box-shadow: 0 0 6px #ec4899; }
+.dot-p4 { background: #10b981; box-shadow: 0 0 6px #10b981; }
+
+.prologue-btn {
+  border-left : 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 0.9rem;
+  color       : #fbbf24;
+}
+
+.prologue-btn:hover {
+  color: #fde68a;
+}
+
+/* --------------------------------------------------
+   Desktop Grand Prix SVG Circuit Board
+-------------------------------------------------- */
+.racing-circuit-board {
+  width          : 100%;
+  background     : radial-gradient(circle at 50% 50%, rgba(20, 26, 48, 0.7) 0%, rgba(8, 12, 24, 0.95) 100%);
+  border         : 1px solid rgba(168, 85, 247, 0.25);
+  border-radius  : 24px;
+  box-shadow     : inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 30px rgba(139, 92, 246, 0.08);
+  padding        : 1.5rem 1rem;
+  position       : relative;
+  overflow       : hidden;
+}
+
+.racing-circuit-svg {
+  display        : block;
+  width          : 100%;
+  height         : auto;
+  max-height     : 620px;
+  filter         : drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+/* Neon centerline pulse */
+.circuit-centerline {
+  animation: trackDashScroll 30s linear infinite;
+}
+
+@keyframes trackDashScroll {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+
+/* Checkpoint SVG styling */
+.track-checkpoint-node {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.track-checkpoint-node:hover {
+  filter: brightness(1.25);
+}
+
+.track-checkpoint-node.cp-current .cp-pulse-ring {
+  animation: cpRingPulse 2s infinite ease-out;
+}
+
+@keyframes cpRingPulse {
+  0% {
+    r      : 10;
+    opacity: 1;
+  }
+  100% {
+    r      : 24;
+    opacity: 0;
+  }
+}
+
+/* Car Thruster Pulse Animation */
+.car-thruster-pulse {
+  animation: thrusterFlicker 0.2s infinite alternate ease-in-out;
+}
+
+@keyframes thrusterFlicker {
+  0% {
+    opacity: 0.6;
+    stroke-width: 1.5;
+  }
+  100% {
+    opacity: 1;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 6px #f43f5e);
+  }
+}
+
+/* --------------------------------------------------
+   Futuristic Mission Briefing Panel
+-------------------------------------------------- */
+.racing-mission-panel {
+  width: 100%;
+}
+
+.mission-briefing-frame {
+  background     : linear-gradient(145deg, rgba(17, 24, 43, 0.95) 0%, rgba(10, 14, 28, 0.98) 100%);
+  border         : 1px solid rgba(168, 85, 247, 0.35);
+  border-radius  : 20px;
+  box-shadow     : inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 20px rgba(168, 85, 247, 0.1);
+  padding        : 2rem 2.4rem;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  height         : 100%;
-  left           : 0;
-  position       : absolute;
-  top            : 0;
-  width          : 100%;
+  position       : relative;
+  overflow       : hidden;
+  transition     : all 0.3s ease;
 }
 
-.week-overview-container {
-  background   : linear-gradient(180deg, #131a2e 0%, #0c101c 100%);
-  border       : 1.5px solid rgba(168, 85, 247, 0.4);
-  border-radius: var(--radius-card);
-  box-shadow   : inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 25px 70px rgba(0, 0, 0, 0.7);
-  max-height   : 90vh;
-  max-width    : 800px;
-  overflow-y   : auto;
-  padding      : 2.2rem 2.5rem;
-  position     : relative;
-  transform    : scale(0.95) translateY(10px);
-  transition   : transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  width        : 90%;
-  z-index      : 10;
+.mission-frame-completed {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow  : inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 25px rgba(16, 185, 129, 0.12);
 }
 
-.week-overview-overlay.open .week-overview-container {
-  transform: scale(1) translateY(0);
+.mission-frame-completed::before {
+  content   : '';
+  position  : absolute;
+  top       : 0;
+  left      : 0;
+  width     : 100%;
+  height    : 2px;
+  background: linear-gradient(90deg, #10b981, #38bdf8, #a855f7, transparent);
 }
 
-.week-back-btn {
-  align-items  : center;
-  border-radius: var(--radius-pill);
-  cursor       : pointer;
-  display      : inline-flex;
-  font-family  : var(--font);
-  font-size    : 0.92rem;
-  font-weight  : 700;
-  gap          : 0.6rem;
-  padding      : 0.7rem 1.5rem;
-  transition   : all var(--transition);
-  user-select  : none;
+.mission-frame-locked::before {
+  content   : '';
+  position  : absolute;
+  top       : 0;
+  left      : 0;
+  width     : 100%;
+  height    : 2px;
+  background: linear-gradient(90deg, #818cf8, #a855f7, transparent);
 }
 
-.top-back-btn {
-  background   : rgba(139, 92, 246, 0.18);
-  border       : 1px solid rgba(168, 85, 247, 0.35);
-  color        : var(--purple-light);
-  font-size    : 0.86rem;
-  margin-bottom: 1.5rem;
-  padding      : 0.45rem 1rem;
+.mission-top-bar {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  flex-wrap      : wrap;
+  gap            : 0.8rem;
+  padding-bottom : 1.2rem;
+  margin-bottom  : 1.4rem;
+  border-bottom  : 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.top-back-btn:hover {
-  background: var(--purple);
-  color     : #ffffff;
-}
-
-.week-article {
-  display       : flex;
-  flex-direction: column;
-  gap           : 1.5rem;
-}
-
-.week-breadcrumb {
-  align-items: center;
-  color      : var(--muted);
+.mission-telemetry-meta {
   display    : flex;
-  font-family: var(--font-mono);
-  font-size  : 0.82rem;
-  font-weight: 700;
-  gap        : 0.5rem;
+  align-items: center;
+  gap        : 0.8rem;
+  flex-wrap  : wrap;
 }
 
-.crumb-link { color: var(--purple-light); }
-.crumb-link:hover { text-decoration: underline; }
-.crumb-current { color: var(--dark); }
-
-.week-header-block {
-  display       : flex;
-  flex-direction: column;
+.telemetry-pill {
+  display       : inline-flex;
+  align-items   : center;
   gap           : 0.45rem;
-}
-
-.week-status-badge {
-  align-items  : center;
-  background   : rgba(245, 158, 11, 0.18);
-  border       : 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: var(--radius-pill);
-  color        : #fbbf24;
-  display      : inline-flex;
-  font-size    : 0.78rem;
-  font-weight  : 800;
-  gap          : 0.5rem;
-  letter-spacing: 0.6px;
-  padding      : 0.3rem 0.9rem;
-  width        : fit-content;
-}
-
-.status-pulse-dot {
-  animation    : pulseDot 2s infinite ease-in-out;
-  background   : #f59e0b;
-  border-radius: 50%;
-  display      : inline-block;
-  height       : 7px;
-  width        : 7px;
-}
-
-.week-main-title {
-  color         : var(--dark);
-  font-size     : clamp(1.8rem, 3vw, 2.3rem);
+  font-family   : var(--font-heading);
+  font-size     : 0.72rem;
   font-weight   : 800;
-  letter-spacing: -0.8px;
-  line-height   : 1.2;
+  letter-spacing: 0.06em;
+  padding       : 0.25rem 0.65rem;
+  border-radius : 6px;
 }
 
-.week-subtitle {
-  color      : var(--purple-light);
-  font-size  : 1.02rem;
-  font-weight: 600;
+.telemetry-online {
+  background: rgba(16, 185, 129, 0.15);
+  color     : #34d399;
+  border    : 1px solid rgba(16, 185, 129, 0.35);
 }
 
-.week-meta-grid {
-  display              : grid;
-  gap                  : 1rem;
-  grid-template-columns: repeat(3, 1fr);
+.telemetry-standby {
+  background: rgba(129, 140, 248, 0.12);
+  color     : #a5b4fc;
+  border    : 1px solid rgba(129, 140, 248, 0.3);
 }
 
-.week-meta-box {
-  background   : rgba(8, 12, 22, 0.8);
-  border       : 1.5px solid rgba(168, 85, 247, 0.25);
-  border-radius: var(--radius-sm);
-  display      : flex;
-  flex-direction: column;
-  gap          : 0.25rem;
-  padding      : 0.9rem 1.1rem;
+.telemetry-sector-crumb {
+  font-family   : var(--font-heading);
+  font-size     : 0.78rem;
+  font-weight   : 700;
+  color         : #cbd5e1;
+  letter-spacing: 0.04em;
 }
 
-.meta-box-label {
-  color         : var(--muted);
+.mission-status-indicator {
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.45rem;
+  font-family   : var(--font-heading);
   font-size     : 0.76rem;
-  font-weight   : 600;
+  font-weight   : 800;
+  padding       : 0.3rem 0.8rem;
+  border-radius : var(--radius-pill);
+}
+
+.status-pill-done {
+  background: rgba(16, 185, 129, 0.18);
+  border    : 1px solid rgba(16, 185, 129, 0.45);
+  color     : #34d399;
+}
+
+.status-pill-wait {
+  background: rgba(148, 163, 184, 0.12);
+  border    : 1px solid rgba(148, 163, 184, 0.3);
+  color     : #94a3b8;
+}
+
+.status-indicator-dot {
+  width        : 6px;
+  height       : 6px;
+  border-radius: 50%;
+  background   : currentColor;
+  box-shadow   : 0 0 6px currentColor;
+}
+
+/* Mission Header Group */
+.mission-header-group {
+  display    : flex;
+  align-items: flex-start;
+  gap        : 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.mission-number-box {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  background     : rgba(15, 23, 42, 0.8);
+  border         : 1px solid rgba(129, 140, 248, 0.3);
+  border-radius  : 14px;
+  padding        : 0.75rem 1rem;
+  min-width      : 90px;
+  text-align     : center;
+}
+
+.num-sub {
+  font-family   : var(--font-heading);
+  font-size     : 0.62rem;
+  font-weight   : 800;
+  letter-spacing: 0.08em;
+  color         : #64748b;
   text-transform: uppercase;
 }
 
-.meta-box-val {
-  color      : var(--dark);
-  font-family: var(--font-mono);
-  font-size  : 1.05rem;
-  font-weight: 800;
+.num-main {
+  font-family: var(--font-heading);
+  font-size  : 2rem;
+  font-weight: 900;
+  color      : #38bdf8;
+  line-height: 1;
 }
 
-.meta-status-highlight { color: #f59e0b; }
-
-.week-notice-card {
-  align-items  : flex-start;
-  background   : rgba(8, 12, 22, 0.8);
-  border       : 1.5px dashed rgba(168, 85, 247, 0.35);
-  border-radius: var(--radius-card);
-  display      : flex;
-  gap          : 1.2rem;
-  padding      : 1.6rem 1.8rem;
-}
-
-.notice-icon {
-  align-items    : center;
-  background     : var(--purple);
-  border-radius  : 12px;
-  color          : #ffffff;
-  display        : flex;
-  flex-shrink    : 0;
-  font-size      : 1.2rem;
-  height         : 42px;
-  justify-content: center;
-  width          : 42px;
-}
-
-.notice-text {
-  display       : flex;
-  flex-direction: column;
-  gap           : 0.25rem;
-}
-
-.notice-primary {
-  color      : var(--dark);
-  font-size  : 1rem;
+.num-max {
+  font-family: var(--font-heading);
+  font-size  : 0.72rem;
   font-weight: 700;
+  color      : #64748b;
 }
 
-.notice-secondary {
-  color      : var(--body-text);
-  font-size  : 0.9rem;
-  line-height: 1.6;
+.mission-title-content {
+  flex: 1;
 }
 
-.modal-detail-footer-nav {
-  align-items    : center;
-  border-top     : 1px solid rgba(255, 255, 255, 0.08);
+.mission-heading {
+  font-family  : var(--font-heading);
+  font-size    : clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight  : 800;
+  color        : #ffffff;
+  line-height  : 1.35;
+  margin-bottom: 0.4rem;
+}
+
+.mission-subheading {
+  font-size  : 0.95rem;
+  color      : #94a3b8;
+  line-height: 1.55;
+}
+
+/* Mission Briefing Quote */
+.mission-briefing-quote {
+  background   : rgba(255, 255, 255, 0.03);
+  border-left  : 3px solid #38bdf8;
+  border-radius: 0 12px 12px 0;
+  padding      : 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  position     : relative;
+}
+
+.quote-corner-icon {
+  color        : rgba(56, 189, 248, 0.4);
+  font-size    : 0.9rem;
+  margin-bottom: 0.4rem;
+  display      : block;
+}
+
+.mission-briefing-quote p {
+  font-size  : 0.94rem;
+  color      : #e2e8f0;
+  line-height: 1.65;
+  font-style : italic;
+}
+
+.mission-desc-secondary {
+  margin-top : 0.6rem;
+  font-size  : 0.88rem !important;
+  color      : #94a3b8 !important;
+  font-style : normal !important;
+}
+
+/* 5-Day Curriculum Micro Cards */
+.mission-curriculum-section {
+  margin: 1.6rem 0;
+}
+
+.curriculum-header {
   display        : flex;
   justify-content: space-between;
-  margin-top     : 0.5rem;
-  padding-top    : 1rem;
+  align-items    : center;
+  margin-bottom  : 0.9rem;
 }
 
-.nav-week-btn {
-  font-size: 0.86rem;
-  padding  : 0.5rem 1.1rem;
+.curriculum-title {
+  font-family   : var(--font-heading);
+  font-size     : 0.82rem;
+  font-weight   : 800;
+  letter-spacing: 0.06em;
+  color         : #cbd5e1;
+  display       : flex;
+  align-items   : center;
+  gap           : 0.45rem;
 }
 
-.detail-page-counter {
-  color      : var(--muted);
-  font-family: var(--font-mono);
-  font-size  : 0.82rem;
+.curriculum-team-tag {
+  font-family   : var(--font-heading);
+  font-size     : 0.72rem;
+  font-weight   : 700;
+  color         : #818cf8;
+  background    : rgba(129, 140, 248, 0.12);
+  border        : 1px solid rgba(129, 140, 248, 0.25);
+  padding       : 0.2rem 0.6rem;
+  border-radius : 6px;
+}
+
+.curriculum-cards-grid {
+  display              : grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap                  : 0.8rem;
+}
+
+.curriculum-card {
+  background   : rgba(15, 23, 42, 0.65);
+  border       : 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding      : 1rem;
+  transition   : all 0.2s ease;
+}
+
+.curriculum-card:hover {
+  background  : rgba(255, 255, 255, 0.04);
+  border-color: rgba(129, 140, 248, 0.35);
+  transform   : translateY(-2px);
+}
+
+.curriculum-card-top {
+  display        : flex;
+  align-items    : center;
+  gap            : 0.6rem;
+  margin-bottom  : 0.5rem;
+}
+
+.curriculum-day-pill {
+  font-family   : var(--font-heading);
+  font-size     : 0.68rem;
+  font-weight   : 800;
+  letter-spacing: 0.05em;
+  padding       : 0.15rem 0.5rem;
+  border-radius : 4px;
+  background    : rgba(255, 255, 255, 0.05);
+  border        : 1px solid currentColor;
+}
+
+.curriculum-day-title {
+  font-family: var(--font-heading);
+  font-size  : 0.86rem;
   font-weight: 700;
+  color      : #ffffff;
+  margin     : 0;
+  line-height: 1.3;
 }
 
-.week-bottom-actions {
-  display   : flex;
-  margin-top: 0.5rem;
+.curriculum-day-desc {
+  font-size    : 0.82rem;
+  color        : #94a3b8;
+  line-height  : 1.55;
+  margin-bottom: 0.6rem;
+}
+
+.curriculum-tags {
+  display  : flex;
+  flex-wrap: wrap;
+  gap      : 0.35rem;
+}
+
+.curriculum-tag {
+  font-size    : 0.7rem;
+  color        : #cbd5e1;
+  background   : rgba(255, 255, 255, 0.06);
+  padding      : 0.15rem 0.45rem;
+  border-radius: 4px;
+  border       : 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Mission Bottom Action Bar & Steppers */
+.mission-bottom-actions {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  flex-wrap      : wrap;
+  gap            : 1.2rem;
+  margin-top     : 2rem;
+  padding-top    : 1.5rem;
+  border-top     : 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mission-primary-cta {
+  display    : flex;
+  align-items: center;
+  gap        : 1rem;
+}
+
+.btn-race-cta {
+  display        : inline-flex;
+  align-items    : center;
+  gap            : 0.75rem;
+  background     : linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color          : #ffffff;
+  font-family    : var(--font-heading);
+  font-size      : 0.95rem;
+  font-weight    : 800;
+  letter-spacing : 0.04em;
+  padding        : 0.85rem 1.8rem;
+  border-radius  : 10px;
+  border         : 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow     : 0 4px 20px rgba(16, 185, 129, 0.35);
+  transition     : all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn-race-cta:hover {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  transform : translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+  color     : #ffffff;
+}
+
+.btn-race-cta:hover i:last-child {
+  transform: translateX(4px);
+}
+
+.btn-race-cta i {
+  transition: transform 0.2s ease;
+}
+
+.btn-race-locked {
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.65rem;
+  background    : rgba(255, 255, 255, 0.04);
+  border        : 1px solid rgba(255, 255, 255, 0.1);
+  color         : #64748b;
+  font-family   : var(--font-heading);
+  font-size     : 0.85rem;
+  font-weight   : 700;
+  letter-spacing: 0.04em;
+  padding       : 0.75rem 1.5rem;
+  border-radius : 10px;
+  cursor        : not-allowed;
+}
+
+.mission-steppers {
+  display: flex;
+  gap    : 0.6rem;
+}
+
+.btn-race-step {
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 0.45rem;
+  background   : rgba(15, 23, 42, 0.8);
+  border       : 1px solid rgba(129, 140, 248, 0.25);
+  color        : #cbd5e1;
+  font-family  : var(--font-heading);
+  font-size    : 0.8rem;
+  font-weight  : 700;
+  padding      : 0.65rem 1.1rem;
+  border-radius: 8px;
+  transition   : all 0.2s ease;
+  cursor       : pointer;
+}
+
+.btn-race-step:hover {
+  background  : rgba(129, 140, 248, 0.15);
+  border-color: rgba(168, 85, 247, 0.5);
+  color       : #ffffff;
+  transform   : translateY(-1px);
+}
+
+/* --------------------------------------------------
+   Mobile Vertical Racing Speedway (Hidden on Desktop)
+-------------------------------------------------- */
+.mobile-racing-speedway {
+  display: none; /* activated in media query <= 768px */
+}
+
+.mobile-speedway-header {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  margin-bottom  : 1.2rem;
+  padding-bottom : 0.8rem;
+  border-bottom  : 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-speedway-badge {
+  font-family   : var(--font-heading);
+  font-size     : 0.78rem;
+  font-weight   : 800;
+  letter-spacing: 0.05em;
+  color         : #38bdf8;
+  display       : inline-flex;
+  align-items   : center;
+  gap           : 0.5rem;
+}
+
+.mobile-speedway-hint {
+  font-size: 0.75rem;
+  color    : #64748b;
+}
+
+.mobile-speedway-list {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0.65rem;
+}
+
+.mobile-phase-divider {
+  margin: 0.8rem 0 0.3rem;
+}
+
+.mp-badge {
+  display       : inline-block;
+  font-family   : var(--font-heading);
+  font-size     : 0.68rem;
+  font-weight   : 800;
+  letter-spacing: 0.05em;
+  padding       : 0.25rem 0.65rem;
+  border-radius : 4px;
+}
+
+.mp-1 { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+.mp-2 { background: rgba(168, 85, 247, 0.12); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+.mp-3 { background: rgba(236, 72, 153, 0.12); color: #f472b6; border: 1px solid rgba(236, 72, 153, 0.3); }
+.mp-4 { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+.mobile-node-tile {
+  display        : flex;
+  align-items    : center;
+  gap            : 0.9rem;
+  background     : rgba(15, 23, 42, 0.75);
+  border         : 1px solid rgba(255, 255, 255, 0.08);
+  border-radius  : 12px;
+  padding        : 0.85rem 1rem;
+  cursor         : pointer;
+  transition     : all 0.2s ease;
+}
+
+.mobile-node-tile:hover {
+  background  : rgba(255, 255, 255, 0.05);
+  border-color: rgba(129, 140, 248, 0.35);
+  transform   : translateX(3px);
+}
+
+.mobile-node-tile.active-mobile-node {
+  border-color: #38bdf8;
+  background  : linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(15, 23, 42, 0.85) 100%);
+  box-shadow  : 0 0 15px rgba(56, 189, 248, 0.18);
+}
+
+.mobile-node-tile.tile-completed {
+  border-left: 3px solid #10b981;
+}
+
+.mobile-node-tile.tile-upcoming {
+  opacity: 0.85;
+}
+
+.mobile-tile-indicator {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  min-width     : 38px;
+}
+
+.mobile-tile-dot {
+  width        : 8px;
+  height       : 8px;
+  border-radius: 50%;
+  background   : #64748b;
+  margin-bottom: 0.2rem;
+}
+
+.tile-completed .mobile-tile-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.active-mobile-node .mobile-tile-dot {
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+.mobile-tile-num {
+  font-family: var(--font-heading);
+  font-size  : 0.85rem;
+  font-weight: 800;
+  color      : #cbd5e1;
+}
+
+.mobile-tile-info {
+  flex: 1;
+}
+
+.mobile-tile-status {
+  font-family   : var(--font-heading);
+  font-size     : 0.65rem;
+  font-weight   : 800;
+  letter-spacing: 0.05em;
+  color         : #64748b;
+  margin-bottom : 0.2rem;
+}
+
+.tile-completed .mobile-tile-status {
+  color: #34d399;
+}
+
+.mobile-tile-title {
+  font-size  : 0.88rem;
+  font-weight: 700;
+  color      : #ffffff;
+  line-height: 1.3;
+  margin     : 0;
+}
+
+.mobile-tile-arrow {
+  color    : #64748b;
+  font-size: 0.8rem;
+}
+
+/* Modal / Overview Styles (Preserved) */
+.week-overview-overlay {
+  display        : none;
+  position       : fixed;
+  inset          : 0;
+  z-index        : 2000;
+  align-items    : center;
+  justify-content: center;
+  padding        : 1.5rem;
+}
+
+.week-overview-overlay.active {
+  display: flex;
+}
+
+.week-overview-backdrop {
+  position       : absolute;
+  inset          : 0;
+  background     : rgba(3, 7, 18, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.week-overview-container {
+  position     : relative;
+  background   : linear-gradient(145deg, rgba(17, 24, 43, 0.98) 0%, rgba(10, 14, 28, 0.99) 100%);
+  border       : 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 20px;
+  max-width    : 800px;
+  width        : 100%;
+  max-height   : 90vh;
+  overflow-y   : auto;
+  padding      : 2.2rem;
+  box-shadow   : 0 25px 60px rgba(0, 0, 0, 0.7);
+  z-index      : 2;
+}
+
+.top-back-btn {
+  background   : rgba(255, 255, 255, 0.06);
+  border       : 1px solid rgba(255, 255, 255, 0.12);
+  color        : #cbd5e1;
+  font-family  : var(--font-heading);
+  font-size    : 0.8rem;
+  font-weight  : 700;
+  padding      : 0.5rem 1rem;
+  border-radius: 8px;
+  cursor       : pointer;
+  margin-bottom: 1.5rem;
+  display      : inline-flex;
+  align-items  : center;
+  gap          : 0.5rem;
+  transition   : all 0.2s ease;
+}
+
+.top-back-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color     : #ffffff;
+}
+
+/* Responsive Rules for ProtoSem Racing */
+@media (max-width: 992px) {
+  .racing-hud-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-  .week-meta-grid {
+  .racing-circuit-board {
+    display: none !important;
+  }
+
+  .mobile-racing-speedway {
+    display: block !important;
+  }
+
+  .phase-circuit-ribbon {
+    flex-wrap      : nowrap;
+    overflow-x     : auto;
+    justify-content: flex-start;
+    padding-bottom : 0.6rem;
+    scrollbar-width: thin;
+  }
+
+  .phase-circuit-ribbon::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .phase-circuit-ribbon::-webkit-scrollbar-thumb {
+    background   : rgba(168, 85, 247, 0.4);
+    border-radius: 2px;
+  }
+
+  .phase-ribbon-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .racing-hud-bar {
+    grid-template-columns: 1fr;
+    gap                  : 0.8rem;
+  }
+
+  .mission-header-group {
+    flex-direction: column;
+    align-items   : flex-start;
+    gap           : 1rem;
+  }
+
+  .mission-number-box {
+    align-self: flex-start;
+  }
+
+  .curriculum-cards-grid {
     grid-template-columns: 1fr;
   }
-  .week-notice-card {
+
+  .mission-bottom-actions {
     flex-direction: column;
-    padding: 1.2rem;
+    align-items   : stretch;
   }
-  .week-overview-container {
-    padding: 1.5rem;
+
+  .mission-primary-cta .btn-race-cta,
+  .mission-primary-cta .btn-race-locked {
+    width          : 100%;
+    justify-content: center;
+  }
+
+  .mission-steppers {
+    width          : 100%;
+    justify-content: space-between;
+  }
+
+  .btn-race-step {
+    flex           : 1;
+    justify-content: center;
   }
 }
 
@@ -2948,14 +3324,6 @@ button { font-family: inherit; }
   }
 
   .skills-highlight-divider { display: none; }
-
-  .protosem-metrics-strip {
-    display              : grid;
-    gap                  : 1.2rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .metric-divider { display: none; }
 }
 
 @media (max-width: 768px) {
@@ -2991,24 +3359,6 @@ button { font-family: inherit; }
 
   .projects-grid {
     grid-template-columns: 1fr;
-  }
-
-  .phase-filter-bar {
-    display              : grid;
-    grid-template-columns: repeat(2, 1fr);
-    width                : 100%;
-  }
-
-  .journey-nodes-container {
-    grid-template-columns: 1fr;
-  }
-
-  .week-meta-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .week-overview-container {
-    padding: 1.5rem;
   }
 
   .contact-form-wrap { padding: 1.5rem; }
