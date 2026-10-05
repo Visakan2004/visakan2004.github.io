@@ -1389,8 +1389,300 @@
       color: var(--primary);
     }
 
+    /* In-situ Timeline Photographic Records */
+    .timeline-photo-card {
+      margin-top: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+    }
+
+    .timeline-photo-card:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .timeline-photo-frame {
+      position: relative;
+      background: #0b1120;
+      cursor: pointer;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+    }
+
+    .timeline-photo-frame img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .timeline-photo-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .timeline-photo-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 2;
+    }
+
+    .timeline-photo-zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 2;
+    }
+
+    .timeline-photo-frame:hover .timeline-photo-zoom-hint {
+      opacity: 1;
+    }
+
+    .timeline-photo-caption {
+      padding: 0.85rem 1.15rem;
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .timeline-photo-caption strong {
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      display: block;
+      font-size: 0.94rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Dual Photo Grid for Days with 2 Photos */
+    .timeline-photo-dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .timeline-photo-dual-grid .timeline-photo-card {
+      margin-top: 0;
+    }
+
+    .timeline-photo-dual-grid .timeline-photo-frame img {
+      height: 250px;
+    }
+
+    /* Photographic Telemetry Showcase Grid */
+    .telemetry-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .telemetry-gallery-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .telemetry-gallery-item:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .telemetry-thumb-frame {
+      height: 210px;
+      position: relative;
+      background: #0b1120;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .telemetry-thumb-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .telemetry-thumb-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    .telemetry-info-box {
+      padding: 0.9rem 1.1rem;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .telemetry-info-box strong {
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      font-size: 0.92rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .telemetry-info-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .telemetry-meta-tag {
+      margin-top: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Interactive Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-modal-content {
+      max-width: 960px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #ffffff;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: #111827;
+    }
+
+    .lightbox-modal-header h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lightbox-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-modal-body {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      background: #080c16;
+    }
+
+    .lightbox-modal-body img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .lightbox-modal-caption {
+      padding: 0.9rem 1.4rem;
+      background: #0f172a;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
     /* Responsive Adjustments */
     @media (max-width: 768px) {
+      .timeline-photo-dual-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-photo-frame img {
+        height: 240px;
+      }
       .journal-nav-inner {
         flex-direction: column;
         align-items: flex-start;
@@ -1453,6 +1745,7 @@
           </a>
           <a href="#overview" class="nav-page-tab">Glance</a>
           <a href="#journey" class="nav-page-tab">5 Days</a>
+          <a href="#gallery" class="nav-page-tab">Telemetry & Photos</a>
           <a href="#engineering" class="nav-page-tab">Connection</a>
           <a href="#takeaways" class="nav-page-tab">Takeaways</a>
           <a href="#lab-notes" class="nav-page-tab">Lab Notes</a>
@@ -1707,6 +2000,19 @@
                 </div>
               </div>
             </div>
+
+            <!-- Day 01 Photographic Record -->
+            <div class="timeline-photo-card">
+              <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/day1.jpeg', 'Day 01 — System Boot &amp; OS Installation', 'Cohort peers alongside mentor Linga at KCT FORGE holding the newly provisioned Linux system laptop after completing UEFI partition setup and base OS installation.')">
+                <img src="assets/weekly/week 3/day1.jpeg" alt="Day 01 OS Setup with Linga and Cohort Peers" loading="lazy" />
+                <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 01 &bull; IN-SITU RECORD</div>
+                <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+              </div>
+              <div class="timeline-photo-caption">
+                <strong><i class="fa-solid fa-laptop-code"></i> Preparing the Machine — Operating System Setup</strong>
+                The cohort gathered with mentor Linga in the FORGE lab, showcasing the newly configured Linux laptop following BIOS/UEFI verification and clean OS partition initialization.
+              </div>
+            </div>
           </article>
         </div>
 
@@ -1742,6 +2048,19 @@
                 <div class="terminal-output">drwxr-xr-x src/  -rwxr-xr-x game.sh  -rw-r--r-- package.json  -rw-r--r-- vercel.json</div>
                 <div class="terminal-line"><span style="color:#60a5fa;">visakan@forge-lab</span>:<span style="color:#f59e0b;">~/projects/terminal-game</span>$ ./game.sh --run</div>
                 <div class="terminal-output"><span style="color:#38bdf8;">[INIT] Loading Game Engine... Score Loop Active &bull; Terminal Grid Ready</span></div>
+              </div>
+            </div>
+
+            <!-- Day 02 Photographic Record -->
+            <div class="timeline-photo-card">
+              <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/terminal-racing.png', 'Day 02 — Terminal Racing Arcade Game', 'Interactive cyberpunk CRT arcade racer running directly in the Linux terminal environment with real-time score tracking (5980 pts), 90 MPH speed telemetry, CRT scanlines, and audio toggles.')">
+                <img src="assets/weekly/week 3/terminal-racing.png" alt="Terminal Racing arcade gameplay interface" loading="lazy" />
+                <div class="timeline-photo-badge"><i class="fa-solid fa-gamepad"></i> DAY 02 &bull; TERMINAL RACING</div>
+                <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+              </div>
+              <div class="timeline-photo-caption">
+                <strong><i class="fa-solid fa-terminal"></i> Terminal Racing — Cyberpunk Arcade Interface</strong>
+                Interactive terminal game running in the shell featuring real-time collision detection, speed gauge (90 MPH), score counter, and custom CRT phosphor glow shaders.
               </div>
             </div>
           </article>
@@ -1845,6 +2164,19 @@
                 </div>
               </div>
             </div>
+
+            <!-- Day 03 Photographic Record -->
+            <div class="timeline-photo-card">
+              <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/obsidian-graph.png', 'Day 03 — Obsidian Knowledge Architecture', 'Graph View of the portfolio-content Obsidian vault showing interconnected nodes across daily notes, daily-note-template, canvas layouts, and automated Git backup sync.')">
+                <img src="assets/weekly/week 3/obsidian-graph.png" alt="Obsidian Graph View and Git sync configuration" loading="lazy" />
+                <div class="timeline-photo-badge"><i class="fa-solid fa-network-wired"></i> DAY 03 &bull; OBSIDIAN VAULT</div>
+                <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+              </div>
+              <div class="timeline-photo-caption">
+                <strong><i class="fa-solid fa-diagram-project"></i> Obsidian Knowledge Architecture &amp; Auto-Sync</strong>
+                Graph view representation of the local knowledge vault highlighting daily note linkage, atomic templates, and the automated background Git commit workflow.
+              </div>
+            </div>
           </article>
         </div>
 
@@ -1893,6 +2225,33 @@
                   <div class="comp-icon"><i class="fa-solid fa-battery-half"></i></div>
                   <div class="comp-name">Capacitors</div>
                   <div class="comp-role">Charge storage &amp; voltage filtering; verified breakdown voltage ratings.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 04 Dual Photographic Record -->
+            <div class="timeline-photo-dual-grid">
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/day4-agenda.jpeg', 'Day 04 — Basic Electronics Briefing by Brahma', 'Lecture session by mentor Brahma presenting the curriculum agenda: Basic Electronics &amp; Embedded Systems, Raspberry Pi, GPIO, sensors, and IoT architectures.')">
+                  <img src="assets/weekly/week 3/day4-agenda.jpeg" alt="Electronics Lecture with Brahma" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-chalkboard-user"></i> DAY 04 &bull; SESSION AGENDA</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-chalkboard"></i> Fundamentals Briefing by Brahma</strong>
+                  Comprehensive theory session introducing circuit principles, breadboarding, and embedded IoT architectures.
+                </div>
+              </div>
+
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/day4-breadboard.jpeg', 'Day 04 — Active Breadboard Prototyping', 'Hands-on solderless breadboard circuit powered by a 9V Hi-Watt battery with switching transistor, current-limiting resistors, and illuminated red LED indicator.')">
+                  <img src="assets/weekly/week 3/day4-breadboard.jpeg" alt="Breadboard circuit with 9V battery and LED" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-bolt"></i> DAY 04 &bull; BREADBOARD CIRCUIT</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-microchip"></i> Physical Circuit Assembly</strong>
+                  Active breadboard prototype validating component polarity, current draw, and tactile switching under 9V DC power.
                 </div>
               </div>
             </div>
@@ -1951,9 +2310,157 @@
                 </div>
               </div>
             </div>
+
+            <!-- Day 05 Dual Photographic Record -->
+            <div class="timeline-photo-dual-grid">
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/day5-soldering.jpeg', 'Day 05 — Precision Soldering at Workbench', 'Visakan actively soldering circuit components to the green perfboard prototyping grid under task lighting at KCT FORGE.')">
+                  <img src="assets/weekly/week 3/day5-soldering.jpeg" alt="Visakan soldering components on perfboard" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-fire-burner"></i> DAY 05 &bull; SOLDERING BENCH</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-temperature-arrow-up"></i> Benchtop Soldering Process</strong>
+                  Translating temporary breadboard jumper connections into solid soldered joints on dot-matrix perfboard.
+                </div>
+              </div>
+
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 3/day5-board.jpeg', 'Day 05 — Final Assembled Perfboard Prototype', 'Completed physical electronics prototype on green dot-matrix perfboard featuring tactile switch, resistors, transistor, and yellow LED indicator.')">
+                  <img src="assets/weekly/week 3/day5-board.jpeg" alt="Completed perfboard prototype with switch and LED" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-circle-check"></i> DAY 05 &bull; ASSEMBLED PROTOTYPE</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-check-double"></i> Finished Perfboard Prototype</strong>
+                  The finalized standalone circuit with tactile pushbutton input, current regulation, and bright yellow LED indicator.
+                </div>
+              </div>
+            </div>
           </article>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02.5 / VISUAL TELEMETRY — VERIFIED PHOTOGRAPHIC RECORDS
+         ============================================================ -->
+    <section class="section-wrap" id="gallery">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-camera-retro"></i>
+        <span>Visual Evidence</span>
+      </div>
+      <h2 class="section-title">Visual Telemetry &amp; Photographic Records</h2>
+      <p class="section-lead">
+        Authentic records captured across the 5 days at KCT FORGE — from operating system provisioning and terminal arcade programming to electronic breadboarding and benchtop soldering. Click any photo for high-resolution inspection.
+      </p>
+
+      <div class="telemetry-gallery-grid">
+        <!-- Photo 1: Day 1 -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/day1.jpeg', 'Day 01 — System Boot &amp; OS Installation', 'Cohort peers alongside mentor Linga at KCT FORGE holding the newly provisioned Linux system laptop after completing UEFI partition setup and base OS installation.')">
+            <img src="assets/weekly/week 3/day1.jpeg" alt="Day 01 OS Setup" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-users"></i> DAY 01</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Operating System Setup</strong>
+              <div class="telemetry-info-desc">Cohort team with mentor Linga holding the newly partitioned and configured Linux laptop.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-power-off"></i> UEFI &bull; Ubuntu Setup</span>
+          </div>
+        </div>
+
+        <!-- Photo 2: Day 2 -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/terminal-racing.png', 'Day 02 — Terminal Racing Arcade Game', 'Interactive cyberpunk CRT arcade racer running directly in the Linux terminal environment with real-time score tracking (5980 pts), 90 MPH speed telemetry, CRT scanlines, and audio toggles.')">
+            <img src="assets/weekly/week 3/terminal-racing.png" alt="Terminal Racing Game" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-gamepad"></i> DAY 02</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Terminal Racing Game</strong>
+              <div class="telemetry-info-desc">Cyberpunk terminal game with CRT shaders, 90 MPH telemetry, and live interactive loop.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-terminal"></i> Bash CLI &bull; Vercel Ready</span>
+          </div>
+        </div>
+
+        <!-- Photo 3: Day 3 -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/obsidian-graph.png', 'Day 03 — Obsidian Knowledge Architecture', 'Graph View of the portfolio-content Obsidian vault showing interconnected nodes across daily notes, daily-note-template, canvas layouts, and automated Git backup sync.')">
+            <img src="assets/weekly/week 3/obsidian-graph.png" alt="Obsidian Graph View" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-network-wired"></i> DAY 03</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Obsidian Knowledge Graph</strong>
+              <div class="telemetry-info-desc">Vault relationship network connecting daily logs, markdown templates, and automated Git sync.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-diagram-project"></i> Knowledge Vault &bull; Git</span>
+          </div>
+        </div>
+
+        <!-- Photo 4: Day 4 Lecture -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/day4-agenda.jpeg', 'Day 04 — Basic Electronics Briefing by Brahma', 'Lecture session by mentor Brahma presenting the curriculum agenda: Basic Electronics &amp; Embedded Systems, Raspberry Pi, GPIO, sensors, and IoT architectures.')">
+            <img src="assets/weekly/week 3/day4-agenda.jpeg" alt="Electronics Lecture with Brahma" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-chalkboard-user"></i> DAY 04</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Electronics Briefing with Brahma</strong>
+              <div class="telemetry-info-desc">Curriculum orientation covering circuits, TinkerCAD simulation, sensors, and microcontrollers.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-microchip"></i> Theory &bull; Embedded Systems</span>
+          </div>
+        </div>
+
+        <!-- Photo 5: Day 4 Breadboard -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/day4-breadboard.jpeg', 'Day 04 — Active Breadboard Prototyping', 'Hands-on solderless breadboard circuit powered by a 9V Hi-Watt battery with switching transistor, current-limiting resistors, and illuminated red LED indicator.')">
+            <img src="assets/weekly/week 3/day4-breadboard.jpeg" alt="Breadboard circuit with 9V battery" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-bolt"></i> DAY 04</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Active Breadboard Circuit</strong>
+              <div class="telemetry-info-desc">Solderless prototyping grid powered by 9V battery with current limiters and illuminated red LED.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-car-battery"></i> 9V DC &bull; Breadboard</span>
+          </div>
+        </div>
+
+        <!-- Photo 6: Day 5 Soldering -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/day5-soldering.jpeg', 'Day 05 — Precision Soldering at Workbench', 'Visakan actively soldering circuit components to the green perfboard prototyping grid under task lighting at KCT FORGE.')">
+            <img src="assets/weekly/week 3/day5-soldering.jpeg" alt="Soldering at workbench" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-fire-burner"></i> DAY 05</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Benchtop Soldering Session</strong>
+              <div class="telemetry-info-desc">Hands-on soldering of through-hole components onto perfboard under workbench illumination.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-temperature-arrow-up"></i> Soldering &bull; Perfboard</span>
+          </div>
+        </div>
+
+        <!-- Photo 7: Day 5 Completed Board -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 3/day5-board.jpeg', 'Day 05 — Final Assembled Perfboard Prototype', 'Completed physical electronics prototype on green dot-matrix perfboard featuring tactile switch, resistors, transistor, and yellow LED indicator.')">
+            <img src="assets/weekly/week 3/day5-board.jpeg" alt="Completed perfboard prototype" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-circle-check"></i> DAY 05</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Final Assembled Prototype</strong>
+              <div class="telemetry-info-desc">Completed permanent circuit board with tactile push button, resistors, and yellow LED indicator.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-microchip"></i> Physical Hardware Prototype</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2313,7 +2820,59 @@
         card.classList.add('active-connection');
       });
     });
+
+    // 4. Interactive Lightbox Modal Functions
+    function openLightbox(imgSrc, title, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const titleElem = document.getElementById('lightboxTitle');
+      const captionElem = document.getElementById('lightboxCaption');
+
+      if (!modal || !img) return;
+
+      img.src = imgSrc;
+      img.alt = title || 'Photographic Preview';
+      if (titleElem) titleElem.innerHTML = `<i class="fa-solid fa-camera"></i> ${title || 'Telemetry Preview'}`;
+      if (captionElem) captionElem.innerHTML = caption || '';
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    const modalBackdrop = document.getElementById('lightboxModal');
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeLightbox();
+      });
+    }
   </script>
+
+  <!-- Interactive Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-modal-content">
+      <div class="lightbox-modal-header">
+        <h4 id="lightboxTitle"><i class="fa-solid fa-image"></i> Photographic Evidence</h4>
+        <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close Preview">&times;</button>
+      </div>
+      <div class="lightbox-modal-body">
+        <img id="lightboxImg" src="" alt="High-Resolution Preview" />
+      </div>
+      <div class="lightbox-modal-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
 
 </body>
 </html>
