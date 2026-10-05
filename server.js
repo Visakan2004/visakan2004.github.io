@@ -48,6 +48,11 @@ app.get(['/price-protosem-week-3', '/price-protosem-week-03', '/week-3', '/week-
   res.sendFile(path.join(__dirname, 'price-protosem-week-3.html'));
 });
 
+// PRICE Protosem Week 4 Blog Routes
+app.get(['/price-protosem-week-4', '/price-protosem-week-04', '/week-4', '/week-04', '/protosem-week-4', '/price-protosem-4'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-4.html'));
+});
+
 // PRICE Protosem Week 6 Blog Routes (Page 1: Laser Cutting)
 app.get(['/price-protosem-week-6', '/week-6', '/week-06', '/protosem-week-6', '/price-protosem-6', '/week-6-laser', '/price-protosem-week-6-laser'], (req, res) => {
   res.sendFile(path.join(__dirname, 'price-protosem-week-6.html'));

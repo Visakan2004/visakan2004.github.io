@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Week 04 / 20 — From Signals to Connected Systems. Turning physical signals into intelligent interactions with Arduino, ESP32, OLED, sensors and IoT | PRICE Protosem — Visakan K." />
+  <meta name="author" content="Visakan K" />
+  <title>WEEK 04 — From Signals to Connected Systems | PRICE Protosem Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       LEARNING-JOURNAL DESIGN SYSTEM — WEEK 04
+       PRICE PROTOSEM: FROM SIGNALS TO CONNECTED SYSTEMS
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-dark: #334155;
+
+      --text: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-heading: #0f172a;
+
+      /* Primary Brand / Hardware Accents */
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --cyan-border: #bae6fd;
+
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      /* Dark Contrast Surfaces */
+      --dark-surface: #090d16;
+      --dark-card: #101626;
+      --dark-card-border: rgba(255, 255, 255, 0.09);
+      --dark-text: #e2e8f0;
+      --dark-text-muted: #94a3b8;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+
+      --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 20px -3px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 16px 30px -4px rgba(15, 23, 42, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      font-size: 1.02rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    ::selection {
+      background: #bfdbfe;
+      color: #1e3a8a;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #2563eb, #0284c7, #059669);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Document Container */
+    .doc-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    /* Top Sticky Navigation Bar */
+    .journal-nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      transition: background 0.3s ease;
+    }
+
+    .journal-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-mark-badge {
+      background: var(--dark-surface);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-title-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .nav-doc-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-heading);
+    }
+
+    .nav-doc-meta {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .nav-links-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-page-tab {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-page-tab:hover {
+      color: var(--primary);
+      border-color: var(--primary-border);
+      background: #ffffff;
+    }
+
+    .nav-page-tab.active-tab {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .btn-return-journey {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-return-journey:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateX(-2px);
+    }
+
+    /* ============================================================
+       HERO SECTION — WEEK 04
+       ============================================================ */
+    .hero-journal-section {
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #ffffff;
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 2rem;
+    }
+
+    .hero-intro-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      margin: 0 auto 2.25rem;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+      position: relative;
+    }
+
+    .hero-intro-card p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero-intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .core-philosophy-quote {
+      margin-top: 1.25rem;
+      padding: 1.1rem 1.4rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(2, 132, 199, 0.08));
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-meta-ribbon {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .meta-chip-completed {
+      background: var(--emerald-light);
+      border-color: var(--emerald-border);
+      color: var(--emerald);
+    }
+
+    .meta-chip-phase {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .meta-chip-theme {
+      background: var(--purple-light);
+      border-color: var(--purple-border);
+      color: var(--purple);
+    }
+
+    /* Interactive Pipeline Stages in Hero */
+    .pipeline-wrapper {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-bottom: 3.5rem;
+      color: #ffffff;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pipeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pipeline-title {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+    }
+
+    .pipeline-instruction {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+    }
+
+    .pipeline-track {
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pipeline-node {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .pipeline-node:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .pipeline-node.active {
+      background: rgba(37, 99, 235, 0.25);
+      border-color: var(--cyan);
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.35);
+    }
+
+    .pipeline-node-num {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--cyan);
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .pipeline-node-label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .pipeline-connector {
+      color: rgba(255, 255, 255, 0.25);
+      display: flex;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+
+    .pipeline-tooltip-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      font-size: 0.88rem;
+      color: var(--dark-text-muted);
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Section Styling */
+    .section-wrap {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-heading);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 780px;
+    }
+
+    /* Glance Grid (01 The Week at a Glance) */
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .glance-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glance-card:hover {
+      border-color: var(--primary-border);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .glance-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+
+    .glance-card-1::before { background: var(--primary); }
+    .glance-card-2::before { background: var(--cyan); }
+    .glance-card-3::before { background: var(--purple); }
+    .glance-card-4::before { background: var(--emerald); }
+
+    .glance-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .glance-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+
+    .glance-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+    }
+
+    .glance-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Timeline Container & Cards (02 Four Days) */
+    .timeline-container {
+      position: relative;
+      padding-left: 2.25rem;
+      margin-top: 2rem;
+    }
+
+    .timeline-spine {
+      position: absolute;
+      left: 0.55rem;
+      top: 1rem;
+      bottom: 1rem;
+      width: 2px;
+      background: linear-gradient(180deg, #2563eb, #0284c7, #7c3aed, #059669);
+    }
+
+    .timeline-day-block {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-day-block:last-child {
+      margin-bottom: 1rem;
+    }
+
+    .timeline-node-dot {
+      position: absolute;
+      left: -2.25rem;
+      top: 1.25rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3.5px solid var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+      z-index: 2;
+    }
+
+    .timeline-day-block:nth-child(2) .timeline-node-dot { border-color: var(--cyan); box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15); }
+    .timeline-day-block:nth-child(3) .timeline-node-dot { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15); }
+    .timeline-day-block:nth-child(4) .timeline-node-dot { border-color: var(--emerald); box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15); }
+
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .timeline-card:hover {
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-md);
+    }
+
+    .timeline-day-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-day-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-day-focus {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .timeline-day-content {
+      color: var(--text);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-field-note {
+      margin: 1.25rem 0;
+      padding: 0.85rem 1.15rem;
+      background: var(--surface-subtle);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--text-heading);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+    }
+
+    .key-takeaway-chip {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: #f1f5f9;
+      border: 1px solid var(--border-strong);
+      color: var(--text-heading);
+    }
+
+    /* Embedded Schematic Box */
+    .day-schematic-box {
+      margin-top: 1.35rem;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-card-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      color: #ffffff;
+    }
+
+    .schematic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .schematic-title {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .schematic-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--cyan);
+      background: rgba(2, 132, 199, 0.15);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .flow-steps-grid {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .flow-step-box {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .flow-step-name {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .flow-step-desc {
+      font-size: 0.7rem;
+      color: var(--dark-text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .flow-arrow {
+      color: var(--cyan);
+      font-size: 0.8rem;
+    }
+
+    /* Sensor & Component Chips */
+    .sensor-chips-cluster {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+
+    .sensor-chip {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--text-heading);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+    }
+
+    /* Photographic Records Cards */
+    .timeline-photo-card {
+      margin-top: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+    }
+
+    .timeline-photo-card:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .timeline-photo-frame {
+      position: relative;
+      background: #0b1120;
+      cursor: pointer;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+    }
+
+    .timeline-photo-frame img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .timeline-photo-frame:hover img {
+      transform: scale(1.03);
+    }
+
+    .timeline-photo-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 2;
+    }
+
+    .timeline-photo-zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      font-family: var(--font-heading);
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 2;
+    }
+
+    .timeline-photo-frame:hover .timeline-photo-zoom-hint {
+      opacity: 1;
+    }
+
+    .timeline-photo-caption {
+      padding: 0.85rem 1.15rem;
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .timeline-photo-caption strong {
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      display: block;
+      font-size: 0.94rem;
+      margin-bottom: 0.2rem;
+    }
+
+    /* Dual Photo Grid for Days with Multiple Photos */
+    .timeline-photo-dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .timeline-photo-dual-grid .timeline-photo-card {
+      margin-top: 0;
+    }
+
+    .timeline-photo-dual-grid .timeline-photo-frame img {
+      height: 250px;
+    }
+
+    /* Photographic Telemetry Showcase Grid */
+    .telemetry-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .telemetry-gallery-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .telemetry-gallery-item:hover {
+      border-color: var(--primary-border);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .telemetry-thumb-frame {
+      height: 210px;
+      position: relative;
+      background: #0b1120;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .telemetry-thumb-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .telemetry-thumb-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    .telemetry-info-box {
+      padding: 0.9rem 1.1rem;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .telemetry-info-box strong {
+      font-family: var(--font-heading);
+      color: var(--text-heading);
+      font-size: 0.92rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .telemetry-info-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .telemetry-meta-tag {
+      margin-top: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* Engineering Loop Cards (03 The Engineering Loop) */
+    .loop-cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .loop-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.2s ease;
+    }
+
+    .loop-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .loop-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin: 0 auto 0.75rem;
+    }
+
+    .loop-card-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+
+    .loop-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Exploration Matrix Table */
+    .table-container {
+      margin-top: 1.5rem;
+      overflow-x: auto;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .exploration-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    .exploration-table th {
+      background: var(--surface-subtle);
+      padding: 0.9rem 1.25rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-heading);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exploration-table td {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .exploration-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .exploration-table td:first-child {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    /* Dark Reflection Closing Section */
+    .reflection-dark-section {
+      background: var(--dark-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.25rem;
+      color: #ffffff;
+      margin: 3.5rem 0 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--dark-card-border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reflection-dark-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      color: #ffffff;
+    }
+
+    .reflection-quote-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      border-left: 4px solid var(--cyan);
+      padding: 1.35rem 1.5rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      font-style: italic;
+    }
+
+    .summary-closing-statement {
+      margin-top: 1.5rem;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-align: center;
+    }
+
+    .summary-nav-buttons-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-prev {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-card-border);
+      color: #cbd5e1;
+    }
+
+    .btn-prev:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      transform: translateX(-3px);
+    }
+
+    .btn-journey {
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(37, 99, 235, 0.5);
+      color: #bfdbfe;
+    }
+
+    .btn-journey:hover {
+      background: rgba(37, 99, 235, 0.35);
+      color: #ffffff;
+    }
+
+    .btn-next {
+      background: var(--primary);
+      border: 1px solid var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-next:hover {
+      background: var(--primary-hover);
+      transform: translateX(3px);
+    }
+
+    /* Site Footer */
+    .site-footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      margin-top: 4rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-links-group {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    /* Interactive Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-modal-content {
+      max-width: 960px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #ffffff;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.4rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: #111827;
+    }
+
+    .lightbox-modal-header h4 {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lightbox-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-modal-body {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      background: #080c16;
+    }
+
+    .lightbox-modal-body img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+
+    .lightbox-modal-caption {
+      padding: 0.9rem 1.4rem;
+      background: #0f172a;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .timeline-photo-dual-grid {
+        grid-template-columns: 1fr;
+      }
+      .timeline-photo-frame img {
+        height: 240px;
+      }
+      .journal-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .nav-links-cluster {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+      }
+      .timeline-container {
+        padding-left: 1.5rem;
+      }
+      .timeline-node-dot {
+        left: -1.5rem;
+        width: 20px;
+        height: 20px;
+      }
+      .timeline-card {
+        padding: 1.25rem 1.25rem;
+      }
+      .pipeline-track {
+        grid-template-columns: 1fr;
+      }
+      .pipeline-connector {
+        transform: rotate(90deg);
+        margin: 0.25rem 0;
+      }
+      .reflection-dark-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="journal-nav-bar" id="topNav">
+    <div class="doc-container">
+      <div class="journal-nav-inner">
+        <a href="index.html#protosem" class="nav-brand-cluster">
+          <span class="nav-mark-badge">PROTOSEM / W04</span>
+          <div class="nav-title-group">
+            <span class="nav-doc-title">WEEK 04 · From Signals to Connected Systems</span>
+            <span class="nav-doc-meta">ProtoSem × FORGE · PRICE Fellowship</span>
+          </div>
+        </a>
+
+        <div class="nav-links-cluster">
+          <a href="index.html#protosem" class="btn-return-journey">
+            <i class="fa-solid fa-flag-checkered"></i> Speedway
+          </a>
+          <a href="price-protosem-week-3.html" class="nav-page-tab" title="Previous Week: Week 03 Discover Log">
+            <i class="fa-solid fa-backward-step"></i> Week 03
+          </a>
+          <a href="#overview" class="nav-page-tab">Glance</a>
+          <a href="#journey" class="nav-page-tab">4 Days</a>
+          <a href="#gallery" class="nav-page-tab">Telemetry & Photos</a>
+          <a href="#engineering" class="nav-page-tab">Engineering Loop</a>
+          <a href="#synthesis" class="nav-page-tab">Synthesis</a>
+          <a href="#takeaways" class="nav-page-tab">Takeaways</a>
+          <a href="price-protosem-week-6.html" class="nav-page-tab" title="Next Documented Week: Week 06 Digital Fabrication">
+            Week 06 <i class="fa-solid fa-forward-step"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-container">
+
+    <!-- ============================================================
+         HERO SECTION — WEEK 04
+         ============================================================ -->
+    <section class="hero-journal-section" id="hero">
+      <!-- Small Label -->
+      <div class="hero-badge-pill">
+        <i class="fa-solid fa-satellite-dish"></i>
+        <span>WEEK 04 / 20 &bull; DISCOVER LOG</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-main-title">From Signals to Connected Systems</h1>
+      
+      <!-- Subtitle Tagline -->
+      <div class="hero-tagline">Turning physical signals into intelligent interactions.</div>
+
+      <!-- Introduction Cards -->
+      <div class="hero-intro-card">
+        <p>
+          Week 04 moved my learning from basic electronics into the world of <strong>sensors, embedded systems, wireless communication, and IoT</strong>.
+        </p>
+        <p>
+          What started with a simple Arduino and LED circuit gradually evolved into sensor-driven systems, an ESP32-powered OLED game, Wi-Fi connectivity, smart traffic simulation, and physical interaction using dual analog joysticks.
+        </p>
+        <div class="core-philosophy-quote">
+          <i class="fa-solid fa-arrows-spin text-primary"></i>
+          <span>Sense &rarr; Process &rarr; Respond &rarr; Connect</span>
+        </div>
+      </div>
+
+      <!-- Metadata Badges -->
+      <div class="hero-meta-ribbon">
+        <span class="meta-chip meta-chip-completed">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>STATUS: Completed</span>
+        </span>
+        <span class="meta-chip meta-chip-phase">
+          <i class="fa-solid fa-microchip"></i>
+          <span>MODE: Hands-on &bull; Embedded &bull; Experimental</span>
+        </span>
+        <span class="meta-chip meta-chip-theme">
+          <i class="fa-solid fa-wifi"></i>
+          <span>FOCUS: Arduino &bull; Sensors &bull; ESP32 &bull; OLED &bull; IoT &bull; Wi-Fi</span>
+        </span>
+      </div>
+
+      <!-- Interactive Cognitive Transition Pipeline -->
+      <div class="pipeline-wrapper" id="pipelineWrapper">
+        <div class="pipeline-header">
+          <div class="pipeline-title">
+            <i class="fa-solid fa-diagram-project text-cyan"></i>
+            <span>Physical-to-Connected Embedded Progression</span>
+          </div>
+          <span class="pipeline-instruction">Click any stage to view architectural details</span>
+        </div>
+
+        <div class="pipeline-track" role="tablist" aria-label="Physical to Connected Systems Pipeline">
+          <div class="pipeline-node active" data-step="0" role="tab" tabindex="0">
+            <span class="pipeline-node-num">01</span>
+            <span class="pipeline-node-label">BUILD</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="1" role="tab" tabindex="0">
+            <span class="pipeline-node-num">02</span>
+            <span class="pipeline-node-label">SENSE</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="2" role="tab" tabindex="0">
+            <span class="pipeline-node-num">03</span>
+            <span class="pipeline-node-label">INTERACT</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="3" role="tab" tabindex="0">
+            <span class="pipeline-node-num">04</span>
+            <span class="pipeline-node-label">CONNECT</span>
+          </div>
+        </div>
+
+        <div class="pipeline-tooltip-box" id="pipelineTooltipText">
+          <strong>01 • BUILD (Arduino + Breadboard):</strong> Understanding the foundation of physical computing through microcontrollers, pinouts, and code-controlled electrical circuits.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         01 — THE WEEK AT A GLANCE
+         ============================================================ -->
+    <section class="section-wrap" id="overview">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-compass"></i>
+        <span>Executive Summary</span>
+      </div>
+      <h2 class="section-title">01 — The Week at a Glance</h2>
+      <p class="section-lead">
+        Four interconnected phases that transformed isolated electrical circuits into networked, intelligent IoT systems.
+      </p>
+
+      <div class="glance-grid">
+        <div class="glance-card glance-card-1">
+          <div class="glance-num">PHASE 01</div>
+          <h3 class="glance-title">01 — BUILD</h3>
+          <div class="glance-subtitle">Arduino + Breadboard</div>
+          <p class="glance-desc">Understanding the foundation of physical computing, microcontroller architecture, and digital output pins.</p>
+        </div>
+
+        <div class="glance-card glance-card-2">
+          <div class="glance-num">PHASE 02</div>
+          <h3 class="glance-title">02 — SENSE</h3>
+          <div class="glance-subtitle">Sensors + Telemetry</div>
+          <p class="glance-desc">Capturing information from the physical environment with DHT11, IR, ultrasonic, and Serial Monitor telemetry.</p>
+        </div>
+
+        <div class="glance-card glance-card-3">
+          <div class="glance-num">PHASE 03</div>
+          <h3 class="glance-title">03 — INTERACT</h3>
+          <div class="glance-subtitle">ESP32 + OLED</div>
+          <p class="glance-desc">Combining 32-bit dual-core processing, hardware analog controls, and OLED display rendering into playable games.</p>
+        </div>
+
+        <div class="glance-card glance-card-4">
+          <div class="glance-num">PHASE 04</div>
+          <h3 class="glance-title">04 — CONNECT</h3>
+          <div class="glance-subtitle">Wi-Fi + IoT</div>
+          <p class="glance-desc">Taking embedded hardware online with web servers, wireless lighting control, and smart traffic simulation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 — FOUR DAYS, ONE CONNECTED JOURNEY
+         ============================================================ -->
+    <section class="section-wrap" id="journey">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-timeline"></i>
+        <span>Daily Chronicle</span>
+      </div>
+      <h2 class="section-title">02 — Four Days, One Connected Journey</h2>
+      <p class="section-lead">
+        A step-by-step account of microcontrollers, physical sensors, interactive embedded systems, and networked IoT nodes.
+      </p>
+
+      <div class="timeline-container">
+        <div class="timeline-spine" aria-hidden="true"></div>
+
+        <!-- DAY 01 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 01</span>
+            <h3 class="timeline-day-title">Starting with the Microcontroller</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Arduino Architecture &amp; LED Circuits</div>
+            <p class="timeline-day-content">
+              The first day established the foundation for the rest of the week. I explored the Arduino board, its digital and power pins, basic microcontroller functionality, and how software instructions can directly control physical components.
+            </p>
+            <p class="timeline-day-content">
+              Instead of code staying confined to screen buffers, instructions written in C++ were uploaded to the ATmega chip to toggle electrical states across breadboard rows.
+            </p>
+
+            <div class="sensor-chips-cluster">
+              <span class="sensor-chip"><i class="fa-solid fa-microchip text-primary"></i> Arduino Uno Board</span>
+              <span class="sensor-chip"><i class="fa-solid fa-bolt text-amber"></i> 5V / 3.3V Power Rails</span>
+              <span class="sensor-chip"><i class="fa-solid fa-table-cells-large text-cyan"></i> Solderless Breadboard</span>
+              <span class="sensor-chip"><i class="fa-regular fa-lightbulb text-emerald"></i> LED Circuits &amp; Resistors</span>
+            </div>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Reflection: A few lines of code can create a visible physical response when software meets electronics.</span>
+            </div>
+
+            <!-- Conceptual Flow Schematic -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> Physical Computing Core Loop</span>
+                <span class="schematic-tag">EXECUTION PIPELINE</span>
+              </div>
+              <div class="flow-steps-grid">
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Code (IDE)</div>
+                  <div class="flow-step-desc">C++ Instructions</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Electrical Signal</div>
+                  <div class="flow-step-desc">GPIO High/Low State</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Physical Output</div>
+                  <div class="flow-step-desc">LED Light / Current</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="key-takeaway-chip">
+              <i class="fa-solid fa-key text-primary"></i>
+              <span>Key Takeaway: Arduino + Breadboard + Code = Physical Computing Foundation</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 02 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 02</span>
+            <h3 class="timeline-day-title">Teaching Hardware to Sense</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Sensors &bull; DHT11 &bull; IR &bull; Ultrasonic &bull; Serial Telemetry</div>
+            <p class="timeline-day-content">
+              Day 2 introduced the concept of giving a system awareness of its surroundings. I explored different types of sensors and learned how analog and digital physical phenomena can be converted into structured telemetry data that a microcontroller can process.
+            </p>
+            <p class="timeline-day-content">
+              I interfaced sensors with the Arduino Uno and observed real-time telemetry streaming through the Serial Monitor. The DHT11 provided live temperature and relative humidity readings, while the IR and HC-SR04 ultrasonic sensors enabled proximity detection to trigger actuators such as servo motors.
+            </p>
+
+            <div class="sensor-chips-cluster">
+              <span class="sensor-chip"><i class="fa-solid fa-temperature-three-quarters text-cyan"></i> DHT11 Temp &amp; Humidity</span>
+              <span class="sensor-chip"><i class="fa-solid fa-eye text-primary"></i> HC-SR04 Ultrasonic</span>
+              <span class="sensor-chip"><i class="fa-solid fa-person-walking text-amber"></i> PIR Motion Sensor</span>
+              <span class="sensor-chip"><i class="fa-solid fa-bullseye text-purple"></i> IR Proximity Sensor</span>
+              <span class="sensor-chip"><i class="fa-solid fa-id-card text-emerald"></i> RFID Sensor</span>
+              <span class="sensor-chip"><i class="fa-solid fa-gears text-amber"></i> SG90 Micro Servo</span>
+            </div>
+
+            <!-- Embedded Logic Pipeline -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-brain"></i> Embedded Closed-Loop Decision Architecture</span>
+                <span class="schematic-tag">SENSE-TO-ACTUATE</span>
+              </div>
+              <div class="flow-steps-grid">
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Physical Condition</div>
+                  <div class="flow-step-desc">Heat / Obstacle / Light</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Sensor Input</div>
+                  <div class="flow-step-desc">Analog/Digital Voltage</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Processing</div>
+                  <div class="flow-step-desc">Threshold Evaluation</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Actuator Response</div>
+                  <div class="flow-step-desc">Servo Motor / LED Alert</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dual Photo Evidence for Day 02 -->
+            <div class="timeline-photo-dual-grid">
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 4/day2-dht11-telemetry.png', 'Day 02 — DHT11 Live Serial Telemetry', 'Arduino Uno interfaced with DHT11 temperature and humidity sensor streaming real-time values (Humidity: 83.00% | Temperature: 28.10°C) directly to the Arduino IDE Serial Monitor.')">
+                  <img src="assets/weekly/week 4/day2-dht11-telemetry.png" alt="DHT11 Sensor Live Telemetry on Serial Monitor" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 02 &bull; TELEMETRY STREAM</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-temperature-arrow-up"></i> DHT11 Sensor Telemetry Stream</strong>
+                  Continuous streaming of ambient temperature (28.10&deg;C) and humidity (83.00%) over serial communication.
+                </div>
+              </div>
+
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 4/day2-ultrasonic-servo.png', 'Day 02 — Ultrasonic Sensing &amp; Servo Actuation', 'Arduino Uno wired to an HC-SR04 ultrasonic distance sensor and a Tower Pro SG90 micro-servo motor, turning distance measurements into physical angular actuation.')">
+                  <img src="assets/weekly/week 4/day2-ultrasonic-servo.png" alt="HC-SR04 Ultrasonic Sensor and SG90 Micro Servo" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 02 &bull; SENSE &amp; ACTUATE</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-gears"></i> Ultrasonic Sensor &amp; Micro-Servo</strong>
+                  Object proximity detection translating ultrasound echo timing into precise servo arm mechanical motion.
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Reflection: Sensors give a system the ability to observe the physical world; logic determines what it should do with that information.</span>
+            </div>
+
+            <div class="key-takeaway-chip">
+              <i class="fa-solid fa-key text-cyan"></i>
+              <span>Key Takeaway: Sensor Input + Processing Logic + Output = Automated Response</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 03 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 03</span>
+            <h3 class="timeline-day-title">Building Interaction with ESP32</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: ESP32 &bull; OLED Display &bull; Input Controls &bull; Game Development</div>
+            <p class="timeline-day-content">
+              Day 3 moved beyond basic Arduino experiments into a significantly more capable embedded platform: the <strong>ESP32</strong>. I compared the ESP32 against the Arduino Uno and ESP8266, focusing on dual-core processing speeds, GPIO availability, integrated Wi-Fi/Bluetooth, and microcontroller architecture.
+            </p>
+            <p class="timeline-day-content">
+              I connected an I2C OLED display and analog joystick controls to build a complete interactive computing experience. Instead of static text readouts, I developed and tested a custom falling-style game executed on the ESP32 with real-time collision detection, player state loops, and graphics rendering.
+            </p>
+
+            <!-- Embedded Game Architecture Box -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-gamepad"></i> Embedded Game Engine Execution Loop</span>
+                <span class="schematic-tag">ESP32 GAME ARCHITECTURE</span>
+              </div>
+              <div class="flow-steps-grid">
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Input</div>
+                  <div class="flow-step-desc">Analog Joystick Pins</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Processing</div>
+                  <div class="flow-step-desc">Game Logic &amp; Collisions</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Rendering</div>
+                  <div class="flow-step-desc">OLED Framebuffer (I2C)</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Output</div>
+                  <div class="flow-step-desc">Interactive Gameplay</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- In-situ Photo for Day 03 -->
+            <div class="timeline-photo-card">
+              <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 4/day3-esp32-joystick-oled.png', 'Day 03 — Interactive ESP32 OLED Game &amp; Joystick Control', 'Visakan at the workbench operating the analog joystick module to play a custom falling-style obstacle game rendered on the mini OLED screen powered by the ESP32.')">
+                <img src="assets/weekly/week 4/day3-esp32-joystick-oled.png" alt="Visakan playing custom game on ESP32 OLED screen with analog joystick" loading="lazy" />
+                <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 03 &bull; INTERACTIVE PROTOTYPE</div>
+                <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+              </div>
+              <div class="timeline-photo-caption">
+                <strong><i class="fa-solid fa-display"></i> Embedded Game Engine on ESP32 + OLED</strong>
+                Hands-on interaction with the custom game: analog joystick inputs are sampled in real time to navigate character sprites through dynamic obstacles on the OLED display.
+              </div>
+            </div>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Reflection: The ESP32 changed my perspective from controlling individual components to designing complete embedded experiences.</span>
+            </div>
+
+            <div class="key-takeaway-chip">
+              <i class="fa-solid fa-key text-purple"></i>
+              <span>Key Takeaway: ESP32 + Inputs + OLED + Logic = Interactive Embedded System</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 04 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 04</span>
+            <h3 class="timeline-day-title">Connecting Hardware to the World</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: IoT &bull; Wi-Fi &bull; Smart Traffic &bull; Wireless Web Servers</div>
+            <p class="timeline-day-content">
+              The final day introduced the most crucial transition of the week: <strong>from standalone hardware to connected hardware</strong>. Using the ESP32's integrated Wi-Fi stack, I bridged physical circuits with local and IP networks.
+            </p>
+            <p class="timeline-day-content">
+              I hosted an embedded HTTP web server on the ESP32 (at <code>192.168.65.42</code>), enabling browser-based toggles for individual GPIO channels (Blue on GPIO 26, Red on GPIO 27). I extended this into an automated IoT telemetry dashboard: when DHT11 temperature crossed 29.1&deg;C, the dashboard triggered the red indicator lamp automatically while providing manual overrides.
+            </p>
+
+            <!-- IoT Architecture Box -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-wifi"></i> Connected IoT Architectural Model</span>
+                <span class="schematic-tag">NETWORK INTEGRATION</span>
+              </div>
+              <div class="flow-steps-grid">
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Physical World</div>
+                  <div class="flow-step-desc">Ambient Conditions</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Sensors / Inputs</div>
+                  <div class="flow-step-desc">DHT11 / PIR / Joysticks</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">ESP32 Gateway</div>
+                  <div class="flow-step-desc">Web Server / TCP Stack</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Wi-Fi Network</div>
+                  <div class="flow-step-desc">IP HTTP Telemetry</div>
+                </div>
+                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="flow-step-box">
+                  <div class="flow-step-name">Connected System</div>
+                  <div class="flow-step-desc">Browser Dashboard</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dual Photo Evidence for Day 04 -->
+            <div class="timeline-photo-dual-grid">
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 4/day4-esp32-wifi-webserver.png', 'Day 04 — ESP32 Wireless Web Server Light Control', 'ESP32 hosting an asynchronous HTTP server on local IP (192.168.65.42/all) with an interactive dark-mode dashboard allowing browser controls to toggle GPIO 26 (Blue) and GPIO 27 (Red) LEDs.')">
+                  <img src="assets/weekly/week 4/day4-esp32-wifi-webserver.png" alt="ESP32 Wireless Light Control Web Server" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 04 &bull; WI-FI WEB SERVER</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-wifi"></i> ESP32 Wireless Lighting Dashboard</strong>
+                  Browser web server hosted directly on ESP32 allowing wireless remote toggles of physical breadboard LEDs over local Wi-Fi.
+                </div>
+              </div>
+
+              <div class="timeline-photo-card">
+                <div class="timeline-photo-frame" onclick="openLightbox('assets/weekly/week 4/day4-iot-auto-telemetry.png', 'Day 04 — Closed-Loop IoT Telemetry &amp; Automatic Response', 'Complete IoT closed-loop setup featuring PIR motion sensor, DHT11 temperature telemetry (29.1°C), and automated threshold response illuminating red LED indicator with live web dashboard monitoring.')">
+                  <img src="assets/weekly/week 4/day4-iot-auto-telemetry.png" alt="Closed Loop IoT Telemetry Dashboard and Breadboard" loading="lazy" />
+                  <div class="timeline-photo-badge"><i class="fa-solid fa-camera"></i> DAY 04 &bull; CLOSED-LOOP IOT</div>
+                  <div class="timeline-photo-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> View Fullscreen</div>
+                </div>
+                <div class="timeline-photo-caption">
+                  <strong><i class="fa-solid fa-chart-line"></i> Automated IoT Telemetry &amp; Actuation</strong>
+                  Live dashboard monitoring 29.1&deg;C ambient temperature from DHT11 and PIR sensors, triggering automatic LED thresholds.
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-Projects: Traffic & Joysticks -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.5rem;">
+              <div style="background: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--text-heading); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fa-solid fa-traffic-light text-amber"></i> Smart Traffic System
+                </h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+                  Traffic-light simulation with Red, Yellow, and Green LEDs reproducing real-world timing, delay states, and sequential control loops:
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-heading); background: #ffffff; padding: 0.4rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                  RED &rarr; GREEN &rarr; YELLOW &rarr; REPEAT
+                </div>
+              </div>
+
+              <div style="background: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem;">
+                <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--text-heading); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.45rem;">
+                  <i class="fa-solid fa-gamepad text-purple"></i> Dual-Joystick Interface
+                </h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
+                  Interfacing dual analog joystick modules with the ESP32's ADC channels for continuous 2D position sampling and fluid interactive control:
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--text-heading); background: #ffffff; padding: 0.4rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+                  JOYSTICK &rarr; ANALOG ADC &rarr; ESP32 &rarr; RESPONSE
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Reflection: Connecting a microcontroller to Wi-Fi transforms it from an isolated device into a participant in a larger digital system.</span>
+            </div>
+
+            <div class="key-takeaway-chip">
+              <i class="fa-solid fa-key text-emerald"></i>
+              <span>Key Takeaway: Hardware + Sensors + Wi-Fi + Logic = IoT Foundation</span>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02.5 / VISUAL TELEMETRY — VERIFIED PHOTOGRAPHIC RECORDS
+         ============================================================ -->
+    <section class="section-wrap" id="gallery">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-camera-retro"></i>
+        <span>Visual Evidence</span>
+      </div>
+      <h2 class="section-title">Visual Telemetry &amp; Photographic Records</h2>
+      <p class="section-lead">
+        In-situ laboratory documentation captured across Week 04 at KCT FORGE — from Arduino sensor telemetry to ESP32 Wi-Fi web dashboards and physical gaming interfaces. Click any photo for high-resolution inspection.
+      </p>
+
+      <div class="telemetry-gallery-grid">
+        <!-- Photo 1: DHT11 -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 4/day2-dht11-telemetry.png', 'Day 02 — DHT11 Live Serial Telemetry Stream', 'Arduino Uno interfaced with DHT11 temperature and humidity sensor streaming real-time values (Humidity: 83.00% | Temperature: 28.10°C) directly to the Arduino IDE Serial Monitor.')">
+            <img src="assets/weekly/week 4/day2-dht11-telemetry.png" alt="DHT11 Sensor Live Telemetry on Serial Monitor" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-temperature-half"></i> DAY 02</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>DHT11 Environmental Telemetry</strong>
+              <div class="telemetry-info-desc">Real-time serial stream of ambient temperature (28.10&deg;C) and relative humidity (83.00%).</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-microchip"></i> Arduino Uno &bull; Serial Stream</span>
+          </div>
+        </div>
+
+        <!-- Photo 2: Ultrasonic & Servo -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 4/day2-ultrasonic-servo.png', 'Day 02 — HC-SR04 Ultrasonic Sensor &amp; SG90 Servo Actuator', 'Arduino Uno wired to an HC-SR04 ultrasonic distance sensor and a Tower Pro SG90 micro-servo motor, turning distance measurements into physical angular actuation.')">
+            <img src="assets/weekly/week 4/day2-ultrasonic-servo.png" alt="HC-SR04 Ultrasonic Sensor and SG90 Micro Servo" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-gears"></i> DAY 02</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Ultrasonic Distance Actuation</strong>
+              <div class="telemetry-info-desc">Ultrasound echo distance detection controlling angular positioning of an SG90 micro servo.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-wave-square"></i> HC-SR04 &bull; Servo Actuator</span>
+          </div>
+        </div>
+
+        <!-- Photo 3: ESP32 OLED Game -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 4/day3-esp32-joystick-oled.png', 'Day 03 — Interactive ESP32 OLED Game &amp; Joystick Control', 'Visakan at the workbench operating the analog joystick module to play a custom falling-style obstacle game rendered on the mini OLED screen powered by the ESP32.')">
+            <img src="assets/weekly/week 4/day3-esp32-joystick-oled.png" alt="Visakan playing custom game on ESP32 OLED screen with analog joystick" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-gamepad"></i> DAY 03</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>ESP32 OLED Interactive Game</strong>
+              <div class="telemetry-info-desc">Custom falling obstacle arcade game rendered on an I2C OLED display controlled via analog joystick.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-display"></i> ESP32 &bull; OLED &bull; Joystick</span>
+          </div>
+        </div>
+
+        <!-- Photo 4: ESP32 Web Server -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 4/day4-esp32-wifi-webserver.png', 'Day 04 — ESP32 Wireless Web Server Light Control', 'ESP32 hosting an asynchronous HTTP server on local IP (192.168.65.42/all) with an interactive dark-mode dashboard allowing browser controls to toggle GPIO 26 (Blue) and GPIO 27 (Red) LEDs.')">
+            <img src="assets/weekly/week 4/day4-esp32-wifi-webserver.png" alt="ESP32 Wireless Light Control Web Server" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-wifi"></i> DAY 04</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>ESP32 Wireless Lighting Dashboard</strong>
+              <div class="telemetry-info-desc">Local Wi-Fi web server dashboard toggling GPIO channels (Blue/Red LEDs) remotely from browser.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-network-wired"></i> 192.168.65.42 &bull; HTTP Web Server</span>
+          </div>
+        </div>
+
+        <!-- Photo 5: IoT Closed Loop -->
+        <div class="telemetry-gallery-item">
+          <div class="telemetry-thumb-frame" onclick="openLightbox('assets/weekly/week 4/day4-iot-auto-telemetry.png', 'Day 04 — Closed-Loop IoT Telemetry &amp; Automatic Response', 'Complete IoT closed-loop setup featuring PIR motion sensor, DHT11 temperature telemetry (29.1°C), and automated threshold response illuminating red LED indicator with live web dashboard monitoring.')">
+            <img src="assets/weekly/week 4/day4-iot-auto-telemetry.png" alt="Closed Loop IoT Telemetry Dashboard and Breadboard" loading="lazy" />
+            <div class="timeline-photo-badge"><i class="fa-solid fa-chart-line"></i> DAY 04</div>
+          </div>
+          <div class="telemetry-info-box">
+            <div>
+              <strong>Closed-Loop IoT System</strong>
+              <div class="telemetry-info-desc">Integrated PIR and DHT11 telemetry triggering autonomous threshold responses over Wi-Fi.</div>
+            </div>
+            <span class="telemetry-meta-tag"><i class="fa-solid fa-arrows-spin"></i> PIR &bull; DHT11 &bull; Auto Threshold</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — THE ENGINEERING LOOP
+         ============================================================ -->
+    <section class="section-wrap" id="engineering">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span>System Architecture</span>
+      </div>
+      <h2 class="section-title">03 — The Engineering Loop</h2>
+      <p class="section-lead">
+        The overarching insight from Week 04 is the complete embedded-system feedback cycle: from sensing the physical world to processing, actuating, connecting, and iteratively refining.
+      </p>
+
+      <div class="loop-cards-container">
+        <div class="loop-card">
+          <div class="loop-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+          <div class="loop-card-title">1. SENSE</div>
+          <div class="loop-card-desc">Capture information from the physical environment through sensors.</div>
+        </div>
+
+        <div class="loop-card">
+          <div class="loop-card-icon" style="color: var(--cyan); background: var(--cyan-light);"><i class="fa-solid fa-microchip"></i></div>
+          <div class="loop-card-title">2. PROCESS</div>
+          <div class="loop-card-desc">Use programmed logic to interpret inputs and evaluate thresholds.</div>
+        </div>
+
+        <div class="loop-card">
+          <div class="loop-card-icon" style="color: var(--amber); background: var(--amber-light);"><i class="fa-solid fa-bolt"></i></div>
+          <div class="loop-card-title">3. RESPOND</div>
+          <div class="loop-card-desc">Drive physical outputs like LEDs, servos, motors, or OLED displays.</div>
+        </div>
+
+        <div class="loop-card">
+          <div class="loop-card-icon" style="color: var(--purple); background: var(--purple-light);"><i class="fa-solid fa-wifi"></i></div>
+          <div class="loop-card-title">4. CONNECT</div>
+          <div class="loop-card-desc">Extend hardware into connected digital networks via Wi-Fi and HTTP.</div>
+        </div>
+
+        <div class="loop-card">
+          <div class="loop-card-icon" style="color: var(--emerald); background: var(--emerald-light);"><i class="fa-solid fa-rotate"></i></div>
+          <div class="loop-card-title">5. ITERATE</div>
+          <div class="loop-card-desc">Test, identify edge cases, modify firmware, and optimize performance.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — WEEK 04 SYNTHESIS & EXPLORATION MATRIX
+         ============================================================ -->
+    <section class="section-wrap" id="synthesis">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Synthesized Knowledge</span>
+      </div>
+      <h2 class="section-title">04 — From a Blinking LED to Connected Systems</h2>
+      <p class="section-lead">
+        A structured breakdown of the skills, technologies, and hardware explored during Week 04.
+      </p>
+
+      <div class="table-container">
+        <table class="exploration-table">
+          <thead>
+            <tr>
+              <th>Area</th>
+              <th>Practical Experience &amp; Artifacts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Arduino</td>
+              <td>Board architecture, pinouts, C++ programming, and GPIO state manipulation.</td>
+            </tr>
+            <tr>
+              <td>Electronics</td>
+              <td>Solderless breadboard wiring, current limitation, pull-down resistors, and LED circuits.</td>
+            </tr>
+            <tr>
+              <td>Sensors</td>
+              <td>Light LDR, PIR motion, IR obstacle, DHT11 humidity/temperature, HC-SR04 ultrasonic, and RFID.</td>
+            </tr>
+            <tr>
+              <td>Telemetry</td>
+              <td>Streaming formatted serial telemetry to the Arduino IDE Serial Monitor in real time.</td>
+            </tr>
+            <tr>
+              <td>ESP32</td>
+              <td>Dual-core 32-bit architecture, wireless radios, GPIO mapping, and comparison with Uno &amp; ESP8266.</td>
+            </tr>
+            <tr>
+              <td>OLED Displays</td>
+              <td>I2C protocol interfacing, pixel buffer management, and graphical sprite rendering.</td>
+            </tr>
+            <tr>
+              <td>Embedded Development</td>
+              <td>Interactive falling-style game engine running natively on ESP32 with collision detection.</td>
+            </tr>
+            <tr>
+              <td>IoT &amp; Networking</td>
+              <td>Local Wi-Fi connectivity, asynchronous web servers, and browser-to-hardware REST endpoints.</td>
+            </tr>
+            <tr>
+              <td>Control Systems</td>
+              <td>Smart traffic-light sequential state machine prototype (Red &rarr; Green &rarr; Yellow &rarr; Repeat).</td>
+            </tr>
+            <tr>
+              <td>Physical Interaction</td>
+              <td>Dual analog joystick interface with 2D ADC voltage sampling for continuous input control.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 — WHAT WEEK 04 CHANGED & REFLECTION
+         ============================================================ -->
+    <section class="reflection-dark-section" id="takeaways">
+      <div class="section-eyebrow" style="color: var(--cyan);">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>Conceptual Shift</span>
+      </div>
+      <h2 class="reflection-dark-title">05 — What Week 04 Changed</h2>
+      
+      <p style="color: var(--dark-text-muted); font-size: 1.02rem; line-height: 1.7; margin-bottom: 1.25rem;">
+        Week 04 helped me understand that embedded systems are not simply about connecting components. They are about creating a continuous relationship between the <strong>physical world and digital logic</strong>.
+      </p>
+
+      <p style="color: var(--dark-text-muted); font-size: 1.02rem; line-height: 1.7;">
+        A sensor captures something happening around us. A microcontroller interprets it. An output responds. A network then connects that system to something beyond the device itself.
+      </p>
+
+      <div class="reflection-quote-card">
+        “IoT is not just about putting a device online. It is about connecting physical events, computation, decisions, and actions into one coherent system.”
+      </div>
+
+      <p class="summary-closing-statement">
+        “I started with a blinking LED and ended the week exploring connected systems — learning how hardware can sense, compute, respond, interact, and communicate.”
+      </p>
+
+      <div style="text-align: center; margin-top: 1.5rem;">
+        <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--emerald); font-weight: 700; background: rgba(5, 150, 105, 0.15); padding: 0.35rem 0.85rem; border-radius: var(--radius-pill); border: 1px solid rgba(5, 150, 105, 0.3);">
+          07 / 20 COMPLETED &bull; 35% OF THE JOURNEY
+        </span>
+      </div>
+
+      <div class="summary-nav-buttons-row">
+        <!-- Previous Week -->
+        <a href="price-protosem-week-3.html" class="nav-action-btn btn-prev">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Previous Week (Week 03)</span>
+        </a>
+
+        <!-- Back to Learning Journey -->
+        <a href="index.html#protosem" class="nav-action-btn btn-journey">
+          <i class="fa-solid fa-flag-checkered"></i>
+          <span>Back to Learning Journey</span>
+        </a>
+
+        <!-- Next Week -->
+        <a href="price-protosem-week-6.html" class="nav-action-btn btn-next">
+          <span>Next Documented (Week 06)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="doc-container footer-inner">
+      <div class="footer-left-info">
+        <strong>Visakan K &bull; PRICE Protosem Portfolio</strong><br />
+        Week 04 / 20 &bull; Discover Log &bull; KCT FORGE
+      </div>
+      <div class="footer-links-group">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="index.html#protosem" class="footer-link">Speedway</a>
+        <a href="price-protosem-0th-week.html" class="footer-link">Week 00</a>
+        <a href="infosys-springboard-week-1.html" class="footer-link">Week 01</a>
+        <a href="price-protosem-week-2.html" class="footer-link">Week 02</a>
+        <a href="price-protosem-week-3.html" class="footer-link">Week 03</a>
+        <a href="price-protosem-week-4.html" class="footer-link" style="color: var(--primary);">Week 04</a>
+        <a href="price-protosem-week-6.html" class="footer-link">Week 06</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('readingProgressBar');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+
+    // 2. Interactive Pipeline Stages in Hero
+    const pipelineData = [
+      {
+        step: 0,
+        title: "01 • BUILD (Arduino + Breadboard)",
+        desc: "Understanding the foundation of physical computing through microcontrollers, pinouts, and code-controlled electrical circuits."
+      },
+      {
+        step: 1,
+        title: "02 • SENSE (Sensors + Telemetry)",
+        desc: "Capturing environmental variables using DHT11, PIR, IR, and ultrasonic sensors streaming live telemetry to Serial Monitor."
+      },
+      {
+        step: 2,
+        title: "03 • INTERACT (ESP32 + OLED)",
+        desc: "Combining 32-bit dual-core processing, analog joystick inputs, and I2C OLED display rendering into a playable arcade game."
+      },
+      {
+        step: 3,
+        title: "04 • CONNECT (Wi-Fi + IoT)",
+        desc: "Bridging embedded circuits with networks via ESP32 HTTP web servers, wireless lighting control, and smart traffic simulation."
+      }
+    ];
+
+    const pipelineNodes = document.querySelectorAll('.pipeline-node');
+    const tooltipText = document.getElementById('pipelineTooltipText');
+
+    pipelineNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        const step = parseInt(node.getAttribute('data-step'));
+        pipelineNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        if (tooltipText && pipelineData[step]) {
+          tooltipText.innerHTML = `<strong>${pipelineData[step].title}:</strong> ${pipelineData[step].desc}`;
+        }
+      });
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
+
+    // 3. Interactive Lightbox Modal Functions
+    function openLightbox(imgSrc, title, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const titleElem = document.getElementById('lightboxTitle');
+      const captionElem = document.getElementById('lightboxCaption');
+
+      if (!modal || !img) return;
+
+      img.src = imgSrc;
+      img.alt = title || 'Photographic Preview';
+      if (titleElem) titleElem.innerHTML = `<i class="fa-solid fa-camera"></i> ${title || 'Telemetry Preview'}`;
+      if (captionElem) captionElem.innerHTML = caption || '';
+
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    const modalBackdrop = document.getElementById('lightboxModal');
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeLightbox();
+      });
+    }
+  </script>
+
+  <!-- Interactive Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-modal-content">
+      <div class="lightbox-modal-header">
+        <h4 id="lightboxTitle"><i class="fa-solid fa-image"></i> Photographic Evidence</h4>
+        <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close Preview">&times;</button>
+      </div>
+      <div class="lightbox-modal-body">
+        <img id="lightboxImg" src="" alt="High-Resolution Preview" />
+      </div>
+      <div class="lightbox-modal-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+</body>
+</html>

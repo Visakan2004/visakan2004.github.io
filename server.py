@@ -48,6 +48,15 @@ PROTOSEM_W3_ROUTES = {
     '/price-protosem-3'
 }
 
+PROTOSEM_W4_ROUTES = {
+    '/price-protosem-week-4',
+    '/price-protosem-week-04',
+    '/week-4',
+    '/week-04',
+    '/protosem-week-4',
+    '/price-protosem-4'
+}
+
 PROTOSEM_W6_ROUTES = {
     '/price-protosem-week-6',
     '/week-6',
@@ -131,6 +140,9 @@ class PortfolioHandler(SimpleHTTPRequestHandler):
 
         if clean_path in PROTOSEM_W3_ROUTES:
             return self.send_file_response(os.path.join(BASE_DIR, 'price-protosem-week-3.html'), head_only=head_only)
+
+        if clean_path in PROTOSEM_W4_ROUTES:
+            return self.send_file_response(os.path.join(BASE_DIR, 'price-protosem-week-4.html'), head_only=head_only)
 
         if clean_path in PROTOSEM_W6_ROUTES:
             return self.send_file_response(os.path.join(BASE_DIR, 'price-protosem-week-6.html'), head_only=head_only)
