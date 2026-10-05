@@ -16,10 +16,7 @@
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Three.js, OrbitControls & STLLoader for Interactive 3D Model Inspection -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+
 
   <style>
     /* ============================================================
@@ -645,23 +642,23 @@
       color: var(--text-heading);
     }
 
-    /* Interactive 3D Model Viewer Component */
-    .model3d-container {
+    /* Interactive 3D Moveable Natural Photo Component */
+    .natural-3d-box {
       background: #ffffff;
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       overflow: hidden;
       margin: 1.5rem 0;
       box-shadow: var(--shadow-subtle);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
     }
 
-    .model3d-container:hover {
+    .natural-3d-box:hover {
       box-shadow: var(--shadow-sm);
       border-color: var(--primary-border);
     }
 
-    .model3d-header {
+    .natural-3d-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -672,17 +669,17 @@
       gap: 0.65rem;
     }
 
-    .model3d-title-group {
+    .natural-3d-title-group {
       display: flex;
       align-items: center;
       gap: 0.65rem;
     }
 
-    .model3d-badge {
+    .natural-3d-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--primary);
+      background: #059669;
       color: #ffffff;
       font-family: var(--font-mono);
       font-size: 0.72rem;
@@ -692,30 +689,28 @@
       letter-spacing: 0.05em;
     }
 
-    .model3d-title {
+    .natural-3d-title {
       font-family: var(--font-heading);
       font-size: 0.88rem;
       font-weight: 700;
       color: #ffffff;
     }
 
-    .model3d-tabs {
+    .natural-3d-actions {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
-      background: #1e293b;
-      padding: 0.2rem;
-      border-radius: var(--radius-pill);
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
-    .model3d-tab-btn {
+    .natural-3d-btn {
       font-family: var(--font-heading);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      color: #94a3b8;
-      background: transparent;
-      border: none;
-      padding: 0.3rem 0.75rem;
+      color: #cbd5e1;
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.3rem 0.7rem;
       border-radius: var(--radius-pill);
       cursor: pointer;
       display: inline-flex;
@@ -724,156 +719,95 @@
       transition: all 0.2s ease;
     }
 
-    .model3d-tab-btn:hover {
-      color: #ffffff;
-    }
-
-    .model3d-tab-btn.active {
+    .natural-3d-btn:hover {
       background: var(--primary);
       color: #ffffff;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      border-color: var(--primary);
     }
 
-    .model3d-viewport {
+    .natural-3d-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .natural-3d-stage {
       position: relative;
       width: 100%;
-      height: 480px;
-      background: radial-gradient(circle at 50% 40%, #1e293b 0%, #0a0f1d 75%, #050811 100%);
+      height: 440px;
+      background: radial-gradient(circle at 50% 45%, #1e293b 0%, #0a0f1d 75%, #050811 100%);
+      perspective: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       cursor: grab;
       user-select: none;
       -webkit-user-select: none;
     }
 
-    .model3d-viewport:active {
+    .natural-3d-stage:active {
       cursor: grabbing;
     }
 
-    .model3d-canvas {
-      width: 100% !important;
-      height: 100% !important;
-      display: block;
+    .natural-3d-card {
+      position: relative;
+      max-width: 82%;
+      max-height: 85%;
+      border-radius: var(--radius-sm);
+      transform-style: preserve-3d;
+      transition: transform 0.12s cubic-bezier(0.2, 0, 0.38, 0.9);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.1);
     }
 
-    .model3d-photo-panel {
+    .natural-3d-img {
+      display: block;
+      max-width: 100%;
+      max-height: 380px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      pointer-events: none;
+    }
+
+    .natural-3d-glare {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b1120;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      cursor: pointer;
-    }
-
-    .model3d-photo-panel.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .model3d-photo-panel img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .model3d-toolbar {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-      z-index: 10;
-    }
-
-    .model3d-tool-btn {
-      width: 36px;
-      height: 36px;
       border-radius: var(--radius-sm);
-      background: rgba(15, 23, 42, 0.82);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      transition: opacity 0.2s ease;
     }
 
-    .model3d-tool-btn:hover {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      transform: scale(1.05);
-    }
-
-    .model3d-tool-btn.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-    }
-
-    .model3d-color-picker {
+    .natural-3d-badge-overlay {
       position: absolute;
-      bottom: 1rem;
-      left: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      top: 0.75rem;
+      left: 0.75rem;
       background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 0.35rem 0.6rem;
-      border-radius: var(--radius-pill);
-      z-index: 10;
-    }
-
-    .model3d-color-label {
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #38bdf8;
       font-family: var(--font-mono);
       font-size: 0.68rem;
-      color: #94a3b8;
-      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: var(--radius-sm);
       letter-spacing: 0.05em;
-      margin-right: 0.2rem;
+      pointer-events: none;
+      transform: translateZ(25px);
     }
 
-    .color-swatch {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-    }
-
-    .color-swatch:hover {
-      transform: scale(1.15);
-    }
-
-    .color-swatch.active {
-      border-color: #ffffff;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
-      transform: scale(1.2);
-    }
-
-    .model3d-hint-banner {
+    .natural-3d-hint {
       position: absolute;
-      bottom: 1rem;
-      right: 1rem;
+      bottom: 0.85rem;
+      right: 0.85rem;
       background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cbd5e1;
       font-family: var(--font-mono);
       font-size: 0.7rem;
@@ -884,82 +818,21 @@
       align-items: center;
       gap: 0.4rem;
       transition: opacity 0.5s ease;
-      z-index: 5;
     }
 
     @media (max-width: 640px) {
-      .model3d-hint-banner {
+      .natural-3d-stage {
+        height: 320px;
+      }
+      .natural-3d-card {
+        max-width: 92%;
+      }
+      .natural-3d-img {
+        max-height: 270px;
+      }
+      .natural-3d-hint {
         display: none;
       }
-      .model3d-viewport {
-        height: 360px;
-      }
-    }
-
-    .model3d-loader {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #080d1a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.85rem;
-      color: #38bdf8;
-      z-index: 20;
-      transition: opacity 0.4s ease;
-    }
-
-    .model3d-spinner {
-      width: 42px;
-      height: 42px;
-      border: 3px solid rgba(56, 189, 248, 0.2);
-      border-top-color: #38bdf8;
-      border-radius: 50%;
-      animation: spin3d 0.8s linear infinite;
-    }
-
-    @keyframes spin3d {
-      to { transform: rotate(360deg); }
-    }
-
-    .model3d-loader-text {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: #94a3b8;
-      letter-spacing: 0.05em;
-    }
-
-    .model3d-caption-bar {
-      padding: 0.85rem 1.15rem;
-      background: #ffffff;
-      border-top: 1px solid var(--border);
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .model3d-caption-desc strong {
-      color: var(--text-heading);
-      font-family: var(--font-heading);
-    }
-
-    .model3d-meta-pill {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: #0284c7;
-      background: #f0f9ff;
-      border: 1px solid #bae6fd;
-      padding: 0.2rem 0.55rem;
-      border-radius: var(--radius-sm);
     }
 
     /* Hero Result Card */
@@ -1721,76 +1594,46 @@
         </table>
       </div>
 
-      <!-- Interactive 3D Model Viewer & Photo Inspector -->
-      <div class="model3d-container" id="cableWinderViewer">
-        <div class="model3d-header">
-          <div class="model3d-title-group">
-            <span class="model3d-badge"><i class="fa-solid fa-cube"></i> WEBGL 3D</span>
-            <span class="model3d-title">Interactive 3D CAD Inspection &bull; Rotary Cord Reel</span>
+      <!-- Interactive 3D Moveable Natural Photo Component -->
+      <div class="case-photo-box natural-3d-box" id="natural3dBox">
+        <div class="natural-3d-header">
+          <div class="natural-3d-title-group">
+            <span class="natural-3d-badge"><i class="fa-solid fa-camera"></i> PHYSICAL ARTIFACT</span>
+            <span class="natural-3d-title">3D Interactive Physical Prototype &bull; Bambu PLA Matte</span>
           </div>
-          <div class="model3d-tabs">
-            <button class="model3d-tab-btn active" id="tab3dModel" onclick="switchViewerMode('3d')" title="View Interactive 3D CAD Model">
-              <i class="fa-solid fa-cube"></i>
-              <span>3D CAD Model</span>
+          <div class="natural-3d-actions">
+            <button class="natural-3d-btn active" id="btnToggle3dTilt" onclick="toggle3dTilt()" title="Toggle 3D Perspective Tilt on Hover/Drag">
+              <i class="fa-solid fa-cube"></i> <span>3D Moveable View</span>
             </button>
-            <button class="model3d-tab-btn" id="tabPhoto" onclick="switchViewerMode('photo')" title="View Physical Prototype Photo">
-              <i class="fa-solid fa-camera"></i>
-              <span>Physical Photo</span>
+            <button class="natural-3d-btn" onclick="reset3DPhoto()" title="Reset 3D Perspective">
+              <i class="fa-solid fa-arrow-rotate-left"></i> <span>Reset</span>
+            </button>
+            <button class="natural-3d-btn" onclick="openLightbox('assets/weekly/week 6/final-3d-printed-model.jpg', 'Selected 3D Printed Model', 'Physical 3D printed mechanical cord housing produced on Bambu Lab H2S at KCT Forge.')" title="Open Full-Screen Lightbox">
+              <i class="fa-solid fa-maximize"></i> <span>Inspect</span>
             </button>
           </div>
         </div>
 
-        <div class="model3d-viewport" id="model3dViewport">
-          <!-- Loading State -->
-          <div class="model3d-loader" id="model3dLoader">
-            <div class="model3d-spinner"></div>
-            <div class="model3d-loader-text" id="model3dLoaderText">Loading 3D CAD Geometry...</div>
+        <div class="natural-3d-stage" id="natural3dStage">
+          <div class="natural-3d-card" id="natural3dCard">
+            <img src="assets/weekly/week 6/final-3d-printed-model.jpg" alt="Final 3D Printed Model Prototype" class="natural-3d-img" id="natural3dImg" />
+            <div class="natural-3d-glare" id="natural3dGlare"></div>
+            <div class="natural-3d-badge-overlay">
+              <i class="fa-solid fa-cube"></i> 3D MOVEABLE PHOTO
+            </div>
           </div>
-
-          <!-- Three.js Canvas Container -->
-          <div id="threejsCanvasContainer" style="width: 100%; height: 100%;"></div>
-
-          <!-- Physical Photo View Panel (Hidden initially) -->
-          <div class="model3d-photo-panel" id="model3dPhotoPanel" onclick="openLightbox('assets/weekly/week 6/final-3d-printed-model.jpg', 'Selected 3D Printed Model', 'Physical 3D printed mechanical cord housing produced on Bambu Lab H2S.')">
-            <img src="assets/weekly/week 6/final-3d-printed-model.jpg" alt="Selected 3D Printed Model" loading="lazy" />
-          </div>
-
-          <!-- Floating 3D Controls Toolbar -->
-          <div class="model3d-toolbar" id="model3dToolbar">
-            <button class="model3d-tool-btn active" id="btnAutoRotate" onclick="toggleAutoRotate()" title="Toggle Auto-Rotation">
-              <i class="fa-solid fa-arrows-rotate"></i>
-            </button>
-            <button class="model3d-tool-btn" id="btnResetView" onclick="reset3DView()" title="Reset Camera View">
-              <i class="fa-solid fa-crosshairs"></i>
-            </button>
-            <button class="model3d-tool-btn" id="btnWireframe" onclick="toggleWireframe()" title="Toggle Wireframe Mesh">
-              <i class="fa-solid fa-border-none"></i>
-            </button>
-          </div>
-
-          <!-- Filament Color Switcher -->
-          <div class="model3d-color-picker" id="model3dColorPicker">
-            <span class="model3d-color-label">Filament:</span>
-            <div class="color-swatch active" style="background: #f1f5f9;" onclick="setFilamentColor(0xf1f5f9, this)" title="Bambu PLA Matte White"></div>
-            <div class="color-swatch" style="background: #0284c7;" onclick="setFilamentColor(0x0284c7, this)" title="Forge Cyan Blue"></div>
-            <div class="color-swatch" style="background: #334155;" onclick="setFilamentColor(0x334155, this)" title="Stealth Charcoal"></div>
-            <div class="color-swatch" style="background: #ea580c;" onclick="setFilamentColor(0xea580c, this)" title="High-Vis Orange"></div>
-          </div>
-
-          <!-- Interaction Hint -->
-          <div class="model3d-hint-banner" id="model3dHint">
-            <i class="fa-solid fa-arrows-up-down-left-right"></i>
-            <span>Drag to rotate &bull; Scroll to zoom &bull; Right-click to pan</span>
+          <div class="natural-3d-hint" id="natural3dHint">
+            <i class="fa-solid fa-hand-pointer"></i> Move cursor or drag to tilt in 3D perspective
           </div>
         </div>
 
-        <div class="model3d-caption-bar">
-          <div class="model3d-caption-desc">
-            <strong>Interactive Inspection:</strong> Rotary Cord Reel Housing with diamond knurling, transverse wire slot, and indexing snap-ring channel.
+        <div class="case-photo-caption" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <strong>Physical Output:</strong> Final 3D printed mechanical component fabricated with Bambu PLA Matte on the Bambu Lab H2S platform at KCT Forge.
           </div>
-          <div class="model3d-meta-pill">
-            <i class="fa-solid fa-layer-group"></i> 123,550 Facets &bull; 0.20 mm FDM Profile
-          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #059669; background: #ecfdf5; border: 1px solid #a7f3d0; padding: 0.15rem 0.5rem; border-radius: 4px;">
+            <i class="fa-solid fa-check-circle"></i> 100% Authentic Camera Capture
+          </span>
         </div>
       </div>
     </section>
@@ -2371,236 +2214,110 @@
     }
 
     // ============================================================
-    // THREE.JS INTERACTIVE 3D CAD MODEL VIEWER
+    // NATURAL 3D MOVEABLE PHOTO INTERACTION (ZERO AI)
     // ============================================================
-    let scene3d, camera3d, renderer3d, controls3d, modelMesh, groundGrid;
-    let isWireframe = false;
-    const initialCamPos = new THREE.Vector3(0, 70, 95);
+    (function () {
+      const stage = document.getElementById('natural3dStage');
+      const card = document.getElementById('natural3dCard');
+      const glare = document.getElementById('natural3dGlare');
+      const hint = document.getElementById('natural3dHint');
+      if (!stage || !card || !glare) return;
 
-    function init3DViewer() {
-      const container = document.getElementById('threejsCanvasContainer');
-      const viewport = document.getElementById('model3dViewport');
-      if (!container || !viewport || typeof THREE === 'undefined') return;
+      let enabled3d = true;
+      let isDragging = false;
+      let startX = 0, startY = 0;
+      let currentRotX = 0, currentRotY = 0;
 
-      const width = viewport.clientWidth || 800;
-      const height = viewport.clientHeight || 480;
+      // Mouse Move 3D Perspective Tilt
+      stage.addEventListener('mousemove', (e) => {
+        if (!enabled3d || isDragging) return;
+        const rect = stage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-      // 1. Scene
-      scene3d = new THREE.Scene();
+        const rotX = ((y - centerY) / centerY) * -16;
+        const rotY = ((x - centerX) / centerX) * 16;
 
-      // 2. Camera
-      camera3d = new THREE.PerspectiveCamera(38, width / height, 1, 1000);
-      camera3d.position.copy(initialCamPos);
+        card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 65%)`;
 
-      // 3. Renderer
-      renderer3d = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-      renderer3d.setSize(width, height);
-      renderer3d.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer3d.shadowMap.enabled = true;
-      if (THREE.sRGBEncoding) renderer3d.outputEncoding = THREE.sRGBEncoding;
-      renderer3d.domElement.className = 'model3d-canvas';
-      container.appendChild(renderer3d.domElement);
-
-      // 4. OrbitControls
-      if (typeof THREE.OrbitControls !== 'undefined') {
-        controls3d = new THREE.OrbitControls(camera3d, renderer3d.domElement);
-        controls3d.enableDamping = true;
-        controls3d.dampingFactor = 0.06;
-        controls3d.autoRotate = true;
-        controls3d.autoRotateSpeed = 2.0;
-        controls3d.minDistance = 35;
-        controls3d.maxDistance = 260;
-        controls3d.target.set(0, 0, 0);
-
-        // Hide hint on user interaction
-        controls3d.addEventListener('start', () => {
-          const hint = document.getElementById('model3dHint');
-          if (hint) hint.style.opacity = '0';
-        });
-      }
-
-      // 5. Lighting Setup
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-      scene3d.add(ambientLight);
-
-      // Key light
-      const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
-      keyLight.position.set(100, 140, 90);
-      scene3d.add(keyLight);
-
-      // Cool fill light
-      const fillLight = new THREE.DirectionalLight(0x38bdf8, 0.45);
-      fillLight.position.set(-100, -30, -80);
-      scene3d.add(fillLight);
-
-      // Rim light
-      const rimLight = new THREE.DirectionalLight(0xffffff, 0.65);
-      rimLight.position.set(0, 70, -120);
-      scene3d.add(rimLight);
-
-      // 6. Ground Grid (Engineering Slicer Bed Style)
-      groundGrid = new THREE.GridHelper(140, 14, 0x38bdf8, 0x1e293b);
-      groundGrid.position.y = -15;
-      if (groundGrid.material) {
-        groundGrid.material.opacity = 0.35;
-        groundGrid.material.transparent = true;
-      }
-      scene3d.add(groundGrid);
-
-      // 7. Load STL File
-      loadSTLModel();
-
-      // 8. Animation Loop
-      function animate() {
-        requestAnimationFrame(animate);
-        if (controls3d) controls3d.update();
-        if (renderer3d && scene3d && camera3d) {
-          renderer3d.render(scene3d, camera3d);
-        }
-      }
-      animate();
-
-      // 9. Resize Handling
-      window.addEventListener('resize', () => {
-        if (!viewport || !camera3d || !renderer3d) return;
-        const newW = viewport.clientWidth;
-        const newH = viewport.clientHeight;
-        camera3d.aspect = newW / newH;
-        camera3d.updateProjectionMatrix();
-        renderer3d.setSize(newW, newH);
+        if (hint) hint.style.opacity = '0';
       });
-    }
 
-    function loadSTLModel() {
-      if (typeof THREE.STLLoader === 'undefined') {
-        console.warn('STLLoader not ready');
-        return;
-      }
-      const loader = new THREE.STLLoader();
-      const stlPath = encodeURI('assets/weekly/week 6/visakan-cable-winder.stl');
-      const loaderElem = document.getElementById('model3dLoader');
-      const loaderText = document.getElementById('model3dLoaderText');
+      stage.addEventListener('mouseleave', () => {
+        if (!enabled3d || isDragging) return;
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        glare.style.background = 'transparent';
+      });
 
-      loader.load(
-        stlPath,
-        function (geometry) {
-          geometry.center();
-          geometry.computeVertexNormals();
+      // Free 3D Drag Rotation
+      stage.addEventListener('mousedown', (e) => {
+        if (!enabled3d) return;
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
 
-          // Scale to comfortable viewport size
-          geometry.computeBoundingBox();
-          const box = geometry.boundingBox;
-          const maxDim = Math.max(box.max.x - box.min.x, box.max.y - box.min.y, box.max.z - box.min.z);
-          const targetDim = 55;
-          const scaleFactor = targetDim / (maxDim || 1);
-
-          const material = new THREE.MeshStandardMaterial({
-            color: 0xf1f5f9, // Bambu Matte White PLA
-            roughness: 0.45,
-            metalness: 0.08
-          });
-
-          modelMesh = new THREE.Mesh(geometry, material);
-          modelMesh.scale.set(scaleFactor, scaleFactor, scaleFactor);
-          // Rotate so Z-up in STL becomes Y-up in Three.js
-          modelMesh.rotation.x = -Math.PI / 2;
-          modelMesh.position.y = 0;
-          scene3d.add(modelMesh);
-
-          // Update grid to be right underneath the model
-          if (groundGrid && box) {
-            groundGrid.position.y = -((box.max.z - box.min.z) * scaleFactor / 2) - 0.5;
-          }
-
-          if (loaderElem) {
-            loaderElem.style.opacity = '0';
-            setTimeout(() => { loaderElem.style.display = 'none'; }, 400);
-          }
-        },
-        function (xhr) {
-          if (xhr.lengthComputable && loaderText) {
-            const percent = Math.round((xhr.loaded / xhr.total) * 100);
-            loaderText.innerText = `Loading 3D Geometry: ${percent}%`;
-          }
-        },
-        function (error) {
-          console.warn('Could not load STL mesh over network/file:', error);
-          if (loaderText) {
-            loaderText.innerHTML = '<span style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> 3D Preview Fallback &mdash; Switching to Photo</span>';
-          }
-          setTimeout(() => {
-            switchViewerMode('photo');
-          }, 1200);
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
         }
-      );
-    }
+      });
 
-    function toggleAutoRotate() {
-      const btn = document.getElementById('btnAutoRotate');
-      if (controls3d) {
-        controls3d.autoRotate = !controls3d.autoRotate;
-        if (btn) btn.classList.toggle('active', controls3d.autoRotate);
-      }
-    }
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !enabled3d) return;
+        const deltaX = e.clientX - startX;
+        const deltaY = e.clientY - startY;
+        currentRotY += deltaX * 0.35;
+        currentRotX -= deltaY * 0.35;
+        currentRotX = Math.max(-45, Math.min(45, currentRotX));
+        currentRotY = Math.max(-60, Math.min(60, currentRotY));
+        startX = e.clientX;
+        startY = e.clientY;
 
-    function reset3DView() {
-      if (camera3d && controls3d) {
-        camera3d.position.copy(initialCamPos);
-        controls3d.target.set(0, 0, 0);
-        controls3d.update();
-      }
-    }
+        card.style.transform = `rotateX(${currentRotX}deg) rotateY(${currentRotY}deg) scale3d(1.05, 1.05, 1.05)`;
+        if (hint) hint.style.opacity = '0';
+      });
 
-    function toggleWireframe() {
-      const btn = document.getElementById('btnWireframe');
-      if (modelMesh && modelMesh.material) {
-        isWireframe = !isWireframe;
-        modelMesh.material.wireframe = isWireframe;
-        if (btn) btn.classList.toggle('active', isWireframe);
-      }
-    }
+      // Touch events for mobile
+      stage.addEventListener('touchmove', (e) => {
+        if (!enabled3d || !e.touches[0]) return;
+        const rect = stage.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotX = ((y - centerY) / centerY) * -16;
+        const rotY = ((x - centerX) / centerX) * 16;
+        card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
+        if (hint) hint.style.opacity = '0';
+      }, { passive: true });
 
-    function setFilamentColor(hexColor, swatchElem) {
-      if (modelMesh && modelMesh.material) {
-        modelMesh.material.color.setHex(hexColor);
-        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-        if (swatchElem) swatchElem.classList.add('active');
-      }
-    }
+      stage.addEventListener('touchend', () => {
+        if (!enabled3d) return;
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      });
 
-    function switchViewerMode(mode) {
-      const btn3d = document.getElementById('tab3dModel');
-      const btnPhoto = document.getElementById('tabPhoto');
-      const photoPanel = document.getElementById('model3dPhotoPanel');
-      const toolbar = document.getElementById('model3dToolbar');
-      const colorPicker = document.getElementById('model3dColorPicker');
-      const hint = document.getElementById('model3dHint');
+      window.reset3DPhoto = function () {
+        currentRotX = 0;
+        currentRotY = 0;
+        card.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        glare.style.background = 'transparent';
+        if (hint) hint.style.opacity = '1';
+      };
 
-      if (mode === 'photo') {
-        if (btnPhoto) btnPhoto.classList.add('active');
-        if (btn3d) btn3d.classList.remove('active');
-        if (photoPanel) photoPanel.classList.add('active');
-        if (toolbar) toolbar.style.display = 'none';
-        if (colorPicker) colorPicker.style.display = 'none';
-        if (hint) hint.style.display = 'none';
-        if (controls3d) controls3d.autoRotate = false;
-      } else {
-        if (btn3d) btn3d.classList.add('active');
-        if (btnPhoto) btnPhoto.classList.remove('active');
-        if (photoPanel) photoPanel.classList.remove('active');
-        if (toolbar) toolbar.style.display = 'flex';
-        if (colorPicker) colorPicker.style.display = 'flex';
-        if (hint) hint.style.display = 'flex';
-        if (controls3d) controls3d.autoRotate = true;
-      }
-    }
-
-    // Initialize viewer once DOM is loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init3DViewer);
-    } else {
-      init3DViewer();
-    }
+      window.toggle3dTilt = function () {
+        enabled3d = !enabled3d;
+        const btn = document.getElementById('btnToggle3dTilt');
+        if (btn) btn.classList.toggle('active', enabled3d);
+        if (!enabled3d) {
+          window.reset3DPhoto();
+        }
+      };
+    })();
   </script>
 </body>
 </html>
