@@ -38,6 +38,26 @@ app.get(['/infosys-springboard-week-1', '/springboard-week-1', '/week-1-recap', 
   res.sendFile(path.join(__dirname, 'infosys-springboard-week-1.html'));
 });
 
+// PRICE Protosem Week 2 Blog Routes
+app.get(['/price-protosem-week-2', '/price-protosem-week-02', '/week-2', '/week-02', '/protosem-week-2', '/price-protosem-2'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-2.html'));
+});
+
+// PRICE Protosem Week 3 Blog Routes
+app.get(['/price-protosem-week-3', '/price-protosem-week-03', '/week-3', '/week-03', '/protosem-week-3', '/price-protosem-3'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-3.html'));
+});
+
+// PRICE Protosem Week 6 Blog Routes (Page 1: Laser Cutting)
+app.get(['/price-protosem-week-6', '/week-6', '/week-06', '/protosem-week-6', '/price-protosem-6', '/week-6-laser', '/price-protosem-week-6-laser'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-6.html'));
+});
+
+// PRICE Protosem Week 6 Blog Routes (Page 2: 3D Printing)
+app.get(['/price-protosem-week-6-3d-printing', '/week-6-3d', '/week-06-3d', '/protosem-week-6-3d', '/week-6-3d-printing'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'price-protosem-week-6-3d-printing.html'));
+});
+
 // POST /contact — save message to messages.txt
 app.post('/contact', (req, res) => {
   const name = (req.body.name || '').trim();

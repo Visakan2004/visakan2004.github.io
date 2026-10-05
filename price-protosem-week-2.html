@@ -1,0 +1,2505 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Week 02 / 19 — DiscoverCompleted Log: From Problems to Programs. Understanding problems, developing logical thinking, and transforming ideas into programs | PRICE Protosem — Visakan K." />
+  <meta name="author" content="Visakan K" />
+  <title>WEEK 02 — From Problems to Programs | PRICE Protosem Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       LEARNING-JOURNAL DESIGN SYSTEM — WEEK 02
+       PRICE PROTOSEM: FROM PROBLEMS TO PROGRAMS
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-dark: #334155;
+
+      --text: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-heading: #0f172a;
+
+      /* Primary Brand / Engineering Accents */
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --cyan-border: #bae6fd;
+
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      /* Contrast Dark Section Surfaces */
+      --dark-surface: #090d16;
+      --dark-card: #101626;
+      --dark-card-border: rgba(255, 255, 255, 0.09);
+      --dark-text: #e2e8f0;
+      --dark-text-muted: #94a3b8;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+
+      --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 20px -3px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 16px 30px -4px rgba(15, 23, 42, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      font-size: 1.02rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    ::selection {
+      background: #bfdbfe;
+      color: #1e3a8a;
+    }
+
+    /* Reading Progress */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #2563eb, #0284c7, #7c3aed);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Document Container */
+    .doc-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    /* ============================================================
+       TOP NAVIGATION BAR
+       ============================================================ */
+    .journal-nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      transition: background 0.3s ease;
+    }
+
+    .journal-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-mark-badge {
+      background: var(--dark-surface);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-title-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .nav-doc-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-heading);
+    }
+
+    .nav-doc-meta {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .nav-links-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-page-tab {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-page-tab:hover {
+      color: var(--primary);
+      border-color: var(--primary-border);
+      background: #ffffff;
+    }
+
+    .nav-page-tab.active-tab {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .btn-return-journey {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-return-journey:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateX(-2px);
+    }
+
+    /* ============================================================
+       1. HERO SECTION — WEEK 02
+       ============================================================ */
+    .hero-journal-section {
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #ffffff;
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-badge-pill i {
+      font-size: 0.75rem;
+      color: var(--primary);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 1.75rem;
+      line-height: 1.55;
+      font-weight: 500;
+    }
+
+    .hero-intro-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.8rem;
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-intro-card p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    /* Subtle Animated Transition Pipeline */
+    .pipeline-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem auto;
+      max-width: 860px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pipeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pipeline-title {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pipeline-instruction {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .pipeline-track {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow-x: auto;
+      padding: 0.5rem 0.2rem;
+    }
+
+    .pipeline-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--surface-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      min-width: 120px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      user-select: none;
+    }
+
+    .pipeline-node:hover, .pipeline-node.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+    }
+
+    .pipeline-node-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: #ffffff;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--primary-border);
+    }
+
+    .pipeline-node-label {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: 0.02em;
+    }
+
+    .pipeline-connector {
+      display: flex;
+      align-items: center;
+      color: var(--primary);
+      opacity: 0.6;
+      font-size: 0.95rem;
+      animation: pulseArrow 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseArrow {
+      0%, 100% { transform: translateX(0); opacity: 0.4; }
+      50% { transform: translateX(3px); opacity: 1; }
+    }
+
+    .pipeline-tooltip-box {
+      margin-top: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .pipeline-tooltip-box i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-top: 2rem;
+      transition: color 0.2s ease;
+    }
+
+    .scroll-indicator:hover {
+      color: var(--primary);
+    }
+
+    .scroll-indicator-arrow {
+      animation: bounceDown 1.8s infinite ease-in-out;
+      font-size: 0.95rem;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Section Division */
+    .section-wrap {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+
+    /* ============================================================
+       2. VISUAL EXPLORATION GALLERY
+       ============================================================ */
+    .gallery-notice-banner {
+      background: var(--amber-light);
+      border: 1px solid var(--amber-border);
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 1rem 1.4rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .gallery-notice-icon {
+      color: var(--amber);
+      font-size: 1.15rem;
+      margin-top: 0.15rem;
+    }
+
+    .gallery-notice-text {
+      font-size: 0.92rem;
+      color: #78350f;
+      line-height: 1.5;
+    }
+
+    .gallery-notice-text strong {
+      color: #451a03;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+
+    .gallery-image-frame {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #0f172a;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-image-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-card:hover .gallery-image-frame img {
+      transform: scale(1.04);
+    }
+
+    .gallery-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .gallery-zoom-hint {
+      position: absolute;
+      bottom: 0.75rem;
+      right: 0.75rem;
+      background: rgba(15, 23, 42, 0.8);
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .gallery-card:hover .gallery-zoom-hint {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-grow: 1;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+    }
+
+    .gallery-caption-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    .gallery-caption-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Fallback placeholder if image load fails */
+    .gallery-image-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #94a3b8;
+      background: #0f172a;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .gallery-image-fallback i {
+      font-size: 2rem;
+      color: #38bdf8;
+    }
+
+    .gallery-image-fallback span {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    /* ============================================================
+       3. THIS WEEK’S FOCUS
+       ============================================================ */
+    .focus-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .focus-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .focus-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .focus-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .focus-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .focus-card:hover .focus-icon-circle {
+      background: var(--primary);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .focus-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.3;
+    }
+
+    .focus-card-body {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .focus-tag {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       4. INSIDE THE PROCESS — VERTICAL INTERACTIVE TIMELINE
+       ============================================================ */
+    .timeline-container {
+      position: relative;
+      margin: 2.5rem 0;
+      padding-left: 2rem;
+    }
+
+    .timeline-spine {
+      position: absolute;
+      top: 10px;
+      bottom: 20px;
+      left: 11px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary), var(--cyan), var(--purple), var(--emerald));
+    }
+
+    .timeline-day-block {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-day-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-node-dot {
+      position: absolute;
+      top: 6px;
+      left: -2rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .timeline-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+
+    .timeline-day-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.65rem;
+    }
+
+    .timeline-day-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .timeline-day-content {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .timeline-takeaway-box {
+      background: var(--surface-subtle);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .timeline-takeaway-box i {
+      color: var(--primary);
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .timeline-takeaway-text {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      line-height: 1.5;
+    }
+
+    /* Day 1: 5S Framework Blueprint Graphic */
+    .five-s-blueprint {
+      background: #090e1a;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+      color: #cbd5e1;
+    }
+
+    .blueprint-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .blueprint-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .blueprint-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    .five-s-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .five-s-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 0.75rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .five-s-item:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .five-s-num {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .five-s-name {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .five-s-desc {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Day 2: Clean Flowchart Diagram */
+    .flowchart-diagram-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.25rem;
+      margin-top: 1.25rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .flowchart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .flowchart-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .flowchart-steps-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.5rem 0.2rem;
+    }
+
+    .fc-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-sm);
+      min-width: 105px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .fc-terminal {
+      background: #eff6ff;
+      border: 2px solid #2563eb;
+      border-radius: 9999px;
+      color: #1e40af;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.6rem 1.1rem;
+    }
+
+    .fc-process {
+      background: #f8fafc;
+      border: 1.5px solid #64748b;
+      color: #0f172a;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .fc-arrow {
+      color: var(--primary);
+      font-size: 0.88rem;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Day 3: Scratch Visual Block Stack */
+    .scratch-block-editor {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+      color: #ffffff;
+      font-family: var(--font-heading);
+    }
+
+    .scratch-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .scratch-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .scratch-stack-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      max-width: 480px;
+    }
+
+    .scratch-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 8px;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      width: fit-content;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .scratch-hat {
+      background: #ffbf00;
+      color: #451a03;
+      border-radius: 16px 16px 8px 8px;
+      border-top: 3px solid #d97706;
+    }
+
+    .scratch-control {
+      background: #ffab19;
+      color: #451a03;
+      border-left: 4px solid #d97706;
+      margin-left: 0.5rem;
+    }
+
+    .scratch-motion {
+      background: #4c97ff;
+      color: #ffffff;
+      margin-left: 1.5rem;
+    }
+
+    .scratch-looks {
+      background: #9966ff;
+      color: #ffffff;
+      margin-left: 1.5rem;
+    }
+
+    .scratch-pill-input {
+      background: rgba(255, 255, 255, 0.25);
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .scratch-note-caption {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      font-family: var(--font-mono);
+      margin-top: 1rem;
+      display: block;
+    }
+
+    /* Day 4: MIT Technology Card */
+    .mit-integration-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .mit-banner-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .mit-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #059669;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .mit-editable-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-light);
+      background: var(--surface-subtle);
+      border: 1px dashed var(--border-strong);
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .mit-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .mit-feature-card {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+
+    .mit-feature-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .mit-feature-title i {
+      color: #059669;
+    }
+
+    .mit-feature-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       5. THE LEARNING PROGRESSION — FROM PROBLEM TO PROGRAM
+       ============================================================ */
+    .progression-section {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progression-steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .progression-step-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--surface-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .progression-step-card:hover, .progression-step-card.active-progression {
+      background: #ffffff;
+      border-color: var(--primary);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .progression-step-num {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 52px;
+      width: 52px;
+    }
+
+    .progression-step-info h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.25rem;
+    }
+
+    .progression-step-info p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .progression-step-indicator {
+      color: var(--primary);
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    .progression-arrow-divider {
+      display: flex;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1rem;
+      margin: -0.25rem 0;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       6. WHAT WE TOOK AWAY — 5 NUMBERED LEARNING CARDS
+       ============================================================ */
+    .takeaway-numbered-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .takeaway-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .takeaway-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .takeaway-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .takeaway-num-badge {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--primary-border);
+    }
+
+    .takeaway-dot-icon {
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .takeaway-title {
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.65rem;
+    }
+
+    .takeaway-quote {
+      font-size: 0.94rem;
+      color: var(--text);
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* ============================================================
+       7. FINAL REFLECTION — DARK CONTRAST SECTION
+       ============================================================ */
+    .reflection-dark-section {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-card-border);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      margin: 3.5rem 0;
+      color: var(--dark-text);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .reflection-dark-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .reflection-dark-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .reflection-dark-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .reflection-prominent-quote {
+      font-family: var(--font-body);
+      font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+      color: #f1f5f9;
+      line-height: 1.65;
+      font-weight: 500;
+      margin-bottom: 1.75rem;
+      padding-left: 1.5rem;
+      border-left: 3px solid var(--primary);
+    }
+
+    .reflection-supporting-p {
+      font-size: 1.02rem;
+      color: var(--dark-text-muted);
+      line-height: 1.75;
+      max-width: 800px;
+    }
+
+    /* ============================================================
+       8. WEEK 2 SUMMARY & NAVIGATION
+       ============================================================ */
+    .summary-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin: 2.5rem 0 3.5rem;
+    }
+
+    .summary-completed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #059669;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary-heading {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 1rem;
+    }
+
+    .summary-topics-wrap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      max-width: 750px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .summary-topic-chip {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .summary-topic-chip i {
+      color: var(--primary);
+      font-size: 0.8rem;
+    }
+
+    .summary-closing-statement {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.5rem 0 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .summary-nav-buttons-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-prev {
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      color: var(--text);
+    }
+
+    .btn-prev:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-heading);
+      transform: translateX(-3px);
+    }
+
+    .btn-journey {
+      background: var(--primary);
+      border: 1.5px solid var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-journey:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-next {
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      color: var(--text);
+    }
+
+    .btn-next:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-heading);
+      transform: translateX(3px);
+    }
+
+    /* Site Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      background: #ffffff;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left-info {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .footer-left-info strong {
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+    }
+
+    .footer-links-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    /* Interactive Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-modal-content {
+      max-width: 900px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    .lightbox-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-modal-header h4 {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+    }
+
+    .lightbox-close-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .lightbox-close-btn:hover {
+      color: #ffffff;
+    }
+
+    .lightbox-modal-body {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      background: #080c16;
+    }
+
+    .lightbox-modal-body img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+    }
+
+    .lightbox-modal-caption {
+      padding: 1rem 1.25rem;
+      background: #0d1322;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .journal-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .nav-links-cluster {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+      }
+      .timeline-container {
+        padding-left: 1.5rem;
+      }
+      .timeline-node-dot {
+        left: -1.5rem;
+        width: 20px;
+        height: 20px;
+      }
+      .timeline-card {
+        padding: 1.25rem 1.25rem;
+      }
+      .progression-step-card {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .progression-step-indicator {
+        display: none;
+      }
+      .reflection-dark-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="journal-nav-bar" id="topNav">
+    <div class="doc-container">
+      <div class="journal-nav-inner">
+        <a href="index.html#protosem" class="nav-brand-cluster">
+          <span class="nav-mark-badge">PROTOSEM / W02</span>
+          <div class="nav-title-group">
+            <span class="nav-doc-title">Visakan K &bull; Learning Journal</span>
+            <span class="nav-doc-meta">WEEK 02 / 19 &bull; DISCOVERCOMPLETED LOG</span>
+          </div>
+        </a>
+
+        <div class="nav-links-cluster">
+          <a href="index.html#protosem" class="btn-return-journey">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Learning Journey</span>
+          </a>
+          <a href="infosys-springboard-week-1.html" class="nav-page-tab" title="Previous Week: Infosys Springboard Week 1">
+            <i class="fa-solid fa-backward-step"></i> Week 01
+          </a>
+          <a href="#gallery" class="nav-page-tab">Gallery</a>
+          <a href="#focus" class="nav-page-tab">Focus</a>
+          <a href="#process" class="nav-page-tab">Process</a>
+          <a href="#progression" class="nav-page-tab">Progression</a>
+          <a href="#takeaways" class="nav-page-tab">Takeaways</a>
+          <a href="price-protosem-week-3.html" class="nav-page-tab" title="Next Week: Week 03 From Boot Sequence to Breadboard">
+            Week 03 <i class="fa-solid fa-forward-step"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-container">
+
+    <!-- ============================================================
+         1. HERO SECTION — WEEK 02
+         ============================================================ -->
+    <section class="hero-journal-section" id="hero">
+      <!-- Small Label -->
+      <div class="hero-badge-pill">
+        <i class="fa-solid fa-compass"></i>
+        <span>WEEK 02 / 19 — DISCOVERCOMPLETED LOG</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-main-title">From Problems to Programs</h1>
+
+      <!-- Subtitle -->
+      <p class="hero-subtitle">
+        Understanding problems, developing logical thinking, and transforming ideas into programs.
+      </p>
+
+      <!-- Introduction Card -->
+      <div class="hero-intro-card">
+        <p>
+          “Week 2 marked a shift from understanding problems and design approaches toward structured problem-solving and computational thinking.”
+        </p>
+      </div>
+
+      <!-- Subtle Animated Transition Pipeline: PROBLEM → LOGIC → ALGORITHM → FLOWCHART → PROGRAM -->
+      <div class="pipeline-wrapper" id="pipelineWrapper">
+        <div class="pipeline-header">
+          <div class="pipeline-title">
+            <i class="fa-solid fa-diagram-project text-primary"></i>
+            <span>Cognitive Shift Pipeline</span>
+          </div>
+          <span class="pipeline-instruction">Click any stage to inspect the logic</span>
+        </div>
+
+        <div class="pipeline-track" role="tablist" aria-label="Problem to Program Pipeline">
+          <div class="pipeline-node active" data-step="0" role="tab" tabindex="0">
+            <span class="pipeline-node-num">01</span>
+            <span class="pipeline-node-label">PROBLEM</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="1" role="tab" tabindex="0">
+            <span class="pipeline-node-num">02</span>
+            <span class="pipeline-node-label">LOGIC</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="2" role="tab" tabindex="0">
+            <span class="pipeline-node-num">03</span>
+            <span class="pipeline-node-label">ALGORITHM</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="3" role="tab" tabindex="0">
+            <span class="pipeline-node-num">04</span>
+            <span class="pipeline-node-label">FLOWCHART</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="4" role="tab" tabindex="0">
+            <span class="pipeline-node-num">05</span>
+            <span class="pipeline-node-label">PROGRAM</span>
+          </div>
+        </div>
+
+        <div class="pipeline-tooltip-box" id="pipelineTooltip">
+          <i class="fa-solid fa-circle-info"></i>
+          <span id="pipelineTooltipText"><strong>01 &bull; PROBLEM:</strong> Framing the problem scope, identifying root constraints, and avoiding hasty assumptions before writing solutions.</span>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#gallery" class="scroll-indicator" aria-label="Scroll down to exploration gallery">
+        <span>Scroll to explore log</span>
+        <i class="fa-solid fa-chevron-down scroll-indicator-arrow"></i>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         2. VISUAL EXPLORATION GALLERY
+         ============================================================ -->
+    <section class="section-wrap" id="gallery">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-camera"></i>
+        <span>Visual Archive</span>
+      </div>
+      <h2 class="section-title">Exploring the Problem Space</h2>
+      <p class="section-lead">
+        Visual artifacts and workspace environments representing the shift toward problem structuring, early design questioning, and analytical inquiry.
+      </p>
+
+      <!-- Prominent Visible Note -->
+      <div class="gallery-notice-banner" role="note">
+        <i class="fa-solid fa-triangle-exclamation gallery-notice-icon"></i>
+        <div class="gallery-notice-text">
+          <strong>Illustrative concept gallery — replace with actual Week 2 photographs.</strong>
+          These images are supplied as contextual illustrations of engineering workbenches, problem formulation sessions, and research notebooks. They do not claim to be photographs of completed individual projects.
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Image 1: Electronics and design workbench -->
+        <article class="gallery-card" onclick="openLightbox('https://nagavedhika.github.io/images/protosem-lab.png', 'Illustrative Electronics & Design Workbench — Week 2', 'Illustrative electronics and design workbench — Week 2')">
+          <div class="gallery-image-frame">
+            <img src="https://nagavedhika.github.io/images/protosem-lab.png" 
+                 alt="Illustrative electronics and design workbench — Week 2" 
+                 loading="lazy" 
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-image-fallback\'><i class=\'fa-solid fa-microchip\'></i><span>Workbench Concept Illustration</span></div>';" />
+            <span class="gallery-badge"><i class="fa-solid fa-image"></i> ILLUSTRATIVE CONCEPT</span>
+            <div class="gallery-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-caption">
+            <h3 class="gallery-caption-title">Electronics & Design Workbench</h3>
+            <p class="gallery-caption-desc">Illustrative electronics and design workbench — Week 2</p>
+          </div>
+        </article>
+
+        <!-- Image 2: Research notes and early questions -->
+        <article class="gallery-card" onclick="openLightbox('https://nagavedhika.github.io/images/protosem-research.png', 'Illustrative Research Notes & Early Questions', 'Illustrative research notes and early questions')">
+          <div class="gallery-image-frame">
+            <img src="https://nagavedhika.github.io/images/protosem-research.png" 
+                 alt="Illustrative research notes and early questions" 
+                 loading="lazy"
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-image-fallback\'><i class=\'fa-solid fa-book-open\'></i><span>Research Notes Concept</span></div>';" />
+            <span class="gallery-badge"><i class="fa-solid fa-image"></i> ILLUSTRATIVE CONCEPT</span>
+            <div class="gallery-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-caption">
+            <h3 class="gallery-caption-title">Research Notes & Inquiry</h3>
+            <p class="gallery-caption-desc">Illustrative research notes and early questions</p>
+          </div>
+        </article>
+
+        <!-- Image 3: Problem exploration -->
+        <article class="gallery-card" onclick="openLightbox('https://nagavedhika.github.io/images/protosem-lab.png', 'Exploring the Problem Space', 'Exploring the problem space')">
+          <div class="gallery-image-frame">
+            <img src="https://nagavedhika.github.io/images/protosem-lab.png" 
+                 alt="Exploring the problem space" 
+                 loading="lazy"
+                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'gallery-image-fallback\'><i class=\'fa-solid fa-lightbulb\'></i><span>Problem Space Illustration</span></div>';" />
+            <span class="gallery-badge"><i class="fa-solid fa-image"></i> ILLUSTRATIVE CONCEPT</span>
+            <div class="gallery-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-caption">
+            <h3 class="gallery-caption-title">Problem Space Exploration</h3>
+            <p class="gallery-caption-desc">Exploring the problem space</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. THIS WEEK’S FOCUS
+         ============================================================ -->
+    <section class="section-wrap" id="focus">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-crosshairs"></i>
+        <span>Core Pillars</span>
+      </div>
+      <h2 class="section-title">This Week’s Focus</h2>
+      <p class="section-lead">
+        Five fundamental disciplines forming the basis of computational thinking, solution architecture, and practical engineering execution.
+      </p>
+
+      <div class="focus-cards-grid">
+        <!-- Card 1: Problem Definition -->
+        <div class="focus-card">
+          <div class="focus-card-header">
+            <div class="focus-icon-circle"><i class="fa-solid fa-bullseye"></i></div>
+            <h3 class="focus-card-title">Problem Definition</h3>
+          </div>
+          <p class="focus-card-body">Understanding and clearly framing a problem before rushing toward preconceived solutions.</p>
+          <span class="focus-tag">Pillar 01 &bull; Framing</span>
+        </div>
+
+        <!-- Card 2: Logical Thinking -->
+        <div class="focus-card">
+          <div class="focus-card-header">
+            <div class="focus-icon-circle"><i class="fa-solid fa-brain"></i></div>
+            <h3 class="focus-card-title">Logical Thinking</h3>
+          </div>
+          <p class="focus-card-body">Breaking problems into manageable steps and understanding causality, preconditions, and postconditions.</p>
+          <span class="focus-tag">Pillar 02 &bull; Decomposition</span>
+        </div>
+
+        <!-- Card 3: Visual Representation -->
+        <div class="focus-card">
+          <div class="focus-card-header">
+            <div class="focus-icon-circle"><i class="fa-solid fa-sitemap"></i></div>
+            <h3 class="focus-card-title">Visual Representation</h3>
+          </div>
+          <p class="focus-card-body">Representing solution logic through flowcharts, conditional diamonds, and standardized decision nodes.</p>
+          <span class="focus-tag">Pillar 03 &bull; Visual Logic</span>
+        </div>
+
+        <!-- Card 4: Programming Fundamentals -->
+        <div class="focus-card">
+          <div class="focus-card-header">
+            <div class="focus-icon-circle"><i class="fa-solid fa-cubes"></i></div>
+            <h3 class="focus-card-title">Programming Fundamentals</h3>
+          </div>
+          <p class="focus-card-body">Exploring block-based programming to understand loops, state variables, and events without syntax hurdles.</p>
+          <span class="focus-tag">Pillar 04 &bull; Visual Code</span>
+        </div>
+
+        <!-- Card 5: Technology & Application -->
+        <div class="focus-card">
+          <div class="focus-card-header">
+            <div class="focus-icon-circle"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3 class="focus-card-title">Technology &amp; Application</h3>
+          </div>
+          <p class="focus-card-body">Connecting logical concepts with technology tools and practical platform environments.</p>
+          <span class="focus-tag">Pillar 05 &bull; Synthesis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. INSIDE THE PROCESS
+         ============================================================ -->
+    <section class="section-wrap" id="process">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-timeline"></i>
+        <span>Daily Chronicle</span>
+      </div>
+      <h2 class="section-title">Inside the Process</h2>
+      <p class="section-lead">
+        “The week introduced us to the fundamentals of defining a problem, representing solutions logically, and gradually transforming ideas into working programs using visual programming tools.”
+      </p>
+
+      <div class="timeline-container">
+        <div class="timeline-spine" aria-hidden="true"></div>
+
+        <!-- DAY 1 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 1</span>
+            <h3 class="timeline-day-title">Problem Statements &amp; 5S</h3>
+            <p class="timeline-day-content">
+              “The week began with problem statements and the 5S approach. We learned the importance of clearly defining a problem before attempting to solve it. Rather than immediately thinking about a solution, the focus was on understanding and structuring the problem properly.”
+            </p>
+
+            <div class="timeline-takeaway-box">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-takeaway-text">Key Takeaway: “A clearly defined problem is the first step toward a meaningful solution.”</span>
+            </div>
+
+            <!-- Illustrative Problem Definition Graphic: 5S Framework Blueprint -->
+            <div class="five-s-blueprint">
+              <div class="blueprint-header">
+                <span class="blueprint-title"><i class="fa-solid fa-layer-group"></i> 5S Problem Structuring Framework</span>
+                <span class="blueprint-tag">METHODOLOGY SCHEMATIC</span>
+              </div>
+              <div class="five-s-grid">
+                <div class="five-s-item">
+                  <div class="five-s-num">1S &bull; SEIRI</div>
+                  <div class="five-s-name">Sort</div>
+                  <p class="five-s-desc">Separate core root causes from peripheral symptoms.</p>
+                </div>
+                <div class="five-s-item">
+                  <div class="five-s-num">2S &bull; SEITON</div>
+                  <div class="five-s-name">Set in Order</div>
+                  <p class="five-s-desc">Organize problem constraints, input data, and dependencies.</p>
+                </div>
+                <div class="five-s-item">
+                  <div class="five-s-num">3S &bull; SEISO</div>
+                  <div class="five-s-name">Shine</div>
+                  <p class="five-s-desc">Eliminate ambiguities and clarify problem wording.</p>
+                </div>
+                <div class="five-s-item">
+                  <div class="five-s-num">4S &bull; SEIKETSU</div>
+                  <div class="five-s-name">Standardize</div>
+                  <p class="five-s-desc">Formulate a repeatable, testable problem statement.</p>
+                </div>
+                <div class="five-s-item">
+                  <div class="five-s-num">5S &bull; SHITSUKE</div>
+                  <div class="five-s-name">Sustain</div>
+                  <p class="five-s-desc">Continuously re-validate assumptions as scope evolves.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 2 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 2</span>
+            <h3 class="timeline-day-title">Algorithms &amp; Flowcharts</h3>
+            <p class="timeline-day-content">
+              “Day 2 introduced algorithms and flowcharts. We learned how to break a problem into a sequence of logical steps and represent those steps visually through flowcharts. This helped bridge the gap between identifying a problem and designing a systematic solution.”
+            </p>
+
+            <div class="timeline-takeaway-box">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-takeaway-text">Key Takeaway: “Think logically, break the problem into steps, and represent the solution clearly.”</span>
+            </div>
+
+            <!-- Small Visual Flowchart: START → IDENTIFY PROBLEM → PLAN STEPS → REPRESENT LOGIC → END -->
+            <div class="flowchart-diagram-box">
+              <div class="flowchart-header">
+                <span class="flowchart-title"><i class="fa-solid fa-route"></i> Standard Logical Flow Architecture</span>
+                <span style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-light);">ISO 5807 SCHEMA</span>
+              </div>
+              <div class="flowchart-steps-row">
+                <div class="fc-node fc-terminal">START</div>
+                <div class="fc-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="fc-node fc-process">IDENTIFY<br/>PROBLEM</div>
+                <div class="fc-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="fc-node fc-process">PLAN<br/>STEPS</div>
+                <div class="fc-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="fc-node fc-process">REPRESENT<br/>LOGIC</div>
+                <div class="fc-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="fc-node fc-terminal">END</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 3 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 3</span>
+            <h3 class="timeline-day-title">Introduction to Scratch</h3>
+            <p class="timeline-day-content">
+              “Day 3 introduced us to Scratch, providing a visual and interactive way to understand programming concepts. Through block-based programming, we began translating logical ideas into executable instructions without having to focus heavily on programming syntax.”
+            </p>
+
+            <div class="timeline-takeaway-box">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-takeaway-text">Key Takeaway: “Programming begins with logic and problem-solving, not just writing code.”</span>
+            </div>
+
+            <!-- Visual illustration of block-based programming -->
+            <div class="scratch-block-editor">
+              <div class="scratch-header">
+                <span class="scratch-title"><i class="fa-solid fa-puzzle-piece"></i> Block-Based Programming Schema</span>
+                <span style="font-family:var(--font-mono); font-size:0.7rem; color:#94a3b8;">VISUAL EXECUTION PARADIGM</span>
+              </div>
+              <div class="scratch-stack-wrap">
+                <!-- Hat Block -->
+                <div class="scratch-block scratch-hat">
+                  <i class="fa-solid fa-flag"></i> when green flag clicked
+                </div>
+                <!-- Control Block -->
+                <div class="scratch-block scratch-control">
+                  repeat until <span class="scratch-pill-input">&lt;problem_structured? = true&gt;</span>
+                </div>
+                <!-- Nested Action Blocks -->
+                <div class="scratch-block scratch-motion">
+                  decompose step <span class="scratch-pill-input">next_subproblem</span>
+                </div>
+                <div class="scratch-block scratch-looks">
+                  say <span class="scratch-pill-input">"Translating Logic to Execution!"</span> for 2 secs
+                </div>
+              </div>
+              <span class="scratch-note-caption">
+                * Conceptual visual model illustrating block-based sequence, iterative loops, and conditions without claims of specific fabricated projects.
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 4 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 4</span>
+            <h3 class="timeline-day-title">Introduction to MIT</h3>
+            <p class="timeline-day-content">
+              “Day 4 introduced MIT, continuing our exploration of programming and technology through practical learning. The session helped connect the concepts of problem-solving, algorithms, and visual programming with a broader technology-oriented learning environment.”
+            </p>
+
+            <div class="timeline-takeaway-box">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-takeaway-text">Key Takeaway: “Turning an idea into a working solution requires both logical thinking and the right tools.”</span>
+            </div>
+
+            <!-- MIT Technology Connection Box with Editable Notice -->
+            <div class="mit-integration-box">
+              <div class="mit-banner-header">
+                <div class="mit-badge">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>MIT Practical Learning Environment</span>
+                </div>
+                <span class="mit-editable-note">
+                  <i class="fa-solid fa-pen-to-square"></i> Editable: Customize exact MIT platform/tool name
+                </span>
+              </div>
+
+              <div class="mit-features-grid">
+                <div class="mit-feature-card">
+                  <div class="mit-feature-title"><i class="fa-solid fa-diagram-project"></i> Applied Logic</div>
+                  <p class="mit-feature-text">Connecting pure flow logic with technology tools and hardware/software interfaces.</p>
+                </div>
+                <div class="mit-feature-card">
+                  <div class="mit-feature-title"><i class="fa-solid fa-gears"></i> Practical Synthesis</div>
+                  <p class="mit-feature-text">Evaluating runtime behavior and iteratively tuning parameters to achieve target outcomes.</p>
+                </div>
+                <div class="mit-feature-card">
+                  <div class="mit-feature-title"><i class="fa-solid fa-cube"></i> Technology Bridge</div>
+                  <p class="mit-feature-text">Bridging the distance between algorithmic flowcharts and modern programming ecosystems.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. THE LEARNING PROGRESSION
+         ============================================================ -->
+    <section class="progression-section" id="progression">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-arrow-progress"></i>
+        <span>Structured Methodology</span>
+      </div>
+      <h2 class="section-title">From Problem to Program</h2>
+      <p class="section-lead">
+        An interactive progression demonstrating how problem-solving matures from preliminary understanding through logical planning into software exploration.
+      </p>
+
+      <div class="progression-steps-container">
+        <!-- Stage 01 -->
+        <div class="progression-step-card active-progression">
+          <div class="progression-step-num">01</div>
+          <div class="progression-step-info">
+            <h4>Problem Statement</h4>
+            <p>Clearly framing user friction, environmental constraints, and target outcomes before jumping to design.</p>
+          </div>
+          <div class="progression-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="progression-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 02 -->
+        <div class="progression-step-card">
+          <div class="progression-step-num">02</div>
+          <div class="progression-step-info">
+            <h4>Algorithm</h4>
+            <p>Deconstructing the challenge into a finite sequence of unambiguous, step-by-step computational instructions.</p>
+          </div>
+          <div class="progression-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="progression-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 03 -->
+        <div class="progression-step-card">
+          <div class="progression-step-num">03</div>
+          <div class="progression-step-info">
+            <h4>Flowchart</h4>
+            <p>Visualizing decision branches, loop cycles, and state transitions through standard geometric logic symbols.</p>
+          </div>
+          <div class="progression-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="progression-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 04 -->
+        <div class="progression-step-card">
+          <div class="progression-step-num">04</div>
+          <div class="progression-step-info">
+            <h4>Scratch</h4>
+            <p>Validating program control flow and algorithmic behaviors via drag-and-drop block-based execution.</p>
+          </div>
+          <div class="progression-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="progression-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 05 -->
+        <div class="progression-step-card">
+          <div class="progression-step-num">05</div>
+          <div class="progression-step-info">
+            <h4>MIT</h4>
+            <p>Connecting fundamental logic and visual programming paradigms with modern engineering toolkits.</p>
+          </div>
+          <div class="progression-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. WHAT WE TOOK AWAY
+         ============================================================ -->
+    <section class="section-wrap" id="takeaways">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-list-ol"></i>
+        <span>Core Learnings</span>
+      </div>
+      <h2 class="section-title">What We Took Away</h2>
+      <p class="section-lead">
+        Five key takeaways reflecting our progress from problem definition to visual implementation.
+      </p>
+
+      <div class="takeaway-numbered-grid">
+        <!-- 01 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">01</span>
+            <i class="fa-solid fa-bullseye takeaway-dot-icon"></i>
+          </div>
+          <h3 class="takeaway-title">Problem Definition</h3>
+          <p class="takeaway-quote">“Learned to understand and clearly frame a problem before developing a solution.”</p>
+        </div>
+
+        <!-- 02 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">02</span>
+            <i class="fa-solid fa-network-wired takeaway-dot-icon"></i>
+          </div>
+          <h3 class="takeaway-title">Logical Thinking</h3>
+          <p class="takeaway-quote">“Used algorithms to break problems into manageable, sequential steps.”</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">03</span>
+            <i class="fa-solid fa-sitemap takeaway-dot-icon"></i>
+          </div>
+          <h3 class="takeaway-title">Visual Representation</h3>
+          <p class="takeaway-quote">“Used flowcharts to communicate and understand the logic of a solution.”</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">04</span>
+            <i class="fa-solid fa-cubes takeaway-dot-icon"></i>
+          </div>
+          <h3 class="takeaway-title">Programming Fundamentals</h3>
+          <p class="takeaway-quote">“Explored Scratch as an accessible way to convert logical thinking into programs.”</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">05</span>
+            <i class="fa-solid fa-microchip takeaway-dot-icon"></i>
+          </div>
+          <h3 class="takeaway-title">Technology &amp; Application</h3>
+          <p class="takeaway-quote">“Continued connecting problem-solving concepts with practical technology tools.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. FINAL REFLECTION — DARK CONTRAST SECTION
+         ============================================================ -->
+    <section class="reflection-dark-section" id="reflection">
+      <div class="reflection-dark-eyebrow">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>Synthesized Perspective</span>
+      </div>
+      <h2 class="reflection-dark-title">The Takeaway</h2>
+
+      <blockquote class="reflection-prominent-quote">
+        “Week 2 taught us that solving a problem is not about jumping directly to a solution. It is about understanding the problem, thinking logically, planning the steps, and then turning that plan into something that works.”
+      </blockquote>
+
+      <p class="reflection-supporting-p">
+        “Week 2 helped us understand the journey from identifying a problem to representing and implementing a solution. It strengthened the importance of logical thinking and structured planning before moving into programming.”
+      </p>
+    </section>
+
+    <!-- ============================================================
+         8. WEEK 2 SUMMARY & NAVIGATION
+         ============================================================ -->
+    <section class="summary-card" id="summary">
+      <div class="summary-completed-badge">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>WEEK 02 COMPLETED</span>
+      </div>
+
+      <h3 class="summary-heading">Curriculum Summary</h3>
+
+      <div class="summary-topics-wrap">
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Problem Statements</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> 5S Approach</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Algorithms</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Flowcharts</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Scratch</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> MIT</span>
+      </div>
+
+      <p class="summary-closing-statement">
+        “Understand the problem. Plan the logic. Build the solution.”
+      </p>
+
+      <div class="summary-nav-buttons-row">
+        <!-- Previous Week -->
+        <a href="infosys-springboard-week-1.html" class="nav-action-btn btn-prev">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Previous Week (Week 01)</span>
+        </a>
+
+        <!-- Back to Learning Journey -->
+        <a href="index.html#protosem" class="nav-action-btn btn-journey">
+          <i class="fa-solid fa-flag-checkered"></i>
+          <span>Back to Learning Journey</span>
+        </a>
+
+        <!-- Next Week -->
+        <a href="price-protosem-week-3.html" class="nav-action-btn btn-next">
+          <span>Next Week (Week 03)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="doc-container footer-inner">
+      <div class="footer-left-info">
+        <strong>Visakan K &bull; PRICE Protosem Portfolio</strong><br />
+        Week 02 / 19 &bull; DiscoverCompleted Log &bull; KCT FORGE
+      </div>
+      <div class="footer-links-group">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="index.html#protosem" class="footer-link">Grand Prix Speedway</a>
+        <a href="price-protosem-0th-week.html" class="footer-link">Week 00</a>
+        <a href="infosys-springboard-week-1.html" class="footer-link">Week 01</a>
+        <a href="price-protosem-week-3.html" class="footer-link">Week 03</a>
+        <a href="price-protosem-week-6.html" class="footer-link">Week 06</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-modal-content">
+      <div class="lightbox-modal-header">
+        <h4 id="lightboxTitle"><i class="fa-solid fa-image text-primary"></i> Illustrative Exploration</h4>
+        <button class="lightbox-close-btn" id="lightboxCloseBtn" aria-label="Close Preview">&times;</button>
+      </div>
+      <div class="lightbox-modal-body" id="lightboxBody">
+        <!-- Injected via JS -->
+      </div>
+      <div class="lightbox-modal-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('readingProgressBar');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+
+    // 2. Interactive Pipeline Stages in Hero
+    const pipelineData = [
+      {
+        step: 0,
+        title: "01 • PROBLEM",
+        desc: "Framing the problem scope, identifying root constraints, and avoiding hasty assumptions before writing solutions."
+      },
+      {
+        step: 1,
+        title: "02 • LOGIC",
+        desc: "Breaking complexity into cause-and-effect relationships and understanding step-by-step reasoning."
+      },
+      {
+        step: 2,
+        title: "03 • ALGORITHM",
+        desc: "Composing structured, finite, and unambiguous sequential instructions to solve the framed challenge."
+      },
+      {
+        step: 3,
+        title: "04 • FLOWCHART",
+        desc: "Mapping decision diamonds, loops, inputs, and terminals visually to audit execution pathways before programming."
+      },
+      {
+        step: 4,
+        title: "05 • PROGRAM",
+        desc: "Translating verified logic into block-based executable commands and working technology implementations."
+      }
+    ];
+
+    const pipelineNodes = document.querySelectorAll('.pipeline-node');
+    const tooltipText = document.getElementById('pipelineTooltipText');
+
+    pipelineNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        const step = parseInt(node.getAttribute('data-step'));
+        pipelineNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        if (tooltipText && pipelineData[step]) {
+          tooltipText.innerHTML = `<strong>${pipelineData[step].title}:</strong> ${pipelineData[step].desc}`;
+        }
+      });
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
+
+    // 3. Interactive Progression Step Highlights
+    const progressionCards = document.querySelectorAll('.progression-step-card');
+    progressionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        progressionCards.forEach(c => c.classList.remove('active-progression'));
+        card.classList.add('active-progression');
+      });
+    });
+
+    // 4. Lightbox Modal Support
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxBody = document.getElementById('lightboxBody');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+
+    function openLightbox(src, title, caption) {
+      if (!lightboxModal || !lightboxBody) return;
+      if (lightboxTitle) lightboxTitle.innerHTML = `<i class="fa-solid fa-image text-primary"></i> <span>${title || 'Visual Evidence'}</span>`;
+      if (lightboxCaption) lightboxCaption.textContent = caption || '';
+      lightboxBody.innerHTML = `<img src="${src}" alt="${title}" />`;
+      lightboxModal.classList.add('active');
+      lightboxModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!lightboxModal) return;
+      lightboxModal.classList.remove('active');
+      lightboxModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener('click', closeLightbox);
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxModal && lightboxModal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+
+</body>
+</html>

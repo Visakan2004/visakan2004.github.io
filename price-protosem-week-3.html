@@ -1,0 +1,2319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Week 03 / 19 — From Boot Sequence to Breadboard. The week software met hardware: systems, deployment and physical computing | PRICE Protosem — Visakan K." />
+  <meta name="author" content="Visakan K" />
+  <title>WEEK 03 — From Boot Sequence to Breadboard | PRICE Protosem Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       LEARNING-JOURNAL DESIGN SYSTEM — WEEK 03
+       PRICE PROTOSEM: FROM BOOT SEQUENCE TO BREADBOARD
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-dark: #334155;
+
+      --text: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-heading: #0f172a;
+
+      /* Primary Brand / Hardware Accents */
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --cyan-border: #bae6fd;
+
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --purple: #7c3aed;
+      --purple-light: #f5f3ff;
+      --purple-border: #ddd6fe;
+
+      /* Dark Contrast Surfaces */
+      --dark-surface: #090d16;
+      --dark-card: #101626;
+      --dark-card-border: rgba(255, 255, 255, 0.09);
+      --dark-text: #e2e8f0;
+      --dark-text-muted: #94a3b8;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --radius-pill: 9999px;
+
+      --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 20px -3px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 16px 30px -4px rgba(15, 23, 42, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      font-size: 1.02rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    ::selection {
+      background: #bfdbfe;
+      color: #1e3a8a;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      background: linear-gradient(90deg, #2563eb, #0284c7, #059669);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* Document Container */
+    .doc-container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    /* Top Sticky Navigation Bar */
+    .journal-nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 0;
+      transition: background 0.3s ease;
+    }
+
+    .journal-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-mark-badge {
+      background: var(--dark-surface);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .nav-title-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .nav-doc-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-heading);
+    }
+
+    .nav-doc-meta {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .nav-links-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-page-tab {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-page-tab:hover {
+      color: var(--primary);
+      border-color: var(--primary-border);
+      background: #ffffff;
+    }
+
+    .nav-page-tab.active-tab {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .btn-return-journey {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+
+    .btn-return-journey:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateX(-2px);
+    }
+
+    /* ============================================================
+       HERO SECTION — WEEK 03
+       ============================================================ */
+    .hero-journal-section {
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #ffffff;
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .hero-main-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-intro-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.8rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: left;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .hero-intro-card p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Telemetry Metadata Ribbon */
+    .hero-meta-ribbon {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .meta-chip-completed {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+      color: #059669;
+    }
+
+    .meta-chip-phase {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #2563eb;
+    }
+
+    .meta-chip-theme {
+      background: #f5f3ff;
+      border-color: #ddd6fe;
+      color: #7c3aed;
+    }
+
+    /* Subtle Animated Transition Pipeline */
+    .pipeline-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      margin: 2rem auto;
+      max-width: 860px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .pipeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pipeline-title {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pipeline-instruction {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .pipeline-track {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      overflow-x: auto;
+      padding: 0.5rem 0.2rem;
+    }
+
+    .pipeline-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--surface-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      min-width: 125px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      user-select: none;
+    }
+
+    .pipeline-node:hover, .pipeline-node.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+    }
+
+    .pipeline-node-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: #ffffff;
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--primary-border);
+    }
+
+    .pipeline-node-label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: 0.02em;
+    }
+
+    .pipeline-connector {
+      display: flex;
+      align-items: center;
+      color: var(--primary);
+      opacity: 0.6;
+      font-size: 0.95rem;
+      animation: pulseArrow 2s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseArrow {
+      0%, 100% { transform: translateX(0); opacity: 0.4; }
+      50% { transform: translateX(3px); opacity: 1; }
+    }
+
+    .pipeline-tooltip-box {
+      margin-top: 1rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: var(--text);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .pipeline-tooltip-box i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      margin-top: 2rem;
+      transition: color 0.2s ease;
+    }
+
+    .scroll-indicator:hover {
+      color: var(--primary);
+    }
+
+    .scroll-indicator-arrow {
+      animation: bounceDown 1.8s infinite ease-in-out;
+      font-size: 0.95rem;
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Section Division */
+    .section-wrap {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 800px;
+    }
+
+    /* ============================================================
+       01 — THE WEEK AT A GLANCE (CARDS)
+       ============================================================ */
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .glance-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .glance-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .glance-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .glance-icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .glance-card:hover .glance-icon-circle {
+      background: var(--primary);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .glance-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text-heading);
+    }
+
+    .glance-card-body {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .glance-tag {
+      margin-top: auto;
+      padding-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       02 — FIVE DAYS, ONE CONNECTED JOURNEY (TIMELINE)
+       ============================================================ */
+    .timeline-container {
+      position: relative;
+      margin: 2.5rem 0;
+      padding-left: 2rem;
+    }
+
+    .timeline-spine {
+      position: absolute;
+      top: 10px;
+      bottom: 20px;
+      left: 11px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--primary), var(--cyan), var(--purple), var(--amber), var(--emerald));
+    }
+
+    .timeline-day-block {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-day-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-node-dot {
+      position: absolute;
+      top: 6px;
+      left: -2rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+
+    .timeline-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+
+    .timeline-day-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-day-title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .timeline-day-focus {
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .timeline-day-content {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-field-note {
+      background: var(--surface-subtle);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .timeline-field-note i {
+      color: var(--primary);
+      margin-top: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .timeline-field-note-text {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* Embedded Schematics & Diagrams for Days */
+    .day-schematic-box {
+      background: #090e1a;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      margin-top: 1.25rem;
+      color: #cbd5e1;
+    }
+
+    .schematic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .schematic-title {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-transform: uppercase;
+    }
+
+    .schematic-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+
+    /* Day 1: Boot Sequence Flow */
+    .boot-sequence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.65rem;
+    }
+
+    .boot-step-tile {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 0.65rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .boot-step-tile:hover {
+      background: rgba(56, 189, 248, 0.08);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .boot-step-order {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .boot-step-name {
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.2rem;
+    }
+
+    .boot-step-desc {
+      font-size: 0.73rem;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Day 2: Terminal Interactive Mockup */
+    .terminal-mockup {
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      line-height: 1.6;
+      background: #0b0f19;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid #1e293b;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #34d399;
+    }
+
+    .terminal-output {
+      color: #94a3b8;
+      margin-left: 1.2rem;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Day 3: Deployment Pipeline Graphic */
+    .deploy-flow-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding: 0.35rem 0;
+    }
+
+    .deploy-node {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      text-align: center;
+      min-width: 110px;
+    }
+
+    .deploy-node-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .deploy-node-desc {
+      font-size: 0.72rem;
+      color: #94a3b8;
+    }
+
+    /* Day 4 & 5: Circuit Electronics Diagram Box */
+    .circuit-components-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .comp-item {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .comp-icon {
+      font-size: 1.3rem;
+      color: #f59e0b;
+      margin-bottom: 0.35rem;
+    }
+
+    .comp-name {
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.15rem;
+    }
+
+    .comp-role {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       03 — THE ENGINEERING CONNECTION
+       ============================================================ */
+    .connection-section {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .connection-steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .connection-step-card {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 1.25rem;
+      background: var(--surface-subtle);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.5rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .connection-step-card:hover, .connection-step-card.active-connection {
+      background: #ffffff;
+      border-color: var(--primary);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .connection-step-phase {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+
+    .connection-step-info h4 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.2rem;
+    }
+
+    .connection-step-info p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .connection-step-indicator {
+      color: var(--primary);
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    .connection-arrow-divider {
+      display: flex;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1rem;
+      margin: -0.25rem 0;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       04 — WHAT I TOOK AWAY (5 NUMBERED CARDS)
+       ============================================================ */
+    .takeaways-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .takeaway-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .takeaway-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .takeaway-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .takeaway-num-badge {
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--primary-border);
+    }
+
+    .takeaway-title {
+      font-family: var(--font-heading);
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.65rem;
+    }
+
+    .takeaway-body {
+      font-size: 0.94rem;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       05 — LAB NOTES (QUESTIONS FORWARD)
+       ============================================================ */
+    .lab-notes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.15rem;
+      margin-top: 1.5rem;
+    }
+
+    .lab-note-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .lab-note-card:hover {
+      border-color: var(--cyan);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .lab-note-icon {
+      color: var(--cyan);
+      font-size: 1.15rem;
+    }
+
+    .lab-note-question {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.45;
+    }
+
+    .lab-note-caption {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ============================================================
+       06 — THE WEEK'S CLOSING REFLECTION (DARK CONTRAST)
+       ============================================================ */
+    .reflection-dark-section {
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-card-border);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      margin: 3.5rem 0;
+      color: var(--dark-text);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .reflection-dark-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .reflection-dark-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .reflection-dark-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .reflection-paragraphs {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 1.05rem;
+      color: var(--dark-text-muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 820px;
+    }
+
+    .reflection-prominent-quote {
+      font-family: var(--font-body);
+      font-size: clamp(1.15rem, 2.3vw, 1.45rem);
+      color: #ffffff;
+      line-height: 1.65;
+      font-weight: 500;
+      margin: 2rem 0;
+      padding: 1.5rem 1.8rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .next-chapter-teaser {
+      margin-top: 2rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .teaser-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .teaser-badge {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+    }
+
+    .teaser-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .teaser-motto {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================================
+       SUMMARY & NAVIGATION CARD
+       ============================================================ */
+    .summary-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      margin: 2.5rem 0 3.5rem;
+    }
+
+    .summary-completed-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #059669;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .summary-heading {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 1rem;
+    }
+
+    .summary-topics-wrap {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      max-width: 780px;
+      margin: 0 auto 1.75rem;
+    }
+
+    .summary-topic-chip {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .summary-topic-chip i {
+      color: var(--primary);
+      font-size: 0.8rem;
+    }
+
+    .summary-closing-statement {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.5rem 0 2rem;
+      letter-spacing: -0.01em;
+      font-style: italic;
+    }
+
+    .summary-nav-buttons-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-prev {
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      color: var(--text);
+    }
+
+    .btn-prev:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-heading);
+      transform: translateX(-3px);
+    }
+
+    .btn-journey {
+      background: var(--primary);
+      border: 1.5px solid var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-journey:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-next {
+      background: #ffffff;
+      border: 1.5px solid var(--border-strong);
+      color: var(--text);
+    }
+
+    .btn-next:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-heading);
+      transform: translateX(3px);
+    }
+
+    /* Site Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+      background: #ffffff;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-left-info {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .footer-left-info strong {
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+    }
+
+    .footer-links-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .footer-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .journal-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .nav-links-cluster {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+      }
+      .timeline-container {
+        padding-left: 1.5rem;
+      }
+      .timeline-node-dot {
+        left: -1.5rem;
+        width: 20px;
+        height: 20px;
+      }
+      .timeline-card {
+        padding: 1.25rem 1.25rem;
+      }
+      .connection-step-card {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .connection-step-indicator {
+        display: none;
+      }
+      .reflection-dark-section {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgressBar"></div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="journal-nav-bar" id="topNav">
+    <div class="doc-container">
+      <div class="journal-nav-inner">
+        <a href="index.html#protosem" class="nav-brand-cluster">
+          <span class="nav-mark-badge">PROTOSEM / W03</span>
+          <div class="nav-title-group">
+            <span class="nav-doc-title">Visakan K &bull; Learning Journal</span>
+            <span class="nav-doc-meta">WEEK 03 / 19 &bull; DISCOVER LOG</span>
+          </div>
+        </a>
+
+        <div class="nav-links-cluster">
+          <a href="index.html#protosem" class="btn-return-journey">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Learning Journey</span>
+          </a>
+          <a href="price-protosem-week-2.html" class="nav-page-tab" title="Previous Week: Week 02 DiscoverCompleted Log">
+            <i class="fa-solid fa-backward-step"></i> Week 02
+          </a>
+          <a href="#overview" class="nav-page-tab">Glance</a>
+          <a href="#journey" class="nav-page-tab">5 Days</a>
+          <a href="#engineering" class="nav-page-tab">Connection</a>
+          <a href="#takeaways" class="nav-page-tab">Takeaways</a>
+          <a href="#lab-notes" class="nav-page-tab">Lab Notes</a>
+          <a href="price-protosem-week-6.html" class="nav-page-tab" title="Next Documented Week: Week 06 Digital Fabrication">
+            Week 06 <i class="fa-solid fa-forward-step"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-container">
+
+    <!-- ============================================================
+         HERO SECTION — WEEK 03
+         ============================================================ -->
+    <section class="hero-journal-section" id="hero">
+      <!-- Small Label -->
+      <div class="hero-badge-pill">
+        <i class="fa-solid fa-microchip"></i>
+        <span>WEEK 03 / 19 &bull; DISCOVER LOG</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-main-title">From Boot Sequence to Breadboard</h1>
+      
+      <!-- Subtitle Tagline -->
+      <div class="hero-tagline">The week software met hardware.</div>
+
+      <!-- Introduction Cards -->
+      <div class="hero-intro-card">
+        <p>
+          Week 03 was about understanding what happens beneath the interface. I moved from preparing an operating system and exploring Linux to deploying a terminal-based game, connecting my portfolio workflow with Obsidian, and experimenting with real electronic components.
+        </p>
+        <p>
+          The interesting part was seeing two sides of computing come together: the logic that runs inside a system and the electrical signals that make physical devices respond.
+        </p>
+      </div>
+
+      <!-- Metadata Badges -->
+      <div class="hero-meta-ribbon">
+        <span class="meta-chip meta-chip-completed">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>WEEK STATUS: Completed</span>
+        </span>
+        <span class="meta-chip meta-chip-phase">
+          <i class="fa-solid fa-compass"></i>
+          <span>PHASE: Discover</span>
+        </span>
+        <span class="meta-chip meta-chip-theme">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>CORE THEME: Systems, deployment and physical computing</span>
+        </span>
+      </div>
+
+      <!-- Interactive Cognitive Transition Pipeline -->
+      <div class="pipeline-wrapper" id="pipelineWrapper">
+        <div class="pipeline-header">
+          <div class="pipeline-title">
+            <i class="fa-solid fa-diagram-project text-primary"></i>
+            <span>Systems-to-Hardware Progression</span>
+          </div>
+          <span class="pipeline-instruction">Click any stage to view architectural details</span>
+        </div>
+
+        <div class="pipeline-track" role="tablist" aria-label="Systems to Hardware Pipeline">
+          <div class="pipeline-node active" data-step="0" role="tab" tabindex="0">
+            <span class="pipeline-node-num">01</span>
+            <span class="pipeline-node-label">BOOT SETUP</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="1" role="tab" tabindex="0">
+            <span class="pipeline-node-num">02</span>
+            <span class="pipeline-node-label">LINUX CLI</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="2" role="tab" tabindex="0">
+            <span class="pipeline-node-num">03</span>
+            <span class="pipeline-node-label">DEPLOYMENT</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="3" role="tab" tabindex="0">
+            <span class="pipeline-node-num">04</span>
+            <span class="pipeline-node-label">OBSIDIAN</span>
+          </div>
+          <div class="pipeline-connector"><i class="fa-solid fa-arrow-right"></i></div>
+
+          <div class="pipeline-node" data-step="4" role="tab" tabindex="0">
+            <span class="pipeline-node-num">05</span>
+            <span class="pipeline-node-label">CIRCUITS</span>
+          </div>
+        </div>
+
+        <div class="pipeline-tooltip-box" id="pipelineTooltip">
+          <i class="fa-solid fa-circle-info"></i>
+          <span id="pipelineTooltipText"><strong>01 &bull; BOOT SETUP:</strong> Understanding installation media, BIOS/UEFI initializations, partition schemas, and base OS configuration.</span>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#overview" class="scroll-indicator" aria-label="Scroll down to overview">
+        <span>Scroll to explore log</span>
+        <i class="fa-solid fa-chevron-down scroll-indicator-arrow"></i>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         01 — THE WEEK AT A GLANCE
+         ============================================================ -->
+    <section class="section-wrap" id="overview">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-table-cells"></i>
+        <span>Overview</span>
+      </div>
+      <h2 class="section-title">01 — The Week at a Glance</h2>
+      <p class="section-lead">
+        This week followed a path from system configuration to physical experimentation.
+      </p>
+
+      <div class="glance-grid">
+        <!-- Card 1 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-server"></i></div>
+            <h3 class="glance-card-title">System Setup</h3>
+          </div>
+          <p class="glance-card-body">Understanding booting, installation media and operating system installation.</p>
+          <span class="glance-tag">Pillar 01 &bull; Foundations</span>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-terminal"></i></div>
+            <h3 class="glance-card-title">Linux Exploration</h3>
+          </div>
+          <p class="glance-card-body">Using terminal commands, navigating files and running a game.</p>
+          <span class="glance-tag">Pillar 02 &bull; Terminal CLI</span>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <h3 class="glance-card-title">Deployment</h3>
+          </div>
+          <p class="glance-card-body">Exploring how a locally developed project can be made accessible through Vercel.</p>
+          <span class="glance-tag">Pillar 03 &bull; Cloud Hosting</span>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-book-bookmark"></i></div>
+            <h3 class="glance-card-title">Knowledge Workflow</h3>
+          </div>
+          <p class="glance-card-body">Exploring an Obsidian-connected portfolio for organizing and publishing weekly activities.</p>
+          <span class="glance-tag">Pillar 04 &bull; Documentation</span>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+            <h3 class="glance-card-title">Electronics</h3>
+          </div>
+          <p class="glance-card-body">Identifying components and learning how breadboards, LEDs, resistors and capacitors work in practical circuits.</p>
+          <span class="glance-tag">Pillar 05 &bull; Electrical Logic</span>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="glance-card">
+          <div class="glance-card-header">
+            <div class="glance-icon-circle"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="glance-card-title">Prototyping</h3>
+          </div>
+          <p class="glance-card-body">Building simple circuits and experimenting with a perfboard, LED indicator, resistor and tactile switch.</p>
+          <span class="glance-tag">Pillar 06 &bull; Physical Computing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 — FIVE DAYS, ONE CONNECTED JOURNEY
+         ============================================================ -->
+    <section class="section-wrap" id="journey">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-timeline"></i>
+        <span>Daily Chronicle</span>
+      </div>
+      <h2 class="section-title">02 — Five Days, One Connected Journey</h2>
+      <p class="section-lead">
+        A step-by-step account of systems exploration, software delivery, and physical circuit assembly.
+      </p>
+
+      <div class="timeline-container">
+        <div class="timeline-spine" aria-hidden="true"></div>
+
+        <!-- DAY 01 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 01</span>
+            <h3 class="timeline-day-title">Preparing the Machine</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Operating system installation and system setup</div>
+            <p class="timeline-day-content">
+              Before writing programs, I explored the environment in which they run. With Linga's guidance, I learned about the system boot process, installation media and the steps involved in installing an operating system. I also explored the basic configuration needed after installation.
+            </p>
+            <p class="timeline-day-content">
+              This session helped me understand that a working computer is not just a device we use; it is a system that must be prepared and configured correctly.
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: Every development environment begins with a properly prepared system.</span>
+            </div>
+
+            <!-- Boot Sequence Schematic -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-power-off"></i> Hardware Boot Sequence Architecture</span>
+                <span class="schematic-tag">SYSTEM EXECUTION PIPELINE</span>
+              </div>
+              <div class="boot-sequence-grid">
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">STAGE 01</div>
+                  <div class="boot-step-name">Power / POST</div>
+                  <p class="boot-step-desc">Power-On Self-Test verifies CPU, RAM &amp; core hardware integrity.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">STAGE 02</div>
+                  <div class="boot-step-name">UEFI / BIOS</div>
+                  <p class="boot-step-desc">Locates valid boot media and executes Master Boot Record/ESP.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">STAGE 03</div>
+                  <div class="boot-step-name">Bootloader</div>
+                  <p class="boot-step-desc">Loads kernel image (e.g. GRUB) into system memory space.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">STAGE 04</div>
+                  <div class="boot-step-name">Kernel Init</div>
+                  <p class="boot-step-desc">Mounts root filesystem and initializes hardware drivers.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">STAGE 05</div>
+                  <div class="boot-step-name">Userspace / OS</div>
+                  <p class="boot-step-desc">Spawns system services, shells, and user environments.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 02 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 02</span>
+            <h3 class="timeline-day-title">Inside the Linux Terminal</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Commands, files and a terminal-based game</div>
+            <p class="timeline-day-content">
+              I moved into the Linux environment and explored how to interact with a system through its terminal. Instead of relying entirely on graphical interfaces, I worked with commands, file management and the execution of a terminal-based game.
+            </p>
+            <p class="timeline-day-content">
+              The experience connected command-line fundamentals with practical programming. I also began exploring how the game could be deployed through Vercel.
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: The terminal turns instructions into direct interaction with the system.</span>
+            </div>
+
+            <!-- Terminal Session Simulation Box -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-terminal"></i> Linux CLI Interaction Session</span>
+                <span class="schematic-tag">BASH / SHELL ENVIRONMENT</span>
+              </div>
+              <div class="terminal-mockup">
+                <div class="terminal-line"><span style="color:#60a5fa;">visakan@forge-lab</span>:<span style="color:#f59e0b;">~</span>$ uname -r &amp;&amp; lsb_release -d</div>
+                <div class="terminal-output">Linux 6.8.0-generic &bull; Description: Ubuntu 24.04 LTS</div>
+                <div class="terminal-line"><span style="color:#60a5fa;">visakan@forge-lab</span>:<span style="color:#f59e0b;">~/projects/terminal-game</span>$ ls -la</div>
+                <div class="terminal-output">drwxr-xr-x src/  -rwxr-xr-x game.sh  -rw-r--r-- package.json  -rw-r--r-- vercel.json</div>
+                <div class="terminal-line"><span style="color:#60a5fa;">visakan@forge-lab</span>:<span style="color:#f59e0b;">~/projects/terminal-game</span>$ ./game.sh --run</div>
+                <div class="terminal-output"><span style="color:#38bdf8;">[INIT] Loading Game Engine... Score Loop Active &bull; Terminal Grid Ready</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAYS 02–03 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAYS 02–03</span>
+            <h3 class="timeline-day-title">From Local Project to Live Deployment</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Studio presentation, project discussion and deployment</div>
+            <p class="timeline-day-content">
+              The Linux game became an opportunity to discuss how a project moves beyond the development environment. Through studio presentation and project discussion, I continued exploring the deployment process and the steps involved in making a project accessible online.
+            </p>
+            <p class="timeline-day-content">
+              This helped me connect development with delivery: building something is one stage, while making it available to others is another.
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: A project becomes more useful when other people can access and experience it.</span>
+            </div>
+
+            <!-- Vercel Deployment Architecture -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-cloud"></i> Continuous Delivery Pipeline</span>
+                <span class="schematic-tag">LOCAL → EDGE DEPLOYMENT</span>
+              </div>
+              <div class="deploy-flow-row">
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-laptop-code text-primary"></i> Local Code</div>
+                  <div class="deploy-node-desc">Terminal Game Logic</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-brands fa-git-alt text-amber"></i> Git Repo</div>
+                  <div class="deploy-node-desc">Version Commit</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-gears text-purple"></i> Vercel Build</div>
+                  <div class="deploy-node-desc">Serverless Bundle</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-globe text-emerald"></i> Global Edge</div>
+                  <div class="deploy-node-desc">Public Accessible URL</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 03 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 03</span>
+            <h3 class="timeline-day-title">Connecting Ideas with Obsidian</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Portfolio workflow and activity documentation</div>
+            <p class="timeline-day-content">
+              I explored the possibility of connecting my portfolio with Obsidian to organize weekly activities and learning notes. The idea was to create a more structured workflow in which documented activities could support the regular updating of portfolio posts.
+            </p>
+            <p class="timeline-day-content">
+              This introduced me to a broader question: how can the process of documenting work become more organized and less repetitive?
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: Documentation can become part of the workflow, rather than something added at the end.</span>
+            </div>
+
+            <!-- Obsidian Workflow Schematic -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-network-wired"></i> Obsidian Knowledge Architecture</span>
+                <span class="schematic-tag">MARKDOWN PIPELINE</span>
+              </div>
+              <div class="boot-sequence-grid">
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">VAULT CAPTURE</div>
+                  <div class="boot-step-name">Daily Field Notes</div>
+                  <p class="boot-step-desc">Atomic notes captured during hands-on lab work.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">LINKING</div>
+                  <div class="boot-step-name">Bi-directional Links</div>
+                  <p class="boot-step-desc">Connecting concepts (e.g. [[Breadboards]], [[Vercel]]).</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">SYNTHESIS</div>
+                  <div class="boot-step-name">Weekly Logs</div>
+                  <p class="boot-step-desc">Structuring raw daily captures into narrative summaries.</p>
+                </div>
+                <div class="boot-step-tile">
+                  <div class="boot-step-order">EXPORT</div>
+                  <div class="boot-step-name">Web Publishing</div>
+                  <p class="boot-step-desc">Frictionless deployment directly into HTML portfolio.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 04 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 04</span>
+            <h3 class="timeline-day-title">Understanding the Electrical Side</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Electronic components and circuit fundamentals</div>
+            <p class="timeline-day-content">
+              With Brahma's guidance, I began exploring the fundamentals of electronics. The session introduced basic components, their practical applications and the role they play in simple circuits.
+            </p>
+            <p class="timeline-day-content">
+              Working with breadboards, LEDs and electronic components helped connect theoretical concepts with physical behavior. I also participated in practical testing involving capacitor voltage limits and power supply characteristics.
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: A circuit is more than a collection of components; every connection affects how the system behaves.</span>
+            </div>
+
+            <!-- Components Breakdown Box -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-bolt"></i> Core Electrical Components Identified</span>
+                <span class="schematic-tag">LABORATORY EXPERIMENTATION</span>
+              </div>
+              <div class="circuit-components-grid">
+                <div class="comp-item">
+                  <div class="comp-icon"><i class="fa-solid fa-table-cells-large"></i></div>
+                  <div class="comp-name">Breadboard</div>
+                  <div class="comp-role">Solderless prototyping grid with internal spring clips.</div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon"><i class="fa-regular fa-lightbulb"></i></div>
+                  <div class="comp-name">LEDs</div>
+                  <div class="comp-role">Semiconductor light emitters requiring polarity respect (Anode/Cathode).</div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon"><i class="fa-solid fa-barcode"></i></div>
+                  <div class="comp-name">Resistors</div>
+                  <div class="comp-role">Limiting current flow to protect sensitive components from burn-out.</div>
+                </div>
+                <div class="comp-item">
+                  <div class="comp-icon"><i class="fa-solid fa-battery-half"></i></div>
+                  <div class="comp-name">Capacitors</div>
+                  <div class="comp-role">Charge storage &amp; voltage filtering; verified breakdown voltage ratings.</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- DAY 05 -->
+        <div class="timeline-day-block">
+          <div class="timeline-node-dot" aria-hidden="true"></div>
+          <article class="timeline-card">
+            <span class="timeline-day-tag"><i class="fa-solid fa-calendar-day"></i> DAY 05</span>
+            <h3 class="timeline-day-title">Making the Circuit Real</h3>
+            <div class="timeline-day-focus"><i class="fa-solid fa-crosshairs"></i> Focus: Practical electronics and circuit prototyping</div>
+            <p class="timeline-day-content">
+              I continued working with basic electronic components and learned how to identify them, understand their connections and assemble simple circuits. The hands-on work included a perfboard prototype using an LED indicator, resistor and tactile switch.
+            </p>
+            <p class="timeline-day-content">
+              The session made the relationship between components, connections and outputs easier to understand. It also provided an introduction to the care required when moving from a temporary circuit arrangement toward a more permanent prototype.
+            </p>
+
+            <div class="timeline-field-note">
+              <i class="fa-solid fa-quote-left"></i>
+              <span class="timeline-field-note-text">Field note: A small circuit is a practical lesson in how individual parts work together as a system.</span>
+            </div>
+
+            <!-- Perfboard Prototype Schematic Box -->
+            <div class="day-schematic-box">
+              <div class="schematic-header">
+                <span class="schematic-title"><i class="fa-solid fa-microchip"></i> Perfboard Circuit Assembly Schema</span>
+                <span class="schematic-tag">PHYSICAL PROTOTYPE IMPLEMENTATION</span>
+              </div>
+              <div class="deploy-flow-row">
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-plug text-primary"></i> +5V DC Supply</div>
+                  <div class="deploy-node-desc">Regulated Power Rail</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-toggle-on text-amber"></i> Tactile Switch</div>
+                  <div class="deploy-node-desc">Mechanical Trigger</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-barcode text-purple"></i> 330Ω Resistor</div>
+                  <div class="deploy-node-desc">Current Limiter</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-lightbulb text-emerald"></i> LED Indicator</div>
+                  <div class="deploy-node-desc">Visual State Response</div>
+                </div>
+                <div style="color:#60a5fa;"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="deploy-node">
+                  <div class="deploy-node-title"><i class="fa-solid fa-earth-americas text-cyan"></i> GND Return</div>
+                  <div class="deploy-node-desc">Closed Loop</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 — THE ENGINEERING CONNECTION
+         ============================================================ -->
+    <section class="connection-section" id="engineering">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>Common Pattern</span>
+      </div>
+      <h2 class="section-title">03 — The Engineering Connection</h2>
+      <p class="section-lead">
+        The week's activities may appear to belong to different areas, but they follow a common pattern: 
+        <strong>Prepare &rarr; Execute &rarr; Deploy &rarr; Connect &rarr; Test</strong>.
+      </p>
+
+      <div class="connection-steps-container">
+        <!-- Stage 1: Prepare -->
+        <div class="connection-step-card active-connection">
+          <div class="connection-step-phase">PREPARE</div>
+          <div class="connection-step-info">
+            <h4>Configure Environment</h4>
+            <p>Configure the operating system, verify BIOS/UEFI parameters, and prepare the development environment.</p>
+          </div>
+          <div class="connection-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="connection-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 2: Execute -->
+        <div class="connection-step-card">
+          <div class="connection-step-phase">EXECUTE</div>
+          <div class="connection-step-info">
+            <h4>Run Programs</h4>
+            <p>Use Linux terminal commands, manage files, and execute the terminal-based game engine.</p>
+          </div>
+          <div class="connection-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="connection-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 3: Deploy -->
+        <div class="connection-step-card">
+          <div class="connection-step-phase">DEPLOY</div>
+          <div class="connection-step-info">
+            <h4>Publish to Cloud</h4>
+            <p>Explore making the project accessible beyond the local machine through cloud hosting on Vercel.</p>
+          </div>
+          <div class="connection-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="connection-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 4: Connect -->
+        <div class="connection-step-card">
+          <div class="connection-step-phase">CONNECT</div>
+          <div class="connection-step-info">
+            <h4>Workflow &amp; Hardware Assembly</h4>
+            <p>Organize the learning workflow with Obsidian and assemble discrete electronic components into circuits.</p>
+          </div>
+          <div class="connection-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+
+        <div class="connection-arrow-divider"><i class="fa-solid fa-arrow-down"></i></div>
+
+        <!-- Stage 5: Test -->
+        <div class="connection-step-card">
+          <div class="connection-step-phase">TEST</div>
+          <div class="connection-step-info">
+            <h4>Validate System Behavior</h4>
+            <p>Observe how circuits, components, power supplies, and software instructions behave in practical reality.</p>
+          </div>
+          <div class="connection-step-indicator"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; padding: 1.15rem 1.4rem; background: var(--surface-subtle); border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 0.94rem; color: var(--text);">
+        <i class="fa-solid fa-circle-nodes text-primary" style="margin-right: 0.4rem;"></i>
+        This sequence helped me see computing as a complete process, extending from the machine and its software to the physical world.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         04 — WHAT I TOOK AWAY
+         ============================================================ -->
+    <section class="section-wrap" id="takeaways">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-list-ol"></i>
+        <span>Core Takeaways</span>
+      </div>
+      <h2 class="section-title">04 — What I Took Away</h2>
+      <p class="section-lead">
+        Five key insights bridging systems infrastructure, terminal mastery, deployment workflows, and hardware components.
+      </p>
+
+      <div class="takeaways-grid">
+        <!-- 01 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">01</span>
+            <i class="fa-solid fa-sitemap text-primary"></i>
+          </div>
+          <h3 class="takeaway-title">Systems Thinking</h3>
+          <p class="takeaway-body">I gained a clearer understanding of the preparation required before a system is ready for development.</p>
+        </div>
+
+        <!-- 02 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">02</span>
+            <i class="fa-solid fa-terminal text-primary"></i>
+          </div>
+          <h3 class="takeaway-title">Command-Line Confidence</h3>
+          <p class="takeaway-body">Working in Linux helped me become more familiar with terminal commands, file management and running programs.</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">03</span>
+            <i class="fa-solid fa-cloud-arrow-up text-primary"></i>
+          </div>
+          <h3 class="takeaway-title">Deployment Awareness</h3>
+          <p class="takeaway-body">I began connecting the development process with the practical steps involved in publishing a project.</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">04</span>
+            <i class="fa-solid fa-book-bookmark text-primary"></i>
+          </div>
+          <h3 class="takeaway-title">Better Documentation Habits</h3>
+          <p class="takeaway-body">Exploring an Obsidian-connected workflow showed how structured notes could support consistent portfolio updates.</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="takeaway-card">
+          <div class="takeaway-card-top">
+            <span class="takeaway-num-badge">05</span>
+            <i class="fa-solid fa-microchip text-primary"></i>
+          </div>
+          <h3 class="takeaway-title">Hardware Fundamentals</h3>
+          <p class="takeaway-body">Working with LEDs, resistors, capacitors, breadboards and perfboard helped me connect electronic concepts with real components.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         05 — LAB NOTES: WHAT I WOULD EXPLORE FURTHER
+         ============================================================ -->
+    <section class="section-wrap" id="lab-notes">
+      <div class="section-eyebrow">
+        <i class="fa-solid fa-flask-vial"></i>
+        <span>Inquiry &amp; Research</span>
+      </div>
+      <h2 class="section-title">05 — Lab Notes: What I Would Explore Further</h2>
+      <p class="section-lead">
+        This week also raised questions worth carrying into future projects and hardware-based prototyping:
+      </p>
+
+      <div class="lab-notes-grid">
+        <div class="lab-note-card">
+          <i class="fa-solid fa-gears lab-note-icon"></i>
+          <h4 class="lab-note-question">How can the operating system and development environment be configured more efficiently?</h4>
+          <p class="lab-note-caption">Investigating automation scripts, dotfile managers, and reproducible environment containers.</p>
+        </div>
+
+        <div class="lab-note-card">
+          <i class="fa-solid fa-repeat lab-note-icon"></i>
+          <h4 class="lab-note-question">How can project deployment and weekly documentation become more repeatable?</h4>
+          <p class="lab-note-caption">Exploring automated CI/CD pipelines connecting Obsidian vault exports directly to Vercel builds.</p>
+        </div>
+
+        <div class="lab-note-card">
+          <i class="fa-solid fa-wave-square lab-note-icon"></i>
+          <h4 class="lab-note-question">How do component values and circuit connections influence the final output?</h4>
+          <p class="lab-note-caption">Measuring voltage drops, RC time constants, and signal damping across varied resistance levels.</p>
+        </div>
+
+        <div class="lab-note-card">
+          <i class="fa-solid fa-laptop-code lab-note-icon"></i>
+          <h4 class="lab-note-question">How can software logic eventually control a physical circuit?</h4>
+          <p class="lab-note-caption">Connecting microcontrollers (Arduino/ESP32) GPIO pins with digital control loops and sensor inputs.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; font-size: 0.92rem; color: var(--text-muted); font-style: italic;">
+        * These questions provide a bridge between the systems work completed this week and the hardware-based prototyping to come.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         06 — THE WEEK'S CLOSING REFLECTION
+         ============================================================ -->
+    <section class="reflection-dark-section" id="reflection">
+      <div class="reflection-dark-eyebrow">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>Closing Perspective</span>
+      </div>
+      <h2 class="reflection-dark-title">06 — The Week's Closing Reflection</h2>
+
+      <div class="reflection-paragraphs">
+        <p>
+          Week 03 changed how I look at the technology behind a working product. A program depends on an environment in which it can run, a deployment process through which people can access it, and—when software interacts with the physical world—hardware that responds to its instructions.
+        </p>
+        <p>
+          From installing an operating system to testing a circuit, each activity reinforced the value of understanding the parts before bringing them together.
+        </p>
+      </div>
+
+      <blockquote class="reflection-prominent-quote">
+        <strong>The biggest takeaway:</strong> Building technology is not just about making something work once. It is about understanding the system, testing the details and creating a process that can be repeated.
+      </blockquote>
+
+      <div class="next-chapter-teaser">
+        <div class="teaser-left">
+          <span class="teaser-badge">NEXT CHAPTER &rarr;</span>
+          <span class="teaser-title">Week 04 — Arduino, Sensors &amp; ESP32 Development</span>
+        </div>
+        <div class="teaser-motto">
+          “First, understand the system. Then, make it respond.”
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SUMMARY & NAVIGATION CARD
+         ============================================================ -->
+    <section class="summary-card" id="summary">
+      <div class="summary-completed-badge">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>WEEK 03 COMPLETED</span>
+      </div>
+
+      <h3 class="summary-heading">Curriculum Summary</h3>
+
+      <div class="summary-topics-wrap">
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> System Setup</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Linux Exploration</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Vercel Deployment</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Obsidian Workflow</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Electronics Fundamentals</span>
+        <span class="summary-topic-chip"><i class="fa-solid fa-check"></i> Perfboard Prototyping</span>
+      </div>
+
+      <p class="summary-closing-statement">
+        “First, understand the system. Then, make it respond.”
+      </p>
+
+      <div class="summary-nav-buttons-row">
+        <!-- Previous Week -->
+        <a href="price-protosem-week-2.html" class="nav-action-btn btn-prev">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Previous Week (Week 02)</span>
+        </a>
+
+        <!-- Back to Learning Journey -->
+        <a href="index.html#protosem" class="nav-action-btn btn-journey">
+          <i class="fa-solid fa-flag-checkered"></i>
+          <span>Back to Learning Journey</span>
+        </a>
+
+        <!-- Next Week -->
+        <a href="price-protosem-week-6.html" class="nav-action-btn btn-next">
+          <span>Next Documented (Week 06)</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="doc-container footer-inner">
+      <div class="footer-left-info">
+        <strong>Visakan K &bull; PRICE Protosem Portfolio</strong><br />
+        Week 03 / 19 &bull; Discover Log &bull; KCT FORGE
+      </div>
+      <div class="footer-links-group">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="index.html#protosem" class="footer-link">Speedway</a>
+        <a href="price-protosem-0th-week.html" class="footer-link">Week 00</a>
+        <a href="infosys-springboard-week-1.html" class="footer-link">Week 01</a>
+        <a href="price-protosem-week-2.html" class="footer-link">Week 02</a>
+        <a href="price-protosem-week-6.html" class="footer-link">Week 06</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('readingProgressBar');
+      if (bar) bar.style.width = scrolled + '%';
+    });
+
+    // 2. Interactive Pipeline Stages in Hero
+    const pipelineData = [
+      {
+        step: 0,
+        title: "01 • BOOT SETUP",
+        desc: "Understanding installation media, BIOS/UEFI initializations, partition schemas, and base OS configuration."
+      },
+      {
+        step: 1,
+        title: "02 • LINUX CLI",
+        desc: "Navigating terminal commands, direct system interactions, file operations, and executing terminal-based games."
+      },
+      {
+        step: 2,
+        title: "03 • DEPLOYMENT",
+        desc: "Bridging development with delivery by making locally engineered applications publicly accessible via Vercel."
+      },
+      {
+        step: 3,
+        title: "04 • OBSIDIAN",
+        desc: "Structuring bi-directional documentation workflows so learning logs directly support regular portfolio updates."
+      },
+      {
+        step: 4,
+        title: "05 • CIRCUITS",
+        desc: "Translating digital logic into electrical currents using breadboards, LEDs, resistors, switches, and perfboard."
+      }
+    ];
+
+    const pipelineNodes = document.querySelectorAll('.pipeline-node');
+    const tooltipText = document.getElementById('pipelineTooltipText');
+
+    pipelineNodes.forEach(node => {
+      node.addEventListener('click', () => {
+        const step = parseInt(node.getAttribute('data-step'));
+        pipelineNodes.forEach(n => n.classList.remove('active'));
+        node.classList.add('active');
+        if (tooltipText && pipelineData[step]) {
+          tooltipText.innerHTML = `<strong>${pipelineData[step].title}:</strong> ${pipelineData[step].desc}`;
+        }
+      });
+      node.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          node.click();
+        }
+      });
+    });
+
+    // 3. Interactive Connection Step Highlights
+    const connectionCards = document.querySelectorAll('.connection-step-card');
+    connectionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        connectionCards.forEach(c => c.classList.remove('active-connection'));
+        card.classList.add('active-connection');
+      });
+    });
+  </script>
+
+</body>
+</html>

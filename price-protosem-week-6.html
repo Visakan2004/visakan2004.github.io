@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Week 06 / Page 1 — Subtractive Manufacturing: Laser Cutting. RDWorks V8 CAM setup, RuiDa RDC6442G controller calibration, acrylic keychain fabrication | PRICE ProtoSem — Visakan K." />
+  <meta name="author" content="Visakan K" />
+  <title>WEEK 06 (Page 1) — Laser Cutting &amp; CAM Toolpaths | PRICE ProtoSem Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ============================================================
+       ENGINEERING PORTFOLIO & TECHNICAL CASE-STUDY DESIGN SYSTEM
+       WEEK 06 (PAGE 1) — SUBTRACTIVE MANUFACTURING: LASER CUTTING
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f8fafc;
+      --bg-alt: #f1f5f9;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --border-dark: #334155;
+
+      --text: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --text-heading: #0f172a;
+
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+
+      --cyan: #0284c7;
+      --cyan-light: #f0f9ff;
+      --cyan-border: #bae6fd;
+
+      --amber: #d97706;
+      --amber-light: #fffbeb;
+      --amber-border: #fde68a;
+
+      --emerald: #059669;
+      --emerald-light: #ecfdf5;
+      --emerald-border: #a7f3d0;
+
+      --dark-surface: #0f172a;
+      --dark-card: #1e293b;
+
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+      --radius-sm: 6px;
+      --radius: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+
+      --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-sm: 0 2px 6px -1px rgba(15, 23, 42, 0.06);
+      --shadow-md: 0 8px 20px -3px rgba(15, 23, 42, 0.07);
+      --shadow-lg: 0 16px 30px -4px rgba(15, 23, 42, 0.09);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background-image: radial-gradient(rgba(148, 163, 184, 0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    ::selection {
+      background: #bfdbfe;
+      color: #1e3a8a;
+    }
+
+    .reading-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #0284c7, #059669);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    .doc-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    /* Navigation Header */
+    .tech-nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 0;
+    }
+
+    .tech-nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-brand-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .nav-mark-badge {
+      background: var(--dark-surface);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.6rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-title-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .nav-doc-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text-heading);
+    }
+
+    .nav-doc-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .nav-links-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-page-tab {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-page-tab:hover {
+      color: var(--primary);
+      border-color: var(--primary-border);
+      background: #ffffff;
+    }
+
+    .nav-page-tab.active-tab {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    .btn-return-journey {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: #ffffff;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-return-journey:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateX(-2px);
+    }
+
+    /* Academic Meta Strip */
+    .academic-meta-strip {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 1rem;
+      margin: 1.5rem 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .academic-meta-items {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .academic-meta-item strong {
+      color: var(--text-heading);
+    }
+
+    .academic-score-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-pill);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero-editorial {
+      padding: 1.75rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--cyan);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      max-width: 820px;
+    }
+
+    /* Multi-Page Navigation Banner */
+    .two-page-switch-banner {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .page-switch-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .page-switch-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .page-switch-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .page-switch-text strong {
+      color: var(--text-heading);
+    }
+
+    .btn-switch-page {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #047857;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-switch-page:hover {
+      background: #d1fae5;
+      transform: translateX(2px);
+    }
+
+    /* Restrained Workflow Graphic */
+    .restrained-workflow-strip {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .workflow-node {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .workflow-node .node-idx {
+      color: var(--primary);
+      font-size: 0.68rem;
+    }
+
+    .workflow-arrow {
+      color: var(--text-light);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* Section Structure */
+    .case-section {
+      margin-bottom: 3.25rem;
+      scroll-margin-top: 5rem;
+    }
+
+    .case-section-header {
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .case-heading {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .case-lead-p {
+      font-size: 0.98rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 1.15rem;
+    }
+
+    /* Compact Tables */
+    .compact-table-wrap {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      margin: 1.15rem 0;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .compact-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+
+    .compact-table th {
+      background: var(--surface-subtle);
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .compact-table td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    .compact-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compact-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    .td-param {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-heading);
+      width: 32%;
+      white-space: nowrap;
+    }
+
+    /* Compact 3x2 Safety Cards Grid */
+    .safety-grid-compact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
+      margin: 1.15rem 0;
+    }
+
+    .safety-item-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem 1.1rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .safety-item-title {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .safety-item-title i {
+      color: #ef4444;
+      font-size: 0.85rem;
+    }
+
+    .safety-item-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Horizontal Flow Diagram */
+    .h-flow-track {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1.15rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .h-flow-step {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.65rem;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+    }
+
+    .h-flow-arrow {
+      color: var(--text-light);
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* Image Display Components */
+    .case-photo-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      margin: 1.25rem 0;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .case-photo-frame {
+      position: relative;
+      width: 100%;
+      max-height: 420px;
+      background: #0b1120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .case-photo-frame img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: contain;
+    }
+
+    .case-photo-caption {
+      padding: 0.65rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      background: #ffffff;
+      line-height: 1.45;
+    }
+
+    .case-photo-caption strong {
+      color: var(--text-heading);
+    }
+
+    /* Side-by-Side Design Showcase */
+    .design-showcase-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    @media (max-width: 768px) {
+      .design-showcase-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .showcase-media {
+      max-height: 320px;
+      background: #0b1120;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .showcase-media img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+    }
+
+    .showcase-details h4 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.5rem;
+    }
+
+    .showcase-details p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.85rem;
+    }
+
+    .showcase-mini-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .mini-spec-cell {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+    }
+
+    .mini-spec-cell .label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .mini-spec-cell .val {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+
+    /* Telemetry Box */
+    .telemetry-highlight-box {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-sm);
+      padding: 1.15rem 1.35rem;
+      margin: 1.15rem 0;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .telemetry-metrics-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .telemetry-main-val {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .telemetry-sub-metrics {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-top: 0.25rem;
+    }
+
+    .telemetry-thumb {
+      max-height: 85px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+    }
+
+    /* Process Gallery (5 Steps) */
+    .process-steps-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .process-step-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process-step-thumb {
+      height: 190px;
+      background: #0b1120;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .process-step-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .process-step-desc {
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      flex: 1;
+    }
+
+    .process-step-desc strong {
+      color: var(--text-heading);
+      display: block;
+      font-family: var(--font-heading);
+      margin-bottom: 0.2rem;
+    }
+
+    /* Hero Result Card */
+    .hero-result-card {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow-md);
+      color: #ffffff;
+    }
+
+    .hero-result-frame {
+      width: 100%;
+      max-height: 480px;
+      background: #080c16;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-result-frame img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+    }
+
+    .hero-result-caption {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-specs-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.65rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .ribbon-cell {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+
+    .ribbon-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .ribbon-val {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Reflection 4 Cards */
+    .reflection-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .reflection-quad-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .reflection-quad-title {
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .reflection-quad-body {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Download Buttons */
+    .downloads-cluster {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0;
+    }
+
+    .btn-download-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #ffffff;
+      border: 1px solid var(--border-strong);
+      color: var(--text-heading);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.6rem 1.15rem;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-subtle);
+      transition: all 0.2s ease;
+    }
+
+    .btn-download-item:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Interactive Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-modal-content {
+      max-width: 900px;
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    .lightbox-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-modal-header h4 {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+    }
+
+    .lightbox-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .lightbox-close-btn:hover {
+      color: #ffffff;
+    }
+
+    .lightbox-modal-body {
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 72vh;
+      background: #080c16;
+    }
+
+    .lightbox-modal-body img {
+      max-width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+    }
+
+    .lightbox-modal-caption {
+      padding: 0.85rem 1.25rem;
+      background: #0d1322;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    @media (max-width: 768px) {
+      .tech-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links-cluster {
+        display: flex;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 0.35rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-links-cluster::-webkit-scrollbar {
+        display: none;
+      }
+      .academic-meta-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    .quality-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
+      margin: 1.15rem 0;
+    }
+
+    .quality-metric-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow-subtle);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .quality-metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--primary-border);
+    }
+
+    .quality-metric-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .quality-metric-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .cam-assets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.15rem;
+      margin: 1.35rem 0;
+    }
+
+    .cam-asset-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.35rem;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cam-asset-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-border);
+    }
+
+    .format-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-left: auto;
+    }
+
+    .cam-asset-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .cam-asset-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .cam-asset-title {
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      line-height: 1.3;
+    }
+
+    .cam-asset-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .cam-asset-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    .btn-cam-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-strong);
+      color: var(--text-heading);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.5rem 0.95rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .btn-cam-action:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .process-step-thumb.thumb-graphic {
+      background: #0f172a;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: #38bdf8;
+      font-size: 2.2rem;
+    }
+
+    .process-step-thumb.thumb-graphic .thumb-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .callout-banner {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.25rem;
+      margin: 1.15rem 0;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .callout-banner-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .callout-banner-text {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="readingProgress"></div>
+
+  <!-- Compact Top Navigation Header -->
+  <header class="tech-nav-bar" id="topNav">
+    <div class="doc-container">
+      <div class="tech-nav-inner">
+        <a href="#top" class="nav-brand-cluster">
+          <span class="nav-mark-badge">PROTOSEM / W06</span>
+          <div class="nav-title-group">
+            <span class="nav-doc-title">Visakan K &bull; Technical Portfolio</span>
+            <span class="nav-doc-meta">PAGE 1: LASER CUTTING CASE STUDY</span>
+          </div>
+        </a>
+
+        <!-- Compact In-Page Navigation -->
+        <div class="nav-links-cluster">
+          <span class="nav-page-tab active-tab">Page 1: Laser Cutting</span>
+          <a href="price-protosem-week-6-3d-printing.html" class="nav-page-tab" title="Switch to Page 2: 3D Printing">Page 2: 3D Printing &rarr;</a>
+          <a href="#laser-specs" class="nav-page-tab">Machine Specs</a>
+          <a href="#laser-settings" class="nav-page-tab">Settings</a>
+          <a href="#laser-result" class="nav-page-tab">Result</a>
+          <a href="#laser-files" class="nav-page-tab">Files</a>
+          <a href="index.html#protosem" class="btn-return-journey">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back to Journey</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="doc-container" id="top">
+
+    <!-- Professional Engineering Metadata Strip -->
+    <div class="academic-meta-strip">
+      <div class="academic-meta-items">
+        <span class="academic-meta-item">Facility: <strong>KCT Forge Prototyping Laboratory</strong></span>
+        <span class="academic-meta-item">Program: <strong>PRICE ProtoSem</strong></span>
+        <span class="academic-meta-item">Domain: <strong>Digital Fabrication &bull; Subtractive Machining</strong></span>
+      </div>
+      <div class="academic-score-pill">
+        <i class="fa-solid fa-microchip"></i> CNC LASER PROTOSTUDIO
+      </div>
+    </div>
+
+    <!-- Editorial Hero Section -->
+    <header class="hero-editorial">
+      <div class="hero-eyebrow">
+        <i class="fa-solid fa-bolt text-primary"></i> WEEK 06 &bull; CASE STUDY 01 / SUBTRACTIVE MANUFACTURING
+      </div>
+
+      <h1 class="hero-title">Laser Cutting &amp; CAM Toolpath Optimization</h1>
+
+      <p class="hero-subtitle">RDWorks V8 &bull; RuiDa RDC6442G DSP Controller &bull; 3.0 mm Cast Acrylic (PMMA)</p>
+
+      <p class="hero-intro">
+        A systematic engineering case study on subtractive digital fabrication: converting raster artwork into closed-contour vector geometry, configuring dual-layer CAM toolpaths in RDWorks V8, optimizing power-speed dynamics on an industrial CO₂ CNC laser platform, and producing a precision 50&times;50 mm acrylic keychain prototype at KCT Forge.
+      </p>
+
+      <!-- Two-Page Switch Banner -->
+      <div class="two-page-switch-banner">
+        <div class="page-switch-info">
+          <span class="page-switch-badge">PAGE 1 OF 2</span>
+          <div class="page-switch-text">
+            Viewing <strong>Subtractive Laser Cutting</strong>. Looking for Additive Manufacturing?
+          </div>
+        </div>
+        <a href="price-protosem-week-6-3d-printing.html" class="btn-switch-page">
+          <span>Go to Page 2: 3D Printing Log</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Restrained Workflow Graphic -->
+      <div class="restrained-workflow-strip">
+        <div class="workflow-node"><span class="node-idx">01</span> VECTOR ARTWORK</div>
+        <i class="fa-solid fa-arrow-right workflow-arrow"></i>
+        <div class="workflow-node"><span class="node-idx">02</span> DXF AUDIT</div>
+        <i class="fa-solid fa-arrow-right workflow-arrow"></i>
+        <div class="workflow-node"><span class="node-idx">03</span> RDWORKS NESTING</div>
+        <i class="fa-solid fa-arrow-right workflow-arrow"></i>
+        <div class="workflow-node"><span class="node-idx">04</span> DUAL-LAYER CUT</div>
+        <i class="fa-solid fa-arrow-right workflow-arrow"></i>
+        <div class="workflow-node"><span class="node-idx">05</span> QC INSPECTION</div>
+      </div>
+    </header>
+
+    <!-- 1. Lab Safety -->
+    <section class="case-section" id="laser-safety">
+      <div class="case-section-header">
+        <h3 class="case-heading">1. Laboratory Safety &amp; Laser Operating Protocols</h3>
+      </div>
+
+      <p class="case-lead-p">
+        Operating industrial CO₂ laser systems requires strict adherence to Class 4 laser radiation safeguards, thermal fume management, high-voltage isolation, and optical cooling protocols. Prior to energizing the laser power supply, all machine and environmental interlocks were verified.
+      </p>
+
+      <div class="safety-grid-compact">
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-radiation"></i> LASER RADIATION &amp; ENCLOSURE</div>
+          <p class="safety-item-text">Operate only with protective chassis lid closed. The acrylic observation window blocks 10.6 &mu;m infrared radiation. Interlock switches immediately terminate beam discharge if opened.</p>
+        </div>
+
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-wind"></i> FUME EXTRACTION SYSTEM</div>
+          <p class="safety-item-text">Centrifugal exhaust ventilation must be active prior to laser emission to safely evacuate vaporized methyl methacrylate (MMA) fumes and airborne particles outdoors.</p>
+        </div>
+
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-snowflake"></i> CLOSED-LOOP WATER CHILLER</div>
+          <p class="safety-item-text">Verified continuous distilled coolant flow through the sealed glass CO₂ tube at 18&ndash;22&deg;C. Flow sensor interlock prevents thermal shock and tube fracture.</p>
+        </div>
+
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-bolt-lightning"></i> HIGH-VOLTAGE GROUNDING</div>
+          <p class="safety-item-text">Confirmed low-impedance electrical chassis grounding to dissipate static discharge and isolate 25&ndash;30 kV DC power supplies from sensitive DSP logic controllers.</p>
+        </div>
+
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-fan"></i> COAXIAL AIR ASSIST</div>
+          <p class="safety-item-text">Constant coaxial air pressure delivered through the laser nozzle suppresses combustion flame-ups at the focal spot and shields the plano-convex lens from vapor deposits.</p>
+        </div>
+
+        <div class="safety-item-card">
+          <div class="safety-item-title"><i class="fa-solid fa-shield-halved"></i> CONSTANT SUPERVISION</div>
+          <p class="safety-item-text">Maintain uninterrupted line-of-sight supervision during all active cutting passes. Clean honeycomb tray of flammable offcuts and ensure a CO₂ fire extinguisher is on standby.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Machine Specifications -->
+    <section class="case-section" id="laser-specs">
+      <div class="case-section-header">
+        <h3 class="case-heading">2. Machine Specifications &amp; CNC Platform</h3>
+      </div>
+
+      <div class="compact-table-wrap">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Verified Equipment Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-param">Machine Platform</td>
+              <td>Industrial CNC Flatbed CO₂ Laser Engraver &amp; Cutter (KCT Forge Prototyping Laboratory)</td>
+            </tr>
+            <tr>
+              <td class="td-param">DSP Motion Controller</td>
+              <td><strong>RuiDa RDC6442G Multi-Axis Digital Signal Processor</strong></td>
+            </tr>
+            <tr>
+              <td class="td-param">Bed Size &bull; Coordinate Limits</td>
+              <td><strong>612.4 mm &times; 425.4 mm</strong> (Class 600&times;400 mm Honeycomb Work Area)</td>
+            </tr>
+            <tr>
+              <td class="td-param">Laser Tube Rating</td>
+              <td><strong>80W &ndash; 100W Sealed Glass CO₂ Laser Tube</strong> (&lambda; = 10.6 &mu;m)</td>
+            </tr>
+            <tr>
+              <td class="td-param">Optical Delivery</td>
+              <td>Flying optics with 3 gold-coated mirrors and 50.8 mm (2.0 in) focal length focus lens</td>
+            </tr>
+            <tr>
+              <td class="td-param">CAM &bull; Control Software</td>
+              <td><strong>RDWorks V8.01.65 (Build 20231219)</strong> [High-Speed USB:Auto DSP Interface]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="case-photo-box">
+        <div class="case-photo-frame" onclick="openLightbox('assets/weekly/week 6/laser-cutting-machine.jpg', 'Industrial Laser Cutter at KCT Forge', 'Industrial CNC CO2 laser cutting platform with RuiDa RDC6442G controller during operation.')">
+          <img src="assets/weekly/week 6/laser-cutting-machine.jpg" alt="Industrial Laser Cutter at KCT Forge" loading="lazy" />
+        </div>
+        <div class="case-photo-caption">
+          <strong>Machine Setup:</strong> Industrial CNC CO₂ laser cutting platform with RuiDa RDC6442G controller and honeycomb bed at KCT Forge Prototyping Laboratory.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Materials Used -->
+    <section class="case-section" id="laser-materials">
+      <div class="case-section-header">
+        <h3 class="case-heading">3. Material Selection &amp; Substrate Characteristics</h3>
+      </div>
+
+      <p class="case-lead-p">
+        Cast Acrylic (poly-methyl methacrylate &mdash; PMMA) was selected for its optical purity, structural rigidity, and clean vapor-phase degradation under 10.6 &mu;m laser radiation. Unlike extruded acrylic or woods that char, cast PMMA directly depolymerizes into gaseous monomer, producing flame-polished edge walls and high-contrast frosted engraving.
+      </p>
+
+      <div class="compact-table-wrap">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th>Material Parameter</th>
+              <th>Specification &bull; Engineering Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-param">Primary Material</td>
+              <td><strong>Cast Acrylic Sheet (Clear PMMA)</strong></td>
+            </tr>
+            <tr>
+              <td class="td-param">Calibrated Thickness</td>
+              <td><strong>3.0 mm</strong> (verified uniformly across sheet with digital vernier caliper)</td>
+            </tr>
+            <tr>
+              <td class="td-param">Processing Characteristics</td>
+              <td>Clean sublimation without carbonization; produces flame-polished, optical-grade edges under 20.00 mm/s vector cut speed.</td>
+            </tr>
+            <tr>
+              <td class="td-param">Surface Preparation</td>
+              <td>Dual-sided protective craft paper masking preserved during raster engraving and cutting to prevent soot deposition and burn halos.</td>
+            </tr>
+            <tr>
+              <td class="td-param">Raster Contrast</td>
+              <td>Laser surface micro-fracturing produces high-contrast, frosted-white text and graphics against a transparent background.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. Selected Design -->
+    <section class="case-section" id="laser-design">
+      <div class="case-section-header">
+        <h3 class="case-heading">4. CAD Geometry &amp; Design Specification</h3>
+      </div>
+
+      <p class="case-lead-p">
+        A 50.0 &times; 50.0 mm Tom &amp; Jerry keychain was chosen as the benchmark artifact. This geometry presents a comprehensive digital fabrication challenge: combining fine high-frequency facial raster engraving with a continuous closed-loop outer vector perimeter and an integrated 4.0 mm mechanical lanyard eyelet.
+      </p>
+
+      <div class="design-showcase-split">
+        <div class="showcase-media" onclick="openLightbox('assets/weekly/week 6/fdd76733b5face81762a96af11506811.jpg', 'Tom & Jerry Character Graphic', 'Source artwork showing high-contrast character silhouettes and line features.')">
+          <img src="assets/weekly/week 6/fdd76733b5face81762a96af11506811.jpg" alt="Tom and Jerry Vector Artwork" loading="lazy" />
+        </div>
+
+        <div class="showcase-details">
+          <h4>Tom &amp; Jerry Acrylic Keychain Benchmark</h4>
+          <p>Dual-layer fabrication architecture combining high-resolution raster scanning of character facial silhouettes with precise vector perimeter cut-through and a concentric 4.0 mm mechanical eyelet.</p>
+          <div class="showcase-mini-specs">
+            <div class="mini-spec-cell">
+              <span class="label">Outer Dimensions</span>
+              <span class="val">50.0 &times; 50.0 mm</span>
+            </div>
+            <div class="mini-spec-cell">
+              <span class="label">Keyring Eyelet</span>
+              <span class="val">4.0 mm Inner Diameter</span>
+            </div>
+            <div class="mini-spec-cell">
+              <span class="label">Substrate</span>
+              <span class="val">3.0 mm Cast PMMA</span>
+            </div>
+            <div class="mini-spec-cell">
+              <span class="label">CAM Operations</span>
+              <span class="val">2 Layers (Scan + Cut)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Image-to-DXF Conversion -->
+    <section class="case-section" id="laser-dxf">
+      <div class="case-section-header">
+        <h3 class="case-heading">5. Raster-to-Vector (DXF) Conversion Pipeline</h3>
+      </div>
+
+      <p class="case-lead-p">
+        The source raster artwork was vectorized through a structured image-processing pipeline to generate mathematically continuous Bézier paths compatible with CNC motion controllers.
+      </p>
+
+      <div class="h-flow-track">
+        <span class="h-flow-step">1. SOURCE BITMAP</span>
+        <i class="fa-solid fa-arrow-right h-flow-arrow"></i>
+        <span class="h-flow-step">2. CONTRAST THRESHOLD</span>
+        <i class="fa-solid fa-arrow-right h-flow-arrow"></i>
+        <span class="h-flow-step">3. BÉZIER NODE DECIMATION</span>
+        <i class="fa-solid fa-arrow-right h-flow-arrow"></i>
+        <span class="h-flow-step">4. 50&times;50mm CALIBRATION</span>
+        <i class="fa-solid fa-arrow-right h-flow-arrow"></i>
+        <span class="h-flow-step">5. CLOSED DXF EXPORT</span>
+      </div>
+
+      <div class="callout-banner">
+        <div class="callout-banner-title">
+          <i class="fa-solid fa-circle-check text-primary"></i>
+          <span>Kinematic Optimization via Spline Decimation</span>
+        </div>
+        <p class="callout-banner-text">
+          Automated edge tracers frequently generate thousands of redundant micro-nodes along smooth curves. In RuiDa DSP motion systems, dense nodes induce micro-acceleration transients and motor chatter. By smoothing Bézier control points into simplified mathematical curves while preserving 0.15 mm facial details, toolpath motion was rendered smooth and continuous.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. File Preparation -->
+    <section class="case-section" id="laser-prep">
+      <div class="case-section-header">
+        <h3 class="case-heading">6. Vector Verification &amp; CAM Geometry Audit</h3>
+      </div>
+
+      <p class="case-lead-p">
+        Prior to toolpath generation in RDWorks V8, vector geometry was audited for open endpoints, duplicate overlapping paths, and self-intersections to prevent double-pulsing the laser tube over identical coordinates.
+      </p>
+
+      <div class="case-photo-box">
+        <div class="case-photo-frame" onclick="openLightbox('assets/weekly/week 6/rdworks-workspace-tom-jerry.png', 'RDWorks V8 Vector Verification', 'Cleaned vector geometry imported into RDWorks V8 workspace with dual-layer separation.')">
+          <img src="assets/weekly/week 6/rdworks-workspace-tom-jerry.png" alt="Cleaned vector geometry in RDWorks V8" loading="lazy" />
+        </div>
+        <div class="case-photo-caption">
+          <strong>File Inspection:</strong> Cleaned vector layout in RDWorks V8 showing verified closed contours, origin datum, and dual-layer separation for project <code>tom and jerry.rld</code>.
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Nesting and Layout in RDWorks -->
+    <section class="case-section" id="laser-nesting">
+      <div class="case-section-header">
+        <h3 class="case-heading">7. Layer Hierarchy &amp; Kinematics Configuration</h3>
+      </div>
+
+      <p class="case-lead-p">
+        The verified DXF geometry was positioned on the virtual coordinate table (X: 603.235 mm, Y: 407.214 mm) corresponding to available stock on the honeycomb bed. Toolpaths were divided into two prioritized processing layers.
+      </p>
+
+      <div class="compact-table-wrap">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Colour</th>
+              <th>Operation</th>
+              <th>Speed</th>
+              <th>Min Power</th>
+              <th>Max Power</th>
+              <th>Purpose &bull; Path Priority</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-param">Layer 1</td>
+              <td><span style="display:inline-block; width:10px; height:10px; background:#000; border-radius:2px; vertical-align:middle; margin-right:4px;"></span> Black</td>
+              <td><strong>Laser Scan</strong></td>
+              <td>100.00 mm/s</td>
+              <td>30.0%</td>
+              <td>30.0%</td>
+              <td>High-contrast surface raster ablation of character faces and typography (Priority 1)</td>
+            </tr>
+            <tr>
+              <td class="td-param">Layer 2</td>
+              <td><span style="display:inline-block; width:10px; height:10px; background:#00f; border-radius:2px; vertical-align:middle; margin-right:4px;"></span> Blue</td>
+              <td><strong>Laser Cut</strong></td>
+              <td>20.00 mm/s</td>
+              <td>60.0%</td>
+              <td>65.0%</td>
+              <td>Through-cut internal 4.0 mm eyelet first, then outer 50&times;50 mm perimeter contour (Priority 2)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-banner">
+        <div class="callout-banner-title">
+          <i class="fa-solid fa-list-ol text-primary"></i>
+          <span>Critical Manufacturing Rule: Inside-to-Outside Cutting Sequence</span>
+        </div>
+        <p class="callout-banner-text">
+          In subtractive laser CAM, interior cutouts (the 4.0 mm lanyard hole) must always complete <em>before</em> outer perimeter separation. If the outer perimeter were cut first, the finished 50&times;50 mm piece would drop or vibrate on the honeycomb bed, resulting in eccentricity or failure when subsequently attempting to cut the eyelet.
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. Final Machine Settings -->
+    <section class="case-section" id="laser-settings">
+      <div class="case-section-header">
+        <h3 class="case-heading">8. Process Parameters &amp; Simulation Telemetry</h3>
+      </div>
+
+      <div class="compact-table-wrap">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th>Material</th>
+              <th>Thickness</th>
+              <th>Operation</th>
+              <th>Speed (mm/s)</th>
+              <th>Min Power</th>
+              <th>Max Power</th>
+              <th>Passes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-param">Cast Acrylic (PMMA)</td>
+              <td>3.0 mm</td>
+              <td><strong>Laser Scan (Raster)</strong></td>
+              <td>100.00</td>
+              <td>30.0%</td>
+              <td>30.0%</td>
+              <td>1 Pass</td>
+            </tr>
+            <tr>
+              <td class="td-param">Cast Acrylic (PMMA)</td>
+              <td>3.0 mm</td>
+              <td><strong>Laser Cut (Vector)</strong></td>
+              <td>20.00</td>
+              <td>60.0%</td>
+              <td>65.0%</td>
+              <td>1 Pass</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="telemetry-highlight-box">
+        <div>
+          <div class="telemetry-metrics-title"><i class="fa-solid fa-gauge-high"></i> Verified RDWorks V8 Simulation Telemetry</div>
+          <div class="telemetry-main-val">Job Cycle Time: 0:02:18.228 &bull; Active Laser Light Time: 0:00:35.773</div>
+          <div class="telemetry-sub-metrics">
+            Artifact Dimensions: <strong>50.0 mm &times; 50.0 mm</strong> &bull; Work Path: <strong>3,577.3 mm</strong> &bull; Idle Traversal: <strong>10,245.6 mm</strong>
+          </div>
+        </div>
+        <img src="assets/weekly/week 6/rdworks-telemetry-metrics.png" alt="RDWorks Simulation Telemetry" class="telemetry-thumb" onclick="openLightbox('assets/weekly/week 6/rdworks-telemetry-metrics.png', 'RDWorks Telemetry Metrics', 'Verified simulation telemetry panel showing exact cycle times and path lengths.')" />
+      </div>
+    </section>
+
+    <!-- 9. Cutting Process -->
+    <section class="case-section" id="laser-process">
+      <div class="case-section-header">
+        <h3 class="case-heading">9. Systematic Fabrication Workflow</h3>
+      </div>
+
+      <p class="case-lead-p">
+        The fabrication process followed a disciplined 5-stage standard operating procedure from optical calibration to final part extraction.
+      </p>
+
+      <div class="process-steps-gallery">
+        <div class="process-step-card">
+          <div class="process-step-thumb thumb-graphic">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span class="thumb-label">Stage 01 &bull; Optics</span>
+          </div>
+          <div class="process-step-desc">
+            <strong>1. Optical Datum Calibration</strong>
+            Chiller and exhaust initiated. The 50.8 mm focal distance gauge block was placed between nozzle and acrylic stock to set optimal optical spot waist (~0.1 mm diameter).
+          </div>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-step-thumb thumb-graphic">
+            <i class="fa-solid fa-arrows-to-dot"></i>
+            <span class="thumb-label">Stage 02 &bull; Stock</span>
+          </div>
+          <div class="process-step-desc">
+            <strong>2. Stock Fixturing &amp; Dry-Run Framing</strong>
+            3.0 mm cast PMMA sheet was secured flat on honeycomb bed. The RuiDa DSP controller executed a bounding box dry-run with red-dot laser to confirm coordinate bounds.
+          </div>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/rdworks-simulation-preview.png', 'Stage 3: Simulation Preview', 'RDWorks simulation showing raster scan hatch lines and perimeter cut.')">
+            <img src="assets/weekly/week 6/rdworks-simulation-preview.png" alt="Simulation Preview" loading="lazy" />
+          </div>
+          <div class="process-step-desc">
+            <strong>3. Toolpath Simulation</strong>
+            RDWorks V8 toolpath simulation verified scanline hatch density, job cycle time (2m 18s), and confirmed eyelet cutting prior to perimeter separation.
+          </div>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/laser-cutting-machine.jpg', 'Stage 4: Active Fabrication', 'Visakan observing the laser cut in progress at KCT Forge.')">
+            <img src="assets/weekly/week 6/laser-cutting-machine.jpg" alt="Laser Cutting in Progress" loading="lazy" />
+          </div>
+          <div class="process-step-desc">
+            <strong>4. Supervised Laser Execution</strong>
+            Laser firing under active exhaust and coaxial air assist. Layer 1 raster engraving completed first, followed immediately by Layer 2 vector cut-through.
+          </div>
+        </div>
+
+        <div class="process-step-card">
+          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/tom-and-jerry-laser-cut.jpg', 'Stage 5: Finished Part on Bed', 'Cutting result immediately after completion before removal.')">
+            <img src="assets/weekly/week 6/tom-and-jerry-laser-cut.jpg" alt="Finished Part on Bed" loading="lazy" />
+          </div>
+          <div class="process-step-desc">
+            <strong>5. Dwell Cooling &amp; Part Extraction</strong>
+            Maintained 30-second dwell time for complete vapor evacuation. The finished 50&times;50 mm part released cleanly from surrounding stock without burrs.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Final Result -->
+    <section class="case-section" id="laser-result">
+      <div class="case-section-header">
+        <h3 class="case-heading">10. Fabricated Artifact &amp; Quality Assessment</h3>
+      </div>
+
+      <div class="hero-result-card">
+        <div class="hero-result-frame" onclick="openLightbox('assets/weekly/week 6/tom-and-jerry-laser-cut.jpg', 'Final Acrylic Keychain Hero Shot', 'Final laser-cut and engraved Tom & Jerry acrylic keychain.')">
+          <img src="assets/weekly/week 6/tom-and-jerry-laser-cut.jpg" alt="Tom and Jerry Acrylic Keychain Hero Shot" loading="lazy" />
+        </div>
+        <p class="hero-result-caption">
+          Manufactured Prototype: 50.0 &times; 50.0 mm Tom &amp; Jerry Cast Acrylic Keychain with 4.0 mm Integrated Keyring Eyelet.
+        </p>
+        <div class="hero-specs-ribbon">
+          <div class="ribbon-cell">
+            <span class="ribbon-label">Substrate</span>
+            <span class="ribbon-val">Cast PMMA (3.0 mm)</span>
+          </div>
+          <div class="ribbon-cell">
+            <span class="ribbon-label">Dimensions</span>
+            <span class="ribbon-val">50.0 &times; 50.0 mm</span>
+          </div>
+          <div class="ribbon-cell">
+            <span class="ribbon-label">Cycle Time</span>
+            <span class="ribbon-val">2m 18s (Light: 35.8s)</span>
+          </div>
+          <div class="ribbon-cell">
+            <span class="ribbon-label">Motion Controller</span>
+            <span class="ribbon-val">RuiDa RDC6442G</span>
+          </div>
+          <div class="ribbon-cell">
+            <span class="ribbon-label">CAM Package</span>
+            <span class="ribbon-val">RDWorks V8.01.65</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quality Metrics Grid -->
+      <div class="quality-metrics-grid">
+        <div class="quality-metric-card">
+          <div class="quality-metric-title">
+            <i class="fa-solid fa-gem text-primary"></i> Flame-Polished Kerf Finish
+          </div>
+          <p class="quality-metric-desc">
+            Vector cutting at 20.00 mm/s with 65% power achieved clean sublimation. Edge walls are perpendicular, optically smooth, and exhibit zero striations or scalloping.
+          </p>
+        </div>
+
+        <div class="quality-metric-card">
+          <div class="quality-metric-title">
+            <i class="fa-solid fa-eye text-primary"></i> Raster Resolution Fidelity
+          </div>
+          <p class="quality-metric-desc">
+            Capping scan power at 30% under 100.00 mm/s head speed preserved 0.15 mm facial whiskers and typography with sharp frosted relief and zero heat scorching.
+          </p>
+        </div>
+
+        <div class="quality-metric-card">
+          <div class="quality-metric-title">
+            <i class="fa-solid fa-circle-notch text-primary"></i> Eyelet Circularity &amp; Concentricity
+          </div>
+          <p class="quality-metric-desc">
+            Inside-first cutting sequence produced a burr-free 4.0 mm circular eyelet with uniform kerf width, ready for mechanical split-ring attachment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Problems and Solutions -->
+    <section class="case-section" id="laser-problems">
+      <div class="case-section-header">
+        <h3 class="case-heading">11. Engineering Challenges &amp; Root-Cause Mitigation</h3>
+      </div>
+
+      <div class="compact-table-wrap">
+        <table class="compact-table">
+          <thead>
+            <tr>
+              <th style="width: 26%;">Observed Issue</th>
+              <th style="width: 37%;">Root-Cause Analysis</th>
+              <th>Engineering Resolution &bull; Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-param">Thermal scorching and feature blooming on fine facial line art</td>
+              <td>Excessive power duty cycle and thermal dwell on small acrylic surface caused localized re-melting.</td>
+              <td>Modulated raster speed to 100.00 mm/s and restricted laser power to a rigid 30.0% ceiling on Layer 1 (Black). Yielded crisp high-definition silhouettes with zero thermal deformation.</td>
+            </tr>
+            <tr>
+              <td class="td-param">Keyring eyelet eccentricity and kerf shift during through-cutting</td>
+              <td>If the outer 50&times;50 mm boundary is severed first, the decoupled workpiece shifts on the honeycomb bed during the eyelet pass.</td>
+              <td>Reordered CAM execution hierarchy in RDWorks to guarantee the internal 4.0 mm hole completes before outer perimeter separation. Delivered a true concentric circular bore.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 12. Reflection -->
+    <section class="case-section" id="laser-reflection">
+      <div class="case-section-header">
+        <h3 class="case-heading">12. Technical Reflection &amp; Core Competencies</h3>
+      </div>
+
+      <div class="reflection-cards-grid">
+        <div class="reflection-quad-card">
+          <div class="reflection-quad-title"><i class="fa-solid fa-lightbulb"></i> CAM LOGIC &amp; HIERARCHY</div>
+          <p class="reflection-quad-body">Mastered dual-layer CAM architecture: decoupling high-speed surface raster engraving (100 mm/s @ 30%) from precision vector through-cutting (20 mm/s @ 65%), prioritizing interior features.</p>
+        </div>
+
+        <div class="reflection-quad-card">
+          <div class="reflection-quad-title"><i class="fa-solid fa-temperature-half"></i> THERMAL DYNAMICS IN PMMA</div>
+          <p class="reflection-quad-body">Understood cast acrylic depolymerization dynamics under 10.6 &mu;m CO₂ beams. Proper power-velocity balancing combined with coaxial air assist eliminates charring and yields optical edge clarity.</p>
+        </div>
+
+        <div class="reflection-quad-card">
+          <div class="reflection-quad-title"><i class="fa-solid fa-microchip"></i> DSP HARDWARE CONTROL</div>
+          <p class="reflection-quad-body">Proficient in RuiDa RDC6442G controller operations: focal block datum setting, coordinate frame boundary verification, air-assist purging, and simulation telemetry validation.</p>
+        </div>
+
+        <div class="reflection-quad-card">
+          <div class="reflection-quad-title"><i class="fa-solid fa-chart-line"></i> PROCESS OPTIMIZATION</div>
+          <p class="reflection-quad-body">For industrial production batches, implement standardized power-speed matrix test coupons on scrap stock and evaluate reverse-side mirror engraving with acrylic paint infill.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. Source Files -->
+    <section class="case-section" id="laser-files">
+      <div class="case-section-header">
+        <h3 class="case-heading">13. Project Documentation &amp; CAM Reference Assets</h3>
+      </div>
+
+      <p class="case-lead-p">
+        Verified project assets and CAM toolpath documentation generated during the practical laser manufacturing session at KCT Forge.
+      </p>
+
+      <div class="cam-assets-grid">
+        <div class="cam-asset-card">
+          <div>
+            <div class="cam-asset-header">
+              <div class="cam-asset-icon" style="color: #e11d48; background: #fff1f2;"><i class="fa-solid fa-pen-nib"></i></div>
+              <div>
+                <div class="cam-asset-title">Adobe Illustrator Vector (.AI)</div>
+                <div class="cam-asset-meta">visakan (1).ai &bull; 326 KB</div>
+              </div>
+              <span class="format-badge" style="background: #fff1f2; color: #e11d48; border: 1px solid #fecdd3;">.AI</span>
+            </div>
+            <p class="cam-asset-desc">
+              Original Adobe Illustrator vector artwork file with layer separations, outline curves, and 50&times;50 mm boundary geometry prepared for laser engraving.
+            </p>
+          </div>
+          <div style="margin-top: 0.5rem;">
+            <a href="assets/weekly/week 6/visakan (1).ai" download="visakan-laser-design.ai" class="btn-cam-action" style="background: #fff1f2; color: #e11d48; border-color: #fecdd3;">
+              <i class="fa-solid fa-download"></i>
+              <span>Download .AI Vector</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cam-asset-card">
+          <div>
+            <div class="cam-asset-header">
+              <div class="cam-asset-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <div>
+                <div class="cam-asset-title">RDWorks Project Setup (.RLD)</div>
+                <div class="cam-asset-meta">tom-and-jerry.rld &bull; Dual-Layer CAM</div>
+              </div>
+              <span class="format-badge" style="background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0;">.RLD</span>
+            </div>
+            <p class="cam-asset-desc">
+              Native RDWorks V8 job file containing color-coded Scan and Cut layers, power-speed parameters, and bed coordinate origins.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+            <button class="btn-cam-action" onclick="openLightbox('assets/weekly/week 6/rdworks-workspace-tom-jerry.png', 'RDWorks Workspace Setup', 'Dual-layer CAM layout and coordinate configuration in RDWorks V8.')">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Inspect Workspace</span>
+            </button>
+            <a href="assets/weekly/week 6/tom-and-jerry.rld" download="tom-and-jerry.rld" class="btn-cam-action" style="background: var(--primary-light); color: var(--primary); border-color: var(--primary-border);">
+              <i class="fa-solid fa-download"></i>
+              <span>Download .RLD</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cam-asset-card">
+          <div>
+            <div class="cam-asset-header">
+              <div class="cam-asset-icon" style="color: #0284c7; background: #f0f9ff;"><i class="fa-solid fa-bezier-curve"></i></div>
+              <div>
+                <div class="cam-asset-title">Vector Toolpath Geometry (.DXF)</div>
+                <div class="cam-asset-meta">tom-and-jerry-keychain.dxf &bull; 50&times;50 mm</div>
+              </div>
+              <span class="format-badge" style="background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd;">.DXF</span>
+            </div>
+            <p class="cam-asset-desc">
+              Cleaned, single-contour vector geometry with smoothed Bézier nodes, 4.0 mm eyelet, and zero duplicate coordinate lines.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+            <button class="btn-cam-action" onclick="openLightbox('assets/weekly/week 6/rdworks-simulation-preview.png', 'Vector Simulation Preview', 'Simulation hatch lines and toolpath traversal in RDWorks V8.')">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Inspect Simulation</span>
+            </button>
+            <a href="assets/weekly/week 6/tom-and-jerry-keychain.dxf" download="tom-and-jerry-keychain.dxf" class="btn-cam-action" style="background: var(--primary-light); color: var(--primary); border-color: var(--primary-border);">
+              <i class="fa-solid fa-download"></i>
+              <span>Download .DXF</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="cam-asset-card">
+          <div>
+            <div class="cam-asset-header">
+              <div class="cam-asset-icon" style="color: #059669; background: #ecfdf5;"><i class="fa-solid fa-stopwatch"></i></div>
+              <div>
+                <div class="cam-asset-title">Kinematic Telemetry Log</div>
+                <div class="cam-asset-meta">2m 18s Total Cycle &bull; 35.8s Light Time</div>
+              </div>
+              <span class="format-badge" style="background: #f8fafc; color: #475569; border: 1px solid #cbd5e1;">LOG</span>
+            </div>
+            <p class="cam-asset-desc">
+              Verified DSP simulation telemetry record detailing active laser emission time, working path length, and rapid transit efficiency.
+            </p>
+          </div>
+          <div style="margin-top: 0.5rem;">
+            <button class="btn-cam-action" onclick="openLightbox('assets/weekly/week 6/rdworks-telemetry-metrics.png', 'DSP Telemetry Report', 'Verified simulation telemetry panel showing exact cycle times and path lengths.')">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Inspect Telemetry Report</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Return & Next Page Navigation -->
+    <div style="display: flex; justify-content: center; gap: 1rem; margin: 3rem 0 5rem; flex-wrap: wrap;">
+      <a href="price-protosem-week-3.html" class="btn-return-journey" style="padding: 0.65rem 1.4rem; font-size: 0.9rem;">
+        <i class="fa-solid fa-backward-step"></i>
+        <span>Previous: Week 03 Log</span>
+      </a>
+      <a href="price-protosem-week-6-3d-printing.html" class="btn-return-journey" style="padding: 0.65rem 1.4rem; font-size: 0.9rem; background: #059669; color: #ffffff; border-color: #059669;">
+        <span>Next: Page 2 &mdash; 3D Printing Log</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="index.html#protosem" class="btn-return-journey" style="padding: 0.65rem 1.4rem; font-size: 0.9rem; background: var(--primary); color: #ffffff; border-color: var(--primary);">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Return to ProtoSem Journey</span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Interactive Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-modal-content">
+      <div class="lightbox-modal-header">
+        <h4 id="lightboxTitle">Image Preview</h4>
+        <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close Preview">&times;</button>
+      </div>
+      <div class="lightbox-modal-body">
+        <img id="lightboxImg" src="" alt="High-Resolution Preview" />
+      </div>
+      <div class="lightbox-modal-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / docHeight) * 100;
+      const progressBar = document.getElementById('readingProgress');
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+    });
+
+    // Lightbox Modal Functions
+    function openLightbox(imgSrc, title, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const titleElem = document.getElementById('lightboxTitle');
+      const captionElem = document.getElementById('lightboxCaption');
+
+      if (modal && img) {
+        img.src = imgSrc;
+        if (titleElem) titleElem.textContent = title || 'Image Inspection';
+        if (captionElem) captionElem.textContent = caption || '';
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    const modalBackdrop = document.getElementById('lightboxModal');
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', (e) => {
+        if (e.target === modalBackdrop) closeLightbox();
+      });
+    }
+  </script>
+</body>
+</html>
