@@ -732,6 +732,218 @@
     }
 
     /* Process Gallery (5 Steps) */
+    /* Systematic Workflow Styling */
+    .workflow-subhead {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.5rem 0 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .workflow-subhead-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-pill);
+      background: var(--dark-surface);
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    .workflow-subhead-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .workflow-preflight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .workflow-schematic-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .workflow-schematic-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--primary-border);
+    }
+
+    .schematic-viewport {
+      background: #080d1a;
+      border-bottom: 1px solid #1e293b;
+      padding: 0.4rem 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .schematic-content {
+      padding: 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .schematic-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.45rem;
+    }
+
+    .schematic-step-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.15rem 0.45rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.05em;
+    }
+
+    .schematic-pill {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .schematic-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 0.4rem;
+    }
+
+    .schematic-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .schematic-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+    }
+
+    .spec-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.45rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+    }
+
+    .spec-chip strong {
+      color: var(--text-heading);
+    }
+
+    .workflow-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.15rem;
+    }
+
+    @media (max-width: 900px) {
+      .workflow-photo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    .workflow-photo-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .workflow-photo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--primary-border);
+    }
+
+    .workflow-photo-frame {
+      height: 195px;
+      background: #0b1120;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .workflow-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .workflow-photo-frame:hover img {
+      transform: scale(1.04);
+    }
+
+    .photo-card-badge {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.2rem 0.45rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.05em;
+    }
+
+    .workflow-photo-desc {
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      flex: 1;
+    }
+
+    .workflow-photo-desc strong {
+      color: var(--text-heading);
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      margin-bottom: 0.25rem;
+    }
+
     .process-steps-gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1631,57 +1843,159 @@
       </div>
 
       <p class="case-lead-p">
-        The fabrication process followed a disciplined 5-stage standard operating procedure from optical calibration to final part extraction.
+        The fabrication process followed a disciplined 5-stage standard operating procedure from optical datum calibration to finished part extraction. Stages 1 and 2 establish machine safety and spatial calibration, followed by verified photographic telemetry in Stages 3 through 5.
       </p>
 
-      <div class="process-steps-gallery">
-        <div class="process-step-card">
-          <div class="process-step-thumb thumb-graphic">
-            <i class="fa-solid fa-crosshairs"></i>
-            <span class="thumb-label">Stage 01 &bull; Optics</span>
+      <!-- Pre-Machining Setup & Calibration (Stages 01 & 02) -->
+      <div class="workflow-subhead">
+        <span class="workflow-subhead-badge"><i class="fa-solid fa-sliders"></i> PRE-OPERATION SETUP &amp; CALIBRATION</span>
+        <span class="workflow-subhead-note">Stages 01 &amp; 02 &bull; Optical focal length datum &amp; coordinate envelope verification</span>
+      </div>
+
+      <div class="workflow-preflight-grid">
+        <!-- Stage 01: Optics -->
+        <div class="workflow-schematic-card">
+          <div class="schematic-viewport">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:130px; display:block;">
+              <defs>
+                <linearGradient id="beamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+                  <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#f59e0b" stop-opacity="1"/>
+                </linearGradient>
+                <linearGradient id="nozzleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#334155"/>
+                  <stop offset="50%" stop-color="#64748b"/>
+                  <stop offset="100%" stop-color="#334155"/>
+                </linearGradient>
+                <linearGradient id="acrylicGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#0284c7" stop-opacity="0.5"/>
+                </linearGradient>
+              </defs>
+              <line x1="20" y1="100" x2="380" y2="100" stroke="#1e293b" stroke-width="1"/>
+              <line x1="20" y1="70" x2="380" y2="70" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+              <polygon points="175,8 225,8 215,35 185,35" fill="url(#nozzleGrad)" stroke="#475569" stroke-width="1"/>
+              <rect x="194" y="35" width="12" height="10" fill="#64748b" stroke="#94a3b8" stroke-width="0.75"/>
+              <text x="200" y="24" fill="#cbd5e1" font-size="8" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="600">NOZZLE</text>
+              <polygon points="196,45 204,45 200,95" fill="url(#beamGrad)"/>
+              <line x1="200" y1="45" x2="200" y2="95" stroke="#f59e0b" stroke-width="1" stroke-dasharray="2,2"/>
+              <circle cx="200" cy="95" r="2.5" fill="#ef4444" stroke="#fef08a" stroke-width="1"/>
+              <text x="210" y="93" fill="#f59e0b" font-size="8.5" font-family="'JetBrains Mono', monospace" font-weight="700">Focal Waist: Ø 0.1mm</text>
+              <rect x="50" y="95" width="300" height="16" fill="url(#acrylicGrad)" stroke="#0284c7" stroke-width="1" rx="2"/>
+              <text x="75" y="107" fill="#93c5fd" font-size="8.5" font-family="'JetBrains Mono', monospace" font-weight="600">3.0 mm Cast PMMA Stock</text>
+              <rect x="140" y="45" width="32" height="50" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" rx="2"/>
+              <rect x="144" y="49" width="24" height="42" fill="#0f172a" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="2,2"/>
+              <text x="156" y="66" fill="#38bdf8" font-size="7.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="700">GAUGE</text>
+              <text x="156" y="77" fill="#f8fafc" font-size="8" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="800">50.8 mm</text>
+              <line x1="128" y1="45" x2="128" y2="95" stroke="#38bdf8" stroke-width="1"/>
+              <polyline points="125,49 128,45 131,49" fill="none" stroke="#38bdf8" stroke-width="1"/>
+              <polyline points="125,91 128,95 131,91" fill="none" stroke="#38bdf8" stroke-width="1"/>
+              <text x="122" y="73" fill="#38bdf8" font-size="8" font-family="'JetBrains Mono', monospace" text-anchor="end" font-weight="600">Focal Z</text>
+            </svg>
           </div>
-          <div class="process-step-desc">
-            <strong>1. Optical Datum Calibration</strong>
-            Chiller and exhaust initiated. The 50.8 mm focal distance gauge block was placed between nozzle and acrylic stock to set optimal optical spot waist (~0.1 mm diameter).
+          <div class="schematic-content">
+            <div class="schematic-header">
+              <span class="schematic-step-badge">STAGE 01</span>
+              <span class="schematic-pill"><i class="fa-solid fa-crosshairs"></i> Optical Calibration</span>
+            </div>
+            <h4 class="schematic-title">1. Optical Datum Calibration</h4>
+            <p class="schematic-desc">
+              Chiller and exhaust initiated. The 50.8 mm focal distance gauge block was placed between nozzle and acrylic stock to set optimal optical spot waist (~0.1 mm diameter).
+            </p>
+            <div class="schematic-chips">
+              <span class="spec-chip"><i class="fa-solid fa-ruler-vertical"></i> Focal Gauge: <strong>50.8 mm (2.0")</strong></span>
+              <span class="spec-chip"><i class="fa-solid fa-bullseye"></i> Spot Waist: <strong>~0.10 mm</strong></span>
+              <span class="spec-chip"><i class="fa-solid fa-fan"></i> Chiller &amp; Exhaust: <strong>Active</strong></span>
+            </div>
           </div>
         </div>
 
-        <div class="process-step-card">
-          <div class="process-step-thumb thumb-graphic">
-            <i class="fa-solid fa-arrows-to-dot"></i>
-            <span class="thumb-label">Stage 02 &bull; Stock</span>
+        <!-- Stage 02: Stock -->
+        <div class="workflow-schematic-card">
+          <div class="schematic-viewport">
+            <svg viewBox="0 0 400 130" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:130px; display:block;">
+              <defs>
+                <pattern id="honeycombGrid" width="16" height="27.7" patternUnits="userSpaceOnUse">
+                  <path d="M8 0 L16 4.6 L16 13.9 L8 18.5 L0 13.9 L0 4.6 Z" fill="none" stroke="#1e293b" stroke-width="0.75"/>
+                  <path d="M0 27.7 L8 23.1 L8 13.9 L0 18.5 Z" fill="none" stroke="#1e293b" stroke-width="0.75"/>
+                  <path d="M16 27.7 L8 23.1 L8 13.9 L16 18.5 Z" fill="none" stroke="#1e293b" stroke-width="0.75"/>
+                </pattern>
+              </defs>
+              <rect x="20" y="10" width="360" height="110" fill="#090d16" stroke="#1e293b" stroke-width="1" rx="4"/>
+              <rect x="22" y="12" width="356" height="106" fill="url(#honeycombGrid)" opacity="0.85"/>
+              <rect x="90" y="24" width="220" height="82" fill="#0f172a" fill-opacity="0.85" stroke="#334155" stroke-width="1.2" rx="3"/>
+              <text x="100" y="38" fill="#64748b" font-size="8" font-family="'JetBrains Mono', monospace" font-weight="600">HONEYCOMB BED &bull; PMMA SHEET</text>
+              <rect x="80" y="55" width="16" height="20" fill="#3b82f6" stroke="#60a5fa" stroke-width="1" rx="2"/>
+              <rect x="304" y="55" width="16" height="20" fill="#3b82f6" stroke="#60a5fa" stroke-width="1" rx="2"/>
+              <text x="88" y="68" fill="#ffffff" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="700">FIX</text>
+              <text x="312" y="68" fill="#ffffff" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="700">FIX</text>
+              <rect x="175" y="42" width="55" height="55" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3" rx="2"/>
+              <circle cx="175" cy="42" r="3.5" fill="#ef4444"/>
+              <circle cx="175" cy="42" r="7" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+              <polygon points="205,39 212,42 205,45" fill="#ef4444"/>
+              <polygon points="233,68 230,75 227,68" fill="#ef4444"/>
+              <text x="175" y="34" fill="#ef4444" font-size="7.5" font-family="'JetBrains Mono', monospace" font-weight="700">RED-DOT ORIGIN (0,0)</text>
+              <text x="238" y="72" fill="#f8fafc" font-size="8" font-family="'JetBrains Mono', monospace" font-weight="700">50 &times; 50 mm</text>
+              <text x="238" y="83" fill="#38bdf8" font-size="7" font-family="'JetBrains Mono', monospace">Envelope Check</text>
+            </svg>
           </div>
-          <div class="process-step-desc">
-            <strong>2. Stock Fixturing &amp; Dry-Run Framing</strong>
-            3.0 mm cast PMMA sheet was secured flat on honeycomb bed. The RuiDa DSP controller executed a bounding box dry-run with red-dot laser to confirm coordinate bounds.
+          <div class="schematic-content">
+            <div class="schematic-header">
+              <span class="schematic-step-badge">STAGE 02</span>
+              <span class="schematic-pill"><i class="fa-solid fa-arrows-to-dot"></i> Bed Alignment</span>
+            </div>
+            <h4 class="schematic-title">2. Stock Fixturing &amp; Dry-Run Framing</h4>
+            <p class="schematic-desc">
+              3.0 mm cast PMMA sheet was secured flat on honeycomb bed. The RuiDa DSP controller executed a bounding box dry-run with red-dot laser to confirm coordinate bounds.
+            </p>
+            <div class="schematic-chips">
+              <span class="spec-chip"><i class="fa-solid fa-layer-group"></i> Substrate: <strong>3.0 mm PMMA</strong></span>
+              <span class="spec-chip"><i class="fa-solid fa-border-all"></i> Bed: <strong>Steel Honeycomb</strong></span>
+              <span class="spec-chip"><i class="fa-solid fa-vector-square"></i> Dry Framing: <strong>50&times;50 mm Bounds</strong></span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="process-step-card">
-          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/rdworks-simulation-preview.png', 'Stage 3: Simulation Preview', 'RDWorks simulation showing raster scan hatch lines and perimeter cut.')">
+      <!-- Verified Photographic Telemetry (Stages 03, 04, 05) -->
+      <div class="workflow-subhead" style="margin-top: 2rem;">
+        <span class="workflow-subhead-badge" style="background: #059669; color: #ffffff;"><i class="fa-solid fa-camera"></i> FABRICATION &amp; VERIFIED RECORDS</span>
+        <span class="workflow-subhead-note">Stages 03 – 05 &bull; In-situ DSP simulation, active laser firing, and extracted artifact</span>
+      </div>
+
+      <div class="workflow-photo-grid">
+        <!-- Stage 03 -->
+        <div class="workflow-photo-card">
+          <div class="workflow-photo-frame" onclick="openLightbox('assets/weekly/week 6/rdworks-simulation-preview.png', 'Stage 3: Simulation Preview', 'RDWorks simulation showing raster scan hatch lines and perimeter cut.')">
             <img src="assets/weekly/week 6/rdworks-simulation-preview.png" alt="Simulation Preview" loading="lazy" />
+            <div class="photo-card-badge">STAGE 03</div>
           </div>
-          <div class="process-step-desc">
+          <div class="workflow-photo-desc">
             <strong>3. Toolpath Simulation</strong>
             RDWorks V8 toolpath simulation verified scanline hatch density, job cycle time (2m 18s), and confirmed eyelet cutting prior to perimeter separation.
           </div>
         </div>
 
-        <div class="process-step-card">
-          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/laser-cutting-machine.jpg', 'Stage 4: Active Fabrication', 'Visakan observing the laser cut in progress at KCT Forge.')">
+        <!-- Stage 04 -->
+        <div class="workflow-photo-card">
+          <div class="workflow-photo-frame" onclick="openLightbox('assets/weekly/week 6/laser-cutting-machine.jpg', 'Stage 4: Active Fabrication', 'Visakan observing the laser cut in progress at KCT Forge.')">
             <img src="assets/weekly/week 6/laser-cutting-machine.jpg" alt="Laser Cutting in Progress" loading="lazy" />
+            <div class="photo-card-badge">STAGE 04</div>
           </div>
-          <div class="process-step-desc">
+          <div class="workflow-photo-desc">
             <strong>4. Supervised Laser Execution</strong>
             Laser firing under active exhaust and coaxial air assist. Layer 1 raster engraving completed first, followed immediately by Layer 2 vector cut-through.
           </div>
         </div>
 
-        <div class="process-step-card">
-          <div class="process-step-thumb" onclick="openLightbox('assets/weekly/week 6/tom-and-jerry-laser-cut.jpg', 'Stage 5: Finished Part on Bed', 'Cutting result immediately after completion before removal.')">
+        <!-- Stage 05 -->
+        <div class="workflow-photo-card">
+          <div class="workflow-photo-frame" onclick="openLightbox('assets/weekly/week 6/tom-and-jerry-laser-cut.jpg', 'Stage 5: Finished Part on Bed', 'Cutting result immediately after completion before removal.')">
             <img src="assets/weekly/week 6/tom-and-jerry-laser-cut.jpg" alt="Finished Part on Bed" loading="lazy" />
+            <div class="photo-card-badge">STAGE 05</div>
           </div>
-          <div class="process-step-desc">
+          <div class="workflow-photo-desc">
             <strong>5. Dwell Cooling &amp; Part Extraction</strong>
             Maintained 30-second dwell time for complete vapor evacuation. The finished 50&times;50 mm part released cleanly from surrounding stock without burrs.
           </div>
